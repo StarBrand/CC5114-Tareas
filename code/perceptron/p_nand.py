@@ -1,4 +1,4 @@
-from code.perceptron import Perceptron
+from perceptron import Perceptron
 
 
 class PerceptronNand(Perceptron):

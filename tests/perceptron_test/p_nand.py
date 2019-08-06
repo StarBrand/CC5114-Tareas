@@ -1,5 +1,5 @@
 import unittest
-from code.perceptron import PerceptronNand
+from perceptron import PerceptronNand
 
 
 class AndTest(unittest.TestCase):

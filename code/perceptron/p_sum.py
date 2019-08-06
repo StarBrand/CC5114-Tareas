@@ -1,4 +1,4 @@
-from code.perceptron import Perceptron, PerceptronNand, PerceptronAnd
+from perceptron import Perceptron, PerceptronNand, PerceptronAnd
 
 
 class PerceptronSum(Perceptron):

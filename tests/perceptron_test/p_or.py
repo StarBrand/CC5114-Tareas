@@ -1,5 +1,5 @@
 import unittest
-from code.perceptron import PerceptronOr
+from perceptron import PerceptronOr
 
 
 class OrTest(unittest.TestCase):
