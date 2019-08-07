@@ -23,10 +23,26 @@ Tareas y ejercicios para el curso CC5114-1 Redes Neuronales y Programaci처n Gen�
 
 C처digo: `code/perceptron`
 
-## Clase 03: ...
+Test: `tests/perceptron_test`
 
-<Pendiente, al toque bodoque>
+## Clase 03:  Evaluaci처n
 
+### Temas
 
+1. Evaluaci처n
 
-   
+## Clase 04: Neural Networks: Learning Perceptron
+
+### Temas
+
+1. Algoritmos de aprendizaje
+2. Estrategias de aprendizaje
+3. Algoritmo de aprendizaje Perceptron
+4. Perceptron en acci처n
+
+### Ejercicios
+
+C처digo:  `code/learning_perceptron`
+
+Test: `tests/Learning Perceptron.ipynb`
+
