@@ -1,0 +1,1 @@
+from learning_perceptron.learning import LearningPerceptron
