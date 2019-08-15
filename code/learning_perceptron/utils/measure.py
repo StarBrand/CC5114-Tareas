@@ -21,18 +21,30 @@ def confusion_matrix(line: Line,
 
 
 def accuracy(fp: int, tp: int, fn: int, tn: int) -> float:
-    return (tp + tn) / (fp + tp + fn + tn)
+    try:
+        return (tp + tn) / (fp + tp + fn + tn)
+    except ZeroDivisionError:
+        return 0
 
 
 def precision(fp: int, tp: int) -> float:
-    return tp / (tp + fp)
+    try:
+        return tp / (tp + fp)
+    except ZeroDivisionError:
+        return 0
 
 
 def recall(tp: int, fn: int) -> float:
-    return tp / (tp + fn)
+    try:
+        return tp / (tp + fn)
+    except ZeroDivisionError:
+        return 0
 
 
 def f1_score(fp: int, tp: int, fn: int) -> float:
     a = precision(fp, tp)
     b = recall(tp, fn)
-    return 2 * ((a * b) / (a + b))
+    try:
+        return 2 * ((a * b) / (a + b))
+    except ZeroDivisionError:
+        return 0
