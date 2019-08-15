@@ -1,0 +1,49 @@
+import numpy as np
+from math import sqrt, pow
+from neural_network.utils import Pattern
+
+
+class Circle(Pattern):
+
+    def __init__(self, radius: float, center: (float, float), x_range: (float, float), y_range: (float, float)):
+        radius = abs(radius)
+        assert x_range[0] <= center[0] <= x_range[1]
+        assert y_range[0] <= center[1] <= y_range[1]
+        assert (x_range[1] - x_range[0]) >= radius
+        assert (y_range[1] - y_range[0]) >= radius
+        super(Circle, self).__init__(x_range, y_range, "circle")
+        self.r = radius
+        self.k = center[0]
+        self.h = center[1]
+
+    def x_to_y(self, x: float) -> [float]:
+        aux = pow(self.r, 2) - pow(x - self.k, 2)
+        if aux < 0:
+            return []
+        return [self.h - sqrt(aux), self.h + sqrt(aux)]
+
+    def y_to_x(self, y: float) -> [float]:
+        aux = pow(self.r, 2) - pow(y - self.h, 2)
+        if aux < 0:
+            return []
+        return [self.k - sqrt(aux), self.k + sqrt(aux)]
+
+    # outside
+    def is_above(self, x: float, y: float) -> bool:
+        ans = True
+        for index, y_candid in enumerate(self.x_to_y(x)):
+            if index == 0:
+                ans = y < y_candid
+            else:
+                ans = ans or y > y_candid
+        return ans
+
+    def graph(self) -> ([float], [float]):
+        start = max(self.x_range[0], self.k - self.r)
+        end = min(self.x_range[1], self.k + self.r)
+        x_in = list(np.linspace(start, end, 1e6))
+        x_out = list(np.linspace(end, start, 1e6))
+        y_aux = [(y[0], y[1]) for y in [self.x_to_y(x) for x in x_in]]
+        y_in = [y for y, _ in y_aux]
+        y_out = [y for _, y in y_aux]
+        return x_in + x_out, y_in + y_out

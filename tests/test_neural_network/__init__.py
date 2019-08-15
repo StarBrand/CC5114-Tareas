@@ -1,0 +1,3 @@
+import unittest
+from test_neural_network.test_circle import TestCircle
+from test_neural_network.test_square import TestSquare
