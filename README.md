@@ -21,9 +21,9 @@ Tareas y ejercicios para el curso CC5114-1 Redes Neuronales y Programaci처n Gen�
 
 ### Ejercicios
 
-C처digo: `code/perceptron`
+C처digo: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/perceptron)
 
-Test: `tests/test_perceptron`
+Test: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron)
 
 ## Clase 03:  Evaluaci처n
 
@@ -42,9 +42,9 @@ Test: `tests/test_perceptron`
 
 ### Ejercicios
 
-C처digo:  `code/learning_perceptron`
+C처digo:  [`code/learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron)
 
-Test: `tests/Learning Perceptron.ipynb` y `tests/test_learning_percpetron`
+Test: [`tests/Learning Perceptron.ipynb`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron) y [`tests/test_learning_percpetron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron)
 
 ## Clase 05: Neurona sigmoidea y redes neuronales
 
@@ -56,7 +56,7 @@ Test: `tests/Learning Perceptron.ipynb` y `tests/test_learning_percpetron`
 
 ### Ejercicios
 
-C처digo: `code/sigmoid_neuron`
+C처digo: [`code/sigmoid_neuron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/sigmoid_neuron), [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network) y [`tests/Neural Network.ipynb`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/Neural%20Network.ipynb)
 
-Test: `tests/Learning Sigmoid Neuron.ipynb`
+Test: [`tests/Learning Sigmoid Neuron.ipynb`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/Learning%20Sigmoid%20Neuron.ipynb) y [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network)
 
