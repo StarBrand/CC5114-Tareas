@@ -23,7 +23,7 @@ Tareas y ejercicios para el curso CC5114-1 Redes Neuronales y Programaci처n Gen�
 
 C처digo: `code/perceptron`
 
-Test: `tests/perceptron_test`
+Test: `tests/test_perceptron`
 
 ## Clase 03:  Evaluaci처n
 
@@ -44,5 +44,19 @@ Test: `tests/perceptron_test`
 
 C처digo:  `code/learning_perceptron`
 
-Test: `tests/Learning Perceptron.ipynb`
+Test: `tests/Learning Perceptron.ipynb` y `tests/test_learning_percpetron`
+
+## Clase 05: Neurona sigmoidea y redes neuronales
+
+### Temas
+
+1. Neurona sigmoidea
+
+2. Redes neuronales
+
+### Ejercicios
+
+C처digo: `code/sigmoid_neuron`
+
+Test: `tests/Learning Sigmoid Neuron.ipynb`
 
