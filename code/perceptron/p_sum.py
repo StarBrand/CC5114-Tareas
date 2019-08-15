@@ -4,7 +4,7 @@ from perceptron import Perceptron, PerceptronNand, PerceptronAnd
 class PerceptronSum(Perceptron):
 
     def __init__(self):
-        super().__init__("or", 3, 3, -2)
+        super(PerceptronSum, self).__init__("or", 3, 3, -2)
         self.nand = PerceptronNand()
         self.p_and = PerceptronAnd()
 
