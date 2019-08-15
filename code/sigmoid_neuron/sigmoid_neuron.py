@@ -11,10 +11,10 @@ class SigmoidNeuron(Perceptron):
     def output(self, x1: float, x2: float) -> bool:
         z = self.w1 * x1 + self.w2 * x2 + self.b
         try:
-            return self._sigmoid(z) < 0.5
+            return self._sigmoid(z) > 0.5
         except OverflowError:
-            return z < 0
+            return z > 0
 
     @staticmethod
     def _sigmoid(z: float) -> float:
-        return 1 / (1 + exp(z))
+        return 1 / (1 + exp(-z))
