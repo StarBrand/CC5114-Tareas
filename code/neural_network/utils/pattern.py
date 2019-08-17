@@ -1,3 +1,4 @@
+import numpy as np
 from matplotlib.axes import Axes
 from random import uniform
 from abc import ABC, abstractmethod
@@ -39,4 +40,4 @@ class Pattern(ABC):
             y = uniform(self.y_range[0], self.y_range[1])
             datum = x, y, self.is_above(x, y)
             out.append(datum)
-        return out
+        return np.array(out).T

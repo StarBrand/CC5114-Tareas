@@ -41,8 +41,8 @@ class Circle(Pattern):
     def graph(self) -> ([float], [float]):
         start = max(self.x_range[0], self.k - self.r)
         end = min(self.x_range[1], self.k + self.r)
-        x_in = list(np.linspace(start, end, 1e6))
-        x_out = list(np.linspace(end, start, 1e6))
+        x_in = list(np.linspace(start, end, int(1e6)))
+        x_out = list(np.linspace(end, start, int(1e6)))
         y_aux = [(y[0], y[1]) for y in [self.x_to_y(x) for x in x_in]]
         y_in = [y for y, _ in y_aux]
         y_out = [y for _, y in y_aux]
