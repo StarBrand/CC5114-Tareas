@@ -27,7 +27,7 @@ class DoubleLine(Pattern):
 
     # outside
     def is_above(self, x: float, y: float) -> bool:
-        return not self.line1.is_above(x, y) and self.line2.is_above(x, y)
+        return not self.line1.is_above(x, y) or self.line2.is_above(x, y)
 
     def graph(self) -> ([float], [float]):
         x1, y1 = self.line1.graph()

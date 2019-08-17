@@ -2,7 +2,7 @@ import unittest
 from perceptron import PerceptronNand
 
 
-class AndTest(unittest.TestCase):
+class NandTest(unittest.TestCase):
 
     def setUp(self) -> None:
         self.perceptron_nand = PerceptronNand()

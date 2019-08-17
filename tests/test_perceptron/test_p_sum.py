@@ -2,7 +2,7 @@ import unittest
 from perceptron import PerceptronSum
 
 
-class AndTest(unittest.TestCase):
+class SumTest(unittest.TestCase):
 
     def setUp(self) -> None:
         self.perceptron_sum = PerceptronSum()

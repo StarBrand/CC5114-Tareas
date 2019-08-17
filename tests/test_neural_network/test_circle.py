@@ -1,5 +1,5 @@
 from math import sqrt
-from random import uniform
+from random import uniform, randint
 from unittest import TestCase, main
 from neural_network.utils import Circle
 
@@ -67,6 +67,12 @@ class TestCircle(TestCase):
     def test_graph(self):
         x, y = self.a_circle.graph()
         assert len(x) == len(y)
+
+    def test_training_set(self):
+        size = randint(1000, 10000)
+        train_set = self.a_circle.training_set(size)
+        assert train_set.shape[0] == 3
+        assert train_set.shape[1] == size
 
 
 if __name__ == "__main__":

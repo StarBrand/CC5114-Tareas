@@ -1,3 +1,2 @@
-import unittest
 from test_learning_perceptron.test_line import LineTest
 from test_learning_perceptron.test_measure import MeasureTest
