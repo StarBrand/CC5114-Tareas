@@ -109,8 +109,8 @@ def update_parameters(parameters, grads, learning_rate):
 # X: is the set of training inputs
 # Y: is the set of training outputs
 # n_x: number of inputs (this value impacts how X is shaped)
-# n_h: number of neurons in the hidden layer
-# n_y: number of neurons in the output layer (this value impacts how Y is shaped)
+# n_h: number of input_size in the hidden layer
+# n_y: number of input_size in the output layer (this value impacts how Y is shaped)
 def model(X, Y, n_x, n_h, n_y, num_of_iters, learning_rate):
     parameters = initialize_parameters(n_x, n_h, n_y)
     for i in range(0, num_of_iters+1):
@@ -153,19 +153,26 @@ Y = np.array([[0, 1, 1, 0]])
 m = X.shape[1]
 
 # Set the hyperparameters
-n_x = 2     #No. of neurons in first layer
-n_h = 4     #No. of neurons in hidden layer
-n_y = 1     #No. of neurons in output layer
+n_x = 2     #No. of input_size in first layer
+n_h = 4     #No. of input_size in hidden layer
+n_y = 1     #No. of input_size in output layer
 num_of_iters = 10000
 learning_rate = 0.01
 
-# define a model 
-trained_parameters = model(X, Y, n_x, n_h, n_y, num_of_iters, learning_rate)
 
-# Test 2X1 vector to calculate the XOR of its elements. 
-# You can try any of those: (0, 0), (0, 1), (1, 0), (1, 1)
-X_test = np.array([[0], [1]])
-y_predict = predict(X_test, trained_parameters)
-# Print the result
-print('Neural Network prediction for example ({:d}, {:d}) is {:d}'.format(
-    X_test[0][0], X_test[1][0], y_predict))
+#  Added to import functions and avoid execution of the code
+def main():
+    # define a model
+    trained_parameters = model(X, Y, n_x, n_h, n_y, num_of_iters, learning_rate)
+
+    # Test 2X1 vector to calculate the XOR of its elements.
+    # You can try any of those: (0, 0), (0, 1), (1, 0), (1, 1)
+    X_test = np.array([[0], [1]])
+    y_predict = predict(X_test, trained_parameters)
+    # Print the result
+    print('Neural Network prediction for example ({:d}, {:d}) is {:d}'.format(
+        X_test[0][0], X_test[1][0], y_predict))
+
+
+if __name__ == "__main__":
+    main()

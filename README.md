@@ -60,3 +60,33 @@ Código: [`code/sigmoid_neuron`](https://github.com/StarBrand/CC5114-Tareas/tree
 
 Test: [`tests/Learning Sigmoid Neuron.ipynb`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/Learning%20Sigmoid%20Neuron.ipynb) y [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network)
 
+## Clase 06: Redes neuronales en acción y Tarea 1
+
+### Temas
+
+1. Redes neuronales en acción
+
+2. Tarea 1
+
+### Tarea 1
+
+Código:
+
+* Código utilizado: `code/`
+
+* Script ejecutable: `tarea1/.py`
+
+* Markdown: `tarea1/README.md`
+
+* Test: `tests/`
+
+## Clase 07: Redes neuronales: Explicación de BackPropagation
+
+### Temas
+
+1. Alimentación
+2. Entrenamiento
+3. Backpropagation
+
+## Clase 08:
+
