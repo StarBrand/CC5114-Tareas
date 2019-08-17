@@ -1,7 +1,6 @@
-from math import sqrt
 from random import uniform
 from unittest import TestCase, main
-from neural_network import Square
+from neural_network.utils import Square
 
 FACE = 60
 MIN_X = MIN_Y = -50

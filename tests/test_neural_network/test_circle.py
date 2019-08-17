@@ -1,7 +1,7 @@
 from math import sqrt
 from random import uniform
 from unittest import TestCase, main
-from neural_network import Circle
+from neural_network.utils import Circle
 
 RADIUS = 25
 MIN_X = MIN_Y = -50
@@ -21,11 +21,11 @@ class TestCircle(TestCase):
         ans1 = False
         ans2 = False
         try:
-            c = Circle(110, CENTER, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
+            Circle(110, CENTER, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
         except AssertionError:
             ans1 = True
         try:
-            c = Circle(10, (60, 0), (MIN_X, MAX_X), (MIN_Y, MAX_Y))
+            Circle(10, (60, 0), (MIN_X, MAX_X), (MIN_Y, MAX_Y))
         except AssertionError:
             ans2 = True
         assert ans1
