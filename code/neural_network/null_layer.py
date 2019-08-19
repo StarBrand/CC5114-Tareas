@@ -7,7 +7,7 @@ class NullLayer(NeuronLayer):
 
     def __init__(self):
         super(NullLayer, self).__init__(0, 0, None)
-        self.W = None
+        self.w = None
         self.b = None
 
     def out(self, x_input: np.array) -> np.array:

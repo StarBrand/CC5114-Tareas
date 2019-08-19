@@ -17,13 +17,13 @@ class NeuronLayer(ABC):
         self.input_size = input_size
         self.output_size = output_size
         self.activation_function = func
-        self.W = np.random.randn(output_size, input_size)
+        self.w = np.random.randn(output_size, input_size)
         self.b = np.zeros((output_size, 1))
 
     def out(self, x_input: np.array) -> np.array:
         if x_input.shape[0] != self.input_size:
             raise ValueError("Size of input do not match the input_size")
-        return np.dot(self.W, x_input) + self.b
+        return np.dot(self.w, x_input) + self.b
 
     def feed(self, x_input: np.array, save: bool = True) -> np.array:
         z = self.out(x_input)
@@ -46,5 +46,5 @@ class NeuronLayer(ABC):
 
     def update_weights(self, x_input: np.array, learning_rate: float):
         m = x_input.shape[-1]
-        self.W = self.W - learning_rate * np.dot(self.delta, x_input.T) / m
+        self.w = self.w - learning_rate * np.dot(self.delta, x_input.T) / m
         self.b = self.b - learning_rate * np.sum(self.delta, axis=-1, keepdims=True) / m

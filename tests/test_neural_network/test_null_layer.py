@@ -10,7 +10,7 @@ class NullLayerTest(TestCase):
 
     def test_get(self):
         assert self.layer is not None
-        assert self.layer.W is None
+        assert self.layer.w is None
         assert self.layer.b is None
         assert self.layer.delta is None
         assert self.layer.output is None
@@ -27,12 +27,12 @@ class NullLayerTest(TestCase):
     def test_propagate(self):
         self.layer.feed(np.array([]))
         self.layer.propagate(np.array([]))
-        assert self.layer.W is None
+        assert self.layer.w is None
         assert self.layer.b is None
         assert self.layer.delta is None
         assert self.layer.output is None
         self.layer.propagate(np.array([]), np.array([]), np.array([]))
-        assert self.layer.W is None
+        assert self.layer.w is None
         assert self.layer.b is None
         assert self.layer.delta is None
         assert self.layer.output is None
@@ -41,13 +41,13 @@ class NullLayerTest(TestCase):
         self.layer.feed(np.array([]))
         self.layer.propagate(np.array([]))
         self.layer.update_weights(np.array([]), 0.1)
-        assert self.layer.W is None
+        assert self.layer.w is None
         assert self.layer.b is None
         assert self.layer.delta is None
         assert self.layer.output is None
         self.layer.propagate(np.array([]), np.array([]), np.array([]))
         self.layer.update_weights(np.array([]), 0.1)
-        assert self.layer.W is None
+        assert self.layer.w is None
         assert self.layer.b is None
         assert self.layer.delta is None
         assert self.layer.output is None

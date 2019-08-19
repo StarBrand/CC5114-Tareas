@@ -8,7 +8,7 @@ class SigmoidTest(TestCase):
 
     def setUp(self) -> None:
         self.sigmoid = SigmoidLayer(2, 1)
-        self.W = self.sigmoid.W
+        self.w = self.sigmoid.w
         self.b = self.sigmoid.b
         self.simple_test = np.array([40, 40]).reshape((2, 1))
         self.batch_test = np.random.rand(2, 10000)
@@ -26,21 +26,21 @@ class SigmoidTest(TestCase):
         self.sigmoid.feed(self.simple_test)
         self.sigmoid.propagate(output)
         self.sigmoid.update_weights(self.simple_test, 1)
-        assert self.sigmoid.W.mean() >= self.W.mean()
+        assert self.sigmoid.w.mean() >= self.w.mean()
 
     def test_propagate_batch_up(self):
         output = np.array([1.0]*10000)
         self.sigmoid.feed(self.batch_test)
         self.sigmoid.propagate(output)
         self.sigmoid.update_weights(self.batch_test, 1)
-        assert self.sigmoid.W.mean() >= self.W.mean()
+        assert self.sigmoid.w.mean() >= self.w.mean()
 
     def test_propagate_batch_down(self):
         output = np.array([0.0] * 10000)
         self.sigmoid.feed(self.batch_test)
         self.sigmoid.propagate(output)
         self.sigmoid.update_weights(self.batch_test, 1)
-        assert self.sigmoid.W.mean() <= self.W.mean()
+        assert self.sigmoid.w.mean() <= self.w.mean()
 
     def test_propagate_batch_random(self):
         np.random.seed(12345)
@@ -53,7 +53,7 @@ class SigmoidTest(TestCase):
         self.sigmoid.propagate(output)
         self.sigmoid.update_weights(self.batch_test, 5)
         assert np.sum(output) < 5000
-        assert self.sigmoid.W.mean() <= self.W.mean()
+        assert self.sigmoid.w.mean() <= self.w.mean()
 
 
 if __name__ == '__main__':
