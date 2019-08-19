@@ -76,7 +76,7 @@ Código:
 
 * Script ejecutable: `tarea1/`
 
-* Markdown: [`tarea1/README.md`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1.README.md)
+* Markdown: [`tarea1/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README.md)
 
 * Test: [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network)
 
