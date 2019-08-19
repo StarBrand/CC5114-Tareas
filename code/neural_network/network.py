@@ -24,36 +24,36 @@ class NeuralNetwork(object):
         self.learning_rate = lr
         return
 
-    def feed_forward(self, x_input: np.array):
-        output = x_input
+    def feed_forward(self, x_input: np.ndarray):
+        output = x_input.copy()
         if np.ndim(x_input) == 1:
-            output = x_input.reshape(-1, 1)
+            output = output.reshape(-1, 1)
         for layer in self.layers:
             output = layer.feed(output)
         return output
 
-    def back_propagation(self, y_output: np.array) -> None:
+    def back_propagation(self, y_output: np.ndarray) -> None:
         next_layer = NullLayer()
         for layer in reversed(self.layers):
             layer.propagate(y_output, next_layer.delta, next_layer.w)
             next_layer = layer
 
-    def update_weight(self, x_input: np.array):
+    def update_weight(self, x_input: np.ndarray):
         if self.layers[-1].delta is None:
             raise ValueError("No derivative calculated yet")
-        layer_input = x_input
+        layer_input = x_input.copy()
         if np.ndim(x_input) == 1:
-            layer_input = x_input.reshape(-1, 1)
+            layer_input = layer_input.reshape(-1, 1)
         for layer in self.layers:
             layer.update_weights(layer_input, self.learning_rate)
             layer_input = layer.output
 
     # Modification of provided code method
-    def calculate_cost(self, y_output: np.array, m: int):
+    def calculate_cost(self, y_output: np.ndarray, m: int):
         cost = np.sum((0.5 * (self.layers[-1].output - y_output) ** 2).mean(axis=-1)) / m
         return cost
 
-    def train(self, training_set: np.array, tags: np.array, epochs: int = 1, batch_size: int = 0):
+    def train(self, training_set: np.ndarray, tags: np.ndarray, epochs: int = 1, batch_size: int = 0):
         if training_set.shape[-1] != tags.shape[-1]:
             raise ValueError("Tags and training set don't match")
         if batch_size < 0 or epochs < 0:
