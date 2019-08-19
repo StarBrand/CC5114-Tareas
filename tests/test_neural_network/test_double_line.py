@@ -35,7 +35,6 @@ class TestDoubleLine(TestCase):
     def test_is_above(self):
         x = 1
         y = self.a_line.x_to_y(x)[0]
-        print(y)
         y1 = y - 0.5
         y2 = y + 0.5
         y3 = y + 20.5
