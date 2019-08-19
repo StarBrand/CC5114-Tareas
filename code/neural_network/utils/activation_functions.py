@@ -28,5 +28,6 @@ derivative = {
 
 proper_name = {
     sigmoid: "sigmoid layer",
-    tanh: "tanh layer"
+    tanh: "tanh layer",
+    None: "no name"
 }

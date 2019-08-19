@@ -20,7 +20,7 @@ class NeuronLayer(ABC):
         self.W = np.random.randn(output_size, input_size)
         self.b = np.zeros((output_size, 1))
 
-    def out(self, x_input: np.array):
+    def out(self, x_input: np.array) -> np.array:
         if x_input.shape[0] != self.input_size:
             raise ValueError("Size of input do not match the input_size")
         return np.dot(self.W, x_input) + self.b
