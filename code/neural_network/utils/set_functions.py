@@ -2,8 +2,8 @@ import numpy as np
 from random import randint
 
 
-def split_set(train_set: np.array, train_percentage: float,
-              test_percentage: float or None = None) -> (np.array, np.array):
+def split_set(train_set: np.ndarray, train_percentage: float,
+              test_percentage: float or None = None) -> (np.ndarray, np.ndarray):
     if test_percentage is None:
         test_percentage = 1.0 - train_percentage
     if not (0.0 <= train_percentage <= 1.0 and

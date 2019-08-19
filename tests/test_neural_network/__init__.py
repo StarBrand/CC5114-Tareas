@@ -3,12 +3,12 @@ from test_neural_network.test_square import TestSquare
 from test_neural_network.test_line import TestLine
 from test_neural_network.test_double_line import TestDoubleLine
 from test_neural_network.test_activation_functions import ActivationFunctionTest
-from test_neural_network.test_null_layer import NullLayerTest
+from test_neural_network.test_one_hot_encoding import OneHotTest
 from test_neural_network.test_set_functions import FunctionTest
+from test_neural_network.test_null_layer import NullLayerTest
 from test_neural_network.test_layer_factory import TestFactory
 from test_neural_network.test_sigmoid_layer import SigmoidTest
 from test_neural_network.test_tanh_layer import TanhTest
 from test_neural_network.test_network import NetworkTest
 
-#  TODO: test network
 #  TODO: update README

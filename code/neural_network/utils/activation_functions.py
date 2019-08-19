@@ -1,21 +1,21 @@
 import numpy as np
 
 
-def sigmoid(z: np.array) -> np.array:
+def sigmoid(z: np.ndarray) -> np.ndarray:
     return np.array(1.0 / (1.0 + np.exp(-z)))
 
 
-def tanh(z: np.array) -> np.array:
+def tanh(z: np.ndarray) -> np.ndarray:
     return np.tanh(z)
 
 #  Derivative
 
 
-def d_sigmoid(output: np.array) -> np.array:
+def d_sigmoid(output: np.ndarray) -> np.ndarray:
     return np.multiply(output, 1 - output)
 
 
-def d_tanh(output: np.array) -> np.array:
+def d_tanh(output: np.ndarray) -> np.ndarray:
     return 1 - np.power(output, 2)
 
 # Pairs

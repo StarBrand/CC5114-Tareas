@@ -20,31 +20,31 @@ class NeuronLayer(ABC):
         self.w = np.random.randn(output_size, input_size)
         self.b = np.zeros((output_size, 1))
 
-    def out(self, x_input: np.array) -> np.array:
+    def out(self, x_input: np.ndarray) -> np.ndarray:
         if x_input.shape[0] != self.input_size:
             raise ValueError("Size of input do not match the input_size")
         return np.dot(self.w, x_input) + self.b
 
-    def feed(self, x_input: np.array, save: bool = True) -> np.array:
+    def feed(self, x_input: np.ndarray, save: bool = True) -> np.ndarray:
         z = self.out(x_input)
         output = self.activation_function(z)
         if save:
-            self.output = output
+            self.output = output.copy()
         return output
 
-    def transverse_derivative(self, output: np.array) -> np.array:
+    def transverse_derivative(self, output: np.ndarray) -> np.ndarray:
         return derivative[self.activation_function](output)
 
-    def propagate(self, output: np.array,
-                  next_delta: np.array or None = None,
-                  next_w: np.array or None = None) -> None:
+    def propagate(self, output: np.ndarray,
+                  next_delta: np.ndarray or None = None,
+                  next_w: np.ndarray or None = None) -> None:
         if next_delta is None or next_w is None:
             error = self.output - output
         else:
             error = np.dot(next_w.T, next_delta)
         self.delta = np.multiply(error, self.transverse_derivative(self.output))
 
-    def update_weights(self, x_input: np.array, learning_rate: float):
+    def update_weights(self, x_input: np.ndarray, learning_rate: float):
         m = x_input.shape[-1]
         self.w = self.w - learning_rate * np.dot(self.delta, x_input.T) / m
         self.b = self.b - learning_rate * np.sum(self.delta, axis=-1, keepdims=True) / m

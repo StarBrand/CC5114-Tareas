@@ -76,7 +76,7 @@ class TestFactory(TestCase):
         assert test
 
     @staticmethod
-    def some_function(an_input: np.array) -> np.array:
+    def some_function(an_input: np.ndarray) -> np.ndarray:
         return np.random.rand(an_input.shape[0], an_input.shape[1])
 
 
