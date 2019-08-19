@@ -1,6 +1,9 @@
 import numpy as np
 import logging
-from neural_network import LayerFactory
+from neural_network import LayerFactory, NullLayer
+
+#  To show: 10 epochs
+TO_SHOW = 10
 
 
 class NeuralNetwork(object):
@@ -23,21 +26,24 @@ class NeuralNetwork(object):
 
     def feed_forward(self, x_input: np.array):
         output = x_input
+        if np.ndim(x_input) == 1:
+            output = x_input.reshape(-1, 1)
         for layer in self.layers:
             output = layer.feed(output)
         return output
 
     def back_propagation(self, y_output: np.array) -> None:
-        next_layer = self.layers[-1]
-        next_layer.propagate(y_output)
-        for layer in reversed(self.layers[0: -1]):
-            layer.propagate(y_output, next_layer.delta, next_layer.W)
+        next_layer = NullLayer()
+        for layer in reversed(self.layers):
+            layer.propagate(y_output, next_layer.delta, next_layer.w)
             next_layer = layer
 
     def update_weight(self, x_input: np.array):
         if self.layers[-1].delta is None:
             raise ValueError("No derivative calculated yet")
         layer_input = x_input
+        if np.ndim(x_input) == 1:
+            layer_input = x_input.reshape(-1, 1)
         for layer in self.layers:
             layer.update_weights(layer_input, self.learning_rate)
             layer_input = layer.output
@@ -66,10 +72,9 @@ class NeuralNetwork(object):
             e_tags = np.split(tags, epochs, axis=-1)
         logging.info("Epochs of training: {}\tSize of the batches: {}".format(epochs, batch_size))
         for epoch in range(epochs):
-            # Show 100 epochs
             self.feed_forward(x_inputs[epoch])
             self.back_propagation(e_tags[epoch])
             self.update_weight(x_inputs[epoch])
-            if epochs / 100 < 1 or (epoch + 1) % int(epochs / 100) == 0:
+            if epochs / TO_SHOW < 1 or (epoch + 1) % int(epochs / TO_SHOW) == 0:
                 logging.info("Epoch {}/{}: ".format(epoch + 1, epochs))
                 logging.info("\tCost after update: {}".format(self.calculate_cost(e_tags[epoch], batch_size)))
