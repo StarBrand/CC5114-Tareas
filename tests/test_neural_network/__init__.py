@@ -4,8 +4,9 @@ from test_neural_network.test_line import TestLine
 from test_neural_network.test_double_line import TestDoubleLine
 from test_neural_network.test_activation_functions import ActivationFunctionTest
 from test_neural_network.test_set_functions import FunctionTest
+from test_neural_network.test_layer_factory import TestFactory
+from test_neural_network.test_sigmoid_layer import SigmoidTest
+from test_neural_network.test_tanh_layer import TanhTest
 
-#  TODO: test layers step by step
 #  TODO: test network
-#  TODO: test layer factory (easy)
 #  TODO: update README
