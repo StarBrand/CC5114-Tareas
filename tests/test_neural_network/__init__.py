@@ -10,5 +10,4 @@ from test_neural_network.test_layer_factory import TestFactory
 from test_neural_network.test_sigmoid_layer import SigmoidTest
 from test_neural_network.test_tanh_layer import TanhTest
 from test_neural_network.test_network import NetworkTest
-
-#  TODO: update README
+from test_neural_network.test_normalize import NormalizeTest

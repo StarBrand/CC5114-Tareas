@@ -4,3 +4,4 @@ from neural_network.sigmoid_layer import SigmoidLayer
 from neural_network.tanh_layer import TanhLayer
 from neural_network.layer_factory import LayerFactory
 from neural_network.network import NeuralNetwork
+from neural_network.normalized_network import NormalizedNetwork
