@@ -10,19 +10,20 @@ def one_hot_encoding(label_vector: np.ndarray or list) -> np.ndarray or list:
     if np.ndim(vector) != 1:
         shape = vector.shape + (-1, )
         vector = vector.reshape(-1)
-        output = _one_hot_encoding_one_dim(vector).reshape(shape)
+        output, encoding = _one_hot_encoding_one_dim(vector)
+        output = output.reshape(shape)
     else:
-        output = _one_hot_encoding_one_dim(vector)
+        output, encoding = _one_hot_encoding_one_dim(vector)
     if one_more:
-        return output.tolist()
-    return output
+        return output.tolist(), encoding
+    return output, encoding
 
 
-def _one_hot_encoding_one_dim(vector: np.ndarray) -> np.ndarray:
+def _one_hot_encoding_one_dim(vector: np.ndarray) -> (np.ndarray, dict):
     elements = np.unique(vector)
     encoding = dict()
     for index, element in enumerate(elements):
         one_hot = np.zeros(elements.shape[0])
         one_hot[index] = 1.0
         encoding[element] = one_hot.copy()
-    return np.array([encoding[element] for element in vector])
+    return np.array([encoding[element] for element in vector]), encoding
