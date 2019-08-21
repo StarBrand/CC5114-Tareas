@@ -1,5 +1,11 @@
 import numpy as np
+import pandas as pd
 from random import randint
+
+
+def import_data(path: str) -> np.ndarray:
+    df = pd.read_csv(path, header=None)
+    return np.array(df).T
 
 
 def split_set(train_set: np.ndarray, train_percentage: float,

@@ -1,5 +1,7 @@
 from unittest import TestCase, main
-from neural_network.utils import Line, split_set
+import numpy as np
+from os import path
+from neural_network.utils import Line, split_set, import_data
 
 
 class FunctionTest(TestCase):
@@ -7,6 +9,7 @@ class FunctionTest(TestCase):
     def setUp(self) -> None:
         a_line = Line((1, 1), (0, 0), (-1, 1), (-1, 1))
         self.train_set = a_line.training_set(1000)
+        self.file_path = path.dirname(path.abspath(__file__))
 
     def test_split_set(self):
         train_set, test_set = split_set(self.train_set, 0.7)
@@ -35,6 +38,12 @@ class FunctionTest(TestCase):
         except ValueError:
             exception = True
         assert exception
+
+    def test_import_data(self):
+        dataset_path = path.abspath("{}/../../data/iris.data".format(self.file_path))
+        dataset_iris = import_data(dataset_path)
+        assert type(dataset_iris) == np.ndarray
+        assert dataset_iris.shape[0] == 5
 
 
 if __name__ == '__main__':
