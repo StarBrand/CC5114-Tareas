@@ -23,7 +23,7 @@ Tareas y ejercicios para el curso CC5114-1 Redes Neuronales y Programaci처n Gen�
 
 C처digo: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/perceptron)
 
-Test: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron)
+Tests unitarios: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron)
 
 ## Clase 03:  Evaluaci처n
 
@@ -44,7 +44,7 @@ Test: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/
 
 C처digo:  [`code/learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/learning_perceptron)
 
-Test: [`tests/Learning Perceptron.ipynb`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/Learning%20Perceptron.ipynb) y [`tests/test_learning_percpetron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron)
+Tests unitarios: [`tests/Learning Perceptron.ipynb`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/Learning%20Perceptron.ipynb) y [`tests/test_learning_percpetron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron)
 
 ## Clase 05: Neurona sigmoidea y redes neuronales
 
@@ -68,17 +68,17 @@ Test: [`tests/Learning Sigmoid Neuron.ipynb`](https://github.com/StarBrand/CC511
 
 2. Tarea 1
 
-### Tarea 1
+### [Tarea 1](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1)
 
 C처digo:
 
 * C처digo utilizado: [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network)
 
-* Script ejecutable: `tarea1/`
+* Script ejecutable: [`tarea1/main.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/main.py)
 
 * Markdown: [`tarea1/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README.md)
 
-* Test: [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network)
+* Tests unitarios: [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network)
 
 ## Clase 07: Redes neuronales: Explicaci처n de BackPropagation
 

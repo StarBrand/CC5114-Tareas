@@ -43,8 +43,8 @@ class SigmoidTest(TestCase):
         assert self.sigmoid.w.mean() <= self.w.mean()
 
     def test_propagate_batch_random(self):
-        np.random.seed(12345)
-        seed(12345)
+        np.random.seed(1234)
+        seed(1234)
         out = []
         for i in range(10000):
             out.append(choice([0.0, 1.0]))
