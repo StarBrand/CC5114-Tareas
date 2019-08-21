@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 import numpy as np
-from random import randint, choice
+from random import randint
 from neural_network.utils import one_hot_encoding
 
 NUMBER_OF_RANDOM_TEST = 5
