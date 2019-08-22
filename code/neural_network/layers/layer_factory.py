@@ -1,6 +1,6 @@
 import logging
-from neural_network import NeuronLayer, SigmoidLayer, TanhLayer
-from neural_network.utils import derivative
+from neural_network.layers import NeuronLayer, SigmoidLayer, TanhLayer, PerceptronLayer
+from utils.math_functions import derivative
 
 
 class LayerFactory(object):
@@ -18,6 +18,8 @@ class LayerFactory(object):
             return SigmoidLayer(input_size, output_size)
         elif parameter == "tanh":
             return TanhLayer(input_size, output_size)
+        elif parameter == "perceptron" or parameter == "step":
+            return PerceptronLayer(input_size, output_size)
         else:
             raise KeyError("No neuron layer registered with that name")
 

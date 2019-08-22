@@ -1,6 +1,6 @@
 import logging
 import numpy as np
-from neural_network import NeuronLayer
+from neural_network.layers import NeuronLayer
 
 
 class NullLayer(NeuronLayer):

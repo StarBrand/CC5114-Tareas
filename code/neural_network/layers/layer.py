@@ -1,7 +1,7 @@
 import numpy as np
 import logging
 from abc import ABC
-from neural_network.utils import derivative, proper_name
+from utils.math_functions import derivative, proper_name
 
 
 class NeuronLayer(ABC):
@@ -44,7 +44,7 @@ class NeuronLayer(ABC):
             error = np.dot(next_w.T, next_delta)
         self.delta = np.multiply(error, self.transverse_derivative(self.output))
 
-    def update_weights(self, x_input: np.ndarray, learning_rate: float):
+    def update_weights(self, x_input: np.ndarray, learning_rate: float) -> None:
         m = x_input.shape[-1]
         self.w = self.w - learning_rate * np.dot(self.delta, x_input.T) / m
         self.b = self.b - learning_rate * np.sum(self.delta, axis=-1, keepdims=True) / m

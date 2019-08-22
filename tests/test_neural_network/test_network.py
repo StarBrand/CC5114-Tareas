@@ -1,7 +1,7 @@
 from unittest import TestCase, main
 import numpy as np
 from neural_network import NeuralNetwork
-from neural_network.utils import tanh, sigmoid, derivative
+from utils.math_functions import tanh, sigmoid, derivative
 
 
 class NetworkTest(TestCase):

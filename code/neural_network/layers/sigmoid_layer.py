@@ -1,5 +1,5 @@
-from neural_network import NeuronLayer
-from neural_network.utils import sigmoid
+from neural_network.layers import NeuronLayer
+from utils.math_functions import sigmoid
 
 
 class SigmoidLayer(NeuronLayer):

@@ -1,6 +1,6 @@
 import numpy as np
 import logging
-from neural_network import LayerFactory, NullLayer
+from neural_network.layers import LayerFactory, NullLayer
 
 #  To show: 10 epochs
 TO_SHOW = 10

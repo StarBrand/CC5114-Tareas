@@ -1,7 +1,6 @@
 from unittest import TestCase, main
 import numpy as np
-from random import choice, seed
-from neural_network import SigmoidLayer
+from neural_network.layers import SigmoidLayer
 
 
 class SigmoidTest(TestCase):
@@ -40,19 +39,6 @@ class SigmoidTest(TestCase):
         self.sigmoid.feed(self.batch_test)
         self.sigmoid.propagate(output)
         self.sigmoid.update_weights(self.batch_test, 1)
-        assert self.sigmoid.w.mean() <= self.w.mean()
-
-    def test_propagate_batch_random(self):
-        np.random.seed(1234)
-        seed(1234)
-        out = []
-        for i in range(10000):
-            out.append(choice([0.0, 1.0]))
-        output = np.array(out)
-        self.sigmoid.feed(self.batch_test)
-        self.sigmoid.propagate(output)
-        self.sigmoid.update_weights(self.batch_test, 5)
-        assert np.sum(output) < 5000
         assert self.sigmoid.w.mean() <= self.w.mean()
 
 

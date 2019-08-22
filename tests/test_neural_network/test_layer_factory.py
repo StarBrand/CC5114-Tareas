@@ -1,9 +1,9 @@
 from unittest import TestCase, main
 import numpy as np
-from neural_network import LayerFactory
-from neural_network.utils import sigmoid, tanh, derivative
+from neural_network.layers import LayerFactory
+from utils.math_functions import sigmoid, tanh, step, derivative
 
-EPSILON = 1e-6
+EPSILON = 1e-10
 
 
 class TestFactory(TestCase):
@@ -31,6 +31,42 @@ class TestFactory(TestCase):
             actual.feed(self.test_number, save=False) -
             expected).all() < EPSILON
         expected = derivative[sigmoid](self.test_number)
+        assert abs(
+            actual.transverse_derivative(self.test_number) -
+            expected).all() < EPSILON
+
+    def test_create_step_from_str_1(self):
+        actual = LayerFactory.create_layer("step", 2, 1)
+        assert actual.name == "perceptron layer"
+        expected = step(self.test_number)
+        assert abs(
+            actual.feed(self.test_number, save=False) -
+            expected).all() < EPSILON
+        expected = derivative[step](self.test_number)
+        assert abs(
+            actual.transverse_derivative(self.test_number) -
+            expected).all() < EPSILON
+
+    def test_create_step_from_str_2(self):
+        actual = LayerFactory.create_layer("perceptron", 2, 1)
+        assert actual.name == "perceptron layer"
+        expected = step(self.test_number)
+        assert abs(
+            actual.feed(self.test_number, save=False) -
+            expected).all() < EPSILON
+        expected = derivative[step](self.test_number)
+        assert abs(
+            actual.transverse_derivative(self.test_number) -
+            expected).all() < EPSILON
+
+    def test_create_step_from_func(self):
+        actual = LayerFactory.create_layer(step, 2, 1)
+        assert actual.name == "perceptron layer"
+        expected = step(self.test_number)
+        assert abs(
+            actual.feed(self.test_number, save=False) -
+            expected).all() < EPSILON
+        expected = derivative[step](self.test_number)
         assert abs(
             actual.transverse_derivative(self.test_number) -
             expected).all() < EPSILON

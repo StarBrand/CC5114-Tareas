@@ -14,11 +14,11 @@ class Perceptron(object):
         else:
             self.w = w
         if b is None:
-            self.b = 0
+            self.b = 0.0
         else:
             self.b = b
 
     def out(self, x: [float]) -> float:
         if len(x) != len(self.w):
             raise ValueError("Number of input do not match declared number of input")
-        return (sum([w * i for w, i in zip(self.w, x)]) + self.b > 0) * 1.0
+        return ((sum([w * i for w, i in zip(self.w, x)]) + self.b) > 0) * 1.0

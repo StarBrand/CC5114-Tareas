@@ -1,7 +1,6 @@
 from unittest import TestCase, main
 import numpy as np
-from random import seed
-from neural_network import TanhLayer
+from neural_network.layers import TanhLayer
 
 
 class TanhTest(TestCase):
@@ -42,17 +41,6 @@ class TanhTest(TestCase):
         self.tanh_layer.feed(self.batch_test)
         self.tanh_layer.propagate(np.array(1), delta, next_w)
         self.tanh_layer.update_weights(self.batch_test, 1)
-        assert self.tanh_layer.w.mean() <= self.w.mean()
-
-    def test_propagate_batch_random(self):
-        np.random.seed(12345)
-        seed(12345)
-        delta = np.random.uniform(-10.0, 10.0, 30000).reshape(3, 10000)
-        next_w = np.random.rand(3, 1)
-        self.tanh_layer.feed(self.batch_test)
-        self.tanh_layer.propagate(np.array(1), delta, next_w)
-        self.tanh_layer.update_weights(self.batch_test, 1)
-        assert np.sum(delta / np.abs(delta)) > 0
         assert self.tanh_layer.w.mean() <= self.w.mean()
 
 

@@ -1,5 +1,4 @@
 from perceptron import Perceptron
-from random import uniform
 
 
 class LearningPerceptron(object):
