@@ -1,8 +1,6 @@
 from random import uniform
-
 from matplotlib.axes import Axes
-
-from neural_network.utils import Pattern, Line
+from utils.patterns import Pattern, Line
 
 
 class DoubleLine(Pattern):

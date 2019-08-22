@@ -1,6 +1,6 @@
 import numpy as np
 from math import sqrt, pow
-from neural_network.utils import Pattern
+from utils.patterns import Pattern
 
 
 class Circle(Pattern):

@@ -1,5 +1,5 @@
 from random import uniform
-from neural_network.utils import Pattern
+from utils.patterns import Pattern
 
 
 class Line(Pattern):
