@@ -1,2 +1,1 @@
-from test_learning_perceptron.test_line import LineTest
-from test_learning_perceptron.test_measure import MeasureTest
+from test_learning_perceptron.test_learning_perceptron import TestLearningPercpetron

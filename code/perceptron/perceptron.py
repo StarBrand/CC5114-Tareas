@@ -1,10 +1,24 @@
+from random import gauss
+
+
 class Perceptron(object):
 
-    def __init__(self, name: str, w1: float, w2: float, b: float):
+    def __init__(self, name: str, input_size: int, w: [float] or None = None, b: float or None = None):
+        if w is not None and len(w) != input_size:
+            raise ValueError("Number of arguments do not match number of weights")
         self.name = name
-        self.w1 = w1
-        self.w2 = w2
-        self.b = b
+        if w is None:
+            self.w = []
+            for _ in range(input_size):
+                self.w.append(gauss(0, 1))
+        else:
+            self.w = w
+        if b is None:
+            self.b = 0
+        else:
+            self.b = b
 
-    def output(self, x1: float, x2: float):
-        return self.w1*x1 + self.w2*x2 + self.b > 0
+    def out(self, x: [float]) -> float:
+        if len(x) != len(self.w):
+            raise ValueError("Number of input do not match declared number of input")
+        return (sum([w * i for w, i in zip(self.w, x)]) + self.b > 0) * 1.0

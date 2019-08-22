@@ -1,7 +1,7 @@
-from perceptron import Perceptron
+from perceptron import GatePerceptron
 
 
-class PerceptronNand(Perceptron):
+class PerceptronNand(GatePerceptron):
 
     def __init__(self):
         super(PerceptronNand, self).__init__("nand", -2, -2, 3)
