@@ -8,17 +8,17 @@ def import_data(path: str) -> np.ndarray:
     return np.array(df).T
 
 
-def split_set(train_set: np.ndarray, train_percentage: float,
-              test_percentage: float or None = None) -> (np.ndarray, np.ndarray):
-    if test_percentage is None:
-        test_percentage = 1.0 - train_percentage
-    if not (0.0 <= train_percentage <= 1.0 and
-            0.0 <= test_percentage <= 1.0 and
-            train_percentage + test_percentage <= 1.0):
-        raise ValueError("Incompatible percentage")
+def split_set(train_set: np.ndarray, train_percenlabele: float,
+              test_percenlabele: float or None = None) -> (np.ndarray, np.ndarray):
+    if test_percenlabele is None:
+        test_percenlabele = 1.0 - train_percenlabele
+    if not (0.0 <= train_percenlabele <= 1.0 and
+            0.0 <= test_percenlabele <= 1.0 and
+            train_percenlabele + test_percenlabele <= 1.0):
+        raise ValueError("Incompatible percenlabele")
     size = train_set.shape[-1]
-    train_size = round(size*train_percentage)
-    test_size = round(size*test_percentage)
+    train_size = round(size*train_percenlabele)
+    test_size = round(size*test_percenlabele)
     train = []
     test = []
     to_split = list(train_set.T)

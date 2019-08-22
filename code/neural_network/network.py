@@ -53,28 +53,28 @@ class NeuralNetwork(object):
         cost = np.sum((0.5 * (self.layers[-1].output - y_output) ** 2).mean(axis=-1)) / m
         return cost
 
-    def train(self, training_set: np.ndarray, tags: np.ndarray, epochs: int = 1, batch_size: int = 0):
-        if training_set.shape[-1] != tags.shape[-1]:
+    def train(self, training_set: np.ndarray, labels: np.ndarray, epochs: int = 1, batch_size: int = 0):
+        if training_set.shape[-1] != labels.shape[-1]:
             raise ValueError("Tags and training set don't match")
         if batch_size < 0 or epochs < 0:
             raise ValueError("Invalid value, it has to be a positive integer")
         if epochs == 1 and batch_size > 0:
-            epochs = int(tags.shape[-1] / batch_size)
+            epochs = int(labels.shape[-1] / batch_size)
         try:
             x_inputs = np.split(training_set, epochs, axis=-1)
-            e_tags = np.split(tags, epochs, axis=-1)
-            batch_size = e_tags[0].shape[-1]
+            e_labels = np.split(labels, epochs, axis=-1)
+            batch_size = e_labels[0].shape[-1]
         except ValueError:
             logging.warning("Some train data maybe be not used")
-            batch_size = int(tags.shape[-1] / epochs)
-            epochs = int(tags.shape[-1] / batch_size)
+            batch_size = int(labels.shape[-1] / epochs)
+            epochs = int(labels.shape[-1] / batch_size)
             x_inputs = np.split(training_set, epochs, axis=-1)
-            e_tags = np.split(tags, epochs, axis=-1)
+            e_labels = np.split(labels, epochs, axis=-1)
         logging.info("Epochs of training: {}\tSize of the batches: {}".format(epochs, batch_size))
         for epoch in range(epochs):
             self.feed_forward(x_inputs[epoch])
-            self.back_propagation(e_tags[epoch])
+            self.back_propagation(e_labels[epoch])
             self.update_weight(x_inputs[epoch])
             if epochs / TO_SHOW < 1 or (epoch + 1) % int(epochs / TO_SHOW) == 0:
                 logging.info("Epoch {}/{}: ".format(epoch + 1, epochs))
-                logging.info("\tCost after update: {}".format(self.calculate_cost(e_tags[epoch], batch_size)))
+                logging.info("\tCost after update: {}".format(self.calculate_cost(e_labels[epoch], batch_size)))
