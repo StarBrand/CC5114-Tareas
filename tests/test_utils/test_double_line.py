@@ -1,5 +1,5 @@
 from unittest import TestCase, main
-from neural_network.utils import DoubleLine
+from utils.patterns import DoubleLine
 
 MIN_X = MIN_Y = -50
 MAX_X = MAX_Y = 50

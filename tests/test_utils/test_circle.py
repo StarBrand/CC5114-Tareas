@@ -1,7 +1,7 @@
 from math import sqrt
 from random import uniform, randint
 from unittest import TestCase, main
-from neural_network.utils import Circle
+from utils.patterns import Circle
 
 RADIUS = 25
 MIN_X = MIN_Y = -50

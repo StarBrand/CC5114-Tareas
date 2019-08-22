@@ -1,7 +1,7 @@
 from unittest import TestCase, main
 import numpy as np
 from random import uniform
-from neural_network.utils import sigmoid, tanh, derivative
+from utils.math_functions import sigmoid, tanh, derivative
 
 EPSILON = 1e-6
 

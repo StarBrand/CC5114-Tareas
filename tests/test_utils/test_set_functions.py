@@ -1,7 +1,8 @@
 from unittest import TestCase, main
 import numpy as np
 from os import path
-from neural_network.utils import Line, split_set, import_data
+from utils.patterns import Line
+from utils.preprocess_dataset import split_set, import_data
 
 
 class FunctionTest(TestCase):

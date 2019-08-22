@@ -1,11 +1,8 @@
 from unittest import TestCase, main
 import numpy as np
-from neural_network.utils import one_hot_encoding
-from neural_network.utils import confusion_matrix
-from neural_network.utils import accuracy
-from neural_network.utils import precision
-from neural_network.utils import recall
-from neural_network.utils import f1_score
+from utils.results import confusion_matrix
+from utils.results import accuracy, precision
+from utils.results import recall, f1_score
 
 # One dimension
 CLASS_Y = CLASS_N = 500
