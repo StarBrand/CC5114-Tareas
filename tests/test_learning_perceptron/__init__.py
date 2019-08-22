@@ -1,1 +1,1 @@
-from test_learning_perceptron.test_learning_perceptron import TestLearningPercpetron
+from test_learning_perceptron.test_learning_perceptron import TestLearningPerceptron
