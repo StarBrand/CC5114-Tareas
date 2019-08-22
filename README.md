@@ -44,7 +44,7 @@ Tests unitarios: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-T
 
 Código:  [`code/learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/learning_perceptron)
 
-Tests unitarios: [`tests/Learning Perceptron.ipynb`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/Learning%20Perceptron.ipynb) y [`tests/test_learning_percpetron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron)
+Tests unitarios: [`tests/test_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron)
 
 ## Clase 05: Neurona sigmoidea y redes neuronales
 
@@ -56,9 +56,9 @@ Tests unitarios: [`tests/Learning Perceptron.ipynb`](https://github.com/StarBran
 
 ### Ejercicios
 
-Código: [`code/sigmoid_neuron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/sigmoid_neuron), [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network) y [Neural Network (provided network).ipynb](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/Neural%20Network%20(provided%20network).ipynb)
+Código: [`code/learning_perceptron/sigmoid_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/learning_perceptron/sigmoid_perceptron.py) y [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network)
 
-Test: [`tests/Learning Sigmoid Neuron.ipynb`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/Learning%20Sigmoid%20Neuron.ipynb) y [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network)
+Tests unitarios: [`tests/Learning Sigmoid Neuron.ipynb`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_sigmoid_neuron.py) y [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network)
 
 ## Clase 06: Redes neuronales en acción y Tarea 1
 
@@ -72,13 +72,13 @@ Test: [`tests/Learning Sigmoid Neuron.ipynb`](https://github.com/StarBrand/CC511
 
 Código:
 
-* Código utilizado: [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network)
+* Código utilizado: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/perceptron), [`code/learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/learning_perceptron), [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network) y [`code/utils`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils)
 
 * Script ejecutable: [`tarea1/main.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/main.py)
 
 * Markdown: [`tarea1/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README.md)
 
-* Tests unitarios: [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network)
+* Tests unitarios: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron), [`tests/test_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron), [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network) y [`tests/test_utils`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils)
 
 ## Clase 07: Redes neuronales: Explicación de BackPropagation
 
