@@ -11,3 +11,4 @@ from test_neural_network.test_sigmoid_layer import SigmoidTest
 from test_neural_network.test_tanh_layer import TanhTest
 from test_neural_network.test_network import NetworkTest
 from test_neural_network.test_normalize import NormalizeTest
+from test_neural_network.test_confusion_matrix import ConfusionMatrixTest
