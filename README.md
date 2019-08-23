@@ -74,7 +74,7 @@ Código:
 
 * Código utilizado: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/perceptron), [`code/learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/learning_perceptron), [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network) y [`code/utils`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils)
 
-* Script ejecutable: [`tarea1/main.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/main.py)
+* Scripts ejecutables: [`tarea1/scripts`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/scripts)
 
 * Markdown: [`tarea1/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README.md)
 

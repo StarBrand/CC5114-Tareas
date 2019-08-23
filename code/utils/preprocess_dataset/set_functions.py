@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-from random import randint
 
 
 def import_data(path: str) -> np.ndarray:
