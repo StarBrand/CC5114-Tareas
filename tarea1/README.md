@@ -10,7 +10,7 @@ Siguiendo el orden del curso, primero se implementó la clase [`GatePerceptron`]
 
 Abstrayendo este perceptrón se implementa [`Perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron/perceptron.py) que recibe, en su contructor, el número de argumentos de entrada. Como función de activación utiliza *step*. Utilizando este perceptrón, se realiza *refactoring* sobre `GatePerceptron` y se vuelven a correr los tests unitarios para comprobar que sigue funcionando.
 
-![perceptrons](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/perceptron.png)
+[perceptrons](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/perceptron.png)
 
 **Código**: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron)
 
@@ -20,7 +20,7 @@ Abstrayendo este perceptrón se implementa [`Perceptron`](https://github.com/Sta
 
 Pasados los tests, se implementa la clase [`LearningPerceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/gate_perceptron.py) que aplica el algoritmo básico de aprendizaje visto en clase. Además de realizar los test unitarios se realizó un proceso de aprendizaje sobre una línea generada al azar. Los resultados se muestran en la siguiente sección y los métodos utilizados se encuentran reportados en la sección: **Anexo/Patrones** y **Anexo/Visualización**
 
-![learning_perceptron](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/learning_perceptron.png)
+[learning_perceptron](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/learning_perceptron.png)
 
 **Código**: [`code/learning_perceptron/learning`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/learning.py)
 
