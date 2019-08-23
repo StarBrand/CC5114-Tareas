@@ -10,6 +10,8 @@ Siguiendo el orden del curso, primero se implementó la clase [`GatePerceptron`]
 
 Abstrayendo este perceptrón se implementa [`Perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron/perceptron.py) que recibe, en su contructor, el número de argumentos de entrada. Como función de activación utiliza *step*. Utilizando este perceptrón, se realiza *refactoring* sobre `GatePerceptron` y se vuelven a correr los tests unitarios para comprobar que sigue funcionando.
 
+![UML de las clases de perceptrón y perceptrones de operadores lógicos](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/perceptron.png)
+
 **Código**: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron)
 
 **Tests unitarios**: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_perceptron)
@@ -17,6 +19,8 @@ Abstrayendo este perceptrón se implementa [`Perceptron`](https://github.com/Sta
 ### *Learning Perceptron*
 
 Pasados los tests, se implementa la clase [`LearningPerceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/gate_perceptron.py) que aplica el algoritmo básico de aprendizaje visto en clase. Además de realizar los test unitarios se realizó un proceso de aprendizaje sobre una línea generada al azar. Los resultados se muestran en la siguiente sección y los métodos utilizados se encuentran reportados en la sección: **Anexo/Patrones** y **Anexo/Visualización**
+
+![UML que muestra como la clase `LearningPerceptron` contiene la clase `Perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/learning_perceptron.png)
 
 **Código**: [`code/learning_perceptron/learning`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/learning.py)
 
@@ -38,7 +42,15 @@ Ejecutable [`tares1/scripts/learning_perceptron_lrs`](https://github.com/StarBra
 
 ### Neurona sigmoidea
 
-#### Resultados
+Como se revisó en clases, el perceptrón utiliza como función de activación la función *step*. Esta función cambia abruptamente a pequeños cambios en los pesos. Por ello, una neurona que permite cambios más precisos es la función sigmoid. Una neurona con esta función de activación se implementó como un perceptrón (`SigmoidPerceptron`) dentro de la clase `SigmoidNeuron` que modifica algunos métodos de  `LearningPerceptron`.
+
+![Implementación por composición y herencia de la clase `SigmoidNeuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/sigmoid_neuron.png)
+
+No se muestran resultados por extensión.
+
+**Código**: [code/learning_perceptron/sigmoid_perceptron](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/sigmoid_perceptron.py)
+
+**Tests unitario**: [tests/test_learning_perceptron/test_sigmoid_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_sigmoid_neuron.py)
 
 ### Neurona
 
