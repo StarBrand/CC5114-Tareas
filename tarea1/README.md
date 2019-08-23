@@ -70,9 +70,11 @@ A continuación se muestra como esta neurona con función de activación *tanh* 
 
 Ejecutable: [`tarea1/scripts/show_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_neuron.py)
 
-Para mostrar la diferencia con la red implementada, más abajo, se muestra una neurona sigmoidea aprende el dataset iris (se utilizan las funciones de testeo que se reportan más abajo).
+Para mostrar la diferencia con la red implementada, más abajo, se muestra una neurona sigmoidea que aprende el dataset iris (se utilizan las funciones de testeo que se reportan más abajo).
 
 ![neuron_on_iris](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/neuron_on_iris.png)
+
+Como la neurona retorna un valor y no puede retornar un *one-hot vector*, solo se utilizan los primeros 100 datos (de 150) y se define el valor 1.0 como **Iris setosa**. El dataset se divide 80%/20% en *train set* y *test set* posterior a ser aleatorizado (ver función `split_set` más abajo). Se muestra solo *accuracy* y *recall* dado a problemas de división por cero para *precision* y *f1-score*.
 
 Ejecutable: [`tarea1/scripts/neuron_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/neuron_on_iris.py)
 
