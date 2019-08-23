@@ -24,17 +24,19 @@ Pasados los tests, se implementa la clase [`LearningPerceptron`](https://github.
 
 #### Resultados
 
-Se muestran tres imágenes sobre el aprendizaje del perceptrón: sin entrenamiento, a las 20 y 50 *epochs*.
+Se muestran tres imágenes sobre el aprendizaje del perceptrón: sin entrenamiento, a las 10 y 100 *epochs*.
 
-<al toque bodoque>
+![Entrenamiento de un perceptrón sobre una línea](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_perceptron.png)
+
+Ejecutable [`tares1/scripts/show_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_learning_perceptron.py)
 
 Gráfico de *accuracy* sobre las etapas del entrenamiento para varias tasas de aprendizaje (*learning rate*).
 
-<al toque bodoque>
+![Aprendizaje a diferentes tasas de aprendizaje (*learning rate*)](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/perceptron_different_lr.png)
 
-El código ejecutable se encuentra en [`tares1/scripts/learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/learning_perceptron.py)
+Ejecutable [`tares1/scripts/learning_perceptron_lrs`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/learning_perceptron_lrs.py)
 
-### Sigmoid Neuron
+### Neurona sigmoidea
 
 #### Resultados
 
@@ -42,7 +44,7 @@ El código ejecutable se encuentra en [`tares1/scripts/learning_perceptron`](htt
 
 #### Resultados
 
-## Funciones de activación y métodos para preprocesamiento
+## Funciones de activación y métodos para pre-procesamiento
 
 ### Escoger el dataset
 
