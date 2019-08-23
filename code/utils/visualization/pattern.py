@@ -5,7 +5,8 @@ from utils.patterns import Pattern
 FONT_SIZE = 14
 
 
-def plot_result(x_input: np.ndarray, prediction: np.ndarray, pattern: Pattern, ax: Axes or None = None) -> float:
+def plot_result(x_input: np.ndarray, prediction: np.ndarray, pattern: Pattern,
+                ax: Axes or None = None, up_to: float = 0.5) -> float:
 
     x1 = []
     y1 = []
@@ -14,7 +15,7 @@ def plot_result(x_input: np.ndarray, prediction: np.ndarray, pattern: Pattern, a
     success = 0
 
     for index, up in enumerate(prediction):
-        if up > 0.5:
+        if up > up_to:
             x1.append(x_input[0][index])
             y1.append(x_input[1][index])
             if pattern.is_above(x1[-1], y1[-1]):

@@ -10,7 +10,7 @@ Siguiendo el orden del curso, primero se implementó la clase [`GatePerceptron`]
 
 Abstrayendo este perceptrón se implementa [`Perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron/perceptron.py) que recibe, en su contructor, el número de argumentos de entrada. Como función de activación utiliza *step*. Utilizando este perceptrón, se realiza *refactoring* sobre `GatePerceptron` y se vuelven a correr los tests unitarios para comprobar que sigue funcionando.
 
-![UML de las clases de perceptrón y perceptrones de operadores lógicos](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/perceptron.png)
+![perceptrons](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/perceptron.png)
 
 **Código**: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron)
 
@@ -20,7 +20,7 @@ Abstrayendo este perceptrón se implementa [`Perceptron`](https://github.com/Sta
 
 Pasados los tests, se implementa la clase [`LearningPerceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/gate_perceptron.py) que aplica el algoritmo básico de aprendizaje visto en clase. Además de realizar los test unitarios se realizó un proceso de aprendizaje sobre una línea generada al azar. Los resultados se muestran en la siguiente sección y los métodos utilizados se encuentran reportados en la sección: **Anexo/Patrones** y **Anexo/Visualización**
 
-![UML que muestra como la clase `LearningPerceptron` contiene la clase `Perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/learning_perceptron.png)
+![learning_perceptron](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/UML/learning_perceptron.png)
 
 **Código**: [`code/learning_perceptron/learning`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/learning.py)
 
@@ -30,13 +30,13 @@ Pasados los tests, se implementa la clase [`LearningPerceptron`](https://github.
 
 Se muestran tres imágenes sobre el aprendizaje del perceptrón: sin entrenamiento, a las 10 y 100 *epochs*.
 
-![Entrenamiento de un perceptrón sobre una línea](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_perceptron.png)
+![training](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_perceptron.png)
 
 Ejecutable [`tares1/scripts/show_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_learning_perceptron.py)
 
 Gráfico de *accuracy* sobre las etapas del entrenamiento para varias tasas de aprendizaje (*learning rate*).
 
-![Aprendizaje a diferentes tasas de aprendizaje (*learning rate*)](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/perceptron_different_lr.png)
+![lrs](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/perceptron_different_lr.png)
 
 Ejecutable [`tares1/scripts/learning_perceptron_lrs`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/learning_perceptron_lrs.py)
 
@@ -44,7 +44,7 @@ Ejecutable [`tares1/scripts/learning_perceptron_lrs`](https://github.com/StarBra
 
 Como se revisó en clases, el perceptrón utiliza como función de activación la función *step*. Esta función cambia abruptamente a pequeños cambios en los pesos. Por ello, una neurona que permite cambios más precisos es la función sigmoid. Una neurona con esta función de activación se implementó como un perceptrón (`SigmoidPerceptron`) dentro de la clase `SigmoidNeuron` que modifica algunos métodos de  `LearningPerceptron`.
 
-![Implementación por composición y herencia de la clase `SigmoidNeuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/sigmoid_neuron.png)
+![sigmoid_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/sigmoid_neuron.png)
 
 No se muestran resultados por extensión.
 
@@ -54,7 +54,27 @@ No se muestran resultados por extensión.
 
 ### Neurona
 
+Finalmente, para completar los requisitos de la neurona que se pide, se implementa la clase `Neuron` que recibe una función de activación distinta. Las funciones de activación se encuentran implementadas en [`utils/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/math_functions/activation_functions.py) (reportado más abajo)
+
+![neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/neuron.png)
+
+**Código**: [`code/learning_perceptron/neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/neuron.py)
+
+**Tests unitario**: [`tests/test_learning_perceptron/test_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_neuron.py)
+
 #### Resultados
+
+A continuación se muestra como esta neurona con función de activación *tanh* (por ser la única no implementada previamente). Se ve como es capaz de aprender una línea, pero no las dos líneas (se requiere una red para ello).
+
+![training_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_neuron.png)
+
+Ejecutable: [`tarea1/scripts/show_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_neuron.py)
+
+Para mostrar la diferencia con la red implementada, más abajo, se muestra una neurona sigmoidea aprende el dataset iris (se utilizan las funciones de testeo que se reportan más abajo).
+
+![training_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_neuron.png)
+
+Ejecutable: [`tarea1/scripts/show_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_neuron.py)
 
 ## Funciones de activación y métodos para pre-procesamiento
 
