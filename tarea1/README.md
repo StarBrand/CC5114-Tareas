@@ -72,9 +72,9 @@ Ejecutable: [`tarea1/scripts/show_neuron`](https://github.com/StarBrand/CC5114-T
 
 Para mostrar la diferencia con la red implementada, más abajo, se muestra una neurona sigmoidea aprende el dataset iris (se utilizan las funciones de testeo que se reportan más abajo).
 
-![training_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/neuron_on_iris.png)
+![neuron_on_iris](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/neuron_on_iris.png)
 
-Ejecutable: [`tarea1/scripts/neuron_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/neuron_iris.py)
+Ejecutable: [`tarea1/scripts/neuron_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/neuron_on_iris.py)
 
 ## Funciones de activación y métodos para pre-procesamiento
 
