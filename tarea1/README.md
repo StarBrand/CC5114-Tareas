@@ -48,9 +48,9 @@ Como se revisó en clases, el perceptrón utiliza como función de activación l
 
 No se muestran resultados por extensión.
 
-**Código**: [code/learning_perceptron/sigmoid_perceptron](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/sigmoid_perceptron.py)
+**Código**: [`code/learning_perceptron/sigmoid_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/sigmoid_perceptron.py)
 
-**Tests unitario**: [tests/test_learning_perceptron/test_sigmoid_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_sigmoid_neuron.py)
+**Tests unitario**: [`tests/test_learning_perceptron/test_sigmoid_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_sigmoid_neuron.py)
 
 ### Neurona
 
@@ -84,23 +84,39 @@ Ejecutable: [`tarea1/scripts/neuron_on_iris`](https://github.com/StarBrand/CC511
 
 Para este trabajo se escoge el dataset ["iris"](https://archive.ics.uci.edu/ml/datasets/Iris), el cual se descarga y se maneja en forma local.
 
-Para manejar este dataset se importa en forma de `numpy.ndarray`. El método que realiza esta conversión se le llama `import_data`, recibe el *path* del archivo.
+Para manejar este dataset se importa en forma de `numpy.ndarray`. El método que realiza esta conversión se le llama `import_data`, que recibe el *path* del archivo.
 
-Además se tiene el método `split_set` que separa un `numpy.ndarry` en el porcentaje que se le dé. Si recibe solo un número (entre 0 y 1) separa el arreglo en dos arreglos, uno con el porcentaje dado y otro con el restante. Puede recibir dos porcentajes, en este caso, mientras la suma sea menor que 1, separa el set en dos arreglos que contienen los dichos porcentajes. Este método se usará para separar el dataset en *train set* y *test set*.
+Además se tiene el método `split_set` que separa un `numpy.ndarry` en el porcentaje que se le dé. Antes de eso, además se randomiza utilizando el método [`numpy.random.permutate`](https://het.as.utexas.edu/HET/Software/Numpy/reference/generated/numpy.random.permutation.html). Si recibe solo un número (entre 0 y 1) separa el arreglo en dos arreglos, uno con el porcentaje dado y otro con el restante. En cambio, si recibe dos porcentajes, y mientras la suma sea menor que 1, separa el set en dos arreglos que contienen los dichos porcentajes. Este método se usará para separar el dataset en *train set* y *test set*.
 
-**Código**: [`code/neural_network/utils/set_functions.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network/utils/set_functions.py)
+**Código**: [`code/utils/preprocess_dataset/set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/set_functions.py)
 
-**Test unitario**: [`tests/test_neural_network/test_set_functions.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network/test_set_functions.py)
+**Test unitario**: [`tests/test_utils/test_set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_set_functions.py)
+
+Se muestra un gráfico de la matriz, formada por el *one-hot vector* y los índices del dataset, del dataset completo, de una muestra del 60% y otra del 40%.
+
+![split](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/labels_of_dataset.png)
+
+Ejecutable: [`tarea1/scripts/sample_of_dataset`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/sample_of_dataset.py)
 
 ###  Implementar la transformación one-hot
 
 La transformación se definió como el método `one_hot_encoding` que recibe una lista o un `array ` y devuelve una tupla de dos elementos, el primero, la entrada como una versión codificada como `one-hot vector` (como lista si recibe una lista o como `numpy.ndarray` en el segundo caso) . El segundo elemento es el diccionario de codificación de la forma `key`: elemento original y `value`: `one-hot vector`.
 
-**Código**: [`code/neural_network/utils/one_hot_encoding.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network/utils/one_hot_encoding.py)
+**Código**: [`code/utils/preprocess_dataset/one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/one_hot_encoding.py)
 
-**Test unitario**: [`tests/test_neural_network/test_one_hot_encoding.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network/test_one_hot_encoding.py)
+**Test unitario**: [`tests/test_utils/test_one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_one_hot_encoding.py)
+
+Una muestra del funcionamiento de este método se muestra en la sección anterior (**Escoger el dataset**).
 
 ### Funciones de activación
+
+Las funciones de activación, y sus respectivas derivadas, fueron implementadas como métodos. Para conectar ambas se diseña un diccionario (`derivative`) cuya `key` es la función y `value` es la derivada.
+
+No se utilizó la recomendación del enunciado, porque ya se había implementado antes que ésta fuese subida.
+
+**Código**: [`code/utils/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/math_functions/activation_functions.py)
+
+**Test unitario**: [`tests/test_utils/test_activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_activation_functions.py)
 
 ###  Producir la matriz de confusión para representar el resultado del test del modelo
 

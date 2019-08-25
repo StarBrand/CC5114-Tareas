@@ -4,7 +4,7 @@ import logging
 from random import seed
 from learning_perceptron import LearningPerceptron
 from utils.patterns import Line
-from utils.visualization import plot_result
+from useful import plot_result, do_prediction
 
 FIG_SIZE = (20, 15)
 X_MIN = Y_MIN = -50
@@ -17,13 +17,6 @@ LEARNING_RATE = np.linspace(0.01, 0.5, 11)
 
 np.random.seed(3)
 seed(3)
-
-
-def do_prediction(a_perceptron: LearningPerceptron, a_set: np.ndarray) -> [float]:
-    ans = []
-    for xx, yy, _ in a_set.T.tolist():
-        ans.append(a_perceptron.feed([xx, yy]))
-    return ans
 
 
 if __name__ == '__main__':
