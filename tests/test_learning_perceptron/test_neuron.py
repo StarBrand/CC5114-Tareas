@@ -54,8 +54,8 @@ class NeuronTest(TestCase):
         fixed_neuron = Neuron("fixed", ARGUMENT, sigmoid, 0.5, w, b)
         actual = fixed_neuron.feed(self.input)
         fail = self.sigmoid.feed(self.input)
-        assert (np.abs(np.array(expected) - np.array(actual)) < EPSILON).all()
-        assert not (np.abs(np.array(fail) - np.array(actual)) < EPSILON).all()
+        assert abs(expected - actual) < EPSILON
+        assert not abs(fail - actual) < EPSILON
 
     def get_expected(self, function: callable, weights: ([float], float)):
         ans = weights[1]
