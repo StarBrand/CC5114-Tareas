@@ -132,15 +132,11 @@ Ejemplo de una clase como "fuera del círculo", predicha por un algoritmo al aza
 
 ![one_class](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/confusion_matrix_one_class.png)
 
-![one_class_measure](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/measure_one_class.png)
-
 Ejecutable: [`tarea1/scripts/confusion_matrix_example_one_class`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/confusion_matrix_example_one_class.py)
 
 Ejemplo de las tres clases del dataset iris, predichas con un algoritmo al azar.
 
 ![three_class](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/confusion_matrix_three_class.png)
-
-![tree_class_measure](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/measure_three_class.png)
 
 Ejecutable: [`tarea1/scripts/confusion_matrix_example_three_class`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/confusion_matrix_example_three_class.py)
 
@@ -165,6 +161,18 @@ La estructura que sigue esta implementación es la siguiente.
 ![layers](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/network.png)
 
 #### Resultados
+
+El primer resultado se realiza intentando predecir dos líneas, siendo la clase deseada los puntos fuera de la línea.
+
+<al toque bodeque>
+
+Ejecutable:
+
+Para mostrar el entrenamiento antes de comparar con la versión normalizada, se entrena la red con el dataset iris. El cual fue separado entre *train set* y *test set* en una proporción 70% / 30% respectivamente.
+
+<al toque bodeque>
+
+Ejecutable:
 
 ### Implementar normalización
 
