@@ -100,7 +100,7 @@ Ejecutable: [`tarea1/scripts/sample_of_dataset`](https://github.com/StarBrand/CC
 
 ###  Implementar la transformación one-hot
 
-La transformación se definió como el método `one_hot_encoding` que recibe una lista o un `array ` y devuelve una tupla de dos elementos, el primero, la entrada como una versión codificada como `one-hot vector` (como lista si recibe una lista o como `numpy.ndarray` en el segundo caso) . El segundo elemento es el diccionario de codificación de la forma `key`: elemento original y `value`: `one-hot vector`.
+La transformación se definió como el método `one_hot_encoding` que recibe una lista o un `array ` y devuelve una tupla de dos elementos, el primero, una versión codificada como `one-hot vector` de la entrada (como lista si recibe una lista o como `numpy.ndarray` en el segundo caso, respetando la estructura `shape`) . El segundo elemento es el diccionario de codificación de la forma `key`: elemento original y `value`: `one-hot vector`.
 
 **Código**: [`code/utils/preprocess_dataset/one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/one_hot_encoding.py)
 
@@ -120,7 +120,25 @@ No se utilizó la recomendación del enunciado, porque ya se había implementado
 
 ###  Producir la matriz de confusión para representar el resultado del test del modelo
 
-<Tardare--->
+La matriz de confusión recibe la predicción y las etiquetas (ambas como `numpy.ndarray`) codificadas como *one-hot vector*. Si recibe elementos de una dimensión los convierte a dos dimensiones, de tal forma que queda representado la clase y los elementos que no corresponden a la clase. El método, también chequea las etiquetas y la predicción tengas las mismas dimensiones.
+
+La salida de este método es una matriz de `N x N`, con `N` la cantidad de clases. En caso de solo tener una clase la matriz es de `2 x 2` como la clase y los elementos que no corresponden a la clase. Esta salida se utiliza como entrada para las funciones `accuracy`, `precision`, `recall` y `f1-score`.  
+
+**Código**: [`code/utils/results/confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/results/confusion_matrix.py)
+
+**Test unitario**: [`tests/test_utils/test_confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_confusion_matrix.py)
+
+Ejemplo de una clase como sobre una línea y bajo una línea, predicha por un algoritmo al azar.
+
+<Grafico una dimension>
+
+Ejecutable: [``]()
+
+Ejemplo de las tres clases del dataset iris, predichas con un algoritmo al azar.
+
+<Grafico de tres dimensiones>
+
+Ejecutable: [``]()
 
 ### k-Fold Cross-Validation
 
@@ -128,13 +146,19 @@ No se utilizó la recomendación del enunciado, porque ya se había implementado
 
 ### Capas (*Layers*)
 
+En lugar de implementar las capas (de ahora en adelante *layers*) como un conjunto de neuronas, se implementan como una nueva clase; para poder aprovechar la multiplicación matricial de la librería [`numpy`](https://www.numpy.org/)
+
+Un *layer* se define por el tamaño de su entrada, de salida y la función de activación. Aprovechando el diccionario definido para las funciones de activación (sección **Funciones de activación**), la derivada se asigna de forma automática. Para esta implementación se define una *abc* en python (que cumple el rol de *interface* y *abstract class*) y un constructor como el patrón de diseño *factory method*.
+
+![layers](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/layers.png)
+
 ### Red neuronal
 
 Para esta tarea se realizo una implementación nueva de redes neuronales, parte del código se baso en el código provisto por el profesor.
 
-La estructura que sigue esta implementación es la siguiente:
+La estructura que sigue esta implementación es la siguiente.
 
-<Altoque Bodoque>
+![layers](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/network.png)
 
 #### Resultados
 
