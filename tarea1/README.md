@@ -128,17 +128,21 @@ La salida de este método es una matriz de `N x N`, con `N` la cantidad de clase
 
 **Test unitario**: [`tests/test_utils/test_confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_confusion_matrix.py)
 
-Ejemplo de una clase como sobre una línea y bajo una línea, predicha por un algoritmo al azar.
+Ejemplo de una clase como "fuera del círculo", predicha por un algoritmo al azar (con distribución gausseana para mayor contraste de las predicciones sobre el círculo).
 
-<Grafico una dimension>
+![one_class](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/confusion_matrix_one_class.png)
 
-Ejecutable: [``]()
+![one_class_measure](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/measure_one_class.png)
+
+Ejecutable: [`tarea1/scripts/confusion_matrix_example_one_class`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/confusion_matrix_example_one_class.py)
 
 Ejemplo de las tres clases del dataset iris, predichas con un algoritmo al azar.
 
-<Grafico de tres dimensiones>
+![three_class](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/confusion_matrix_three_class.png)
 
-Ejecutable: [``]()
+![tree_class_measure](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/measure_three_class.png)
+
+Ejecutable: [`tarea1/scripts/confusion_matrix_example_three_class`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/confusion_matrix_example_three_class.py)
 
 ### k-Fold Cross-Validation
 
