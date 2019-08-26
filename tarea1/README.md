@@ -152,4 +152,21 @@ Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC51
 
 ## Análisis
 
-<al toque bodoque>
+La implementación de perceptrones y neuronas no tuvo mayor complicación. La, tal vez, excesiva cantidad de clases que se implementaron fueron solo para reflejar la progresión natural y lógica del modelo perceptrón para puerta lógicas al modelo de la neurona con cualquier función de activación.
+
+Las complicaciones encontradas al programar las redes neuronales y las *layers* fueron, principalmente, verificar la implementación de *backpropagation* y diseñar los tests unitarios. Los problemas de *backpropagation* estuvieron dados por las derivadas, no por la derivada en sí, sino por las formas de calcular en base al *output/input* de las respectivas *layers*. Finalmente, fue más fácil aplicar la derivada sobre la función en sí, en lugar de evaluarla desde la entrada de la función, es decir:
+
+![equation](https://latex.codecogs.com/svg.latex?\Large&space;%5Cfrac%7B%5Cpartial%20f%28x%29%7D%7B%5Cpartial%20x%7D%20%3D%20f%27%28x%29%20%3D%20f%27%28f%28x%29%29)
+
+Por ejemplo, con la función *sigmoid*
+
+![sigmoid_equation](https://latex.codecogs.com/svg.latex?\Large&space;%5Cfrac%7B%5Cpartial%20%5Csigma%28x%29%7D%7B%5Cpartial%20x%7D%3D%5Csigma%28x%29%281-%5Csigma%28x%29%29)
+
+Evaluar en sigmoid(x) en lugar de en x.
+
+Las dificultades en el test unitario fue para evaluar si *layer* o la red, efectivamente están aprendiendo en evaluaciones unitarias. Para lograrlo, se optó por evaluar ejemplos extremos (1.0 o 0.0) si verificar que los pesos efectivamente crecían o decrecían.
+
+Otra dificultad fue en encontrar resultados que mostraran lo que se pedía, esto, posiblemente dado, por los problemas de encontrar un mínimo global del gradiente en lugar de un mínimo local. Esto provocó que algunas implementaciones no mostraran aprendizaje. Para ello, se optó por definir el *seed* y ejecutar los scripts hasta que los datos fuesen los buscados.
+
+En lo personal, esta tarea permitió entender los algoritmos de aprendizaje de redes neuronales y la exploración de otros métodos para visualizar resultados. La exploración de estas redes se sigue realizando y se muestra más en la [versión extendida de este markdown](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README%20(Extended).md)
+
