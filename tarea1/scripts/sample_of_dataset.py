@@ -2,13 +2,13 @@ from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
 from utils.preprocess_dataset import import_data, split_set, one_hot_encoding
 
-FIG_SIZE = (4 * 3, 12)
-FONT_SIZE = 18
-TITLE_SIZE = 25
+FIG_SIZE = (12, 9)
+FONT_SIZE = 12
+TITLE_SIZE = 20
 
 
 def format_axes(title: str, scale: int, ax: Axes):
-    ax.set_title("{}\n\n".format(title), fontsize=TITLE_SIZE)
+    ax.set_title("{}\n".format(title), fontsize=TITLE_SIZE)
     ax.set_aspect(aspect=str(6 * scale))
     ax.set_xlabel("Indexes", fontsize=FONT_SIZE)
     ax.grid()
