@@ -76,7 +76,7 @@ Código:
 
 * Scripts ejecutables: [`tarea1/scripts`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/scripts)
 
-* Markdown: [`tarea1/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README.md)
+* Markdown: [`tarea1/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README%20(Extended).md)
 
 * Tests unitarios: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron), [`tests/test_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron), [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network) y [`tests/test_utils`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils)
 

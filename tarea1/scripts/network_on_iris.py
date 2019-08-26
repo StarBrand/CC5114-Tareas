@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import logging
+from argparse import ArgumentParser
 from random import seed
-from neural_network import NeuralNetwork
+from neural_network import NeuralNetwork, NormalizedNetwork
 from useful import show_matrix
 from utils.math_functions import sigmoid, tanh
 from utils.preprocess_dataset import import_data, split_set, one_hot_encoding
@@ -22,8 +23,19 @@ seed(2)
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
 
-    # Initialize neuron
+    parser = ArgumentParser()
+    parser.add_argument("-n", "--normalize", default=False, action="store_true")
+
+    args = parser.parse_args()
+    # Initialize network
     network = NeuralNetwork(4, [6], 3, [tanh, sigmoid], LR)
+    filename = "network"
+    type_net = "Neural"
+
+    if args.normalize:
+        network = NormalizedNetwork(4, [6], 3, [tanh, sigmoid], LR)
+        type_net = "Normalized"
+        filename = type_net.lower()
 
     # iris dataset
     dataset = import_data("../../data/iris.data")
@@ -43,7 +55,7 @@ if __name__ == '__main__':
     line = ax.plot(learn, label="Learning Curve", c="b", linewidth=2.5)
     ax.set_ylabel("Learning Curve", fontsize=FONT_SIZE)
     ax.set_xlabel("Epochs", fontsize=FONT_SIZE)
-    ax.set_title("Neural Network on Iris\n", fontsize=TITLE_SIZE)
+    ax.set_title("{} Network on Iris\n".format(type_net), fontsize=TITLE_SIZE)
     ax.grid()
 
     ax2 = ax.twinx()
@@ -67,4 +79,4 @@ if __name__ == '__main__':
     print("Recall:\t{}".format(recall(c_m)))
     print("f1-score:\t{}".format(f1_score(c_m)))
 
-    plt.savefig("../results/network_on_iris.png")
+    plt.savefig("../results/{}_on_iris.png".format(filename))

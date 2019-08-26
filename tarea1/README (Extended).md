@@ -1,26 +1,60 @@
 # Tarea 1
 
-En este reporte se muestra la ubicación del código y de los test unitarios, junto con algunos resultados. Para una versión más extendida de la explicación y más resultados intermedios ver la [Versión Extendida](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README%20(Extended).md)
+En este reporte se explicará el procesos de implementación, testeo y resultado de la implementación de neuronas y redes neuronales siguiendo el orden lógico por el que se fueron desarrollando. Al final de cada sección se da la ubicación del código fuente en el repositorio y los *scripts* de los test unitarios.
 
 ## Neuronas
 
-La implementación de las neuronas se realizó en paralelo con las clases de cátedra. Se muestran a continuación los diagramas *UML* de cada una de estas étapas, hasta llegar a la neurona que se pide.
-
-La idea fue implementar un perceptrón para los operadores lógicos, `GatePerceptron`, junto con versiones hijas de cada una de ellas. Luego se generaliza este perceptrón, realizando *refactor* sobre `GatePerceptron`, que ahora hereda de la clase `Perceptron`. `LearningPerceptron` es la versión que puede utilizar y actualizar los pesos de un perceptrón  via composición. `Sigmoid Neuron` es la versión con función de activación *sigmoid* y finalmente *Neuron* generaliza esta noción.
-
 ### Perceptrón
+
+Siguiendo el orden del curso, primero se implementó la clase [`GatePerceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron/gate_perceptron.py) (anteriormente `Perceptron`) que solo recibe una entrada de dos argumentos y devuelve un booleano. Sobre este primer perceptrón se implementan los operadores lógicos *and*, *or*, *nand* y *sum*, fijando los pesos a conveniencia.
+
+Abstrayendo este perceptrón se implementa [`Perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron/perceptron.py) que recibe, en su contructor, el número de argumentos de entrada. Como función de activación utiliza *step*. Utilizando este perceptrón, se realiza *refactoring* sobre `GatePerceptron` y se vuelven a correr los tests unitarios para comprobar que sigue funcionando.
 
 ![perceptrons](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/perceptron.png)
 
+**Código**: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/perceptron)
+
+**Tests unitarios**: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_perceptron)
+
 ### *Learning Perceptron*
+
+Pasados los tests, se implementa la clase [`LearningPerceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/gate_perceptron.py) que aplica el algoritmo básico de aprendizaje visto en clase. Además de realizar los test unitarios se realizó un proceso de aprendizaje sobre una línea generada al azar. Los resultados se muestran en la siguiente sección y los métodos utilizados se encuentran reportados en la sección: **Anexo/Patrones**
 
 ![learning_perceptron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/learning_perceptron.png)
 
+**Código**: [`code/learning_perceptron/learning`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/learning.py)
+
+**Tests unitarios**: [`tests/test_learning_perceptron/test_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_learning_perceptron.py)
+
+#### Resultados
+
+Se muestran tres imágenes sobre el aprendizaje del perceptrón: sin entrenamiento, a las 10 y 100 *epochs*.
+
+![training](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_perceptron.png)
+
+Ejecutable [`tares1/scripts/show_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_learning_perceptron.py)
+
+Gráfico de *accuracy* sobre las etapas del entrenamiento para varias tasas de aprendizaje (*learning rate*).
+
+![lrs](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/perceptron_different_lr.png)
+
+Ejecutable [`tares1/scripts/learning_perceptron_lrs`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/learning_perceptron_lrs.py)
+
 ### Neurona sigmoidea
+
+Como se revisó en clases, el perceptrón utiliza como función de activación la función *step*. Esta función cambia abruptamente a pequeños cambios en los pesos. Por ello, una neurona que permite cambios más precisos es la función sigmoid. Una neurona con esta función de activación se implementó como un perceptrón (`SigmoidPerceptron`) dentro de la clase `SigmoidNeuron` que modifica algunos métodos de  `LearningPerceptron`.
 
 ![sigmoid_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/sigmoid_neuron.png)
 
+No se muestran resultados por extensión.
+
+**Código**: [`code/learning_perceptron/sigmoid_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/sigmoid_perceptron.py)
+
+**Tests unitario**: [`tests/test_learning_perceptron/test_sigmoid_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_sigmoid_neuron.py)
+
 ### Neurona
+
+Finalmente, para completar los requisitos de la neurona que se pide, se implementa la clase `Neuron` que recibe una función de activación distinta. Las funciones de activación se encuentran implementadas en [`utils/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/math_functions/activation_functions.py) (reportado más abajo)
 
 ![neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/neuron.png)
 
@@ -50,6 +84,20 @@ Ejecutable: [`tarea1/scripts/neuron_on_iris`](https://github.com/StarBrand/CC511
 
 Para este trabajo se escoge el dataset ["iris"](https://archive.ics.uci.edu/ml/datasets/Iris), el cual se descarga y se maneja en forma local.
 
+Para manejar este dataset se importa en forma de `numpy.ndarray`. El método que realiza esta conversión se le llama `import_data`, que recibe el *path* del archivo.
+
+Además se tiene el método `split_set` que separa un `numpy.ndarry` en el porcentaje que se le dé. Antes de eso, además se randomiza utilizando el método [`numpy.random.permutate`](https://het.as.utexas.edu/HET/Software/Numpy/reference/generated/numpy.random.permutation.html). Si recibe solo un número (entre 0 y 1) separa el arreglo en dos arreglos, uno con el porcentaje dado y otro con el restante. En cambio, si recibe dos porcentajes, y mientras la suma sea menor que 1, separa el set en dos arreglos que contienen los dichos porcentajes. Este método se usará para separar el dataset en *train set* y *test set*.
+
+**Código**: [`code/utils/preprocess_dataset/set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/set_functions.py)
+
+**Test unitario**: [`tests/test_utils/test_set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_set_functions.py)
+
+Se muestra un gráfico de la matriz, formada por el *one-hot vector* y los índices del dataset, del dataset completo, de una muestra del 60% y otra del 40%.
+
+![split](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/labels_of_dataset.png)
+
+Ejecutable: [`tarea1/scripts/sample_of_dataset`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/sample_of_dataset.py)
+
 ###  Implementar la transformación one-hot
 
 La transformación se definió como el método `one_hot_encoding` que recibe una lista o un `array ` y devuelve una tupla de dos elementos, el primero, una versión codificada como `one-hot vector` de la entrada (como lista si recibe una lista o como `numpy.ndarray` en el segundo caso, respetando la estructura `shape`) . El segundo elemento es el diccionario de codificación de la forma `key`: elemento original y `value`: `one-hot vector`.
@@ -57,6 +105,8 @@ La transformación se definió como el método `one_hot_encoding` que recibe una
 **Código**: [`code/utils/preprocess_dataset/one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/one_hot_encoding.py)
 
 **Test unitario**: [`tests/test_utils/test_one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_one_hot_encoding.py)
+
+Una muestra del funcionamiento de este método se muestra en la sección anterior (**Escoger el dataset**).
 
 ### Funciones de activación
 
@@ -77,6 +127,20 @@ La salida de este método es una matriz de `N x N`, con `N` la cantidad de clase
 **Código**: [`code/utils/results/confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/results/confusion_matrix.py)
 
 **Test unitario**: [`tests/test_utils/test_confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_confusion_matrix.py)
+
+Ejemplo de una clase como "fuera del círculo", predicha por un algoritmo al azar (con distribución gausseana para mayor contraste de las predicciones sobre el círculo).
+
+![one_class](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/confusion_matrix_one_class.png)
+
+Ejecutable: [`tarea1/scripts/confusion_matrix_example_one_class`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/confusion_matrix_example_one_class.py)
+
+Ejemplo de las tres clases del dataset iris, predichas con un algoritmo al azar.
+
+![three_class](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/confusion_matrix_three_class.png)
+
+Ejecutable: [`tarea1/scripts/confusion_matrix_example_three_class`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/confusion_matrix_example_three_class.py)
+
+### k-Fold Cross-Validation
 
 ## Redes neuronales
 
@@ -142,6 +206,26 @@ Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada
 
 Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n`
 
-## Análisis
+### Distintos dataset
 
-<al toque bodoque>
+### Variación de las neuronas de la capa escondida
+
+### Revisión de los pesos de las neuronas
+
+## Anexo
+
+### Patrones
+
+Para realizar pruebas mínimas sobre perceptrones, neuronas y redes neuronales, se diseñaron clases sobre figuras en el plano. Para cada una de ellas se define una función para agregar la figura a la gráfica, para identificar si está arriba (afuera) de la figura y para generar un set de entrenamiento.
+
+![uml_pattern](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/patterns.png)
+
+**Código**: [`code/utils/patterns`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/patterns)
+
+**Tests unitarios**: [`tests/test_utils`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_utils)
+
+#### Resultados
+
+![patterns](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/patterns.png)
+
+Ejecutable [`tares1/scripts/show_patterns`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_patterns.py)

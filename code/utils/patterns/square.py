@@ -11,7 +11,7 @@ class Square(Pattern):
         y_max = center[1] + (face / 2)
         assert x_range[0] <= x_min and x_max <= x_range[1]
         assert y_range[0] <= y_min and y_max <= y_range[1]
-        super(Square, self).__init__(x_range, y_range, "square")
+        super(Square, self).__init__(x_range, y_range, "Square")
         self.x_min = x_min
         self.x_max = x_max
         self.y_min = y_min
