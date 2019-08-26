@@ -6,13 +6,13 @@ from utils.patterns import Pattern, Line
 class DoubleLine(Pattern):
 
     def __init__(self, m_range: (float, float),
-                 n_range: (float, float),
+                 n_range: ((float, float), (float, float)),
                  x_range: (float, float),
                  y_range: (float, float)):
         super(DoubleLine, self).__init__(x_range, y_range, "DoubleLine")
         self.m = uniform(m_range[0], m_range[1])
-        n1 = uniform(n_range[0], n_range[1])
-        n2 = n1 + n_range[1] - n_range[0]
+        n1 = uniform(n_range[0][0], n_range[0][1])
+        n2 = uniform(n_range[1][0], n_range[1][1])
         self.line1 = Line((self.m, self.m), (n1, n1), x_range, y_range)
         self.line2 = Line((self.m, self.m), (n2, n2), x_range, y_range)
         return

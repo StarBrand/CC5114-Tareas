@@ -158,15 +158,15 @@ Para esta tarea se realizo una implementación nueva de redes neuronales, parte 
 
 La estructura que sigue esta implementación es la siguiente.
 
-![layers](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/network.png)
+![network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/network.png)
 
 #### Resultados
 
 El primer resultado se realiza intentando predecir dos líneas, siendo la clase deseada los puntos fuera de la línea.
 
-<al toque bodeque>
+![example_network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_network.png)
 
-Ejecutable:
+Ejecutable: [`tarea1/scripts/show_network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_network.py)
 
 Para mostrar el entrenamiento antes de comparar con la versión normalizada, se entrena la red con el dataset iris. El cual fue separado entre *train set* y *test set* en una proporción 70% / 30% respectivamente.
 

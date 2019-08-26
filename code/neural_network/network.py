@@ -1,6 +1,7 @@
 import numpy as np
 import logging
 from neural_network.layers import LayerFactory, NullLayer
+from utils.results import confusion_matrix
 
 #  To show: 10 epochs
 TO_SHOW = 10
@@ -24,7 +25,7 @@ class NeuralNetwork(object):
         self.learning_rate = lr
         return
 
-    def feed_forward(self, x_input: np.ndarray):
+    def feed_forward(self, x_input: np.ndarray) -> np.ndarray:
         output = x_input.copy()
         if np.ndim(x_input) == 1:
             output = output.reshape(-1, 1)
@@ -38,7 +39,7 @@ class NeuralNetwork(object):
             layer.propagate(y_output, next_layer.delta, next_layer.w)
             next_layer = layer
 
-    def update_weight(self, x_input: np.ndarray):
+    def update_weight(self, x_input: np.ndarray) -> None:
         if self.layers[-1].delta is None:
             raise ValueError("No derivative calculated yet")
         layer_input = x_input.copy()
@@ -49,32 +50,56 @@ class NeuralNetwork(object):
             layer_input = layer.output
 
     # Modification of provided code method
-    def calculate_cost(self, y_output: np.ndarray, m: int):
-        cost = np.sum((0.5 * (self.layers[-1].output - y_output) ** 2).mean(axis=-1)) / m
+    @staticmethod
+    def calculate_cost(output: np.ndarray, y_output: np.ndarray, m: int) -> float:
+        cost = np.sum((0.5 * (output - y_output) ** 2).mean(axis=-1)) / m
         return cost
 
-    def train(self, training_set: np.ndarray, labels: np.ndarray, epochs: int = 1, batch_size: int = 0):
+    def train(self, training_set: np.ndarray, labels: np.ndarray, epochs: int = 1,
+              batch_size: int = 0, repeat: bool = False) -> ([float], [float]):
         if training_set.shape[-1] != labels.shape[-1]:
             raise ValueError("Tags and training set don't match")
         if batch_size < 0 or epochs < 0:
             raise ValueError("Invalid value, it has to be a positive integer")
         if epochs == 1 and batch_size > 0:
             epochs = int(labels.shape[-1] / batch_size)
-        try:
-            x_inputs = np.split(training_set, epochs, axis=-1)
-            e_labels = np.split(labels, epochs, axis=-1)
-            batch_size = e_labels[0].shape[-1]
-        except ValueError:
-            logging.warning("Some train data maybe be not used")
-            batch_size = int(labels.shape[-1] / epochs)
-            epochs = int(labels.shape[-1] / batch_size)
-            x_inputs = np.split(training_set, epochs, axis=-1)
-            e_labels = np.split(labels, epochs, axis=-1)
-        logging.info("Epochs of training: {}\tSize of the batches: {}".format(epochs, batch_size))
+        if not repeat:
+            try:
+                x_inputs = np.split(training_set, epochs, axis=-1)
+                e_labels = np.split(labels, epochs, axis=-1)
+                batch_size = e_labels[0].shape[-1]
+            except ValueError:
+                logging.warning("Some train data maybe be not used")
+                batch_size = int(labels.shape[-1] / epochs)
+                epochs = int(labels.shape[-1] / batch_size)
+                x_inputs = np.split(training_set, epochs, axis=-1)
+                e_labels = np.split(labels, epochs, axis=-1)
+            logging.info("Epochs of training: {}\tSize of the batches: {}".format(epochs, batch_size))
+        else:
+            x_inputs = e_labels = None
+            logging.info("Epochs of training: {}\tSize of the batches: {}".format(epochs, labels.shape[-1]))
+
+        learning = []
+        costs = []
+
         for epoch in range(epochs):
-            self.feed_forward(x_inputs[epoch])
-            self.back_propagation(e_labels[epoch])
-            self.update_weight(x_inputs[epoch])
+            if repeat:
+                output = self.feed_forward(training_set)
+                self.back_propagation(labels)
+                self.update_weight(training_set)
+                cost = self.calculate_cost(output, labels, labels.shape[-1])
+                costs.append(cost)
+                expected_classes = labels.argmax(axis=0)
+            else:
+                output = self.feed_forward(x_inputs[epoch])
+                self.back_propagation(e_labels[epoch])
+                self.update_weight(x_inputs[epoch])
+                cost = self.calculate_cost(output, e_labels[epoch], batch_size)
+                costs.append(cost)
+                expected_classes = e_labels[epoch].argmax(axis=0)
+            learning.append(np.sum(output.argmax(axis=0) == expected_classes) / output.shape[-1])
             if epochs / TO_SHOW < 1 or (epoch + 1) % int(epochs / TO_SHOW) == 0:
                 logging.info("Epoch {}/{}: ".format(epoch + 1, epochs))
-                logging.info("\tCost after update: {}".format(self.calculate_cost(e_labels[epoch], batch_size)))
+                logging.info("\tCost after update: {}".format(cost))
+
+        return learning, costs

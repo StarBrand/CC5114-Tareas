@@ -32,8 +32,8 @@ class NeuronLayer(ABC):
             self.output = output.copy()
         return output
 
-    def transverse_derivative(self, output: np.ndarray) -> np.ndarray:
-        return derivative[self.activation_function](output)
+    def transverse_derivative(self, x: np.ndarray or None = None, output: np.ndarray or None = None) -> np.ndarray:
+        return derivative[self.activation_function](x=x, output=output)
 
     def propagate(self, output: np.ndarray,
                   next_delta: np.ndarray or None = None,
@@ -42,7 +42,7 @@ class NeuronLayer(ABC):
             error = self.output - output
         else:
             error = np.dot(next_w.T, next_delta)
-        self.delta = np.multiply(error, self.transverse_derivative(self.output))
+        self.delta = np.multiply(error, self.transverse_derivative(output=self.output))
 
     def update_weights(self, x_input: np.ndarray, learning_rate: float) -> None:
         m = x_input.shape[-1]

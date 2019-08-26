@@ -54,11 +54,11 @@ class NetworkTest(TestCase):
         hidden_output2 = self.network.layers[-2].feed(hidden_output1, save=False)
         actual_output = self.network.layers[-1].feed(hidden_output2, save=False)
         error = actual_output - self.output
-        expected1 = np.multiply(error, derivative[sigmoid](actual_output))
+        expected1 = np.multiply(error, derivative[sigmoid](output=actual_output))
         error = np.dot(self.network.layers[-1].w.T, expected1)
-        expected2 = np.multiply(error, derivative[tanh](hidden_output2))
+        expected2 = np.multiply(error, derivative[tanh](output=hidden_output2))
         error = np.dot(self.network.layers[-2].w.T, expected2)
-        expected3 = np.multiply(error, derivative[tanh](hidden_output1))
+        expected3 = np.multiply(error, derivative[tanh](output=hidden_output1))
         #  As network
         self.network.feed_forward(self.x_input)
         self.network.back_propagation(self.output)
@@ -126,11 +126,11 @@ class NetworkTest(TestCase):
         hidden_output2 = self.network.layers[-2].feed(hidden_output1, save=False)
         actual_output = self.network.layers[-1].feed(hidden_output2, save=False)
         error = actual_output - self.batch_output
-        expected1 = np.multiply(error, derivative[sigmoid](actual_output))
+        expected1 = np.multiply(error, derivative[sigmoid](output=actual_output))
         error = np.dot(self.network.layers[-1].w.T, expected1)
-        expected2 = np.multiply(error, derivative[tanh](hidden_output2))
+        expected2 = np.multiply(error, derivative[tanh](output=hidden_output2))
         error = np.dot(self.network.layers[-2].w.T, expected2)
-        expected3 = np.multiply(error, derivative[tanh](hidden_output1))
+        expected3 = np.multiply(error, derivative[tanh](output=hidden_output1))
         #  As network
         self.network.feed_forward(self.batch_input)
         self.network.back_propagation(self.batch_output)

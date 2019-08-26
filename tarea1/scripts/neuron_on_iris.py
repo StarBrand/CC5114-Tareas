@@ -26,7 +26,6 @@ if __name__ == '__main__':
 
     dataset[4][0:50] = 1.0
     dataset[4][50:100] = 0.0
-    dataset[4][50:100] = 0.0
 
     train_set, test_set = split_set(dataset, TRAIN_SIZE)
 

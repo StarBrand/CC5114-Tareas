@@ -4,7 +4,9 @@ from utils.patterns import DoubleLine
 MIN_X = MIN_Y = -50
 MAX_X = MAX_Y = 50
 M = (-2, 2)
-N = (-10, 10)
+N1 = (-20, -10)
+N2 = (10, 20)
+N = (N1, N2)
 EPSILON = 1e-6
 
 
@@ -34,10 +36,10 @@ class TestDoubleLine(TestCase):
 
     def test_is_above(self):
         x = 1
-        y = self.a_line.x_to_y(x)[0]
-        y1 = y - 0.5
-        y2 = y + 0.5
-        y3 = y + 20.5
+        y = self.a_line.x_to_y(x)
+        y1 = y[0] - 0.5
+        y2 = y[0] + 0.5
+        y3 = y[1] + 0.5
         assert self.a_line.is_above(x, y1)
         assert not self.a_line.is_above(x, y2)
         assert self.a_line.is_above(x, y3)

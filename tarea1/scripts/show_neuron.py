@@ -12,6 +12,9 @@ X_MIN = Y_MIN = -50
 X_MAX = Y_MAX = 50
 SLOPE = (-2.0, 2.0)
 INTERCEPT = (-10.0, 10.0)
+INTERCEPT1 = (-40.0, -20.0)
+INTERCEPT2 = (20.0, 40.0)
+TWO_INTERCEPT = (INTERCEPT1, INTERCEPT2)
 N = 100
 TO_SHOW = 1500
 
@@ -24,7 +27,7 @@ if __name__ == '__main__':
 
     # Predict a line
     line = Line(SLOPE, INTERCEPT, (X_MIN, X_MAX), (Y_MIN, Y_MAX))
-    double_line = DoubleLine(SLOPE, INTERCEPT, (X_MIN, X_MAX), (Y_MIN, Y_MAX))
+    double_line = DoubleLine(SLOPE, TWO_INTERCEPT, (X_MIN, X_MAX), (Y_MIN, Y_MAX))
 
     # Initialize perceptron
     neuron_line = Neuron("Learn line", 2, tanh, 0.1)
