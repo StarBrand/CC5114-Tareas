@@ -3,12 +3,14 @@ import matplotlib.pyplot as plt
 from utils.preprocess_dataset import import_data, one_hot_encoding
 from utils.results import confusion_matrix
 from utils.results import accuracy, precision, recall, f1_score
-from useful import annotate
+from useful import show_matrix, annotate
 
 N = int(1e5)
 X_MIN = Y_MIN = -50
 X_MAX = Y_MAX = 50
 FIG_SIZE = (28, 12)
+FONT_SIZE = 20
+TITLE_SIZE = 30
 np.random.seed(2)
 
 
@@ -19,12 +21,11 @@ if __name__ == '__main__':
     prediction, _ = one_hot_encoding(np.random.choice(["a", "b", "c"], size=labels.shape[0], replace=True))
     matrix = confusion_matrix(prediction.T, labels.T)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=FIG_SIZE)
-    ax1.matshow(matrix)
-    annotate(ax1, matrix, 30)
-    ax1.set_xticklabels(["", classes[0], classes[1], classes[2]], fontsize=20)
-    ax1.set_yticklabels(["", "Predicted\n" + classes[0], "Predicted\n" + classes[1], "Predicted\n" + classes[2]],
-                        fontsize=20)
-    ax1.set_title("Confusion matrix of a iris dataset\n", fontsize=30)
+    show_matrix(ax1, matrix,
+                ([classes[0], classes[1], classes[2]],
+                 ["Predicted\n" + classes[0], "Predicted\n" + classes[1], "Predicted\n" + classes[2]]),
+                "Confusion matrix of a iris dataset\n",
+                FONT_SIZE, TITLE_SIZE)
     measures = np.zeros((3, 4))
     ax2.matshow(measures, cmap="Greys")
     to_show = np.zeros((3, 4))

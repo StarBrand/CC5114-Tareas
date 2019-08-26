@@ -170,9 +170,17 @@ Ejecutable: [`tarea1/scripts/show_network`](https://github.com/StarBrand/CC5114-
 
 Para mostrar el entrenamiento antes de comparar con la versión normalizada, se entrena la red con el dataset iris. El cual fue separado entre *train set* y *test set* en una proporción 70% / 30% respectivamente.
 
-<al toque bodeque>
+![example_network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris.png)
 
-Ejecutable:
+Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada arriba):
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9333 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.8947 | 0.9444 | 0.9189 |
+| **Iris-virginica** | - | 0.9091 | 0.8333 | 0.8696 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)
 
 ### Implementar normalización
 

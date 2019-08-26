@@ -1,27 +1,26 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from utils.patterns import Circle
-from utils.results import confusion_matrix
-from utils.results import accuracy, precision, recall, f1_score
-from useful import annotate
+from utils.results import confusion_matrix, accuracy, precision, recall, f1_score
+from useful import show_matrix, annotate
 
 N = int(1e5)
 X_MIN = Y_MIN = -50
 X_MAX = Y_MAX = 50
 FIG_SIZE = (24, 12)
+FONT_SIZE = 20
+TITLE_SIZE = 30
 np.random.seed(2)
 
 
 if __name__ == '__main__':
     labels = Circle(30, (0, 0), (X_MIN, X_MAX), (Y_MIN, Y_MAX)).training_set(N)[2]
     prediction = np.abs(np.random.randn(N))
-    matrix = confusion_matrix(prediction, labels)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=FIG_SIZE)
-    ax1.matshow(matrix)
-    annotate(ax1, matrix, 30, np.array([["TP: ", "FN: "], ["FP: ", "TN: "]]))
-    ax1.set_xticklabels(["", "Outside Circle", "Inside Circle"], fontsize=20)
-    ax1.set_yticklabels(["", "Predicted\nOutside", "Predicted\nInside"], fontsize=20)
-    ax1.set_title("Confusion matrix of a circle\n", fontsize=30)
+    matrix = confusion_matrix(prediction, labels)
+    show_matrix(ax1, matrix, (["Outside Circle", "Inside Circle"],
+                ["Predicted\nOutside", "Predicted\nInside"]), "Confusion matrix of a circle\n",
+                FONT_SIZE, TITLE_SIZE, add_label=np.array([["TP: ", "FN: "], ["FP: ", "TN: "]]))
     measures = np.zeros((2, 4))
     ax2.matshow(measures, cmap="Greys")
     to_show = np.zeros((2, 4))
