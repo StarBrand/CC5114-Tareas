@@ -152,6 +152,10 @@ Un *layer* se define por el tamaño de su entrada, de salida y la función de ac
 
 ![layers](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/layers.png)
 
+**Código**: [`code/neural_network/layers`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/neural_network/layers)
+
+**Tests unitarios**: [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_neural_network/)
+
 ### Red neuronal
 
 Para esta tarea se realizo una implementación nueva de redes neuronales, parte del código se baso en el código provisto por el profesor.
@@ -159,6 +163,10 @@ Para esta tarea se realizo una implementación nueva de redes neuronales, parte 
 La estructura que sigue esta implementación es la siguiente.
 
 ![network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/network.png)
+
+**Código**: [`code/neural_network/network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/neural_network/network.py)
+
+**Tests unitarios**: [`tests/test_neural_network/test_network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_neural_network/test_network.py)
 
 #### Resultados
 
