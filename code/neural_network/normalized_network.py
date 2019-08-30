@@ -18,8 +18,12 @@ class NormalizedNetwork(NeuralNetwork):
         )
 
     def _normalize(self, x_input: np.ndarray) -> np.ndarray:
-        self.d_l = x_input.min()
-        self.d_h = x_input.max()
+        self.d_l = x_input.min(axis=-1)
+        self.d_h = x_input.max(axis=-1)
+        if self.d_h.ndim == 1:
+            self.d_h = self.d_h.reshape(-1, 1)
+        if self.d_l.ndim == 1:
+            self.d_l = self.d_l.reshape(-1, 1)
         a = N_H - N_L
         b = self.d_h - self.d_l
         return (a / b) * (x_input - self.d_l) + N_L
