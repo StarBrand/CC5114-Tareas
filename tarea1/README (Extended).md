@@ -142,6 +142,8 @@ Ejecutable: [`tarea1/scripts/confusion_matrix_example_three_class`](https://gith
 
 ### k-Fold Cross-Validation
 
+
+
 ## Redes neuronales
 
 ### Capas (*Layers*)

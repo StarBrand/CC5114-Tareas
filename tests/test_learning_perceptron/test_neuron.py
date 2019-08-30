@@ -6,6 +6,7 @@ from utils.math_functions import sigmoid, tanh, step
 
 ARGUMENT = 4
 EPSILON = 1e-10
+np.random.seed(2)
 
 
 class NeuronTest(TestCase):

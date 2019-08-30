@@ -42,7 +42,7 @@ if __name__ == '__main__':
     plot_result(test_set, np.array(prediction), double_line, ax1, 0.5)
     ax1.set_title("Before training\n", fontsize=20)
 
-    network.train(train_set[0: -1], train_set[-1], batch_size=10)
+    network.train(train_set[0: -1], train_set[-1], epochs=int(1e3))
 
     prediction = do_prediction_net(network, test_set)
     logging.info("Second Plot")
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     # Random dataset
     train_set = double_line.training_set(N2)
 
-    network.train(train_set[0: -1], train_set[-1], batch_size=10)
+    network.train(train_set[0: -1], train_set[-1], epochs=int(1e5))
 
     prediction = do_prediction_net(network, test_set)
     logging.info("Third Plot")

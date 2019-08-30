@@ -1,7 +1,11 @@
 from unittest import TestCase, main
 import numpy as np
+import logging
 from neural_network import NeuralNetwork
 from utils.math_functions import tanh, sigmoid, derivative
+
+SIZE = 10000
+EPOCHS = 100
 
 
 class NetworkTest(TestCase):
@@ -10,8 +14,8 @@ class NetworkTest(TestCase):
         self.network = NeuralNetwork(2, [5, 4], 1, [tanh, tanh, sigmoid], 0.1)
         self.x_input = np.array([40, 40])
         self.output = np.array([1.0])
-        self.batch_input = np.random.uniform(-50, 50, (2, 10000))
-        self.batch_output = np.random.choice([0.0, 1.0], (1, 10000))
+        self.batch_input = np.random.uniform(-50, 50, (2, SIZE))
+        self.batch_output = np.random.choice([0.0, 1.0], (1, SIZE))
 
     def test_constructor_exception(self):
         test = False
@@ -179,6 +183,35 @@ class NetworkTest(TestCase):
                   self.network.layers[2].b]
         for index, expected in enumerate(expected_list):
             assert np.equal(actual[index], expected).all()
+
+    def test_exception_train(self):
+        test = False
+        try:
+            self.network.train(self.batch_input, self.output)
+        except ValueError as e:
+            logging.info(e.__str__())
+            test = True
+        assert test
+        test = False
+        try:
+            self.network.update_weight(self.batch_input)
+        except ValueError as e:
+            logging.info(e.__str__())
+            test = True
+        assert test
+
+    def test_train_repeat(self):
+        learning, costs = self.network.train(self.batch_input, self.batch_output, epochs=EPOCHS, repeat=True)
+        assert len(learning) == len(costs)
+        assert len(learning) == EPOCHS
+
+    def test_train_split(self):
+        learning, costs = self.network.train(self.batch_input, self.batch_output, epochs=EPOCHS)
+        assert len(learning) == len(costs)
+        assert len(learning) == EPOCHS
+        learning, costs = self.network.train(self.batch_input, self.batch_output, epochs=70)
+        assert len(learning) == len(costs)
+        assert len(learning) == 70
 
 
 if __name__ == '__main__':

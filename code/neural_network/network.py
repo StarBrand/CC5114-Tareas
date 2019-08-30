@@ -1,7 +1,6 @@
 import numpy as np
 import logging
 from neural_network.layers import LayerFactory, NullLayer
-from utils.results import confusion_matrix
 
 #  To show: 10 epochs
 TO_SHOW = 10
@@ -55,14 +54,10 @@ class NeuralNetwork(object):
         cost = np.sum((0.5 * (output - y_output) ** 2).mean(axis=-1)) / m
         return cost
 
-    def train(self, training_set: np.ndarray, labels: np.ndarray, epochs: int = 1,
-              batch_size: int = 0, repeat: bool = False) -> ([float], [float]):
+    def train(self, training_set: np.ndarray, labels: np.ndarray, epochs: int = 1, repeat: bool = False)\
+            -> ([float], [float]):
         if training_set.shape[-1] != labels.shape[-1]:
             raise ValueError("Tags and training set don't match")
-        if batch_size < 0 or epochs < 0:
-            raise ValueError("Invalid value, it has to be a positive integer")
-        if epochs == 1 and batch_size > 0:
-            epochs = int(labels.shape[-1] / batch_size)
         if not repeat:
             try:
                 x_inputs = np.split(training_set, epochs, axis=-1)
@@ -71,9 +66,9 @@ class NeuralNetwork(object):
             except ValueError:
                 logging.warning("Some train data maybe be not used")
                 batch_size = int(labels.shape[-1] / epochs)
-                epochs = int(labels.shape[-1] / batch_size)
-                x_inputs = np.split(training_set, epochs, axis=-1)
-                e_labels = np.split(labels, epochs, axis=-1)
+                new_size = batch_size * epochs
+                x_inputs = np.split(training_set.take(range(new_size), axis=-1), epochs, axis=-1)
+                e_labels = np.split(labels.take(range(new_size), axis=-1), epochs, axis=-1)
             logging.info("Epochs of training: {}\tSize of the batches: {}".format(epochs, batch_size))
         else:
             x_inputs = e_labels = None

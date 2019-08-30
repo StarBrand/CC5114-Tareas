@@ -6,3 +6,5 @@ from test_utils.test_confusion_matrix import ConfusionMatrixTest
 from test_utils.test_activation_functions import ActivationFunctionTest
 from test_utils.test_set_functions import FunctionTest
 from test_utils.test_one_hot_encoding import OneHotTest
+from test_utils.test_standard_trainer import StandardTrainerTest
+from test_utils.test_cross_validation import KFoldTest

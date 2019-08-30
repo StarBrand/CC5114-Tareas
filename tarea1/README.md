@@ -126,6 +126,30 @@ Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada
 
 Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)
 
+### KFold Cross Validation
+
+Para entrenar las redes neuronales se utilizaron dos clases "entrenadoras" (*trainer*). Una, `StandardTrainer`, se utilizó en el ejemplo anterior. La segunda, `KFoldTrainer`, utiliza, y hereda, la clase `KFold` (de la librería [`sklearn`](https://scikit-learn.org/stable/)).
+
+**Código**: [`code/utils/results`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/results)
+
+**Tests unitarios**: [`tests/test_utils`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_utils)
+
+#### Resultados
+
+Se muestran los resultados obtenidos entrenando una red neuronal con *Cross Validation 3Fold*  (se escoge 3, sin ninguna razón particular).
+
+![network3Fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris_3fold.png)
+
+Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada arriba), sacados sumando las matrices de las 3 iteraciones:
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.96 | 1.0 | 0.9583 | 0.9231 |
+| **Iris-versicolor** | - | 1.0 | 0.92 | 0.96 |
+| **Iris-virginica** | - | 1.0 | 0.9388 | 0.9412 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumentos: `-x 3`
+
 ### Implementar normalización
 
 La normalización fue implementada en una clase hija de la clase `NeuralNetwork` original (seccion: **Implementar redes neuronales**), llamada `NormalizedNetwork`. Esto, por dos motivos. El primero, para mantener una versión de `NeuralNetwork` sin normalización y aplicar buenas prácticas de programación orientada a objetos. El segundo, para presentar la normalización en una nueva clase que no considere la implementación de la red neuronal.
@@ -149,6 +173,20 @@ Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada
 | **Iris-virginica** | - | 1.0 | 1.0 | 1.0 |
 
 Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n`
+
+Al igual que para la versión no normalizada, se realizaron mediciones de *Cross validation*. Se escogio el *10Fold* por ninguna razón particular.
+
+![normalized10Fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris_10fold.png)
+
+Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada arriba), sacados sumando las matrices de las 10 iteraciones:
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.96 | 1.0 | 1.0 | 0.8929 |
+| **Iris-versicolor** | - | 1.0 | 0.88 | 1.0 |
+| **Iris-virginica** | - | 1.0 | 0.9362 | 0.9434 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumentos: `-n -x 10`
 
 ## Análisis
 
