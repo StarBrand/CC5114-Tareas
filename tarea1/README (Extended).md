@@ -142,7 +142,13 @@ Ejecutable: [`tarea1/scripts/confusion_matrix_example_three_class`](https://gith
 
 ### k-Fold Cross-Validation
 
+Para realizar el entrenamiento de las redes neuronales, se diseñó la clase abstracta `Trainer`. De ella, se implementaron dos clases, una que entrena simplemente dividiendo el dataset en *train set* / *test set* usando la función `split set` y otra que hereda, también, la clase `KFold` de la librería [`sklearn`](https://scikit-learn.org/stable/)
 
+![uml_pattern](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/trainers.png)
+
+**Código**: [code/utils/results](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/results)
+
+**Tests Unitarios**: [tests/test_utils](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils)
 
 ## Redes neuronales
 
@@ -192,6 +198,38 @@ Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada
 
 Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)
 
+Además, se realizan testeos usando *Cross validation* con 3, 5 y *10Fold*. Las matrices son la suma de todas las predicciones sobre los diferentes test set generados.
+
+![network_3fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris_3fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.96 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9583 | 0.92 | 0.9388 |
+| **Iris-virginica** | - | 0.9231 | 0.96 | 0.9412 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-x 3`
+
+![network_5fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris_5fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9533 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9388 | 0.92 | 0.9293 |
+| **Iris-virginica** | - | 0.9216 | 0.94 | 0.9307 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-x 5`
+
+![network_10fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris_10fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9533 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9388 | 0.92 | 0.9293 |
+| **Iris-virginica** | - | 0.9216 | 0.94 | 0.9307 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-x 10`
+
 ### Implementar normalización
 
 La normalización fue implementada en una clase hija de la clase `NeuralNetwork` original (seccion: **Implementar redes neuronales**), llamada `NormalizedNetwork`. Esto, por dos motivos. El primero, para mantener una versión de `NeuralNetwork` sin normalización y aplicar buenas prácticas de programación orientada a objetos. El segundo, para presentar la normalización en una nueva clase que no considere la implementación de la red neuronal.
@@ -202,7 +240,9 @@ La normalización fue implementada en una clase hija de la clase `NeuralNetwork`
 
 **Test unitario**: [`tests/test_neural_network/test_normalize.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network/test_normalize.py)
 
-Se muestra los resultados del mismo entrenamiento anterior (mismos *seeds*) con la red normalizada y con la misma arquitectura.
+#### Resultados
+
+Se muestra los resultados del mismo entrenamiento anterior (mismos *seeds*) con la red normalizada, con la misma arquitectura y con los mismos entrenadores (estándar y *cross validation*).
 
 ![example_network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris.png)
 
@@ -215,6 +255,36 @@ Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada
 | **Iris-virginica** | - | 1.0 | 1.0 | 1.0 |
 
 Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n`
+
+![normalized_3fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris_3fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9667 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 1.0 | 0.9 | 0.9474 |
+| **Iris-virginica** | - | 0.9091 | 1.0 | 0.9524 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n -x 3`
+
+![normalized_5fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris_5fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9667 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9787 | 0.92 | 0.9485 |
+| **Iris-virginica** | - | 0.9245 | 0.98 | 0.9515 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n -x 5`
+
+![normalized_10fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris_10fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.96 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 1.0 | 0.88 | 0.9362 |
+| **Iris-virginica** | - | 0.8929 | 1.0 | 0.9434 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n -x 10`
 
 ### Distintos dataset
 

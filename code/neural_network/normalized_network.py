@@ -9,8 +9,8 @@ class NormalizedNetwork(NeuralNetwork):
 
     def __init__(self, input_size: int, size: [int], output_size: int, func: [str or callable], lr: float):
         super(NormalizedNetwork, self).__init__(input_size, size, output_size, func, lr)
-        self.d_h = 0.0
-        self.d_l = 0.0
+        self.d_h = np.array([])
+        self.d_l = np.array([])
 
     def feed_forward(self, x_input: np.ndarray) -> np.ndarray:
         return super(NormalizedNetwork, self).feed_forward(

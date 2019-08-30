@@ -144,9 +144,9 @@ Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada
 
 | Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
-| **Iris-setosa** | 0.96 | 1.0 | 0.9583 | 0.9231 |
-| **Iris-versicolor** | - | 1.0 | 0.92 | 0.96 |
-| **Iris-virginica** | - | 1.0 | 0.9388 | 0.9412 |
+| **Iris-setosa** | 0.96 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9583 | 0.92 | 0.9388 |
+| **Iris-virginica** | - | 0.9231 | 0.96 | 0.9412 |
 
 Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumentos: `-x 3`
 
@@ -182,9 +182,9 @@ Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada
 
 | Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
-| **Iris-setosa** | 0.96 | 1.0 | 1.0 | 0.8929 |
-| **Iris-versicolor** | - | 1.0 | 0.88 | 1.0 |
-| **Iris-virginica** | - | 1.0 | 0.9362 | 0.9434 |
+| **Iris-setosa** | 0.96 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 1.0 | 0.88 | 0.9362 |
+| **Iris-virginica** | - | 0.8929 | 1.0 | 0.9434 |
 
 Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumentos: `-n -x 10`
 
