@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 
 
-def import_data(path: str) -> np.ndarray:
-    df = pd.read_csv(path, header=None)
+def import_data(path: str, sep: str = ",", header: int or None = None) -> np.ndarray:
+    df = pd.read_csv(path, header=header, sep=sep)
     return np.array(df).T
 
 

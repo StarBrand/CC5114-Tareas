@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     parser = ArgumentParser()
     parser.add_argument("-n", "--normalize", default=False, action="store_true")
-    parser.add_argument("-x", "--cross_validation")
+    parser.add_argument("-x", "--cross_validation", type=int)
 
     args = parser.parse_args()
 
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     k = 1
 
     if args.cross_validation is not None:
-        k = int(args.cross_validation)
+        k = args.cross_validation
         k_fold = "_{}fold".format(k)
         trainer = KFoldTrainer(k, 2, dataset, labels.T)
 
