@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 from random import seed
 from neural_network import NeuralNetwork, NormalizedNetwork
 from utils import SHORT, LONG, BIG
-from utils.preprocess_dataset import import_data, one_hot_encoding
+from utils.preprocess_dataset import import_data, one_hot_encoding, oversample, undersample
 from utils.results import StandardTrainer, KFoldTrainer
 from utils.results import confusion_matrix, accuracy, precision, recall, f1_score, show_matrix
 
@@ -24,6 +24,8 @@ if __name__ == '__main__':
 
     parser = ArgumentParser()
     parser.add_argument("-n", "--normalize", default=False, action="store_true")
+    parser.add_argument("-o", "--oversample", default=False, action="store_true")
+    parser.add_argument("-u", "--undersample", default=False, action="store_true")
     parser.add_argument("-x", "--cross_validation", type=int)
     parser.add_argument("-d", "--dataset", default="iris")
     parser.add_argument("-H", "--header", default=None, type=int)
@@ -31,7 +33,7 @@ if __name__ == '__main__':
     parser.add_argument("-c", "--categorical", nargs="+", default=[], type=int)
     parser.add_argument("-l", "--labels", default=-1, type=int)
     parser.add_argument("-e", "--exclude", nargs="+", default=[], type=int)
-    parser.add_argument("-o", "--optional_name", default="")
+    parser.add_argument("-O", "--optional_name", default="")
     parser.add_argument("-a", "--architecture", type=str, required=True)
 
     args = parser.parse_args()
@@ -52,6 +54,15 @@ if __name__ == '__main__':
 
     # import dataset
     dataset = import_data("../data/{}".format(path_dataset), sep=args.sep, header=args.header)
+
+    more_info = ""
+
+    if args.oversample:
+        dataset = oversample(dataset, label=args.labels)
+        more_info = "(oversampled)"
+    if args.undersample:
+        dataset = undersample(dataset, label=args.labels)
+        more_info = "(undersampled)"
 
     labels, encoding = one_hot_encoding(dataset[args.labels])
     classes = list(encoding.keys())
@@ -148,6 +159,6 @@ if __name__ == '__main__':
     print("Recall:\t{}".format(recall(c_m)))
     print("f1-score:\t{}".format(f1_score(c_m)))
 
-    plt.savefig("../tarea1/results/other_dataset/{}_{}_on_{}{}{}.png".format(args.architecture,
-                                                                             filename, args.dataset,
-                                                                             k_fold, args.optional_name))
+    plt.savefig("../tarea1/results/other_dataset/{}_{}_on_{}{}{}{}.png".format(args.architecture,
+                                                                               filename, args.dataset, more_info,
+                                                                               k_fold, args.optional_name))
