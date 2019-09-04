@@ -8,7 +8,7 @@ Ejecutable: [`code/use_network`](https://github.com/StarBrand/CC5114-Tareas/blob
 
 Argumentos: `-a short -x 3 -d ecoli -e 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_ecoli_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_ecoli_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -21,7 +21,7 @@ Argumentos: `-a short -x 3 -d ecoli -e 0`
 
 Argumentos: `-a short -x 3 -d ecoli -e 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_ecoli(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_ecoli(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -34,7 +34,7 @@ Argumentos: `-a short -x 3 -d ecoli -e 0 -u`
 
 Argumentos: `-a short -x 3 -d ecoli -e 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_ecoli(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_ecoli(oversampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -47,7 +47,7 @@ Argumentos: `-a short -x 3 -d ecoli -e 0 -o`
 
 Argumentos: `-a long -x 3 -d ecoli -e 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_network_on_ecoli_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_network_on_ecoli_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -60,7 +60,7 @@ Argumentos: `-a long -x 3 -d ecoli -e 0`
 
 Argumentos: `-a long -x 3 -d ecoli -e 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_network_on_ecoli(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_network_on_ecoli(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -73,7 +73,7 @@ Argumentos: `-a long -x 3 -d ecoli -e 0 -u`
 
 Argumentos: `-a long -x 3 -d ecoli -e 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_network_on_ecoli(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_network_on_ecoli(oversampled)_3fold.png)
 
 | Clases | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -86,7 +86,7 @@ Argumentos: `-a long -x 3 -d ecoli -e 0 -o`
 
 Argumentos: `-a big -x 3 -d ecoli -e 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_ecoli_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_ecoli_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -99,7 +99,7 @@ Argumentos: `-a big -x 3 -d ecoli -e 0`
 
 Argumentos: `-a big -x 3 -d ecoli -e 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_ecoli(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_ecoli(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -112,7 +112,7 @@ Argumentos: `-a big -x 3 -d ecoli -e 0 -u`
 
 Argumentos: `-a big -x 3 -d ecoli -e 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_ecoli(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_ecoli(oversampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -127,7 +127,7 @@ Argumentos: `-a big -x 3 -d ecoli -e 0 -o`
 
 Argumentos: `-a short -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_breast-cancer_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_breast-cancer_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -138,7 +138,7 @@ Argumentos: `-a short -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8`
 
 Argumentos: `-a short -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_breast-cancer(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_breast-cancer(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -149,7 +149,7 @@ Argumentos: `-a short -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -u`
 
 Argumentos: `-a short -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_breast-cancer(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_breast-cancer(oversampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -160,7 +160,7 @@ Argumentos: `-a short -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -o`
 
 Argumentos: `-a long -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_network_on_breast-cancer_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_network_on_breast-cancer_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -171,7 +171,7 @@ Argumentos: `-a long -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8`
 
 Argumentos: `-a long -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_network_on_breast-cancer(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_network_on_breast-cancer(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -182,7 +182,7 @@ Argumentos: `-a long -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -u`
 
 Argumentos: `-a long -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_network_on_breast-cancer(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_network_on_breast-cancer(oversampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -193,7 +193,7 @@ Argumentos: `-a long -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -o`
 
 Argumentos: `-a big -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_breast-cancer_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_breast-cancer_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -204,7 +204,7 @@ Argumentos: `-a big -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8`
 
 Argumentos: `-a big -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_breast-cancer(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_breast-cancer(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -215,7 +215,7 @@ Argumentos: `-a big -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -u`
 
 Argumentos: `-a big -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_breast-cancer(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_breast-cancer(oversampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -228,7 +228,7 @@ Argumentos: `-a big -x 3 -d breast_cancer -l 0 -c 0 1 2 3 4 5 6 7 8 -o`
 
 Argumentos: `-a short -x 3 -d uci -H 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_uci_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_uci_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -239,7 +239,7 @@ Argumentos: `-a short -x 3 -d uci -H 0`
 
 Argumentos: `-a short -n -x 3 -d uci -H 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_normalized_on_uci_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_normalized_on_uci_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
@@ -250,7 +250,7 @@ Argumentos: `-a short -n -x 3 -d uci -H 0`
 
 Argumentos: `-a short -x 3 -d uci -H 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_uci(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_uci(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -261,7 +261,7 @@ Argumentos: `-a short -x 3 -d uci -H 0 -u`
 
 Argumentos: `-a short -n -x 3 -d uci -H 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_normalized_on_uci(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_normalized_on_uci(undersampled)_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
@@ -272,7 +272,7 @@ Argumentos: `-a short -n -x 3 -d uci -H 0 -u`
 
 Argumentos: `-a short -x 3 -d uci -H 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_network_on_uci(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_network_on_uci(oversampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -283,7 +283,7 @@ Argumentos: `-a short -x 3 -d uci -H 0 -o`
 
 Argumentos: `-a short -n -x 3 -d uci -H 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\short_normalized_on_uci(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/short_normalized_on_uci(oversampled)_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
@@ -294,7 +294,7 @@ Argumentos: `-a short -n -x 3 -d uci -H 0 -o`
 
 Argumentos: `-a long -x 3 -d uci -H 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_network_on_uci_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_network_on_uci_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -305,7 +305,7 @@ Argumentos: `-a long -x 3 -d uci -H 0`
 
 Argumentos: `-a long -n -x 3 -d uci -H 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_normalized_on_uci_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_normalized_on_uci_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
@@ -316,7 +316,7 @@ Argumentos: `-a long -n -x 3 -d uci -H 0`
 
 Argumentos: `-a long -x 3 -d uci -H 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_network_on_uci(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_network_on_uci(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -327,7 +327,7 @@ Argumentos: `-a long -x 3 -d uci -H 0 -u`
 
 Argumentos: `-a long -n -x 3 -d uci -H 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\long_normalized_on_uci(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/long_normalized_on_uci(undersampled)_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
@@ -338,7 +338,7 @@ Argumentos: `-a long -n -x 3 -d uci -H 0 -u`
 
 Argumentos: `-a long -x 3 -d uci -H 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_uci(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_uci(oversampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -349,7 +349,7 @@ Argumentos: `-a long -x 3 -d uci -H 0 -o`
 
 Argumentos: `-a long -n -x 3 -d uci -H 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_normalized_on_uci(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_normalized_on_uci(oversampled)_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
@@ -360,7 +360,7 @@ Argumentos: `-a long -n -x 3 -d uci -H 0 -o`
 
 Argumentos: `-a big -x 3 -d uci -H 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_uci_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_uci_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -371,7 +371,7 @@ Argumentos: `-a big -x 3 -d uci -H 0`
 
 Argumentos: `-a big -n -x 3 -d uci -H 0`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_normalized_on_uci_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_normalized_on_uci_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
@@ -382,7 +382,7 @@ Argumentos: `-a big -n -x 3 -d uci -H 0`
 
 Argumentos: `-a big -x 3 -d uci -H 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_uci(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_uci(undersampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -393,7 +393,7 @@ Argumentos: `-a big -x 3 -d uci -H 0 -u`
 
 Argumentos: `-a big -n -x 3 -d uci -H 0 -u`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_normalized_on_uci(undersampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_normalized_on_uci(undersampled)_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
@@ -404,7 +404,7 @@ Argumentos: `-a big -n -x 3 -d uci -H 0 -u`
 
 Argumentos: `-a big -x 3 -d uci -H 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_network_on_uci(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_network_on_uci(oversampled)_3fold.png)
 
 | Clases	| *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | --------------- | ---------- | ----------- | -------- | ---------- |
@@ -415,7 +415,7 @@ Argumentos: `-a big -x 3 -d uci -H 0 -o`
 
 Argumentos: `-a big -n -x 3 -d uci -H 0 -o`
 
-![](C:\Users\juans\Google Drive\CC5114\CC5114-Tareas\tarea1\results\other_dataset\big_normalized_on_uci(oversampled)_3fold.png)
+![](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset/big_normalized_on_uci(oversampled)_3fold.png)
 
 | Clases       | *Accuracy* | *Precision* | *Recall* | *f1-score* |
 | ------------ | ---------- | ----------- | -------- | ---------- |
