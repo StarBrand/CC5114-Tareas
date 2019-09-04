@@ -23,18 +23,32 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
 
     parser = ArgumentParser()
-    parser.add_argument("-n", "--normalize", default=False, action="store_true")
-    parser.add_argument("-o", "--oversample", default=False, action="store_true")
-    parser.add_argument("-u", "--undersample", default=False, action="store_true")
-    parser.add_argument("-x", "--cross_validation", type=int)
-    parser.add_argument("-d", "--dataset", default="iris")
-    parser.add_argument("-H", "--header", default=None, type=int)
-    parser.add_argument("-s", "--sep", default=",")
-    parser.add_argument("-c", "--categorical", nargs="+", default=[], type=int)
-    parser.add_argument("-l", "--labels", default=-1, type=int)
-    parser.add_argument("-e", "--exclude", nargs="+", default=[], type=int)
-    parser.add_argument("-O", "--optional_name", default="")
-    parser.add_argument("-a", "--architecture", type=str, required=True)
+    parser.add_argument("-n", "--normalize", default=False, action="store_true",
+                        help="Normalize the input")
+    parser.add_argument("-o", "--oversample", default=False, action="store_true",
+                        help="Oversample the dataset using the most representative class")
+    parser.add_argument("-u", "--undersample", default=False, action="store_true",
+                        help="Undersample the dataset using the less representative class")
+    parser.add_argument("-x", "--cross_validation", type=int,
+                        help="Select k value for kFold cross validation, "
+                             "if not specify, split dataset 70-30 train-test set")
+    parser.add_argument("-H", "--header", default=None, type=int,
+                        help="If needed, specify indicate in which row is the header of the dataset")
+    parser.add_argument("-s", "--sep", default=",",
+                        help="Character that indicates column delimiter (',' by default)")
+    parser.add_argument("-c", "--categorical", nargs="+", default=[], type=int,
+                        help="Indicates categorical attributes on dataset")
+    parser.add_argument("-l", "--labels", default=-1, type=int,
+                        help="Indicates which attribute contains the labels of class (last one by default)")
+    parser.add_argument("-e", "--exclude", nargs="+", default=[], type=int,
+                        help="Indicates attributes (columns) to exclude for classification")
+    parser.add_argument("-O", "--optional_name", default="",
+                        help="Add an optional string to the name of the output graphs")
+    required_args = parser.add_argument_group('required arguments')
+    required_args.add_argument("-d", "--dataset", required=True,
+                               help="Dataset name on data folder (without file name extension)")
+    required_args.add_argument("-a", "--architecture", type=str, required=True,
+                               help="Architecture to use, available: short, long and big")
 
     args = parser.parse_args()
 
@@ -151,13 +165,29 @@ if __name__ == '__main__':
     labels = [l.get_label() for l in lines]
     ax2.legend(lines, labels, fontsize=FONT_SIZE, loc="center right")
 
-    show_matrix(ax3, c_m, (classes, ["Predicted\n{}".format(iris) for iris in classes]),
+    show_matrix(ax3, c_m, (classes, ["Predicted\n{}".format(a_class) for a_class in classes]),
                 "Confusion Matrix of Test Set\n", FONT_SIZE, TITLE_SIZE)
 
-    print("Accuracy:\t{}".format(accuracy(c_m)))
-    print("Precision:\t{}".format(precision(c_m)))
-    print("Recall:\t{}".format(recall(c_m)))
-    print("f1-score:\t{}".format(f1_score(c_m)))
+    measures = {
+        "accuracy": accuracy(c_m),
+        "precision": precision(c_m),
+        "recall": recall(c_m),
+        "f1_score": f1_score(c_m)
+    }
+
+    print("{}\n".format(args))
+    print("| Clases\t| *Accuracy* | *Precision* | *Recall* | *f1-score* |")
+    print("| --------------- | ---------- | ----------- | -------- | ---------- |")
+    accuracy_measure = round(measures["accuracy"], 4)
+    for index, a_class in enumerate(classes):
+        print("| **{name}** | {accuracy} | {precision} | {recall} | {f1_score} |".format(
+            name=a_class, accuracy=accuracy_measure,
+            precision=round(measures["precision"][index], 4),
+            recall=round(measures["recall"][index], 4),
+            f1_score=round(measures["f1_score"][index], 4))
+        )
+        accuracy_measure = ""
+    print("\n")
 
     plt.savefig("../tarea1/results/other_dataset/{}_{}_on_{}{}{}{}.png".format(args.architecture,
                                                                                filename, args.dataset, more_info,

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import numpy as np
 import logging
 
@@ -9,6 +10,12 @@ class Representation(object):
         self.rows = rows
         self.length = length
         return
+
+    def __gt__(self, other: Representation) -> bool:
+        return self.length > other.length
+
+    def __lt__(self, other: Representation) -> bool:
+        return self.length < other.length
 
 
 def oversample(dataset: np.ndarray, to_size: int or None = None, label: int = -1) -> np.ndarray:
@@ -32,7 +39,7 @@ def _sample(dataset: np.ndarray, label: int, reverse: bool, sample_type: str, to
     first = True
     target = 0
     new_dataset = np.array([])
-    for _, a_class in sorted([(a_class.length, a_class) for a_class in representation], reverse=reverse):
+    for a_class in sorted([a_class for a_class in representation], reverse=reverse):
         if first:
             target = a_class.length
             logging.info("{}, {} representative class has {} rows".format(a_class.class_name, sample_type, target))
