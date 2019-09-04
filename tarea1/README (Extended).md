@@ -150,6 +150,16 @@ Para realizar el entrenamiento de las redes neuronales, se diseñó la clase abs
 
 **Tests Unitarios**: [tests/test_utils](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils)
 
+### Oversampling
+
+Debido a la variada representatividad de las clases de otros datasets (diferentes a `iris.data`) se realizaron métodos para *oversampling* (incluir datos repetidos seleccionados al azar sobre las clases menos representadas) y *undersampling* (realizar el mismo proceso, seleccionando los datos más representados para disminuir su representatividad). 
+
+Como se muestra en los resultados (reportado más abajo), sin este proceso, la red aprende que los datos corresponden a las clases más representadas.
+
+**Código**: [`code/utils/preprocess_dataset/oversampling`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/oversampling.py)
+
+**Test unitario**: [`tests/test_utils/test_oversampling`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_oversampling.py)
+
 ## Redes neuronales
 
 ### Capas (*Layers*)
@@ -288,9 +298,27 @@ Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC51
 
 ### Distintos dataset
 
-### Variación de las neuronas de la capa escondida
+Se realizaron más experimentos sobre diferentes datasets:
+
+1. `ecoli` representa el lugar en la célula donde la proteína es dirigida.
+
+2. `breast-cancer` casos clínicos de cáncer de mama y si éstos son recurrentes o no.
+
+3. `uci` casos clínicos y la estabilidad de los pacientes.
+
+Además, se definieron tres arquitecturas de redes neuronales:
+
+1. `SHORT`: una capa escondida (usada para entrenar sobre el dataset de `iris`.
+2. `LONG`: cinco capas escondidas.
+3. `BIG`: tres capas escondidas con un número mayor de neuronas por capa (50, 20 y 8 en las capas escondidas).
+
+Todos los resultados se muestran en el directorio: [tarea1/results/other_dataset](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset)
+
+Ejecutable: [code/use_network](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/use_network.py])
 
 ### Revisión de los pesos de las neuronas
+
+<al toque bodeque>
 
 ## Anexo
 

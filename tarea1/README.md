@@ -188,6 +188,10 @@ Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada
 
 Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumentos: `-n -x 10`
 
+### Otros dataset
+
+Se realizaron más experimentos sobre otros datasets, los cuales son reportados en [`tarea1/results/other_dataset`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset) utilizando el ejecutable [`code/use_network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/use_network.py) con argumentos distintos.
+
 ## Análisis
 
 La implementación de perceptrones y neuronas no tuvo mayor complicación. La, tal vez, excesiva cantidad de clases que se implementaron fueron solo para reflejar la progresión natural y lógica del modelo perceptrón para puerta lógicas al modelo de la neurona con cualquier función de activación.
