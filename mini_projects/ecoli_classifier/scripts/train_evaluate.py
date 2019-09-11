@@ -1,3 +1,4 @@
+"""train_evaluate.py: Train and evaluate dataset"""
 import matplotlib.pyplot as plt
 import numpy as np
 import logging
@@ -42,6 +43,13 @@ seed(2)
 
 
 def train_evaluate(architecture: dict, dataset_name: str) -> NeuralNetwork:
+    """
+    Train and evaluate a Network
+
+    :param architecture: Architecture of NeuralNetwork (above)
+    :param dataset_name: Dataset to use
+    :return: Trained Neural Network
+    """
     # import dataset
     dataset = import_data("../data/{}.data".format(dataset_name))
 

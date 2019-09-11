@@ -1,3 +1,4 @@
+"""test_neural_network: unittest of neural_network package"""
 from test_neural_network.test_null_layer import NullLayerTest
 from test_neural_network.test_layer_factory import TestFactory
 from test_neural_network.test_sigmoid_layer import SigmoidTest

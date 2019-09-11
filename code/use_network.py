@@ -1,3 +1,5 @@
+"""use_network.py: use a network (normalized or not) on a dataset"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 import logging

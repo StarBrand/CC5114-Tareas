@@ -1,3 +1,4 @@
+"""test_one_hot_encoding.py: unittest of one_hot_encoding"""
 from unittest import TestCase, main
 import numpy as np
 from random import randint
@@ -13,6 +14,9 @@ EPSILON = 1e-6
 class OneHotTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.one_dimension = _randomize_list(
             ELEMENTS.copy() * 1000
         )

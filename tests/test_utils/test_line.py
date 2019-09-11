@@ -1,3 +1,4 @@
+"""test_line.py: unittest of Line"""
 from unittest import TestCase, main
 from utils.patterns import Line
 
@@ -11,6 +12,9 @@ EPSILON = 1e-6
 class TestLine(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.a_line = Line(M, N, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
         self.m = self.a_line.m
         self.n = self.a_line.n

@@ -1,3 +1,4 @@
+"""show_patterns.py: Show patterns on graphs"""
 import matplotlib.pyplot as plt
 import logging
 from useful import plot_result

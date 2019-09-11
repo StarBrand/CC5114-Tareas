@@ -1,3 +1,4 @@
+"""test_network.py: unittest of NeuralNetwork"""
 from unittest import TestCase, main
 import numpy as np
 import logging
@@ -11,6 +12,9 @@ EPOCHS = 100
 class NetworkTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.network = NeuralNetwork(2, [5, 4], 1, [tanh, tanh, sigmoid], 0.1)
         self.x_input = np.array([40, 40])
         self.output = np.array([1.0])

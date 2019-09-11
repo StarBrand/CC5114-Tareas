@@ -1,3 +1,4 @@
+"""test_sigmoid_neuron.py: unittest of SigmoidNeuron"""
 from unittest import TestCase, main
 import logging
 import numpy as np
@@ -11,6 +12,9 @@ EPSILON = 1e-10
 class SigmoidTest(TestCase):
     
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.sigmoid = SigmoidNeuron(4, 0.5)
         self.x_input = list(range(ARGUMENTS))
         self.w = self.sigmoid.get_weights()[0].copy()

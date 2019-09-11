@@ -1,3 +1,4 @@
+"""generate_dataset.py: Generate dataset to be used from ecoli dataset"""
 import pandas as pd
 
 DATASET = "ecoli"

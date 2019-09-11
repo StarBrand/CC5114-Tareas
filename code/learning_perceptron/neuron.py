@@ -1,7 +1,9 @@
+"""neuron.py: A generalization of the Learning Perceptron for any activation function"""
 from learning_perceptron import LearningPerceptron
 
 
 class Neuron(LearningPerceptron):
+    """Neuron Class: A learning perceptron with a given activation function"""
 
     def __init__(self, name: str, input_size: int,
                  activation_function: callable,
@@ -18,6 +20,12 @@ class Neuron(LearningPerceptron):
         self.activation_function = activation_function
 
     def feed(self, x_input: [float]) -> float:
+        """
+        Gives probability of probability of belong to a class
+
+        :param x_input: Input (aka attributes)
+        :return: Probability
+        """
         if len(x_input) != len(self.perceptron.w):
             raise ValueError("Number of input do not match declared number of input")
         ans = sum([w * x for w, x in zip(self.perceptron.w, x_input)]) + self.perceptron.b

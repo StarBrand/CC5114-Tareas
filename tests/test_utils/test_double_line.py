@@ -1,3 +1,4 @@
+"""test_double_line.py: unittest of DoubleLine"""
 from unittest import TestCase, main
 from utils.patterns import DoubleLine
 
@@ -13,6 +14,9 @@ EPSILON = 1e-6
 class TestDoubleLine(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.a_line = DoubleLine(M, N, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
         self.m = self.a_line.m
         self.n1 = self.a_line.line1.n

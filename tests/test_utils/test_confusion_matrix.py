@@ -1,3 +1,4 @@
+"""test_confusion_matrix.py: unittest of confusion matrix and evaluation functions"""
 from unittest import TestCase, main
 import numpy as np
 from utils.results import confusion_matrix
@@ -29,6 +30,9 @@ EPSILON = 1e-10
 class ConfusionMatrixTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         expected = [1.0] * CLASS_Y + [0.0] * CLASS_N
         actual = np.random.uniform(0.5, 1.0, Y_AS_Y).tolist()
         actual += np.random.uniform(0.0, 0.5, Y_AS_N).tolist()

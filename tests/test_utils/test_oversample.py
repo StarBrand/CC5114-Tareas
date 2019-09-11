@@ -1,3 +1,4 @@
+"""test_oversample.py: unittest of oversample and undersample methods"""
 import os
 import numpy as np
 from unittest import TestCase, main
@@ -11,6 +12,9 @@ TO_SIZE_TEST = 100
 class OversampleTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.dataset = import_data(DATASET)
         self.classes = np.unique(self.dataset[-1])
         maximum = 0

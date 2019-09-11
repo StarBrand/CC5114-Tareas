@@ -1,3 +1,4 @@
+"""test_circle.py: unittest of Circle"""
 from math import sqrt
 from random import uniform, randint
 from unittest import TestCase, main
@@ -13,6 +14,9 @@ EPSILON = 1e-6
 class TestCircle(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.a_circle = Circle(RADIUS, CENTER, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
         self.center_x = self.a_circle.k
         self.center_y = self.a_circle.h

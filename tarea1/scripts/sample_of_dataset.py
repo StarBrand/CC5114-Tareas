@@ -1,3 +1,4 @@
+"""sample_of_dataset.py: show performance of set methods"""
 from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
 from utils.preprocess_dataset import import_data, split_set, one_hot_encoding
@@ -7,7 +8,15 @@ FONT_SIZE = 12
 TITLE_SIZE = 20
 
 
-def format_axes(title: str, scale: int, ax: Axes):
+def format_axes(title: str, scale: int, ax: Axes) -> None:
+    """
+    Format axes of a matplotlib graph
+
+    :param title: Title
+    :param scale: Scale
+    :param ax: Axes of matplotlib
+    :return: None, modify ax
+    """
     ax.set_title("{}\n".format(title), fontsize=TITLE_SIZE)
     ax.set_aspect(aspect=str(6 * scale))
     ax.set_xlabel("Indexes", fontsize=FONT_SIZE)

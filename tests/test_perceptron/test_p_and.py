@@ -1,3 +1,4 @@
+"""test_p_and.py: unittest of PerceptronAnd"""
 import unittest
 from perceptron import PerceptronAnd
 
@@ -5,6 +6,9 @@ from perceptron import PerceptronAnd
 class AndTest(unittest.TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.perceptron_and = PerceptronAnd()
         self.x1 = [0, 1]
         self.x2 = [0, 1]

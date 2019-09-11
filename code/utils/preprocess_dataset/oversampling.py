@@ -1,9 +1,11 @@
+"""oversampling.py: Methods to oversample or undersample unbalanced dataset"""
+
 from __future__ import annotations
 import numpy as np
 import logging
 
 
-class Representation(object):
+class _Representation(object):
 
     def __init__(self, class_name: str, rows: np.ndarray, length: int):
         self.class_name = class_name
@@ -11,19 +13,35 @@ class Representation(object):
         self.length = length
         return
 
-    def __gt__(self, other: Representation) -> bool:
+    def __gt__(self, other: _Representation) -> bool:
         return self.length > other.length
 
-    def __lt__(self, other: Representation) -> bool:
+    def __lt__(self, other: _Representation) -> bool:
         return self.length < other.length
 
 
 def oversample(dataset: np.ndarray, to_size: int or None = None, label: int = -1) -> np.ndarray:
+    """
+    Oversample dataset
+
+    :param dataset: Dataset as numpy array
+    :param to_size: Size of output dataset, if None given, use size of most represented class
+    :param label: Column in which labels are on dataset
+    :return: Oversampled dataset
+    """
     logging.info("Oversampling...")
     return _sample(dataset, label, True, "most", to_size)
 
 
 def undersample(dataset: np.ndarray, to_size: int or None = None, label: int = -1) -> np.ndarray:
+    """
+    Undersample dataset
+
+    :param dataset: Dataset as numpy array
+    :param to_size: Size of output dataset, if None given, use size of most represented class
+    :param label: Column in which labels are on dataset
+    :return: Undersampled dataset
+    """
     logging.info("Undersampling...")
     return _sample(dataset, label, False, "less", to_size)
 
@@ -33,9 +51,9 @@ def _sample(dataset: np.ndarray, label: int, reverse: bool, sample_type: str, to
     classes = np.unique(dataset[label])
     for a_class in classes:
         temp = dataset[..., dataset[label] == a_class]
-        representation.append(Representation(a_class,
-                                             temp.copy(),
-                                             temp.shape[-1]))
+        representation.append(_Representation(a_class,
+                                              temp.copy(),
+                                              temp.shape[-1]))
     first = True
     target = 0
     new_dataset = np.array([])

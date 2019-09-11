@@ -1,3 +1,4 @@
+"""test_learning_perceptron.py: unittest of LearningPerceptron"""
 from unittest import TestCase, main
 import logging
 import numpy as np
@@ -10,14 +11,17 @@ EPSILON = 1e-10
 class TestLearningPerceptron(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.perceptron = LearningPerceptron("test", 4, 0.5)
         self.x_input = list(range(ARGUMENTS))
         self.w = self.perceptron.get_weights()[0].copy()
         self.b = self.perceptron.get_weights()[1]
 
     def test_get_weights(self):
-        assert len(self.perceptron.get_weights()[0]) == ARGUMENTS
-        assert type(self.perceptron.get_weights()[1]) == float
+        self.assertEqual(len(self.perceptron.get_weights()[0]), ARGUMENTS)
+        self.assertIsInstance(self.perceptron.get_weights()[1], float)
 
     def test_feed(self):
         logging.warning("Input: {}".format(self.x_input))

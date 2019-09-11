@@ -1,3 +1,4 @@
+"""test_cross_validation.py: unittest KFoldTrainer"""
 from unittest import TestCase, main
 from neural_network import NeuralNetwork
 from utils.results import KFoldTrainer
@@ -14,6 +15,9 @@ K = 10
 class KFoldTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         dataset = Circle(10, (0, 0), (-50, 50), (-50, 50)).training_set(SIZE)
         self.train_set = dataset[0:-1]
         self.labels = dataset[-1].reshape(1, -1)

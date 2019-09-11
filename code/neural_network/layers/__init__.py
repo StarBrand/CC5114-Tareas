@@ -1,3 +1,5 @@
+"""layers: package of Layer classes"""
+
 from neural_network.layers.layer import NeuronLayer
 from neural_network.layers.null_layer import NullLayer
 from neural_network.layers.sigmoid_layer import SigmoidLayer

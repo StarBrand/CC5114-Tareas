@@ -1,3 +1,4 @@
+"""test_perceptron_layer.py: unittest of PerceptronLayer"""
 from unittest import TestCase, main
 import numpy as np
 import logging
@@ -7,6 +8,9 @@ from neural_network.layers import PerceptronLayer
 class PerceptronTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.layer = PerceptronLayer(2, 1)
         self.w = self.layer.w.copy()
         self.b = self.layer.b.copy()

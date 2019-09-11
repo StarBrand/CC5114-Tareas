@@ -1,3 +1,5 @@
+"""normalized_network.py: NormalizedNetwork class"""
+
 import numpy as np
 from neural_network import NeuralNetwork
 
@@ -6,6 +8,7 @@ N_H = 1.0
 
 
 class NormalizedNetwork(NeuralNetwork):
+    """A NeuralNetwork with normalization of the input"""
 
     def __init__(self, input_size: int, size: [int], output_size: int, func: [str or callable], lr: float):
         super(NormalizedNetwork, self).__init__(input_size, size, output_size, func, lr)
@@ -13,6 +16,12 @@ class NormalizedNetwork(NeuralNetwork):
         self.d_l = np.array([])
 
     def feed_forward(self, x_input: np.ndarray) -> np.ndarray:
+        """
+        Feed forward, with normalized input
+
+        :param x_input: Input
+        :return: Output
+        """
         return super(NormalizedNetwork, self).feed_forward(
             self._normalize(x_input)
         )

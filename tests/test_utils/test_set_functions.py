@@ -1,3 +1,4 @@
+"""test_set_functions.py: unittest of set methods"""
 from unittest import TestCase, main
 import numpy as np
 from os import path
@@ -8,6 +9,9 @@ from utils.preprocess_dataset import split_set, import_data
 class FunctionTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         a_line = Line((1, 1), (0, 0), (-1, 1), (-1, 1))
         self.train_set = a_line.training_set(1000)
         self.file_path = path.dirname(path.abspath(__file__))

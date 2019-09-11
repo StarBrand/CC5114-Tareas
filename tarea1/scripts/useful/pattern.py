@@ -1,3 +1,4 @@
+"""pattern.py: Useful functions for patterns"""
 import numpy as np
 from matplotlib.axes import Axes
 from utils.patterns import Pattern
@@ -7,7 +8,16 @@ FONT_SIZE = 14
 
 def plot_result(x_input: np.ndarray, prediction: np.ndarray, pattern: Pattern,
                 ax: Axes or None = None, up_to: float = 0.5) -> float:
+    """
+    Plot result of a prediction over a pattern
 
+    :param x_input: Input (a set of points)
+    :param prediction: Prediction (outside or above)
+    :param pattern: pattern used
+    :param ax: Axes in which graph will be added
+    :param up_to: Value to be consider as threshold of prediction
+    :return: Accuracy
+    """
     x1 = []
     y1 = []
     x2 = []

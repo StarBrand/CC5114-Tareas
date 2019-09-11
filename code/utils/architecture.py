@@ -1,3 +1,4 @@
+"""architecture.py: dictionaries defining three network architectures to be used"""
 from utils.math_functions import tanh, sigmoid
 
 

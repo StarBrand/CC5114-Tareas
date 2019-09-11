@@ -1,9 +1,11 @@
+"""circle.py: Circle Pattern class"""
 import numpy as np
 from math import sqrt, pow
 from utils.patterns import Pattern
 
 
 class Circle(Pattern):
+    """Circle, define points inside and outside a circle"""
 
     def __init__(self, radius: float, center: (float, float), x_range: (float, float), y_range: (float, float)):
         radius = abs(radius)
@@ -17,12 +19,24 @@ class Circle(Pattern):
         self.h = center[1]
 
     def x_to_y(self, x: float) -> [float]:
+        """
+        Gives y values from x value
+
+        :param x: abscissa coordinate
+        :return: ordinate coordinate
+        """
         aux = pow(self.r, 2) - pow(x - self.k, 2)
         if aux < 0:
             return []
         return [self.h - sqrt(aux), self.h + sqrt(aux)]
 
     def y_to_x(self, y: float) -> [float]:
+        """
+        Gives x values from y value
+
+        :param y: ordinate coordinate
+        :return: abscissa coordinate
+        """
         aux = pow(self.r, 2) - pow(y - self.h, 2)
         if aux < 0:
             return []
@@ -30,6 +44,13 @@ class Circle(Pattern):
 
     # outside
     def is_above(self, x: float, y: float) -> bool:
+        """
+        Return if a given point is outside of circle
+
+        :param x: x coordinate
+        :param y: y coordinate
+        :return: Whether the point is outside
+        """
         ans = True
         for index, y_candid in enumerate(self.x_to_y(x)):
             if index == 0:
@@ -39,6 +60,11 @@ class Circle(Pattern):
         return ans
 
     def graph(self) -> ([float], [float]):
+        """
+        Gives values to be graph
+
+        :return: Two arrays to be used for graphic pattern
+        """
         start = max(self.x_range[0], self.k - self.r)
         end = min(self.x_range[1], self.k + self.r)
         x_in = list(np.linspace(start, end, int(1e6)))

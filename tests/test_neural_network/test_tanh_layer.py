@@ -1,3 +1,4 @@
+"""test_tanh_layer.py: unittest of TanhLayer"""
 from unittest import TestCase, main
 import numpy as np
 from neural_network.layers import TanhLayer
@@ -6,6 +7,9 @@ from neural_network.layers import TanhLayer
 class TanhTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.tanh_layer = TanhLayer(2, 1)
         self.w = self.tanh_layer.w
         self.b = self.tanh_layer.b

@@ -1,3 +1,4 @@
+"""neuron_on_iris.py: show performance of a neuron on iris dataset"""
 import matplotlib.pyplot as plt
 import numpy as np
 import logging

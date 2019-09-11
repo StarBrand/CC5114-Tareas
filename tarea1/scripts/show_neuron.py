@@ -1,3 +1,4 @@
+"""show_neuron.py: Show Neuron performance"""
 import matplotlib.pyplot as plt
 import numpy as np
 import logging

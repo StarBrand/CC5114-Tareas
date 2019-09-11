@@ -1,3 +1,4 @@
+"""test_utils.py: unittest of utils package"""
 from test_utils.test_line import TestLine
 from test_utils.test_double_line import TestDoubleLine
 from test_utils.test_circle import TestCircle

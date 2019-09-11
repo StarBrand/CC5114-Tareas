@@ -1,3 +1,4 @@
+"""test_p_or.py: unittest of PerceptronOr"""
 import unittest
 from perceptron import PerceptronOr
 
@@ -5,6 +6,9 @@ from perceptron import PerceptronOr
 class OrTest(unittest.TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.perceptron_or = PerceptronOr()
         self.x1 = [0, 1]
         self.x2 = [0, 1]

@@ -1,3 +1,4 @@
+"""test_activation_functions.py: unittest of activations functions"""
 from unittest import TestCase, main
 import numpy as np
 import logging
@@ -10,6 +11,9 @@ EPSILON = 1e-10
 class ActivationFunctionTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.big = 1e2000000
         self.small = -1e2000000
         self.number = uniform(-10, 10)
@@ -21,6 +25,13 @@ class ActivationFunctionTest(TestCase):
 
     @staticmethod
     def expect_exception(func: callable, x: np.ndarray or None, output: np.ndarray or None):
+        """
+        Generic method to assert exception
+
+        :param func: Function that rise exception
+        :param x: x
+        :param output: output
+        """
         test = False
         try:
             derivative[func](x=x, output=output)

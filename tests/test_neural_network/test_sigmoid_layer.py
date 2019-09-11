@@ -1,3 +1,4 @@
+"""test_sigmoid_layer.py: unittest of SigmoidLayer"""
 from unittest import TestCase, main
 import numpy as np
 from neural_network.layers import SigmoidLayer
@@ -6,6 +7,9 @@ from neural_network.layers import SigmoidLayer
 class SigmoidTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.sigmoid = SigmoidLayer(2, 1)
         self.w = self.sigmoid.w
         self.b = self.sigmoid.b

@@ -1,3 +1,4 @@
+"""test_standard_trainer.py: unittest of StandardTrainer"""
 import logging
 from unittest import TestCase, main
 from neural_network import NeuralNetwork
@@ -15,6 +16,9 @@ EPSILON = 1e-10
 class StandardTrainerTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         dataset = Circle(10, (0, 0), (-50, 50), (-50, 50)).training_set(SIZE)
         self.dataset_shape = dataset.shape
         self.train_set = dataset[0:-1]

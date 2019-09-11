@@ -1,14 +1,14 @@
+"""network_on_iris.py: show performance of a neural network on iris dataset"""
 import matplotlib.pyplot as plt
 import numpy as np
 import logging
 from argparse import ArgumentParser
 from random import seed
 from neural_network import NeuralNetwork, NormalizedNetwork
-from useful import show_matrix
 from utils.math_functions import sigmoid, tanh
 from utils.preprocess_dataset import import_data, one_hot_encoding
 from utils.results import StandardTrainer, KFoldTrainer
-from utils.results import confusion_matrix, accuracy, precision, recall, f1_score
+from utils.results import confusion_matrix, accuracy, precision, recall, f1_score, show_matrix
 
 FIG_SIZE = (20 * 2, 20)
 TITLE_SIZE = 40

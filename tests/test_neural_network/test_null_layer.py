@@ -1,11 +1,15 @@
+"""test_null_layer.py: unittest of NullLayer"""
 from unittest import TestCase, main
 import numpy as np
-from neural_network import NullLayer
+from neural_network.layers import NullLayer
 
 
 class NullLayerTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.layer = NullLayer()
 
     def test_get(self):

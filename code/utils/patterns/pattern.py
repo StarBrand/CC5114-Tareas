@@ -1,3 +1,4 @@
+"""pattern.py: Pattern ABC"""
 import numpy as np
 from matplotlib.axes import Axes
 from random import uniform
@@ -5,6 +6,7 @@ from abc import ABC, abstractmethod
 
 
 class Pattern(ABC):
+    """Pattern ABC, defines needed methods"""
 
     def __init__(self, x_range: (float, float), y_range: (float, float), name: str):
         assert (x_range[1] - x_range[0]) > 0
@@ -15,25 +17,61 @@ class Pattern(ABC):
 
     @abstractmethod
     def x_to_y(self, x: float) -> [float]:
-        return
+        """
+        Gives y values from x value
+
+        :param x: abscissa coordinate
+        :return: ordinate coordinate
+        """
+        pass
 
     @abstractmethod
     def y_to_x(self, y: float) -> [float]:
-        return
+        """
+        Gives x values from y value
+
+        :param y: ordinate coordinate
+        :return: abscissa coordinate
+        """
+        pass
 
     @abstractmethod
     def is_above(self, x: float, y: float) -> bool:
-        return
+        """
+        Return if a given point is above pattern
+
+        :param x: x coordinate
+        :param y: y coordinate
+        :return: Whether the point is above
+        """
+        pass
 
     @abstractmethod
     def graph(self) -> ([float], [float]):
-        return
+        """
+        Gives values to be graph
+
+        :return: Two arrays to be used for graphic pattern
+        """
+        pass
 
     def add_results(self, ax: Axes) -> None:
+        """
+        Add pattern to a Axes figure on matplotlib
+
+        :param ax: Axes in which results will be inserted
+        :return: None (update ax)
+        """
         x, y = self.graph()
         ax.plot(x, y, "-", label=self.name)
 
     def training_set(self, size: int) -> [(float, float, bool)]:
+        """
+        Generates training set with random points and labels of pattern
+
+        :param size: Size of training set
+        :return: Dataset of patter
+        """
         out = []
         for i in range(size):
             x = uniform(self.x_range[0], self.x_range[1])

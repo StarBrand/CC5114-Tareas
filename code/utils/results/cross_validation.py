@@ -1,3 +1,4 @@
+"""cross_validation.py: Trainer of Neural Network that evaluates using kFold cross validation"""
 import numpy as np
 import logging
 from copy import deepcopy
@@ -7,6 +8,8 @@ from utils.results import Trainer
 
 
 class KFoldTrainer(Trainer, KFold):
+    """KFoldTrainer class, Trainer who evaluate using KFold cross validation
+    Extend KFold from sklearn package"""
 
     def __init__(self, k: int, seed: int, train_set: np.ndarray, labels: np.ndarray):
         super(KFoldTrainer, self).__init__(k, True, seed)
@@ -18,6 +21,14 @@ class KFoldTrainer(Trainer, KFold):
 
     def train(self, neural_network: NeuralNetwork, epochs: int = 1, repeat: bool = False)\
             -> (NeuralNetwork, ([float], [float])):
+        """
+        Train Neural network. Due to kFold characteristics, this train current set
+
+        :param neural_network: network to be trained
+        :param epochs: Number of epochs of training
+        :param repeat: Whether use the same dataset on each epoch
+        :return: Trained neural network and tuple with learning data and cost data
+        """
         to_train = deepcopy(neural_network)
         if self.i >= self.k:
             logging.error("No more training iterations!!")
@@ -32,6 +43,12 @@ class KFoldTrainer(Trainer, KFold):
         return to_train, metrics
 
     def evaluate(self, neural_network: NeuralNetwork) -> np.ndarray:
+        """
+        Evaluate neural network on test set (just current set of k set generated)
+
+        :param neural_network: Network to be evaluated
+        :return: Prediction
+        """
         if self.i - 1 >= self.k:
             logging.error("No more training iterations!!")
             return np.array([])
@@ -42,6 +59,11 @@ class KFoldTrainer(Trainer, KFold):
         )
 
     def get_labels(self) -> np.ndarray:
+        """
+        Get labels of test set (current set)
+
+        :return: labels of test set
+        """
         if self.i - 1 >= self.k:
             logging.error("No more training iterations!!")
             return np.array([])

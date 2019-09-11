@@ -1,3 +1,4 @@
+"""test_p_sum.py: unittest of PerceptronSum"""
 import unittest
 from perceptron import PerceptronSum
 
@@ -5,6 +6,9 @@ from perceptron import PerceptronSum
 class SumTest(unittest.TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.perceptron_sum = PerceptronSum()
         self.x1 = [0, 1]
         self.x2 = [0, 1]

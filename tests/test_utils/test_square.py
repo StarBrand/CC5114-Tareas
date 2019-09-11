@@ -1,3 +1,4 @@
+"""test_square.py: unittest of Square"""
 from random import uniform
 from unittest import TestCase, main
 from utils.patterns import Square
@@ -12,6 +13,9 @@ EPSILON = 1e-6
 class TestSquare(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.a_square = Square(FACE, CENTER, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
         self.x_min = self.a_square.x_min
         self.x_max = self.a_square.x_max
@@ -22,11 +26,11 @@ class TestSquare(TestCase):
         ans1 = False
         ans2 = False
         try:
-            c = Square(110, CENTER, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
+            Square(110, CENTER, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
         except AssertionError:
             ans1 = True
         try:
-            c = Square(10, (60, 0), (MIN_X, MAX_X), (MIN_Y, MAX_Y))
+            Square(10, (60, 0), (MIN_X, MAX_X), (MIN_Y, MAX_Y))
         except AssertionError:
             ans2 = True
         assert ans1

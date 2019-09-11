@@ -1,3 +1,4 @@
+"""show_learning_perceptron.py: Show Learning Perceptron performance"""
 import matplotlib.pyplot as plt
 import numpy as np
 import logging

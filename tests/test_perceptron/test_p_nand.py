@@ -1,3 +1,4 @@
+"""test_p_nand.py: unittest of PerceptronNand"""
 import unittest
 from perceptron import PerceptronNand
 
@@ -5,6 +6,9 @@ from perceptron import PerceptronNand
 class NandTest(unittest.TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.perceptron_nand = PerceptronNand()
         self.x1 = [0, 1]
         self.x2 = [0, 1]

@@ -1,3 +1,4 @@
+"""test_layer_factory.py: unittest of LayerFactory"""
 from unittest import TestCase, main
 import numpy as np
 from neural_network.layers import LayerFactory
@@ -9,6 +10,9 @@ EPSILON = 1e-10
 class TestFactory(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.test_number = np.random.uniform(-1e3, 1e3, (2, 50))
 
     def test_create_sigmoid_from_str(self):
@@ -113,6 +117,12 @@ class TestFactory(TestCase):
 
     @staticmethod
     def some_function(an_input: np.ndarray) -> np.ndarray:
+        """
+        An activation function for Exception test purpose
+
+        :param an_input: An input
+        :return: Random array of input shape (first two dimensions)
+        """
         return np.random.rand(an_input.shape[0], an_input.shape[1])
 
 

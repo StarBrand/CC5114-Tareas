@@ -1,12 +1,25 @@
+"""layer_factory.py: LayerFactory Class"""
+
 import logging
 from neural_network.layers import NeuronLayer, SigmoidLayer, TanhLayer, PerceptronLayer
 from utils.math_functions import derivative
 
 
 class LayerFactory(object):
+    """Layer Factory, as factory pattern"""
 
     @staticmethod
     def create_layer(parameter: str or callable, input_size: int, output_size: int) -> NeuronLayer:
+        """
+        Create layer with activation function given, as string or function itself
+        If function not registered, layer is not going to have transverse derivative
+        This could raise an Exception unless transverse derivative is given after initialization
+
+        :param parameter: Activate function as string or function itself
+        :param input_size: Size of input
+        :param output_size: Size of output (aka number of neurons)
+        :return: A concrete NeuronLayer
+        """
         if type(parameter) == str:
             return LayerFactory._from_str(parameter, input_size, output_size)
         else:

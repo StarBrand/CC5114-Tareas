@@ -1,3 +1,4 @@
+"""test_neuron.py: unittest of Neuron"""
 from unittest import TestCase, main
 import logging
 import numpy as np
@@ -12,6 +13,9 @@ np.random.seed(2)
 class NeuronTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.input = np.random.uniform(-10.0, 10.0, ARGUMENT).tolist()
         self.sigmoid = Neuron("sigmoid neuron", ARGUMENT, sigmoid, 0.5)
         self.tanh = Neuron("tanh neuron", ARGUMENT, tanh, 0.5)
@@ -59,6 +63,13 @@ class NeuronTest(TestCase):
         assert not abs(fail - actual) < EPSILON
 
     def get_expected(self, function: callable, weights: ([float], float)):
+        """
+        Recurrent method for evaluate output
+
+        :param function:
+        :param weights:
+        :return:
+        """
         ans = weights[1]
         for i, x in enumerate(self.input):
             ans += weights[0][i] * x

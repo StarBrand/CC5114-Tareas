@@ -1,3 +1,4 @@
+"""test_perceptron: unittest of perceptron package"""
 from test_perceptron.test_p_and import AndTest
 from test_perceptron.test_p_or import OrTest
 from test_perceptron.test_p_nand import NandTest

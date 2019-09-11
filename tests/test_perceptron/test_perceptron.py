@@ -1,3 +1,4 @@
+"""test_perceptron.py: unittest of Perceptron"""
 from unittest import TestCase, main
 import numpy as np
 import logging
@@ -10,6 +11,9 @@ EPSILON = 1e-13
 class PerceptronTest(TestCase):
 
     def setUp(self) -> None:
+        """
+        Sets up unittest
+        """
         self.x = np.random.randint(0.0, 1.0, 4).tolist()
         self.perceptron = Perceptron("right perceptron", ARGUMENTS)
 
