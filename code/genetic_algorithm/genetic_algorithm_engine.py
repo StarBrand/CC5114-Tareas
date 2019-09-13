@@ -4,9 +4,10 @@ from __future__ import annotations
 import logging
 from random import randint
 from copy import deepcopy
-from genetic_algorithm import Individual
+from genetic_algorithm import Individual, GAResult
 
 TOURNAMENT_SIZE = 5
+MAX_GENERATIONS = 1000
 
 
 class GAEngine(object):
@@ -17,6 +18,8 @@ class GAEngine(object):
         self.population = list()
         self.fitness = list()
         self.selected = False
+        self.generation = 0
+        self.result = GAResult()
         return
 
     def initialize_population(self, size: int) -> None:
@@ -26,19 +29,22 @@ class GAEngine(object):
         :param size: Size of population
         :return: None
         """
+        self.result = GAResult()
         self.selected = False
         if len(self.population) != 0:
             logging.warning("Actual population was erased and a new one was generated")
         self.population.clear()
         for _ in range(size):
             self.population.append(self.the_first_one.generate_individual())
+        self.generation = 1
         return
 
-    def evaluate_fitness(self) -> None:
+    def evaluate_fitness(self, register: bool = False) -> None:
         """
         Evaluate fitness of every Individual on population
 
         :raise: RuntimeError in case there is no population
+        :param: register: register max fitness found
         :return: None
         """
         self.selected = False
@@ -47,23 +53,27 @@ class GAEngine(object):
         self.fitness.clear()
         for index, _ in enumerate(self.population):
             self.fitness.append(self.population[index].fitness())
+        if register:
+            self.result.register_score(max(self.fitness), generation=self.generation)
         return
 
-    def solution_found(self, expected: float, acceptable: float = 0.0) -> bool:
+    def solution_found(self, expected: float, acceptable: float = 0.0, log: bool = False) -> bool:
         """
         Indicates whether the solution was found
 
         :param expected: Expected fitness to be found
         :param acceptable: Acceptable difference between score and expectation
+        :param log: Show logging (info)
         :return: Logical value of proposition: "Solution is found"
         """
         if len(self.fitness) == 0:
             logging.warning("No solution found, due to fitness has not been calculated")
             return False
-        for score in self.fitness:
-            if expected - score <= acceptable:
-                return True
-        return False
+        close = max(self.population)
+        if log:
+            logging.info("Closed word: {}".format("".join(close.chromosome)))
+        score = close.my_fitness
+        return expected - score <= acceptable
 
     def selection(self, tournament_size: int = TOURNAMENT_SIZE) -> None:
         """
@@ -105,9 +115,38 @@ class GAEngine(object):
             except IndexError:
                 next_gen.append(parent_one)
         self.population = next_gen.copy()
+        self.generation += 1
         if not self.selected:
             logging.warning("Population was reproduced, but without selection, population size will mismatch")
         return None
+
+    def run_genetic_algorithm(self, expected_score: float, population_size: int, log: bool = False,
+                              acceptable: float = 0.0, max_generation: int = MAX_GENERATIONS,
+                              tournament_size: int = TOURNAMENT_SIZE) -> GAResult:
+        """
+        Run genetic algorithm
+
+        :param expected_score: Score to reach
+        :param population_size: Population size (number of Individuals)
+        :param log: Show logging (info)
+        :param acceptable: Acceptable difference to consider algorithm find a solution
+        :param max_generation: Maximum number of generation to consider algorithm fail and end it
+        :param tournament_size: Size of tournament for selection
+        :return: Result to be exported
+        """
+        self.initialize_population(population_size)
+        while True:
+            if log:
+                logging.info("Generation {}".format(self.generation))
+            self.evaluate_fitness(register=True)
+            if self.solution_found(expected_score, acceptable=acceptable, log=log):
+                self.result.ready_to_export(max(self.population), True)
+                return self.result
+            if self.generation == max_generation:
+                self.result.ready_to_export(max(self.population), False)
+                return self.result
+            self.selection(tournament_size=tournament_size)
+            self.reproduction()
 
     def __len__(self):
         return len(self.population)

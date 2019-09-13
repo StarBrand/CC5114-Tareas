@@ -86,3 +86,13 @@ class Individual(ABC):
 
     def __len__(self):
         return len(self.chromosome)
+
+    def __eq__(self, other: Individual) -> bool:
+        if isinstance(other, Individual):
+            return (self.chromosome == other.chromosome
+                    and self.genes == other.genes
+                    and self.fitness_function == other.fitness_function
+                    and self.my_fitness == other.my_fitness
+                    and self.mutation_rate == other.mutation_rate)
+        else:
+            return False
