@@ -21,8 +21,8 @@ def annotate(ax: Axes, label_matrix: np.ndarray, font_size: int, add_label: np.n
             ax.text(j, i, text_to_show, ha="center", va="center", fontsize=font_size)
 
 
-def show_matrix(ax: Axes, matrix: np.ndarray, ax_label: ([str], [str]), title: str,
-                font_size: int, title_size: int, add_label: np.ndarray or None = None) -> None:
+def show_matrix(ax: Axes, matrix: np.ndarray, ax_label: ([str], [str]), title: str, font_size: int, title_size: int,
+                color_map: str or None = None, add_label: np.ndarray or None = None) -> None:
     """
     Show matrix adding it to ax
 
@@ -32,10 +32,14 @@ def show_matrix(ax: Axes, matrix: np.ndarray, ax_label: ([str], [str]), title: s
     :param title: Title
     :param font_size: Size of test
     :param title_size: Size of title
+    :param color_map: Colormap from matplotlib, if not provided, default colormap (viridis)
     :param add_label: Name of classes
     :return: None, modify ax
     """
-    ax.matshow(matrix)
+    if color_map is not None:
+        ax.matshow(matrix, cmap=color_map)
+    else:
+        ax.matshow(matrix)
     annotate(ax, matrix, title_size, add_label)
     ax.set_xticklabels([""] + ax_label[0], fontsize=font_size)
     ax.set_yticklabels([""] + ax_label[1], fontsize=font_size)
