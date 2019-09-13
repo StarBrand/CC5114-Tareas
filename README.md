@@ -88,5 +88,24 @@ Código:
 2. Entrenamiento
 3. Backpropagation
 
-## Clase 08:
+## Clase 08: Algoritmo genético
+
+### Temas
+
+1. Premisa
+2. Algoritmos evolutivos
+3. Algoritmo genético
+4. Terminología
+5. Ejemplo
+6. Pasos: inicio, calculo de *fitness*, selección, reprodución
+
+### Ejercicios
+
+Código: [`code/genetic_algorithm`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_algorithm)
+
+Tests unitarios: [`tests/test_genetic_algorithm`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm)
+
+Ejecutables: [`tarea2/script/show_word_guesser`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/show_word_guesser.py), [`tarea2/script/show_sentence_guesser`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/show_sentence_guesser.py), [`tarea2/script/evaluate_ga_engine_population`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_population.py), [`tarea2/script/evaluate_ga_engine_mutation`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_mutation.py) y [`tarea2/script/evaluate_ga_engine_heatmap`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_heatmap.py)
+
+## Clase 09:
 
