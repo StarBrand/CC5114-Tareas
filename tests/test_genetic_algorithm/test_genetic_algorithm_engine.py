@@ -55,18 +55,17 @@ class GAEngineTest(TestCase):
 
     def test_initialize_population(self):
         actual_population = self.ga_engine.population
-        self.assertEqual(len(actual_population), POPULATION_SIZE, "Population size mismatch")
-        self.assertEqual(len(self.ga_engine), POPULATION_SIZE, "Population size mismatch")
+        self.assertEqual(POPULATION_SIZE, len(actual_population), "Population size mismatch")
+        self.assertEqual(POPULATION_SIZE, len(self.ga_engine), "Population size mismatch")
         for _ in range(RANDOM_TEST):
             i = randint(0, POPULATION_SIZE - 1)
             self.assertIsInstance(actual_population[i], TesterIndividual, "Population of unexpected class")
 
     def test_evaluate_fitness(self):
+        self.assertLessEqual(self.ga_engine.solution_found(0.0), False, "Not always return false if not evaluated")
         self.ga_engine.evaluate_fitness()
         fitness = self.ga_engine.fitness
         self.assertEqual(len(fitness), POPULATION_SIZE, "Wrong number of fitness calculated")
-        score = max(fitness)
-        expected_score = 90
         expected_score = 90
         self.assertFalse(self.ga_engine.solution_found(expected_score), "Solution not found")
         expected_score = 70
@@ -106,6 +105,32 @@ class GAEngineTest(TestCase):
         self.ga_engine.population.clear()
         with self.assertRaises(RuntimeError):
             self.ga_engine.evaluate_fitness()
+        odd = 13
+        self.ga_engine.initialize_population(odd)
+        self.ga_engine.reproduction()
+        expected = int(odd / 2) + 1
+        self.assertEqual(expected, len(self.ga_engine))
+
+    def test_initialize_again(self):
+        self.assertEqual(POPULATION_SIZE, len(self.ga_engine), "Population size mismatch")
+        self.ga_engine.initialize_population(100)
+        self.assertEqual(100, len(self.ga_engine), "Population not over-generated")
+
+    def test_run_no_solution(self):
+        expected = 1e10  # unreachable
+        max_generation = 10
+        result = self.ga_engine.run_genetic_algorithm(expected, 10, max_generation=max_generation)
+        generations = result.get_generations()[-1]
+        found = result.found_solution
+        self.assertEqual(max_generation, generations, "Not stop when supposed to")
+        self.assertFalse(found, "Found it")
+
+    def test_run_solution(self):
+        expected = 50  # reachable
+        result = self.ga_engine.run_genetic_algorithm(expected, 100)
+        generations = result.get_generations()[-1]
+        self.assertTrue(result.found_solution, "Solution not found")
+        self.assertLessEqual(generations, 1000, "Run more than needed")
 
 
 if __name__ == '__main__':
