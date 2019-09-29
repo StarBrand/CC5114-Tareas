@@ -1,4 +1,4 @@
-"""binary_calculator.py: BinaryGuesser class"""
+"""binary_calculator.py: BinaryCalculator class"""
 from math import pow
 from random import choice, uniform
 from genetic_algorithm.individuals import Individual
