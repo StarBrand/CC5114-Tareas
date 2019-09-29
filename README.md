@@ -105,7 +105,37 @@ Código: [`code/genetic_algorithm`](https://github.com/StarBrand/CC5114-Tareas/t
 
 Tests unitarios: [`tests/test_genetic_algorithm`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm)
 
-Ejecutables: [`tarea2/script/show_word_guesser`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/show_word_guesser.py), [`tarea2/script/show_sentence_guesser`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/show_sentence_guesser.py), [`tarea2/script/evaluate_ga_engine_population`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_population.py), [`tarea2/script/evaluate_ga_engine_mutation`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_mutation.py) y [`tarea2/script/evaluate_ga_engine_heatmap`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_heatmap.py)
+Ejecutables: [`tarea2/script/evaluate_ga_engine_population`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_population.py), [`tarea2/script/evaluate_ga_engine_mutation`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_mutation.py) y [`tarea2/script/evaluate_ga_engine_heatmap`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/evaluate_ga_engine_heatmap.py)
+
+[`tarea2/script/show_ga_example`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/show_ga_example.py)	Argumentos: `-t 0` [*Word Guesser*], `-t 1 -m 0.05` [*Sentence Guesser*]
 
 ## Clase 09:
+
+### Temas
+
+1. Beneficios de los algoritmos genéticos
+2. Ejemplo: códigos binarios
+3. Ejemplo: *Traveling Salesman Problem* (Problema del vendedor viajero)
+
+### Ejercicios
+
+Código: [`code/genetic_algorithm/individuals/binary_calculator`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_algorithm/individuals/binary_calculator.py), [`code/genetic_algorithm/individuals/travel_path`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_algorithm/individuals/travel_path.py)
+
+Tests unitarios: [`tests/test_genetic_algorithm/test_binary_calculator`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_algorithm/test_binary_calculator.py), [`tests/test_genetic_algorithm/test_travel_path`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_algorithm/test_travel_path.py)
+
+Ejecutable: [`tarea2/script/show_ga_example`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/show_ga_example.py)	Argumentos: `-t 2` [*Binary Encoding*], `-t 3 -e 20` [*TSP*]
+
+## Clase 10:
+
+### Temas
+
+### Ejercicios
+
+Código:
+
+Tests unitarios: 
+
+## Clase 11:
+
+### Temas
 
