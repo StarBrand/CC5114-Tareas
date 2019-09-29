@@ -1,7 +1,7 @@
 """sentence_guesser.py: SentenceGuesser class"""
 import string
 from random import choice, uniform
-from genetic_algorithm import Individual
+from genetic_algorithm.individuals import Individual
 
 
 def _fitness(sentence: [str], expected_sentence: str) -> float:
@@ -33,16 +33,6 @@ class SentenceGuesser(Individual):
         :return: New word guesser
         """
         return SentenceGuesser(self.mutation_rate, self.sentence_to_guess)
-
-    def get_allele(self, gene: str) -> object:
-        """
-        Get allele (characteristics) of name 'gene'
-
-        :param gene: Name of gene
-        :return: The characteristics of the individual
-        """
-        index = self.genes.index(gene)
-        return self.chromosome[index]
 
     def mutate(self) -> None:
         """

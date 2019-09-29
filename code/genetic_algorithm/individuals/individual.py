@@ -23,7 +23,6 @@ class Individual(ABC):
         """
         pass
 
-    @abstractmethod
     def get_allele(self, gene: str) -> object:
         """
         Get allele (characteristics) of name 'gene'
@@ -31,7 +30,8 @@ class Individual(ABC):
         :param gene: Name of gene
         :return: The characteristics of the individual
         """
-        pass
+        index = self.genes.index(gene)
+        return self.chromosome[index]
 
     def fitness(self) -> float:
         """

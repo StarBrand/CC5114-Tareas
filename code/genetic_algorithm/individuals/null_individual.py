@@ -1,7 +1,7 @@
 """individual.py: NullIndividual to initialize GAResult"""
 
 from __future__ import annotations
-from genetic_algorithm import Individual
+from genetic_algorithm.individuals import Individual
 
 
 def _null_function() -> float:
