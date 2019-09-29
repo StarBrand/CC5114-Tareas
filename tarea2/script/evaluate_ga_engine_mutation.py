@@ -4,7 +4,8 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 from random import seed
-from genetic_algorithm import GAEngine, WordGuesser
+from genetic_algorithm import GAEngine
+from genetic_algorithm.individuals import WordGuesser
 
 WORD_TO_GUESS = "algorithm"
 SCORE = len(WORD_TO_GUESS)

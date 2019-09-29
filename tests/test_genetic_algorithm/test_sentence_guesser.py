@@ -1,47 +1,42 @@
 """test_sentence_guesser.py: unittest of SentenceGuesser"""
-from unittest import TestCase, main
+from test_genetic_algorithm import IndividualTest
+from unittest import main
 from random import seed
 from copy import deepcopy
-from genetic_algorithm import SentenceGuesser
+from genetic_algorithm.individuals import SentenceGuesser
 
-WORD = "We typically think of databases, queues, caches, etc. as being very different categories of tools."
-LENGTH = len(WORD)
+SENTENCE = "We typically think of databases, queues, caches, etc. as being very different categories of tools."
+LENGTH = len(SENTENCE)
 
 
-class SentenceGuesserTest(TestCase):
+class SentenceGuesserTest(IndividualTest):
 
     def setUp(self) -> None:
         """
         Sets up unittest
         """
-        self.individual = SentenceGuesser(0.3, WORD)
+        self.individual = SentenceGuesser(0.03, SENTENCE)
+        self.stable_one = SentenceGuesser(0.0, SENTENCE)
 
     def test_constructor(self):
-        self.assertEqual(LENGTH, len(self.individual), "Length mismatch")
-        self.assertEqual(LENGTH, len(self.individual.chromosome), "Chromosome mismatch")
-        self.assertEqual(LENGTH, len(self.individual.genes), "Genes mismatch")
+        self.std_test_constructor(LENGTH, LENGTH)
 
     def test_generate_individual(self):
-        new_one = self.individual.generate_individual()
-        self.assertEqual(LENGTH, len(new_one), "Length mismatch")
-        self.assertEqual(LENGTH, len(new_one.chromosome), "Chromosome mismatch")
-        self.assertEqual(LENGTH, len(new_one.genes), "Genes mismatch")
+        self.std_test_generate_individual(LENGTH, LENGTH)
 
     def test_crossover(self):
         seed(10)
-        new_one = self.individual.generate_individual()
-        new_one.mutation_rate = 0.0
-        self.individual.mutation_rate = 0.0
-        child = self.individual.crossover(new_one)
-        expected_child = self.individual.chromosome[0: 4] + new_one.chromosome[4: LENGTH]
-        print(expected_child)
-        print(child.chromosome)
-        self.assertEqual(expected_child, child.chromosome, "Wrong Child")
+        first_new_one = self.individual.generate_individual()
+        first_expected_child = self.individual.chromosome[0: 46] + first_new_one.chromosome[46: LENGTH]
+        """mutations..."""
+        first_expected_child[26] = "u"
+        """end mutations"""
+        second_new_one = self.stable_one.generate_individual()
+        second_expected_child = self.stable_one.chromosome[0: 55] + second_new_one.chromosome[55: LENGTH]
+        self.std_test_crossover(first_expected_child, second_expected_child, first_new_one, second_new_one)
 
     def test_get_allele(self):
-        expected = self.individual.chromosome[2]
-        actual = self.individual.get_allele("2")
-        self.assertEqual(expected, actual, "Wrong allele")
+        self.std_test_get_allele("2")
 
     def test_mutate(self):
         prev = deepcopy(self.individual)

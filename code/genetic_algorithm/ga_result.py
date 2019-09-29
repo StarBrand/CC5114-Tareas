@@ -1,5 +1,5 @@
 """ga_result.py: GAResult class"""
-from genetic_algorithm import Individual, NullIndividual
+from genetic_algorithm.individuals import Individual, NullIndividual
 
 
 class GAResult(object):

@@ -1,7 +1,8 @@
 """test_genetic_algorithm_engine.py: unittest of GAEngine"""
 from random import seed, randint, gauss
 from unittest import TestCase, main
-from genetic_algorithm import GAEngine, Individual
+from genetic_algorithm import GAEngine
+from genetic_algorithm.individuals import Individual
 
 RANDOM_TEST = 5
 POPULATION_SIZE = 100
@@ -40,6 +41,36 @@ class TesterIndividual(Individual):
         test version (docstring in Individual)
         """
         self.my_fitness = self.fitness_function(50, 10)
+        return self.my_fitness
+
+
+def _zero():
+    return 0.0
+
+
+class TesterEquilibrium(TesterIndividual):
+    """
+    To test equilibrium on GA engine
+    """
+    def __init__(self):
+        super(TesterEquilibrium, self).__init__()
+        self.fitness_function = _zero
+
+    def generate_individual(self) -> Individual:
+        """
+        Return TesterEquilibrium instead of TesterIndividual
+
+        :return: TesterEquilibrium
+        """
+        return TesterEquilibrium()
+
+    def fitness(self) -> float:
+        """
+        Return 0
+
+        :return: 0
+        """
+        self.my_fitness = self.fitness_function()
         return self.my_fitness
 
 
@@ -131,6 +162,16 @@ class GAEngineTest(TestCase):
         generations = result.get_generations()[-1]
         self.assertTrue(result.found_solution, "Solution not found")
         self.assertLessEqual(generations, 1000, "Run more than needed")
+
+    def test_run_equilibrium(self):
+        expected = 1e10  # unreachable
+        max_generation = 10
+        self.ga_engine.the_first_one = TesterEquilibrium()
+        result = self.ga_engine.run_genetic_algorithm(expected, 100, equilibrium=max_generation)
+        generations = result.get_generations()[-1]
+        found = result.found_solution
+        self.assertEqual(max_generation, generations, "Not stop when supposed to")
+        self.assertFalse(found, "Found it")
 
 
 if __name__ == '__main__':

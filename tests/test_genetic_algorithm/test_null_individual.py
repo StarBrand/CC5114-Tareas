@@ -4,7 +4,7 @@ import string
 from copy import deepcopy
 from random import choice
 from unittest import TestCase, main
-from genetic_algorithm import NullIndividual
+from genetic_algorithm.individuals import NullIndividual
 
 RANDOM_TESTS = 3
 EPSILON = 1e-10

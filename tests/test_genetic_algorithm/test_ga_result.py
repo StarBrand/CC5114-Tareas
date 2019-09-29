@@ -1,7 +1,8 @@
 """test_ga_result.py: unittest of GAResult class"""
 
 from unittest import TestCase, main
-from genetic_algorithm import GAResult, NullIndividual, WordGuesser
+from genetic_algorithm import GAResult
+from genetic_algorithm.individuals import NullIndividual, WordGuesser
 
 
 class GAResultTest(TestCase):

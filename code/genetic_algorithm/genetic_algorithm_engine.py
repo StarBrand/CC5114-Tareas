@@ -4,7 +4,8 @@ from __future__ import annotations
 import logging
 from random import randint
 from copy import deepcopy
-from genetic_algorithm import Individual, GAResult
+from genetic_algorithm import GAResult
+from genetic_algorithm.individuals import Individual
 
 TOURNAMENT_SIZE = 5
 MAX_GENERATIONS = 1000
@@ -71,7 +72,7 @@ class GAEngine(object):
             return False
         close = max(self.population)
         if log:
-            logging.info("Closed word: {}".format("".join(close.chromosome)))
+            logging.info("Closed: {}".format(close.chromosome))
         score = close.my_fitness
         return expected - score <= acceptable
 
@@ -120,14 +121,16 @@ class GAEngine(object):
             logging.warning("Population was reproduced, but without selection, population size will mismatch")
         return None
 
-    def run_genetic_algorithm(self, expected_score: float, population_size: int, log: bool = False,
-                              acceptable: float = 0.0, max_generation: int = MAX_GENERATIONS,
+    def run_genetic_algorithm(self, expected_score: float, population_size: int, equilibrium: int or None = None,
+                              log: bool = False, acceptable: float = 0.0, max_generation: int = MAX_GENERATIONS,
                               tournament_size: int = TOURNAMENT_SIZE) -> GAResult:
         """
         Run genetic algorithm
 
         :param expected_score: Score to reach
         :param population_size: Population size (number of Individuals)
+        :param equilibrium: If it is None, it means nothing; but if not, the algorithm run until the same score is
+                            found 'equilibrium' times in a row
         :param log: Show logging (info)
         :param acceptable: Acceptable difference to consider algorithm find a solution
         :param max_generation: Maximum number of generation to consider algorithm fail and end it
@@ -135,16 +138,33 @@ class GAEngine(object):
         :return: Result to be exported
         """
         self.initialize_population(population_size)
+        times_in_a_row = 0
+        prev_score = None
         while True:
             if log:
                 logging.info("Generation {}".format(self.generation))
             self.evaluate_fitness(register=True)
+            winner = max(self.population)
+            score = max(self.population).my_fitness
             if self.solution_found(expected_score, acceptable=acceptable, log=log):
-                self.result.ready_to_export(max(self.population), True)
+                self.result.ready_to_export(winner, True)
                 return self.result
             if self.generation == max_generation:
-                self.result.ready_to_export(max(self.population), False)
+                self.result.ready_to_export(winner, False)
                 return self.result
+            if equilibrium is not None:
+                if prev_score is None:
+                    prev_score = score
+                    times_in_a_row += 1
+                else:
+                    if prev_score == score:
+                        times_in_a_row += 1
+                    else:
+                        prev_score = None
+                        times_in_a_row = 0
+                    if times_in_a_row == equilibrium:
+                        self.result.ready_to_export(winner, False)
+                        return self.result
             self.selection(tournament_size=tournament_size)
             self.reproduction()
 
