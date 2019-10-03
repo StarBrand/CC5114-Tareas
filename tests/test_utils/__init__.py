@@ -10,3 +10,4 @@ from test_utils.test_one_hot_encoding import OneHotTest
 from test_utils.test_standard_trainer import StandardTrainerTest
 from test_utils.test_cross_validation import KFoldTest
 from test_utils.test_oversample import OversampleTest
+from test_utils.test_maze_rdm import MazeTest
