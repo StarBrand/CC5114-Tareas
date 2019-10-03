@@ -33,14 +33,15 @@ class Individual(ABC):
         index = self.genes.index(gene)
         return self.chromosome[index]
 
+
+    
     def fitness(self) -> float:
         """
         Evaluate fitness of individual
 
         :return: Fitness
         """
-        self.my_fitness = self.fitness_function(chromosome=self.chromosome)
-        return self.my_fitness
+        pass
 
     @abstractmethod
     def mutate(self) -> None:
