@@ -33,8 +33,7 @@ class Individual(ABC):
         index = self.genes.index(gene)
         return self.chromosome[index]
 
-
-    
+    @abstractmethod
     def fitness(self) -> float:
         """
         Evaluate fitness of individual
@@ -80,10 +79,10 @@ class Individual(ABC):
         return self.my_fitness < other.my_fitness
 
     def __ge__(self, other: Individual) -> bool:
-        return self.my_fitness >= other.my_fitness
+        return not self < other
 
     def __le__(self, other: Individual) -> bool:
-        return self.my_fitness <= other.my_fitness
+        return not self > other
 
     def __len__(self):
         return len(self.chromosome)

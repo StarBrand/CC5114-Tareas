@@ -2,6 +2,7 @@
 
 from test_genetic_algorithm.test_null_individual import NullIndividualTest
 from test_genetic_algorithm.test_individual import IndividualTest
+from test_genetic_algorithm.test_multi_individual import MultiIndividualTest
 from test_genetic_algorithm.test_word_guesser import WordGuesserTest
 from test_genetic_algorithm.test_sentence_guesser import SentenceGuesserTest
 from test_genetic_algorithm.test_binary_calculator import BinaryCalculatorTest

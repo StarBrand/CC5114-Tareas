@@ -2,7 +2,8 @@
 
 import numpy as np
 from unittest import TestCase, main
-from utils.simulations import Maze, UP, DOWN, RIGHT, Move
+from utils.simulations import Maze
+from test_utils import tester_maze, tester_robot_out, tester_robot_wrong
 
 SIZE = 20
 LONG_NUMBER = 11  # must be odd
@@ -48,19 +49,19 @@ class MazeTest(TestCase):
         self.assertRaises(AttributeError, self.maze.found_exit)
 
     def test_long_of_path(self):
-        toy_maze = self._tester_maze()
-        toy_maze.enter_robot(self._tester_robot_out())
+        toy_maze = tester_maze()
+        toy_maze.enter_robot(tester_robot_out())
         right_path = toy_maze.long_of_path()
         self.assertEqual(10, right_path, "Right path miscalculated")
-        toy_maze.enter_robot(self._tester_robot_wrong())
+        toy_maze.enter_robot(tester_robot_wrong())
         wrong_path = toy_maze.long_of_path()
         self.assertEqual(11, wrong_path, "Wrong path miscalculated")
 
     def test_found_exit(self):
-        toy_maze = self._tester_maze()
-        toy_maze.enter_robot(self._tester_robot_out())
+        toy_maze = tester_maze()
+        toy_maze.enter_robot(tester_robot_out())
         self.assertTrue(toy_maze.found_exit(), "Not found")
-        toy_maze.enter_robot(self._tester_robot_wrong())
+        toy_maze.enter_robot(tester_robot_wrong())
         self.assertFalse(toy_maze.found_exit(), "Found")
 
     # Static method
@@ -107,26 +108,6 @@ class MazeTest(TestCase):
             self.assertLessEqual(actual.sum(), expected, "Wrong walls generated")
         else:
             self.assertTrue((expected == actual).all(), "Wrong conversion of maze")
-
-    @staticmethod
-    def _tester_maze() -> Maze:
-        _toy_maze = Maze(5)
-        _toy_maze._maze = Maze._generate_border(_toy_maze._maze)
-        _toy_maze._maze[..., 2], _toy_maze._maze[..., 4], _toy_maze._maze[..., 6] = 4, 4, 4
-        _toy_maze._maze[9, 2], _toy_maze._maze[9, 4], _toy_maze._maze[9, 6] = 0, 0, 0
-        _toy_maze._maze[8, 3], _toy_maze._maze[8, 7:10] = 4, 4
-        _toy_maze.start, _toy_maze.exit = np.array((1, 1)), np.array((9, 9))
-        _toy_maze._start, _toy_maze._exit = np.array((0, 1)), np.array((9, 10))
-        _toy_maze._maze[0, 1], _toy_maze._maze[9, 10] = 2, 2
-        return _toy_maze
-
-    @staticmethod
-    def _tester_robot_out() -> [Move]:
-        return [DOWN] * 5 + [RIGHT] * 20
-
-    @staticmethod
-    def _tester_robot_wrong() -> [Move]:
-        return [DOWN] * 5 + [RIGHT] * 2 + [UP] * 18
 
 
 if __name__ == '__main__':

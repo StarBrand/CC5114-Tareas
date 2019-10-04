@@ -123,6 +123,7 @@ class Maze:
             return out
         self.location = deepcopy(self._start)
         if self._is_a_wall(self.location + move.step()):
+            self.location = deepcopy(self.start)
             return out
         out += 1
         self._maze[self._start[0], self._start[1]] += 1

@@ -1,4 +1,5 @@
 """test_binary_calculator.py: unittest of BinaryCalculator"""
+
 from test_genetic_algorithm import IndividualTest
 from unittest import main
 from random import seed
