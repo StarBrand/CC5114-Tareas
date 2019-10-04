@@ -37,3 +37,12 @@ def tester_robot_wrong() -> [Move]:
     :return: Directions that failed
     """
     return [DOWN] * 5 + [RIGHT] * 2 + [UP] * 18
+
+
+def tester_robot_wrong_closer() -> [Move]:
+    """
+    Generate directions for testing
+
+    :return: Directions that failed, but end closer
+    """
+    return [DOWN] * 5 + [RIGHT] * 2 + [UP] * 4 + [DOWN] * 14

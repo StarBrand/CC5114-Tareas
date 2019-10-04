@@ -10,3 +10,4 @@ from test_genetic_algorithm.test_travel_path import TravelPathTest
 from test_genetic_algorithm.test_robot_in_maze import RobotInMazeTest
 from test_genetic_algorithm.test_ga_result import GAResultTest
 from test_genetic_algorithm.test_genetic_algorithm_engine import GAEngineTest
+from test_genetic_algorithm.test_engine_optimized import EngineOptimizedTest
