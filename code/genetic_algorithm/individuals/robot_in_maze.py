@@ -81,25 +81,3 @@ class RobotInMaze(MultiObjectiveIndividual):
             logging.warning("Robot has not enter the maze yet")
         self._maze.graph(ax)
         return None
-
-
-if __name__ == '__main__':
-    import matplotlib.pyplot as plt
-    from test_utils import tester_maze, tester_robot_wrong, tester_robot_wrong_closer
-    a_maze = tester_maze()
-    a_robot = RobotInMaze(0.0, a_maze)
-    b_robot = a_robot.generate_individual()
-    a_robot.chromosome = tester_robot_wrong()
-    b_robot.chromosome = tester_robot_wrong_closer()
-    a_robot.fitness()
-    b_robot.fitness()
-    _, ax = plt.subplots()
-    a_robot.graph(ax)
-    print(a_robot.multi_fitness)
-    print(a_robot._maze.location)
-    print(b_robot._maze.location)
-    plt.show()
-    _, ax = plt.subplots()
-    b_robot.graph(ax)
-    print(b_robot.multi_fitness)
-    plt.show()

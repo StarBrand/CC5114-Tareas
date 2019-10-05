@@ -18,8 +18,6 @@ class FunctionTest(TestCase):
 
     def test_split_set(self):
         train_set, test_set = split_set(self.train_set, 0.7)
-        print(train_set.shape[-1])
-        print(test_set.shape[-1])
         assert train_set.shape[-1] == 700
         assert test_set.shape[-1] == 300
         assert train_set.shape[0:-1] == train_set.shape[0:-1]
