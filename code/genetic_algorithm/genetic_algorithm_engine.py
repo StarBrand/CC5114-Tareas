@@ -105,7 +105,7 @@ class GAEngine(object):
         """
         Generate next generation of population
 
-        :return:
+        :return: None
         """
         next_gen = list()
         while len(self) != 0:
