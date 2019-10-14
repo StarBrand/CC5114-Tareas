@@ -13,7 +13,7 @@ class Circle(Pattern):
         assert y_range[0] <= center[1] <= y_range[1]
         assert (x_range[1] - x_range[0]) >= radius
         assert (y_range[1] - y_range[0]) >= radius
-        super(Circle, self).__init__(x_range, y_range, "Circle")
+        super().__init__(x_range, y_range, "Circle")
         self.r = radius
         self.k = center[0]
         self.h = center[1]

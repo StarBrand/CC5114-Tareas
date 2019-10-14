@@ -14,7 +14,7 @@ class TesterIndividual(Individual):
     """An Individual design for testing purpose"""
 
     def __init__(self):
-        super(TesterIndividual, self).__init__(gauss, mutation_rate=0.0)
+        super().__init__(gauss, mutation_rate=0.0)
 
     def generate_individual(self) -> Individual:
         """
@@ -53,7 +53,7 @@ class TesterEquilibrium(TesterIndividual):
     To test equilibrium on GA engine
     """
     def __init__(self):
-        super(TesterEquilibrium, self).__init__()
+        super().__init__()
         self.fitness_function = _zero
 
     def generate_individual(self) -> Individual:

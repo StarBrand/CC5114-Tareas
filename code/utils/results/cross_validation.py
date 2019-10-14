@@ -12,7 +12,7 @@ class KFoldTrainer(Trainer, KFold):
     Extend KFold from sklearn package"""
 
     def __init__(self, k: int, seed: int, train_set: np.ndarray, labels: np.ndarray):
-        super(KFoldTrainer, self).__init__(k, True, seed)
+        super().__init__(k, True, seed)
         self.data = train_set.copy()
         self.labels = labels.copy()
         self.indexes = [(train, test) for train, test in self.split(self.data.T)]

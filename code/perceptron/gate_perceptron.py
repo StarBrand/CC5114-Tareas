@@ -6,7 +6,7 @@ class GatePerceptron(Perceptron):
     """A Perceptron that simulate logical gates"""
 
     def __init__(self, name: str, w1: float, w2: float, b: float):
-        super(GatePerceptron, self).__init__(name, 2, [w1, w2], b)
+        super().__init__(name, 2, [w1, w2], b)
         self.w1 = self.w[0]
         self.w2 = self.w[1]
 
@@ -18,4 +18,4 @@ class GatePerceptron(Perceptron):
         :param x2: Logical value as float, whether 0.0 (false) or 1.0 (true)
         :return: Predicted output (True or False)
         """
-        return super(GatePerceptron, self).out([x1, x2]) > 0.5
+        return super().out([x1, x2]) > 0.5

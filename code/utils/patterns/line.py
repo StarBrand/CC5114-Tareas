@@ -10,7 +10,7 @@ class Line(Pattern):
                  n_range: (float, float),
                  x_range: (float, float),
                  y_range: (float, float)):
-        super(Line, self).__init__(x_range, y_range, "Line")
+        super().__init__(x_range, y_range, "Line")
         self.m = uniform(m_range[0], m_range[1])
         self.n = uniform(n_range[0], n_range[1])
         return

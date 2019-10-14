@@ -11,7 +11,7 @@ class NormalizedNetwork(NeuralNetwork):
     """A NeuralNetwork with normalization of the input"""
 
     def __init__(self, input_size: int, size: [int], output_size: int, func: [str or callable], lr: float):
-        super(NormalizedNetwork, self).__init__(input_size, size, output_size, func, lr)
+        super().__init__(input_size, size, output_size, func, lr)
         self.d_h = np.array([])
         self.d_l = np.array([])
 
@@ -22,7 +22,7 @@ class NormalizedNetwork(NeuralNetwork):
         :param x_input: Input
         :return: Output
         """
-        return super(NormalizedNetwork, self).feed_forward(
+        return super().feed_forward(
             self._normalize(x_input)
         )
 

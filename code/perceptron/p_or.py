@@ -6,4 +6,4 @@ class PerceptronOr(GatePerceptron):
     """GatePerceptron that simulated 'or' logical gate, for academic purpose"""
 
     def __init__(self):
-        super(PerceptronOr, self).__init__("or", 3, 3, -2)
+        super().__init__("or", 3, 3, -2)

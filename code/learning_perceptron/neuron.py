@@ -10,7 +10,7 @@ class Neuron(LearningPerceptron):
                  learning_rate: float,
                  w: [float] or None = None,
                  b: float or None = None):
-        super(Neuron, self).__init__(name, input_size, learning_rate)
+        super().__init__(name, input_size, learning_rate)
         if w is not None:
             if len(w) != input_size:
                 raise ValueError("Number of arguments do not match number of weights")

@@ -13,7 +13,7 @@ class SigmoidNeuron(LearningPerceptron):
         """Sigmoid Perceptron, a kinf of perceptron with sigmoid function"""
 
         def __init__(self, input_size: int):
-            super(SigmoidNeuron.SigmoidPerceptron, self).__init__("sigmoid", input_size)
+            super().__init__("sigmoid", input_size)
 
         def z_out(self, x: [float]) -> float:
             """
@@ -36,5 +36,5 @@ class SigmoidNeuron(LearningPerceptron):
             return float(sigmoid(np.array(self.z_out(x))))
 
     def __init__(self, input_size: int, lr: float):
-        super(SigmoidNeuron, self).__init__("sigmoid neuron", input_size, lr)
+        super().__init__("sigmoid neuron", input_size, lr)
         self.perceptron = self.SigmoidPerceptron(input_size)

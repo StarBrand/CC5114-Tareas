@@ -15,7 +15,7 @@ class TesterIndividual(MultiObjectiveIndividual):
     """
 
     def __init__(self, char: float):
-        super(TesterIndividual, self).__init__([self._first_fitness,
+        super().__init__([self._first_fitness,
                                                 self._second_fitness,
                                                 self._third_fitness], 0.0)
         self.char = char

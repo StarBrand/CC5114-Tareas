@@ -10,7 +10,7 @@ class PerceptronLayer(NeuronLayer):
     is not designed for learning"""
 
     def __init__(self, input_size: int, output_size: int):
-        super(PerceptronLayer, self).__init__(input_size, output_size, step)
+        super().__init__(input_size, output_size, step)
 
     def propagate(self, output: np.ndarray,
                   next_delta: np.ndarray or None = None,

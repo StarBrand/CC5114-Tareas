@@ -6,7 +6,7 @@ class PerceptronSum(GatePerceptron):
     """GatePerceptron that simulated 'sum' of two int using logical gates, for academic purpose"""
 
     def __init__(self):
-        super(PerceptronSum, self).__init__("or", 3, 3, -2)
+        super().__init__("or", 3, 3, -2)
         self.nand = PerceptronNand()
         self.p_and = PerceptronAnd()
 

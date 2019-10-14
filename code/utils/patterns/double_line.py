@@ -12,7 +12,7 @@ class DoubleLine(Pattern):
                  n_range: ((float, float), (float, float)),
                  x_range: (float, float),
                  y_range: (float, float)):
-        super(DoubleLine, self).__init__(x_range, y_range, "DoubleLine")
+        super().__init__(x_range, y_range, "DoubleLine")
         self.m = uniform(m_range[0], m_range[1])
         n1 = uniform(n_range[0][0], n_range[0][1])
         n2 = uniform(n_range[1][0], n_range[1][1])

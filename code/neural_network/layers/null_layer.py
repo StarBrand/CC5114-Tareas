@@ -8,7 +8,7 @@ class NullLayer(NeuronLayer):
     """NullLayer class, Null Object Patter. Needed in network to precede first layer"""
 
     def __init__(self):
-        super(NullLayer, self).__init__(0, 0, None)
+        super().__init__(0, 0, None)
         self.w = None
         self.b = None
 
