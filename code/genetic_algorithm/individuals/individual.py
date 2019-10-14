@@ -2,18 +2,22 @@
 
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from random import randint
+from random import randint, random
 
 
 class Individual(ABC):
     """An abstraction of an individual"""
 
-    def __init__(self, fitness_function: callable, mutation_rate: float):
+    def __init__(self, fitness_function: callable, generation_function: callable,
+                 chromosome_size: int, mutation_rate: float):
         self.chromosome = list()
         self.genes = list()
-        self.fitness_function = fitness_function
+        self._fitness_function = fitness_function
+        self._generation_function = generation_function
         self.my_fitness = 0
         self.mutation_rate = mutation_rate
+        for _ in range(chromosome_size):
+            self.chromosome.append(self._generation_function())
 
     @abstractmethod
     def generate_individual(self) -> Individual:
@@ -34,22 +38,25 @@ class Individual(ABC):
         return self.chromosome[index]
 
     @abstractmethod
-    def fitness(self) -> float:
+    def fitness(self, **kwargs) -> float:
         """
         Evaluate fitness of individual
 
         :return: Fitness
         """
-        pass
+        self.my_fitness = self._fitness_function(**kwargs)
+        return self.my_fitness
 
-    @abstractmethod
     def mutate(self) -> None:
         """
         Mutate an allele
 
         :return: None
         """
-        pass
+        for index, _ in enumerate(self.chromosome):
+            if random() < self.mutation_rate:
+                self.chromosome[index] = self._generation_function()
+        return
 
     def crossover(self, partner: Individual) -> Individual:
         """
@@ -91,7 +98,7 @@ class Individual(ABC):
         if isinstance(other, Individual):
             return (self.chromosome == other.chromosome
                     and self.genes == other.genes
-                    and self.fitness_function == other.fitness_function
+                    and self._fitness_function == other._fitness_function
                     and self.my_fitness == other.my_fitness
                     and self.mutation_rate == other.mutation_rate)
         else:

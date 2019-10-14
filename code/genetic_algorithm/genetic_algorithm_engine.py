@@ -121,6 +121,7 @@ class GAEngine(object):
             logging.warning("Population was reproduced, but without selection, population size will mismatch")
         return None
 
+    # TODO: separate run algorithm for purpose (equilibrium, reach, max generations)
     def run_genetic_algorithm(self, expected_score: float, population_size: int, equilibrium: int or None = None,
                               log: bool = False, acceptable: float = 0.0, max_generation: int = MAX_GENERATIONS,
                               tournament_size: int = TOURNAMENT_SIZE) -> GAResult:

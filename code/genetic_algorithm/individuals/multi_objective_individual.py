@@ -11,7 +11,7 @@ class MultiObjectiveIndividual(Individual, ABC):
     """
 
     def __init__(self, fitness: [callable], mutation_rate: float, pareto: bool = False, priority: bool = False):
-        super(MultiObjectiveIndividual, self).__init__(None, mutation_rate)
+        super().__init__(None, mutation_rate)
         self.multi_fitness = []
         self.fitness_function = fitness
         self.pareto = pareto
@@ -42,10 +42,10 @@ class MultiObjectiveIndividual(Individual, ABC):
                     return False
             return exist
         else:
-            return super(MultiObjectiveIndividual, self).__gt__(other)
+            return super().__gt__(other)
 
     def __eq__(self, other: MultiObjectiveIndividual) -> bool:
-        if super(MultiObjectiveIndividual, self).__eq__(other):
+        if super().__eq__(other):
             return (self.multi_fitness == other.multi_fitness
                     and self.pareto == other.pareto
                     and self.priority == other.priority)

@@ -15,7 +15,7 @@ class RobotInMaze(MultiObjectiveIndividual):
     """
 
     def __init__(self, mutation_rate: float, maze: Maze):
-        super(RobotInMaze, self).__init__([self._exit, self._length], mutation_rate)
+        super().__init__([self._exit, self._length], mutation_rate)
         if not maze.is_generated():
             raise InterruptedError("Cannot initialize Robot if Maze is not generated")
         self._maze = deepcopy(maze)

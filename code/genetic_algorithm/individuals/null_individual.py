@@ -12,7 +12,7 @@ class NullIndividual(Individual):
     """An abstraction of an individual"""
 
     def __init__(self):
-        super(NullIndividual, self).__init__(_null_function, 0.0)
+        super().__init__(_null_function, None, 0, 0.0)
 
     def generate_individual(self) -> Individual:
         """
@@ -31,23 +31,6 @@ class NullIndividual(Individual):
         """
         return None
 
-    def fitness(self) -> float:
-        """
-        Evaluate fitness of individual
-
-        :return: Fitness
-        """
-        self.my_fitness = self.fitness_function()
-        return self.my_fitness
-
-    def mutate(self) -> None:
-        """
-        Do nothing
-
-        :return: None
-        """
-        return None
-
     def crossover(self, partner: Individual) -> Individual:
         """
         Do nothing
@@ -56,3 +39,12 @@ class NullIndividual(Individual):
         :return: NullIndividual
         """
         return self.generate_individual()
+
+    def fitness(self, **kwargs) -> float:
+        """
+        Calculate a null fitness
+
+        :param kwargs: None
+        :return: 0.0
+        """
+        return super().fitness()

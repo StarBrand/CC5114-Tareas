@@ -15,7 +15,7 @@ class GeneticEngineOptimized(GAEngine):
     and elitism
     """
     def __init__(self, population_type: MultiObjectiveIndividual):
-        super(GeneticEngineOptimized, self).__init__(population_type)
+        super().__init__(population_type)
 
     def selection(self, tournament_size: int = TOURNAMENT_SIZE) -> None:
         """
@@ -26,7 +26,7 @@ class GeneticEngineOptimized(GAEngine):
         :return: None
         """
         winner = deepcopy(max(self.population))
-        super(GeneticEngineOptimized, self).selection(tournament_size)
+        super().selection(tournament_size)
         self.population[0] = winner
         return
 
@@ -44,9 +44,8 @@ class GeneticEngineOptimized(GAEngine):
         :param tournament_size:
         :return:
         """
-        self.reproduction = super(GeneticEngineOptimized, self).reproduction
-        return super(GeneticEngineOptimized,
-                     self).run_genetic_algorithm(expected_score, population_size, equilibrium=equilibrium, log=log,
+        self.reproduction = super().reproduction
+        return super().run_genetic_algorithm(expected_score, population_size, equilibrium=equilibrium, log=log,
                                                  acceptable=acceptable, max_generation=max_generation,
                                                  tournament_size=tournament_size)
 
@@ -66,8 +65,7 @@ class GeneticEngineOptimized(GAEngine):
         :return:
         """
         self.reproduction = self._reproduction_pareto
-        return super(GeneticEngineOptimized,
-                     self).run_genetic_algorithm(expected_score, population_size, equilibrium=equilibrium, log=log,
+        return super().run_genetic_algorithm(expected_score, population_size, equilibrium=equilibrium, log=log,
                                                  acceptable=acceptable, max_generation=max_generation,
                                                  tournament_size=tournament_size)
 
@@ -87,19 +85,18 @@ class GeneticEngineOptimized(GAEngine):
         :return:
         """
         self.reproduction = self._reproduction_priority
-        return super(GeneticEngineOptimized,
-                     self).run_genetic_algorithm(expected_score, population_size, equilibrium=equilibrium, log=log,
+        return super().run_genetic_algorithm(expected_score, population_size, equilibrium=equilibrium, log=log,
                                                  acceptable=acceptable, max_generation=max_generation,
                                                  tournament_size=tournament_size)
 
     def _reproduction_pareto(self) -> None:
-        super(GeneticEngineOptimized, self).reproduction()
+        super().reproduction()
         for index, _ in enumerate(self.population):
             self.population[index].pareto = True
             self.population[index].priority = False
 
     def _reproduction_priority(self) -> None:
-        super(GeneticEngineOptimized, self).reproduction()
+        super().reproduction()
         for index, _ in enumerate(self.population):
             self.population[index].pareto = False
             self.population[index].priority = True
