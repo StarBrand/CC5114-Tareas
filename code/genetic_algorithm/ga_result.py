@@ -69,3 +69,9 @@ class GAResult(object):
         if not self._ready:
             raise RuntimeError("Not ready to return results")
         return self._score
+
+    def __len__(self):
+        length = len(self.get_scores())
+        if length != len(self.get_generations()):
+            raise RuntimeError("Generation and scores mismatch")
+        return length

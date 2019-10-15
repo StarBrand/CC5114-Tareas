@@ -72,7 +72,8 @@ class GAEngine(object):
             return False
         close = max(self.population)
         if log:
-            logging.info("Closed: {}".format(close.chromosome))
+            logging.info("Generation: {}".format(self.generation))
+            logging.info("\tCloser one: {}".format(close.chromosome))
         score = close.my_fitness
         return expected - score <= acceptable
 
@@ -119,55 +120,111 @@ class GAEngine(object):
         self.generation += 1
         if not self.selected:
             logging.warning("Population was reproduced, but without selection, population size will mismatch")
+        self.selected = False
         return None
 
-    # TODO: separate run algorithm for purpose (equilibrium, reach, max generations)
-    def run_genetic_algorithm(self, expected_score: float, population_size: int, equilibrium: int or None = None,
-                              log: bool = False, acceptable: float = 0.0, max_generation: int = MAX_GENERATIONS,
-                              tournament_size: int = TOURNAMENT_SIZE) -> GAResult:
+    def next_generation(self, register: bool = False, tournament_size: int = TOURNAMENT_SIZE) -> None:
         """
-        Run genetic algorithm
+        Generate a new generation doing the three needed steps
 
-        :param expected_score: Score to reach
-        :param population_size: Population size (number of Individuals)
-        :param equilibrium: If it is None, it means nothing; but if not, the algorithm run until the same score is
-                            found 'equilibrium' times in a row
-        :param log: Show logging (info)
-        :param acceptable: Acceptable difference to consider algorithm find a solution
-        :param max_generation: Maximum number of generation to consider algorithm fail and end it
-        :param tournament_size: Size of tournament for selection
-        :return: Result to be exported
+        :param register:
+        :param tournament_size:
+        :return:
+        """
+        self.selection(tournament_size=tournament_size)
+        self.reproduction()
+        self.evaluate_fitness(register=register)
+        return
+
+    def run_to_reach(self, expected_score: float, acceptable: float, population_size: int,
+                     max_generation: int = MAX_GENERATIONS, tournament_size: int = TOURNAMENT_SIZE,
+                     log: bool = False) -> GAResult:
+        """
+        Run algorithm until reach expected score with an acceptable (given) margin
+
+        :param expected_score: Score expected to reach
+        :param acceptable: Acceptable margin
+        :param population_size: Size of the population
+        :param max_generation: (optional) Maximum of generation (fixed for safety)
+        :param tournament_size: (optional) Size of tournament, default: TOURNAMENT_SIZE (begin of file)
+        :param log: (optional) Print logs
+        :raises RuntimeError: If prev_generation is given true without a population generated
+        :return: Result of algorithm
         """
         self.initialize_population(population_size)
-        times_in_a_row = 0
-        prev_score = None
-        while True:
+        self.evaluate_fitness(register=True)
+        internal_generation = 1
+        while internal_generation < max_generation and not self.solution_found(expected_score, acceptable, log=log):
+            self.next_generation(register=True, tournament_size=tournament_size)
+            internal_generation += 1
+        self.result.ready_to_export(max(self.population), self.solution_found(expected_score, acceptable, log=log))
+        return self.result
+
+    def run_to_equilibrium(self, population_size: int, equilibrium: int, max_generation: int = MAX_GENERATIONS,
+                           tournament_size: int = TOURNAMENT_SIZE, log: bool = False) -> GAResult:
+        """
+        Run algorithm until score does not change on 'equilibrium' times
+
+        :param population_size: Size of population
+        :param equilibrium: Number of generation with same score to stop algorithm
+        :param max_generation: (optional) maximum generation
+        :param tournament_size: (optional) size of tournament for selection
+        :param log: (optional) Print logs
+        :return: Result of algorithm
+        """
+        def _register():
+            self.result.register_score(score, self.generation)
             if log:
-                logging.info("Generation {}".format(self.generation))
-            self.evaluate_fitness(register=True)
-            winner = max(self.population)
+                logging.info("Generation: {}".format(self.generation))
+                logging.info("\tCloser one: {}".format(max(self.population).chromosome))
+        self.initialize_population(population_size)
+        self.evaluate_fitness(register=True)
+        internal_generation = 1
+        times_in_a_row = 1
+        score = max(self.population).my_fitness
+        prev_score = score
+        while internal_generation < max_generation and times_in_a_row < equilibrium:
+            _register()
+            self.next_generation(register=True, tournament_size=tournament_size)
             score = max(self.population).my_fitness
-            if self.solution_found(expected_score, acceptable=acceptable, log=log):
-                self.result.ready_to_export(winner, True)
-                return self.result
-            if self.generation == max_generation:
-                self.result.ready_to_export(winner, False)
-                return self.result
-            if equilibrium is not None:
-                if prev_score is None:
-                    prev_score = score
-                    times_in_a_row += 1
-                else:
-                    if prev_score == score:
-                        times_in_a_row += 1
-                    else:
-                        prev_score = None
-                        times_in_a_row = 0
-                    if times_in_a_row == equilibrium:
-                        self.result.ready_to_export(winner, False)
-                        return self.result
-            self.selection(tournament_size=tournament_size)
-            self.reproduction()
+            if prev_score == score:
+                times_in_a_row += 1
+            else:
+                times_in_a_row = 1
+                prev_score = score
+            internal_generation += 1
+        _register()
+        self.result.ready_to_export(max(self.population), True)
+        return self.result
+
+    def run_fixed_generation(self, population_size: int, max_generation: int, tournament_size: int = TOURNAMENT_SIZE,
+                             log: bool = False) -> GAResult:
+        """
+        Run algorithm until reach expected score with an acceptable (given) margin
+
+        :param population_size: Size of the population
+        :param max_generation: Maximum of generation (fixed for safety)
+        :param tournament_size: (optional) Size of tournament, default: TOURNAMENT_SIZE (begin of file)
+        :param log: (optional) Print logs
+        :raises RuntimeError: If prev_generation is given true without a population generated
+        :return: Result of algorithm
+        """
+        self.initialize_population(population_size)
+        self.evaluate_fitness(register=True)
+        internal_generation = 1
+        self.result.register_score(max(self.population), self.generation)
+        if log:
+            logging.info("Generation: {}".format(self.generation))
+            logging.info("\tCloser one: {}".format(max(self.population).chromosome))
+        while internal_generation < max_generation:
+            self.next_generation(register=True, tournament_size=tournament_size)
+            self.result.register_score(max(self.population), self.generation)
+            if log:
+                logging.info("Generation: {}".format(self.generation))
+                logging.info("\tCloser one: {}".format(max(self.population).chromosome))
+            internal_generation += 1
+        self.result.ready_to_export(max(self.population), True)
+        return self.result
 
     def __len__(self):
         return len(self.population)

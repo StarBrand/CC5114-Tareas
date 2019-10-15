@@ -10,15 +10,16 @@ class MultiObjectiveIndividual(Individual, ABC):
     Individual with multiple functions of fitness
     """
 
-    def __init__(self, fitness: [callable], mutation_rate: float, pareto: bool = False, priority: bool = False):
-        super().__init__(None, mutation_rate)
+    def __init__(self, fitness: [callable], generation_function: callable, chromosome_size: int,
+                 mutation_rate: float, pareto: bool = False, priority: bool = False):
+        super().__init__(None, generation_function, chromosome_size, mutation_rate)
         self.multi_fitness = []
-        self.fitness_function = fitness
+        self._fitness_function = fitness
         self.pareto = pareto
         self.priority = priority
 
     @abstractmethod
-    def fitness(self) -> float:
+    def fitness(self, **kwargs) -> float:
         """
         Evaluate fitness as the minimum of all fitness
 

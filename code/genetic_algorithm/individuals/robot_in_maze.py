@@ -9,18 +9,30 @@ from genetic_algorithm.individuals import MultiObjectiveIndividual, Individual
 from utils.simulations import Maze, UP, DOWN, LEFT, RIGHT, Move
 
 
+def _length(maze: Maze) -> float:
+    return - maze.long_of_path()
+
+
+def _exit(maze: Maze) -> float:
+    dist = (maze.location - maze.exit) // 2
+    return - sqrt(dist[0] ** 2 + dist[1] ** 2)
+
+
+def _get_move():
+    return choice([UP, DOWN, LEFT, RIGHT])
+
+
 class RobotInMaze(MultiObjectiveIndividual):
     """
     Simulate a Robot walking on a maze
     """
 
     def __init__(self, mutation_rate: float, maze: Maze):
-        super().__init__([self._exit, self._length], mutation_rate)
+        self._maze = deepcopy(maze)
+        super().__init__([_exit, _length], _get_move, len(self._maze) ** 2 + 1, mutation_rate)
         if not maze.is_generated():
             raise InterruptedError("Cannot initialize Robot if Maze is not generated")
-        self._maze = deepcopy(maze)
         self._run = False
-        self.chromosome = choices([UP, DOWN, LEFT, RIGHT], k=len(self._maze)**2 + 1)
         self.genes.append("Entry_step")
         for i in range(1, len(self) - 1):
             self.genes.append("step{}".format(i))
@@ -35,10 +47,9 @@ class RobotInMaze(MultiObjectiveIndividual):
         """
         self.multi_fitness = list()
         self._performance()
-        for fitness_func in self.fitness_function:
-            self.multi_fitness.append(fitness_func())
-        self.my_fitness = min(self.multi_fitness)
-        return self.my_fitness
+        for fitness_func in self._fitness_function:
+            self.multi_fitness.append(fitness_func(self._maze))
+        return super().fitness()
 
     def generate_individual(self) -> Individual:
         """
@@ -62,13 +73,6 @@ class RobotInMaze(MultiObjectiveIndividual):
     def _performance(self) -> None:
         self._run = True
         self._maze.enter_robot(self.chromosome)
-
-    def _length(self) -> float:
-        return - self._maze.long_of_path()
-
-    def _exit(self) -> float:
-        dist = (self._maze.location - self._maze.exit) // 2
-        return - sqrt(dist[0]**2 + dist[1]**2)
 
     def graph(self, ax: Axes):
         """

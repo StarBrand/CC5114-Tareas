@@ -35,14 +35,13 @@ class RobotInMazeTest(MultiIndividualTest):
     def test_crossover(self):
         seed(10)
         first_one = self.individual.generate_individual()
-        first_expected = self.individual.chromosome[0: 2] + first_one.chromosome[2: self.chromosome_size]
+        first_expected = self.individual.chromosome[0: 21] + first_one.chromosome[21: self.chromosome_size]
         """mutate"""
-        first_expected[20] = RIGHT
-        first_expected[24] = LEFT
-        first_expected[25] = UP
+        first_expected[6] = UP
+        first_expected[9] = RIGHT
         """"""
         second_one = self.stable_one.generate_individual()
-        second_expected = self.stable_one.chromosome[0: 9] + second_one.chromosome[9: self.chromosome_size]
+        second_expected = self.stable_one.chromosome[0: 20] + second_one.chromosome[20: self.chromosome_size]
         self.std_test_crossover(first_expected, second_expected, first_one, second_one)
 
     def test_get_allele(self):

@@ -18,6 +18,7 @@ class GAResultTest(TestCase):
     def test_not_exportable(self):
         self.assertRaises(RuntimeError, self.result.get_scores)
         self.assertRaises(RuntimeError, self.result.get_generations)
+        self.assertRaises(RuntimeError, len, self.result)
 
     def test_not_available_to_register(self):
         self.result.ready_to_export(NullIndividual(), False)
@@ -33,6 +34,22 @@ class GAResultTest(TestCase):
         self.assertIsInstance(self.result.individual, WordGuesser, "Wrong individual")
         self.assertEqual(scores, self.result.get_scores(), "Fail to register scores")
         self.assertEqual(generations, self.result.get_generations(), "Fail to register generation")
+        self.assertEqual(len(scores), len(self.result), "Mismatch length of scores and results")
+        self.assertEqual(len(generations), len(self.result), "Mismatch length of generations and results")
+
+    def test_length_mismatch(self):
+        scores = [1.0, 3.0, 2.0]
+        generations = [1, 10]
+        self.result._scores = scores
+        self.result._generations = generations
+        self.result._ready = True
+        self.assertRaises(RuntimeError, len, self.result)
+        scores = [1.0, 3.0]
+        generations = [1, 10, 11]
+        self.result._scores = scores
+        self.result._generations = generations
+        self.result._ready = True
+        self.assertRaises(RuntimeError, len, self.result)
 
 
 if __name__ == '__main__':
