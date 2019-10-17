@@ -1,0 +1,360 @@
+# Tarea 2
+
+En este reporte se explicará el procesos de implementación, testeo y resultado de la implementación de algoritms genéticos siguiendo el orden lógico por el que se fueron desarrollando. Al final de cada sección se da la ubicación del código fuente en el repositorio y los *scripts* de los test unitarios.
+
+## Algoritmos genéticos
+
+### Primera implementación (Engine)
+
+La primera implementación de un algoritmo genético se hizo basada en la descripción de tres etapas:
+
+1. Evaluación (`evaluate_fitness`)
+2. Selección (`selection`)
+3. Reproducción (`reproduction`)
+
+Todo ello se implemento en la clase `GAEngine` (de *"Genetic Algorithm Engine"* o motor de algoritmo genético). Esta clase toma referencia que existe una clase `Individual` (individuo) que se comporta como un individuo (ver más abajo) de un algoritmo genético. Básicamente un individuo debe poder:
+
+1. Evaluar su *fitness* (`fitness(**kwargs)`, guardado en `my_fitness`)
+2. Generar un nuevo individuo (`generate_individual()`) que tenga el mismo comportamiento, pero distinta *performance* (`fitness`).
+3. Mutar (`mutate`) y reproducirse con otro individuo realizando *crossingover* (entrecruzamiento) (`crossover(individual: Individual)`).
+
+Con ello el algoritmo genético realiza los pasos requeridos en sus diferentes métodos:
+
+1. Inicialización: toma el individuo, que realiza la acción con el resultado esperado. (`__init__`)
+2. Iniciar población: Dado un tamaño genera una población, lista o *array* de individuos de diferentes `fitness`, lo que se traduce en diferentes cromosomas (`chromosome`). (`initialize_population(size)`)
+3. Evaluación: se calcula el *fitness* de cada individuo llamando a su método. Esto lo registra y calcula el máximo alcanzado en la población. (`evaluate_fitness()`)
+4. Selección: selecciona los individuos realizando el algoritmo del torneo. Esto deja un tamaño de la población dos veces mayor. Opcionalmente, se le puede dar un tamaño distinto al por defecto. (`selection`())
+5. Reproducción: Realiza *crossingover* (método `crossover` de los individuos), reduciendo dos individuos a uno. El nuevo individuo generado, además, muta utilizando el método `mutate(self)` de un individuo. (`repoduction()`)
+6. Generar nueva generación: realiza los procesos de selección, reproducción y evaluación, generando una nueva generación posterior a la actual. (`next_generation()`)
+7. Correr algoritmo: el algoritmo se puede correr, deteniéndose en tres diferentes escenarios con tres métodos diferentes:
+   1. **Al encontrar un puntaje**: pese a que esto no es lo que se busca, porque se desconoce la solución correcta, se utiliza para testear problemas con soluciones conocidas. Particularmente "adivinar" algo (lo que tiene fitness conocido y único si logra adivinar). Para efectos de ser utilizada para casos más generales, recibe un delta aceptable para detener el algoritmo. (`run_to_reach(expected_score, acceptable, population_size)`)
+   2. **Al llegar a un equilibrio**: cuanto el fitness no mejora en una cierta cantidad de generaciones (`equilibrium`). (`run_to_equilibrium(population_size, equilibrium)`)
+   3. **Una cantidad fija de generaciones**: No realiza más iteraciones que las dadas. (`run_fixed_generation(population_size, max_generation)`). Adicionalmente los otros  dos métodos, se detienen, para no correr un algoritmo eternamente, en un máximo de generaciones, que puede ser fijado por usuario (parámetro opcional `max_generation`).
+
+![gaengine](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/UML/genetic_algorithm.png)
+
+**Código**: [`code/genetic_algorithm/genetic_algorithm_engine`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/genetic_algorithm_engine.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_genetic_algorithm_engine`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_genetic_algorithm_engine.py)
+
+### Implementación con optimizaciones para varios objetivos
+
+
+
+![learning_perceptron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/learning_perceptron.png)
+
+**Código**: [`code/learning_perceptron/learning`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/learning.py)
+
+**Tests unitarios**: [`tests/test_learning_perceptron/test_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_learning_perceptron.py)
+
+#### Resultados
+
+Se muestran tres imágenes sobre el aprendizaje del perceptrón: sin entrenamiento, a las 10 y 100 *epochs*.
+
+![training](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_perceptron.png)
+
+Ejecutable [`tares1/scripts/show_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_learning_perceptron.py)
+
+Gráfico de *accuracy* sobre las etapas del entrenamiento para varias tasas de aprendizaje (*learning rate*).
+
+![lrs](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/perceptron_different_lr.png)
+
+Ejecutable [`tares1/scripts/learning_perceptron_lrs`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/learning_perceptron_lrs.py)
+
+### Neurona sigmoidea
+
+Como se revisó en clases, el perceptrón utiliza como función de activación la función *step*. Esta función cambia abruptamente a pequeños cambios en los pesos. Por ello, una neurona que permite cambios más precisos es la función sigmoid. Una neurona con esta función de activación se implementó como un perceptrón (`SigmoidPerceptron`) dentro de la clase `SigmoidNeuron` que modifica algunos métodos de  `LearningPerceptron`.
+
+![sigmoid_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/sigmoid_neuron.png)
+
+No se muestran resultados por extensión.
+
+**Código**: [`code/learning_perceptron/sigmoid_perceptron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/sigmoid_perceptron.py)
+
+**Tests unitario**: [`tests/test_learning_perceptron/test_sigmoid_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_sigmoid_neuron.py)
+
+### Neurona
+
+Finalmente, para completar los requisitos de la neurona que se pide, se implementa la clase `Neuron` que recibe una función de activación distinta. Las funciones de activación se encuentran implementadas en [`utils/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/math_functions/activation_functions.py) (reportado más abajo)
+
+![neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/neuron.png)
+
+**Código**: [`code/learning_perceptron/neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/learning_perceptron/neuron.py)
+
+**Tests unitario**: [`tests/test_learning_perceptron/test_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_learning_perceptron/test_neuron.py)
+
+#### Resultados
+
+A continuación se muestra como esta neurona con función de activación *tanh* (por ser la única no implementada previamente). Se ve como es capaz de aprender una línea, pero no las dos líneas (se requiere una red para ello).
+
+![training_neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_neuron.png)
+
+Ejecutable: [`tarea1/scripts/show_neuron`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_neuron.py)
+
+Para mostrar la diferencia con la red implementada, más abajo, se muestra una neurona sigmoidea que aprende el dataset iris (se utilizan las funciones de testeo que se reportan más abajo).
+
+![neuron_on_iris](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/neuron_on_iris.png)
+
+Como la neurona retorna un valor y no puede retornar un *one-hot vector*, solo se utilizan los primeros 100 datos (de 150) y se define el valor 1.0 como **Iris setosa**. El dataset se divide 80%/20% en *train set* y *test set* posterior a ser aleatorizado (ver función `split_set` más abajo). Se muestra solo *accuracy* y *recall* dado a problemas de división por cero para *precision* y *f1-score*.
+
+Ejecutable: [`tarea1/scripts/neuron_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/neuron_on_iris.py)
+
+## Funciones de activación y métodos para pre-procesamiento
+
+### Escoger el dataset
+
+Para este trabajo se escoge el dataset ["iris"](https://archive.ics.uci.edu/ml/datasets/Iris), el cual se descarga y se maneja en forma local.
+
+Para manejar este dataset se importa en forma de `numpy.ndarray`. El método que realiza esta conversión se le llama `import_data`, que recibe el *path* del archivo.
+
+Además se tiene el método `split_set` que separa un `numpy.ndarry` en el porcentaje que se le dé. Antes de eso, además se randomiza utilizando el método [`numpy.random.permutate`](https://het.as.utexas.edu/HET/Software/Numpy/reference/generated/numpy.random.permutation.html). Si recibe solo un número (entre 0 y 1) separa el arreglo en dos arreglos, uno con el porcentaje dado y otro con el restante. En cambio, si recibe dos porcentajes, y mientras la suma sea menor que 1, separa el set en dos arreglos que contienen los dichos porcentajes. Este método se usará para separar el dataset en *train set* y *test set*.
+
+**Código**: [`code/utils/preprocess_dataset/set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/set_functions.py)
+
+**Test unitario**: [`tests/test_utils/test_set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_set_functions.py)
+
+Se muestra un gráfico de la matriz, formada por el *one-hot vector* y los índices del dataset, del dataset completo, de una muestra del 60% y otra del 40%.
+
+![split](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/labels_of_dataset.png)
+
+Ejecutable: [`tarea1/scripts/sample_of_dataset`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/sample_of_dataset.py)
+
+###  Implementar la transformación one-hot
+
+La transformación se definió como el método `one_hot_encoding` que recibe una lista o un `array ` y devuelve una tupla de dos elementos, el primero, una versión codificada como `one-hot vector` de la entrada (como lista si recibe una lista o como `numpy.ndarray` en el segundo caso, respetando la estructura `shape`) . El segundo elemento es el diccionario de codificación de la forma `key`: elemento original y `value`: `one-hot vector`.
+
+**Código**: [`code/utils/preprocess_dataset/one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/one_hot_encoding.py)
+
+**Test unitario**: [`tests/test_utils/test_one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_one_hot_encoding.py)
+
+Una muestra del funcionamiento de este método se muestra en la sección anterior (**Escoger el dataset**).
+
+### Funciones de activación
+
+Las funciones de activación, y sus respectivas derivadas, fueron implementadas como métodos. Para conectar ambas se diseña un diccionario (`derivative`) cuya `key` es la función y `value` es la derivada.
+
+No se utilizó la recomendación del enunciado, porque ya se había implementado antes que ésta fuese subida.
+
+**Código**: [`code/utils/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/math_functions/activation_functions.py)
+
+**Test unitario**: [`tests/test_utils/test_activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_activation_functions.py)
+
+###  Producir la matriz de confusión para representar el resultado del test del modelo
+
+La matriz de confusión recibe la predicción y las etiquetas (ambas como `numpy.ndarray`) codificadas como *one-hot vector*. Si recibe elementos de una dimensión los convierte a dos dimensiones, de tal forma que queda representado la clase y los elementos que no corresponden a la clase. El método, también chequea las etiquetas y la predicción tengas las mismas dimensiones.
+
+La salida de este método es una matriz de `N x N`, con `N` la cantidad de clases. En caso de solo tener una clase la matriz es de `2 x 2` como la clase y los elementos que no corresponden a la clase. Esta salida se utiliza como entrada para las funciones `accuracy`, `precision`, `recall` y `f1-score`.  
+
+**Código**: [`code/utils/results/confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/results/confusion_matrix.py)
+
+**Test unitario**: [`tests/test_utils/test_confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_confusion_matrix.py)
+
+Ejemplo de una clase como "fuera del círculo", predicha por un algoritmo al azar (con distribución gausseana para mayor contraste de las predicciones sobre el círculo).
+
+![one_class](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/confusion_matrix_one_class.png)
+
+Ejecutable: [`tarea1/scripts/confusion_matrix_example_one_class`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/confusion_matrix_example_one_class.py)
+
+Ejemplo de las tres clases del dataset iris, predichas con un algoritmo al azar.
+
+![three_class](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/confusion_matrix_three_class.png)
+
+Ejecutable: [`tarea1/scripts/confusion_matrix_example_three_class`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/confusion_matrix_example_three_class.py)
+
+### k-Fold Cross-Validation
+
+Para realizar el entrenamiento de las redes neuronales, se diseñó la clase abstracta `Trainer`. De ella, se implementaron dos clases, una que entrena simplemente dividiendo el dataset en *train set* / *test set* usando la función `split set` y otra que hereda, también, la clase `KFold` de la librería [`sklearn`](https://scikit-learn.org/stable/)
+
+![uml_pattern](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/trainers.png)
+
+**Código**: [code/utils/results](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/results)
+
+**Tests Unitarios**: [tests/test_utils](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils)
+
+### Oversampling
+
+Debido a la variada representatividad de las clases de otros datasets (diferentes a `iris.data`) se realizaron métodos para *oversampling* (incluir datos repetidos seleccionados al azar sobre las clases menos representadas) y *undersampling* (realizar el mismo proceso, seleccionando los datos más representados para disminuir su representatividad). 
+
+Como se muestra en los resultados (reportado más abajo), sin este proceso, la red aprende que los datos corresponden a las clases más representadas.
+
+**Código**: [`code/utils/preprocess_dataset/oversampling`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/oversampling.py)
+
+**Test unitario**: [`tests/test_utils/test_oversampling`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_oversampling.py)
+
+## Redes neuronales
+
+### Capas (*Layers*)
+
+En lugar de implementar las capas (de ahora en adelante *layers*) como un conjunto de neuronas, se implementan como una nueva clase; para poder aprovechar la multiplicación matricial de la librería [`numpy`](https://www.numpy.org/)
+
+Un *layer* se define por el tamaño de su entrada, de salida y la función de activación. Aprovechando el diccionario definido para las funciones de activación (sección **Funciones de activación**), la derivada se asigna de forma automática. Para esta implementación se define una *abc* en python (que cumple el rol de *interface* y *abstract class*) y un constructor como el patrón de diseño *factory method*.
+
+![layers](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/layers.png)
+
+**Código**: [`code/neural_network/layers`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/neural_network/layers)
+
+**Tests unitarios**: [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_neural_network/)
+
+### Red neuronal
+
+Para esta tarea se realizo una implementación nueva de redes neuronales, parte del código se baso en el código provisto por el profesor.
+
+La estructura que sigue esta implementación es la siguiente.
+
+![network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/network.png)
+
+**Código**: [`code/neural_network/network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/neural_network/network.py)
+
+**Tests unitarios**: [`tests/test_neural_network/test_network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_neural_network/test_network.py)
+
+#### Resultados
+
+El primer resultado se realiza intentando predecir dos líneas, siendo la clase deseada los puntos fuera de la línea.
+
+![example_network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/example_network.png)
+
+Ejecutable: [`tarea1/scripts/show_network`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_network.py)
+
+Para mostrar el entrenamiento antes de comparar con la versión normalizada, se entrena la red con el dataset iris. El cual fue separado entre *train set* y *test set* en una proporción 70% / 30% respectivamente.
+
+![example_network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris.png)
+
+Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada arriba):
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9333 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.8947 | 0.9444 | 0.9189 |
+| **Iris-virginica** | - | 0.9091 | 0.8333 | 0.8696 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)
+
+Además, se realizan testeos usando *Cross validation* con 3, 5 y *10Fold*. Las matrices son la suma de todas las predicciones sobre los diferentes test set generados.
+
+![network_3fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris_3fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.96 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9583 | 0.92 | 0.9388 |
+| **Iris-virginica** | - | 0.9231 | 0.96 | 0.9412 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-x 3`
+
+![network_5fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris_5fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9533 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9388 | 0.92 | 0.9293 |
+| **Iris-virginica** | - | 0.9216 | 0.94 | 0.9307 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-x 5`
+
+![network_10fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/network_on_iris_10fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9533 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9388 | 0.92 | 0.9293 |
+| **Iris-virginica** | - | 0.9216 | 0.94 | 0.9307 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-x 10`
+
+### Implementar normalización
+
+La normalización fue implementada en una clase hija de la clase `NeuralNetwork` original (seccion: **Implementar redes neuronales**), llamada `NormalizedNetwork`. Esto, por dos motivos. El primero, para mantener una versión de `NeuralNetwork` sin normalización y aplicar buenas prácticas de programación orientada a objetos. El segundo, para presentar la normalización en una nueva clase que no considere la implementación de la red neuronal.
+
+![network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/normalized_network.png)
+
+**Código**: [`code/neural_network/normalized_network.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network/normalized_network.py)
+
+**Test unitario**: [`tests/test_neural_network/test_normalize.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network/test_normalize.py)
+
+#### Resultados
+
+Se muestra los resultados del mismo entrenamiento anterior (mismos *seeds*) con la red normalizada, con la misma arquitectura y con los mismos entrenadores (estándar y *cross validation*).
+
+![example_network](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris.png)
+
+Resultados obtenidos en test set (mismos que en la matriz de confusión mostrada arriba):
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9111 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.8571 | 0.8571 | 0.85714 |
+| **Iris-virginica** | - | 0.8571 | 0.0.8571 | 0.8571 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n`
+
+![normalized_3fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris_3fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.9 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.9070 | 0.78 | 0.8387 |
+| **Iris-virginica** | - | 0.8070 | 0.92 | 0.8598 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n -x 3`
+
+![normalized_5fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris_5fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.8733 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.8163 | 0.8 | 0.8081 |
+| **Iris-virginica** | - | 0.8039 | 0.82 | 0.8119 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n -x 5`
+
+![normalized_10fold](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/normalized_on_iris_10fold.png)
+
+| Clases          | *Accuracy* | *Precision* | *Recall* | *f1-score* |
+| --------------- | ---------- | ----------- | -------- | ---------- |
+| **Iris-setosa** | 0.8467 | 1.0 | 1.0 | 1.0 |
+| **Iris-versicolor** | - | 0.8857 | 0.62 | 0.7294 |
+| **Iris-virginica** | - | 0.7077 | 0.92 | 0.8 |
+
+Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/network_on_iris.py)	Argumento: `-n -x 10`
+
+### Distintos dataset
+
+Se realizaron más experimentos sobre diferentes datasets:
+
+1. `ecoli` representa el lugar en la célula donde la proteína es dirigida.
+
+2. `breast-cancer` casos clínicos de cáncer de mama y si éstos son recurrentes o no.
+
+3. `uci` casos clínicos y la estabilidad de los pacientes.
+
+Además, se definieron tres arquitecturas de redes neuronales:
+
+1. `SHORT`: una capa escondida (usada para entrenar sobre el dataset de `iris`.
+2. `LONG`: cinco capas escondidas.
+3. `BIG`: tres capas escondidas con un número mayor de neuronas por capa (50, 20 y 8 en las capas escondidas).
+
+Todos los resultados se muestran en el directorio: [tarea1/results/other_dataset](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/other_dataset)
+
+Ejecutable: [code/use_network](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/use_network.py])
+
+### Revisión de los pesos de las neuronas
+
+<al toque bodeque>
+
+## Anexo
+
+### Patrones
+
+Para realizar pruebas mínimas sobre perceptrones, neuronas y redes neuronales, se diseñaron clases sobre figuras en el plano. Para cada una de ellas se define una función para agregar la figura a la gráfica, para identificar si está arriba (afuera) de la figura y para generar un set de entrenamiento.
+
+![uml_pattern](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/patterns.png)
+
+**Código**: [`code/utils/patterns`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/patterns)
+
+**Tests unitarios**: [`tests/test_utils`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_utils)
+
+#### Resultados
+
+![patterns](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/results/patterns.png)
+
+Ejecutable [`tares1/scripts/show_patterns`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/scripts/show_patterns.py)
