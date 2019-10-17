@@ -135,6 +135,8 @@ class GAEngineTest(TestCase):
         self.ga_engine.reproduction()
         expected = int(odd / 2) + 1
         self.assertEqual(expected, len(self.ga_engine))
+        self.ga_engine.population.clear()
+        self.assertRaises(RuntimeError, self.ga_engine.run_to_equilibrium, POPULATION_SIZE, 10, use_prev=True)
 
     def test_initialize_again(self):
         self.assertEqual(POPULATION_SIZE, len(self.ga_engine), "Population size mismatch")
