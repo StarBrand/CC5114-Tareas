@@ -138,7 +138,7 @@ class GAEngine(object):
 
     def run_to_reach(self, expected_score: float, acceptable: float, population_size: int,
                      max_generation: int = MAX_GENERATIONS, tournament_size: int = TOURNAMENT_SIZE,
-                     log: bool = False) -> GAResult:
+                     use_prev: bool = False,  log: bool = False) -> GAResult:
         """
         Run algorithm until reach expected score with an acceptable (given) margin
 
@@ -147,12 +147,16 @@ class GAEngine(object):
         :param population_size: Size of the population
         :param max_generation: (optional) Maximum of generation (fixed for safety)
         :param tournament_size: (optional) Size of tournament, default: TOURNAMENT_SIZE (begin of file)
+        :param use_prev: (optional) Use actual generated generation
         :param log: (optional) Print logs
         :raises RuntimeError: If prev_generation is given true without a population generated
         :return: Result of algorithm
         """
-        self.initialize_population(population_size)
-        self.evaluate_fitness(register=True)
+        if not use_prev:
+            self.initialize_population(population_size)
+            self.evaluate_fitness(register=True)
+        elif len(self.population) == 0:
+            raise RuntimeError("Not population to use")
         internal_generation = 1
         while internal_generation < max_generation and not self.solution_found(expected_score, acceptable, log=log):
             self.next_generation(register=True, tournament_size=tournament_size)
@@ -161,7 +165,8 @@ class GAEngine(object):
         return self.result
 
     def run_to_equilibrium(self, population_size: int, equilibrium: int, max_generation: int = MAX_GENERATIONS,
-                           tournament_size: int = TOURNAMENT_SIZE, log: bool = False) -> GAResult:
+                           tournament_size: int = TOURNAMENT_SIZE, use_prev: bool = False,
+                           log: bool = False) -> GAResult:
         """
         Run algorithm until score does not change on 'equilibrium' times
 
@@ -169,6 +174,7 @@ class GAEngine(object):
         :param equilibrium: Number of generation with same score to stop algorithm
         :param max_generation: (optional) maximum generation
         :param tournament_size: (optional) size of tournament for selection
+        :param use_prev: (optional) Use actual generated generation
         :param log: (optional) Print logs
         :return: Result of algorithm
         """
@@ -177,8 +183,11 @@ class GAEngine(object):
             if log:
                 logging.info("Generation: {}".format(self.generation))
                 logging.info("\tCloser one: {}".format(max(self.population).chromosome))
-        self.initialize_population(population_size)
-        self.evaluate_fitness(register=True)
+        if not use_prev:
+            self.initialize_population(population_size)
+            self.evaluate_fitness(register=True)
+        elif len(self.population) == 0:
+            raise RuntimeError("Not population to use")
         internal_generation = 1
         times_in_a_row = 1
         score = max(self.population).my_fitness
@@ -198,19 +207,23 @@ class GAEngine(object):
         return self.result
 
     def run_fixed_generation(self, population_size: int, max_generation: int, tournament_size: int = TOURNAMENT_SIZE,
-                             log: bool = False) -> GAResult:
+                             use_prev: bool = False, log: bool = False) -> GAResult:
         """
         Run algorithm until reach expected score with an acceptable (given) margin
 
         :param population_size: Size of the population
         :param max_generation: Maximum of generation (fixed for safety)
         :param tournament_size: (optional) Size of tournament, default: TOURNAMENT_SIZE (begin of file)
+        :param use_prev: (optional) Use actual generated generation
         :param log: (optional) Print logs
         :raises RuntimeError: If prev_generation is given true without a population generated
         :return: Result of algorithm
         """
-        self.initialize_population(population_size)
-        self.evaluate_fitness(register=True)
+        if not use_prev:
+            self.initialize_population(population_size)
+            self.evaluate_fitness(register=True)
+        elif len(self.population) == 0:
+            raise RuntimeError("Not population to use")
         internal_generation = 1
         self.result.register_score(max(self.population), self.generation)
         if log:

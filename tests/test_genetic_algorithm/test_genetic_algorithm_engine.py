@@ -194,6 +194,38 @@ class GAEngineTest(TestCase):
         self.assertTrue(found, "Not found it")
         self.assertGreaterEqual(EPSILON, abs(expected - first_score), "Fitness miscalculated")
 
+    def setup_use_prev(self):
+        """
+        Generate a previous generation to use on a new run algorithm
+        """
+        self.ga_engine.evaluate_fitness()
+        self.ga_engine.next_generation()
+        self.ga_engine.next_generation()
+        self.ga_engine.next_generation()
+        self.assertEqual(4, self.ga_engine.generation, "Problem with setup prev generation")
+
+    def test_run_solution_with_prev(self):
+        self.setup_use_prev()
+        expected = 1e10  # unreachable
+        max_generation = 10
+        self.ga_engine.run_to_reach(expected, 0, 10, max_generation=max_generation, use_prev=True)
+        self.assertNotEqual(max_generation, self.ga_engine.generation, "Not used previous generation")
+        self.assertEqual(max_generation + 3, self.ga_engine.generation, "Wrong number of generation used")
+
+    def test_run_equilibrium_with_prev(self):
+        self.setup_use_prev()
+        max_generation = 10
+        self.ga_engine.run_to_equilibrium(100, 10, max_generation=max_generation, use_prev=True)
+        self.assertNotEqual(max_generation, self.ga_engine.generation, "Not used previous generation")
+        self.assertEqual(max_generation + 3, self.ga_engine.generation, "Wrong number of generation used")
+
+    def test_run_fixed_generation_with_prev(self):
+        self.setup_use_prev()
+        max_generation = 10
+        self.ga_engine.run_fixed_generation(100, max_generation, use_prev=True)
+        self.assertNotEqual(max_generation, self.ga_engine.generation, "Not used previous generation")
+        self.assertEqual(max_generation + 3, self.ga_engine.generation, "Wrong number of generation used")
+
 
 if __name__ == '__main__':
     main()
