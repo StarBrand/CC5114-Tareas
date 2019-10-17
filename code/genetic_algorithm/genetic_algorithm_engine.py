@@ -152,11 +152,7 @@ class GAEngine(object):
         :raises RuntimeError: If prev_generation is given true without a population generated
         :return: Result of algorithm
         """
-        if not use_prev:
-            self.initialize_population(population_size)
-            self.evaluate_fitness(register=True)
-        elif len(self.population) == 0:
-            raise RuntimeError("Not population to use")
+        self._initialize(population_size, use_prev)
         internal_generation = 1
         while internal_generation < max_generation and not self.solution_found(expected_score, acceptable, log=log):
             self.next_generation(register=True, tournament_size=tournament_size)
@@ -183,11 +179,7 @@ class GAEngine(object):
             if log:
                 logging.info("Generation: {}".format(self.generation))
                 logging.info("\tCloser one: {}".format(max(self.population).chromosome))
-        if not use_prev:
-            self.initialize_population(population_size)
-            self.evaluate_fitness(register=True)
-        elif len(self.population) == 0:
-            raise RuntimeError("Not population to use")
+        self._initialize(population_size, use_prev)
         internal_generation = 1
         times_in_a_row = 1
         score = max(self.population).my_fitness
@@ -219,11 +211,7 @@ class GAEngine(object):
         :raises RuntimeError: If prev_generation is given true without a population generated
         :return: Result of algorithm
         """
-        if not use_prev:
-            self.initialize_population(population_size)
-            self.evaluate_fitness(register=True)
-        elif len(self.population) == 0:
-            raise RuntimeError("Not population to use")
+        self._initialize(population_size, use_prev)
         internal_generation = 1
         self.result.register_score(max(self.population), self.generation)
         if log:
@@ -238,6 +226,21 @@ class GAEngine(object):
             internal_generation += 1
         self.result.ready_to_export(max(self.population), True)
         return self.result
+
+    def _initialize(self, population_size: int, use_prev: bool) -> None:
+        """
+        Initialize run algorithm
+
+        :param population_size: Population size (not used if use_prev = True)
+        :param use_prev: Use previous generated generation (otherwise, erase it and initialize anew)
+        :raises RuntimeError: Use previous generation when there is no one
+        :return: None (update self.population)
+        """
+        if not use_prev:
+            self.initialize_population(population_size)
+            self.evaluate_fitness(register=True)
+        elif len(self.population) == 0:
+            raise RuntimeError("Not population to use")
 
     def __len__(self):
         return len(self.population)
