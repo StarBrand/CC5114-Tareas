@@ -40,9 +40,9 @@ class TravelPath(Individual):
 
     def generate_individual(self) -> Individual:
         """
-        Return another Word Guesser
+        Return another TravelPath
 
-        :return: New word guesser
+        :return: New travel path
         """
         return TravelPath(self.mutation_rate, self.state)
 

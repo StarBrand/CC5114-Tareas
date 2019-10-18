@@ -131,4 +131,119 @@ Eso hace que para este modelo, ejecutar el algoritmo hasta alcanzar este puntaje
 
 Al realizar esta implementación de un individuo concreto, se realizaron además algunos análisis sobre los hiperparámetros necesarios para el algoritmo genético. Esto por dos motivos: 1) el óptimo fitness conocido y 2) lo rápido (pocas iteraciones) necesarias en este problema.
 
-Con una tasa de mutación de 0.3 (30%) 
+Con una tasa de mutación de 0.3 (30%) y una población de 500 individuos, el avance en el fitness se muestra a continuación:
+
+![guess_algorithm](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/word_guesser.png)
+
+**Ejecutable**: [`tarea2/script/show_ga_example`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_ga_example.py)	**Argumentos**: `-t 0`
+
+Para mostrar el efecto de estos hiperparámetros, se varía la población y la tasa de mutación por separado.
+
+![wg_population](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/algorithm_vs_population.png)
+
+**Ejecutable**: [`tarea2/script/evaluate_ga_engine_population`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/evaluate_ga_engine_population.py)
+
+![wg_mutation](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/algorithm_vs_mutation.png)
+
+**Ejecutable**: [`tarea2/script/evaluate_ga_engine_mutation`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/evaluate_ga_engine_mutation.py)
+
+Y al variar ambas se realizó el siguiente heatmap:
+
+![wg_heatmap](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/algorithm_heatmap.png)
+
+**Ejecutable**: [`tarea2/script/evaluate_ga_engine_heatmap`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/evaluate_ga_engine_heatmap.py)
+
+Este heatmap muestra que entre mayor sea la población más rápido se encontrará la palabra, dado por la probabilidad de encontrarla en la simple generación al azar. Por otro lado, la tasa de mutación presenta una menor *performance* a bajo y a altos porcentajes. A bajos porcentajes, se impide ingresar nuevos letras al proceso, y en altos porcentajes, el *crossingover* pierde importancia al lado de la constante generación poblaciones completamente nuevas.
+
+### Adivinador de una frase (`SentenceGuesser`)
+
+Básicamente, es una implementación idéntica a la clase `WordGuesser`. Tiene sentido, entonces, que se necesiten una menor tasa de mutación (ahora las posibilidades de encontrar el carácter correcto en la posición correcta es mucho menor, al haber más caracteres, minúsculas, mayúsculas y espacio, y más posiciones) y una mayor población.
+
+**Código**: [`code/genetic_algorithm/individuals/sentence_guesser`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/sentence_guesser.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_sentence_guesser`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_sentence_guesser.py)
+
+#### Resultados:
+
+![sentence](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/sentence_guesser.png)
+
+**Ejecutable**: [`tarea2/script/show_ga_example`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_ga_example.py)	**Argumentos**: `-t 1 -m 0.05`
+
+### Calculadora de binarios (`BinaryCalculator`)
+
+Calcular binarios también es un problema con óptimo conocido, ya que un el mayor fitness es cuando se encuentra el binario correspondiente y al calcular la diferencia se obtiene 0. Por lo que el fitness se calcula como el inverso aditivo del valor absoluto de la diferencia, generando valores menores al 0 esperado. El largo del binario debe ser calculado, ya que la cantidad de genes debe ser fijo o se le debe dar un número exagerado.
+
+**Código**: [`code/genetic_algorithm/individuals/binary_calculator`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/binary_calculator.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_binary_calculator`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_binary_calculator.py)
+
+#### Resultados:
+
+![binary_calc](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/binary_calculator.png)
+
+**Ejecutable**: [`tarea2/script/show_ga_example`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_ga_example.py)	**Argumentos**: `-t 2`
+
+### El Problema del vendedor viajero o *Traveling Sales Problem* (`TravelPath`)
+
+Para este problema particular, se debe redefinir ciertas operaciones estándar de la clase `Individual`.
+
+1. Entrecruzamiento (`crossingover`): ya no se puede intercambiar un trozo del cromosoma desde el quiasma (*chiasma*) por otro, ya que esto puede retornar un ruta inválida. En vez de esto, el intercambio es entre un fragmento en que cada punto visitado es igual en ambos individuos y este es intercambiado.
+2. Mutación (`mutate`): no se puede cambiar un gen por uno nuevo, se debe intercambiar para evitar recorrer más, o menos, de una vez un punto del camino.
+
+#### Resultados:
+
+![sentence](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/travel_path.png)
+
+**Ejecutable**: [`tarea2/script/show_ga_example`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_ga_example.py)	**Argumentos**: `-t 3 -e 20`
+
+## Individuos con más de un objetivo (`MultiObjectiveIndividual`)
+
+Hay problemas que necesitan más de una función de fitness para ser modelados. Para ello se define una nueva clase abstracta que hereda de la clase abstracta `Individual`. Las diferencias fundamentales son:
+
+1. **Multi-fitness**: El fitness ahora son varias funciones, por lo que el parámetro `fitness_function`, es un `array` o lista  de funciones. El cálculo es similar, y el fitness que se guarda en la instancia es el menor en el `array`. El `array` con todos los fitness se guarda en la variable `multi_fitness`.
+2. **Optimizaciones**: Las variables booleanas `pareto` y `priority` indican si las comparaciones se realizan utilizando alguna de estas dos optimizaciones. Si ambas son falsas, se compara el `fitness` registrado, es decir, el menor fitness.
+
+**Código**: [`code/genetic_algorithm/individuals/multi_objective_individual`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/multi_objective_individual.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_multi_individual`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_multi_individual.py)
+
+### Robot en laberinto (`RobotInMaze`)
+
+Un individuo con multi-objetivos es el robot en el laberinto. Las dos funciones son distancia a la salida y largo del camino (en ese orden de prioridad). Como ambas funciones se requieren minimizar, se utilizaran los inversos aditivos. Para el cálculo es necesario tener la simulación al laberinto (siguiente subsección). 
+
+**Código**: [`code/genetic_algorithm/individuals/robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/robot_in_maze.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_robot_in_maze.py)
+
+#### Laberinto (`Maze`)
+
+Para la simulación del laberinto se utilizó el algoritmo de división recursiva (*recursive division method*), el cual toma una cámara (pieza vacía) que se divide dos veces dejando tres espacios para mantener las cámaras conexas. Esto se realiza recursivamente hasta tener un laberinto con caminos de ancho uno. Este laberinto calcula si un camino encuentra el final del laberinto o donde llega, tomando un set de movimientos (clase `Move`) los cuales serán los genes del cromosoma de `RobotInMaze`.
+
+**Código**: [`code/useful/simulations/maze_rdm`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/simulations/maze_rdm.py) y [`code/useful/simulations/moves`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/simulations/moves.py)
+
+**Tests unitarios**: [`tests/test_useful/test_maze_rdm`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_useful/test_maze_rdm.py)
+
+#### Resultados
+
+#### Análisis
+
+### Unbond-Knapsack (`UnbondKnapsack`)
+
+**Código**: [`code/genetic_algorithm/individuals/unbond_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/unbond_knapsack.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_unbond_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_unbond_knapsack.py)
+
+#### Resultados
+
+#### Análisis
+
+### 0-1-Knapsack (`01Knapsack`)
+
+**Código**: [`code/genetic_algorithm/individuals/01_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/01_knapsack.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_01_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_01_knapsack.py)
+
+#### Resultados
+
+#### Análisis
+
