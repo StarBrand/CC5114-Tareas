@@ -54,9 +54,9 @@ Para este trabajo se escoge el dataset ["iris"](https://archive.ics.uci.edu/ml/d
 
 La transformación se definió como el método `one_hot_encoding` que recibe una lista o un `array ` y devuelve una tupla de dos elementos, el primero, una versión codificada como `one-hot vector` de la entrada (como lista si recibe una lista o como `numpy.ndarray` en el segundo caso, respetando la estructura `shape`) . El segundo elemento es el diccionario de codificación de la forma `key`: elemento original y `value`: `one-hot vector`.
 
-**Código**: [`code/utils/preprocess_dataset/one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/one_hot_encoding.py)
+**Código**: [`code/useful/preprocess_dataset/one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/preprocess_dataset/one_hot_encoding.py)
 
-**Test unitario**: [`tests/test_utils/test_one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_one_hot_encoding.py)
+**Test unitario**: [`tests/test_useful/test_one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_one_hot_encoding.py)
 
 ### Funciones de activación
 
@@ -64,9 +64,9 @@ Las funciones de activación, y sus respectivas derivadas, fueron implementadas 
 
 No se utilizó la recomendación del enunciado, porque ya se había implementado antes que ésta fuese subida.
 
-**Código**: [`code/utils/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/math_functions/activation_functions.py)
+**Código**: [`code/useful/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/math_functions/activation_functions.py)
 
-**Test unitario**: [`tests/test_utils/test_activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_activation_functions.py)
+**Test unitario**: [`tests/test_useful/test_activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_activation_functions.py)
 
 ###  Producir la matriz de confusión para representar el resultado del test del modelo
 
@@ -74,9 +74,9 @@ La matriz de confusión recibe la predicción y las etiquetas (ambas como `numpy
 
 La salida de este método es una matriz de `N x N`, con `N` la cantidad de clases. En caso de solo tener una clase la matriz es de `2 x 2` como la clase y los elementos que no corresponden a la clase. Esta salida se utiliza como entrada para las funciones `accuracy`, `precision`, `recall` y `f1-score`.  
 
-**Código**: [`code/utils/results/confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/results/confusion_matrix.py)
+**Código**: [`code/useful/results/confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/results/confusion_matrix.py)
 
-**Test unitario**: [`tests/test_utils/test_confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_confusion_matrix.py)
+**Test unitario**: [`tests/test_useful/test_confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_confusion_matrix.py)
 
 ## Redes neuronales
 
@@ -130,9 +130,9 @@ Ejecutable: [`tarea1/scripts/network_on_iris`](https://github.com/StarBrand/CC51
 
 Para entrenar las redes neuronales se utilizaron dos clases "entrenadoras" (*trainer*). Una, `StandardTrainer`, se utilizó en el ejemplo anterior. La segunda, `KFoldTrainer`, utiliza, y hereda, la clase `KFold` (de la librería [`sklearn`](https://scikit-learn.org/stable/)).
 
-**Código**: [`code/utils/results`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/results)
+**Código**: [`code/useful/results`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/results)
 
-**Tests unitarios**: [`tests/test_utils`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_utils)
+**Tests unitarios**: [`tests/test_useful`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_useful)
 
 #### Resultados
 

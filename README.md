@@ -72,13 +72,13 @@ Tests unitarios: [`tests/test_learning_perceptron/test_sigmoid_neuron`](https://
 
 Código:
 
-* Código utilizado: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/perceptron), [`code/learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/learning_perceptron), [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network) y [`code/utils`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils)
+* Código utilizado: [`code/perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/perceptron), [`code/learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/learning_perceptron), [`code/neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/neural_network) y [`code/useful`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful)
 
 * Scripts ejecutables: [`tarea1/scripts`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1/scripts)
 
 * Markdown: [`tarea1/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/README%20(Extended).md)
 
-* Tests unitarios: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron), [`tests/test_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron), [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network) y [`tests/test_utils`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils)
+* Tests unitarios: [`tests/test_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_perceptron), [`tests/test_learning_perceptron`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_learning_perceptron), [`tests/test_neural_network`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_neural_network) y [`tests/test_useful`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful)
 
 ## Clase 07: Redes neuronales: Explicación de BackPropagation
 

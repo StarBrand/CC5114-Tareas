@@ -54,7 +54,7 @@ No se muestran resultados por extensión.
 
 ### Neurona
 
-Finalmente, para completar los requisitos de la neurona que se pide, se implementa la clase `Neuron` que recibe una función de activación distinta. Las funciones de activación se encuentran implementadas en [`utils/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/math_functions/activation_functions.py) (reportado más abajo)
+Finalmente, para completar los requisitos de la neurona que se pide, se implementa la clase `Neuron` que recibe una función de activación distinta. Las funciones de activación se encuentran implementadas en [`useful/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/math_functions/activation_functions.py) (reportado más abajo)
 
 ![neuron](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/neuron.png)
 
@@ -88,9 +88,9 @@ Para manejar este dataset se importa en forma de `numpy.ndarray`. El método que
 
 Además se tiene el método `split_set` que separa un `numpy.ndarry` en el porcentaje que se le dé. Antes de eso, además se randomiza utilizando el método [`numpy.random.permutate`](https://het.as.utexas.edu/HET/Software/Numpy/reference/generated/numpy.random.permutation.html). Si recibe solo un número (entre 0 y 1) separa el arreglo en dos arreglos, uno con el porcentaje dado y otro con el restante. En cambio, si recibe dos porcentajes, y mientras la suma sea menor que 1, separa el set en dos arreglos que contienen los dichos porcentajes. Este método se usará para separar el dataset en *train set* y *test set*.
 
-**Código**: [`code/utils/preprocess_dataset/set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/set_functions.py)
+**Código**: [`code/useful/preprocess_dataset/set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/preprocess_dataset/set_functions.py)
 
-**Test unitario**: [`tests/test_utils/test_set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_set_functions.py)
+**Test unitario**: [`tests/test_useful/test_set_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_set_functions.py)
 
 Se muestra un gráfico de la matriz, formada por el *one-hot vector* y los índices del dataset, del dataset completo, de una muestra del 60% y otra del 40%.
 
@@ -102,9 +102,9 @@ Ejecutable: [`tarea1/scripts/sample_of_dataset`](https://github.com/StarBrand/CC
 
 La transformación se definió como el método `one_hot_encoding` que recibe una lista o un `array ` y devuelve una tupla de dos elementos, el primero, una versión codificada como `one-hot vector` de la entrada (como lista si recibe una lista o como `numpy.ndarray` en el segundo caso, respetando la estructura `shape`) . El segundo elemento es el diccionario de codificación de la forma `key`: elemento original y `value`: `one-hot vector`.
 
-**Código**: [`code/utils/preprocess_dataset/one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/one_hot_encoding.py)
+**Código**: [`code/useful/preprocess_dataset/one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/preprocess_dataset/one_hot_encoding.py)
 
-**Test unitario**: [`tests/test_utils/test_one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_one_hot_encoding.py)
+**Test unitario**: [`tests/test_useful/test_one_hot_encoding`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_one_hot_encoding.py)
 
 Una muestra del funcionamiento de este método se muestra en la sección anterior (**Escoger el dataset**).
 
@@ -114,9 +114,9 @@ Las funciones de activación, y sus respectivas derivadas, fueron implementadas 
 
 No se utilizó la recomendación del enunciado, porque ya se había implementado antes que ésta fuese subida.
 
-**Código**: [`code/utils/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/math_functions/activation_functions.py)
+**Código**: [`code/useful/math_functions/activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/math_functions/activation_functions.py)
 
-**Test unitario**: [`tests/test_utils/test_activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_activation_functions.py)
+**Test unitario**: [`tests/test_useful/test_activation_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_activation_functions.py)
 
 ###  Producir la matriz de confusión para representar el resultado del test del modelo
 
@@ -124,9 +124,9 @@ La matriz de confusión recibe la predicción y las etiquetas (ambas como `numpy
 
 La salida de este método es una matriz de `N x N`, con `N` la cantidad de clases. En caso de solo tener una clase la matriz es de `2 x 2` como la clase y los elementos que no corresponden a la clase. Esta salida se utiliza como entrada para las funciones `accuracy`, `precision`, `recall` y `f1-score`.  
 
-**Código**: [`code/utils/results/confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/results/confusion_matrix.py)
+**Código**: [`code/useful/results/confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/results/confusion_matrix.py)
 
-**Test unitario**: [`tests/test_utils/test_confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_confusion_matrix.py)
+**Test unitario**: [`tests/test_useful/test_confusion_matrix`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_confusion_matrix.py)
 
 Ejemplo de una clase como "fuera del círculo", predicha por un algoritmo al azar (con distribución gausseana para mayor contraste de las predicciones sobre el círculo).
 
@@ -146,9 +146,9 @@ Para realizar el entrenamiento de las redes neuronales, se diseñó la clase abs
 
 ![uml_pattern](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/trainers.png)
 
-**Código**: [code/utils/results](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/results)
+**Código**: [code/useful/results](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/results)
 
-**Tests Unitarios**: [tests/test_utils](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils)
+**Tests Unitarios**: [tests/test_useful](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful)
 
 ### Oversampling
 
@@ -156,9 +156,9 @@ Debido a la variada representatividad de las clases de otros datasets (diferente
 
 Como se muestra en los resultados (reportado más abajo), sin este proceso, la red aprende que los datos corresponden a las clases más representadas.
 
-**Código**: [`code/utils/preprocess_dataset/oversampling`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/utils/preprocess_dataset/oversampling.py)
+**Código**: [`code/useful/preprocess_dataset/oversampling`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/preprocess_dataset/oversampling.py)
 
-**Test unitario**: [`tests/test_utils/test_oversampling`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_utils/test_oversampling.py)
+**Test unitario**: [`tests/test_useful/test_oversampling`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_oversampling.py)
 
 ## Redes neuronales
 
@@ -328,9 +328,9 @@ Para realizar pruebas mínimas sobre perceptrones, neuronas y redes neuronales, 
 
 ![uml_pattern](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1/UML/patterns.png)
 
-**Código**: [`code/utils/patterns`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/utils/patterns)
+**Código**: [`code/useful/patterns`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/patterns)
 
-**Tests unitarios**: [`tests/test_utils`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_utils)
+**Tests unitarios**: [`tests/test_useful`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_useful)
 
 #### Resultados
 
