@@ -3,14 +3,20 @@
 import logging
 from math import sqrt
 from copy import deepcopy
-from random import choices, uniform, choice
+from random import uniform, choice
 from matplotlib.axes import Axes
 from genetic_algorithm.individuals import MultiObjectiveIndividual, Individual
-from useful.simulations import Maze, UP, DOWN, LEFT, RIGHT, Move
+from useful.simulations import Maze, UP, DOWN, LEFT, RIGHT
 
 
 def _length(maze: Maze) -> float:
+    return maze.long_of_path()
+
+
+def _length_op(maze: Maze) -> float:
     return - maze.long_of_path()
+
+# TODO: a function that measure repeat a move. New priority: _length, _repeat, _exit, _length_op
 
 
 def _exit(maze: Maze) -> float:
@@ -29,7 +35,8 @@ class RobotInMaze(MultiObjectiveIndividual):
 
     def __init__(self, mutation_rate: float, maze: Maze):
         self._maze = deepcopy(maze)
-        super().__init__([_exit, _length], _get_move, len(self._maze) ** 2 + 1, mutation_rate)
+        self._maze_with_robot = deepcopy(maze)
+        super().__init__([_exit, _length, _length_op], _get_move, len(self._maze) ** 2 + 1, mutation_rate)
         if not maze.is_generated():
             raise InterruptedError("Cannot initialize Robot if Maze is not generated")
         self._run = False
@@ -48,7 +55,7 @@ class RobotInMaze(MultiObjectiveIndividual):
         self.multi_fitness = list()
         self._performance()
         for fitness_func in self._fitness_function:
-            self.multi_fitness.append(fitness_func(self._maze))
+            self.multi_fitness.append(fitness_func(self._maze_with_robot))
         return super().fitness()
 
     def generate_individual(self) -> Individual:
@@ -72,7 +79,7 @@ class RobotInMaze(MultiObjectiveIndividual):
 
     def _performance(self) -> None:
         self._run = True
-        self._maze.enter_robot(self.chromosome)
+        self._maze_with_robot.enter_robot(self.chromosome)
 
     def graph(self, ax: Axes):
         """
@@ -83,5 +90,5 @@ class RobotInMaze(MultiObjectiveIndividual):
         """
         if not self._run:
             logging.warning("Robot has not enter the maze yet")
-        self._maze.graph(ax)
+        self._maze_with_robot.graph(ax)
         return None
