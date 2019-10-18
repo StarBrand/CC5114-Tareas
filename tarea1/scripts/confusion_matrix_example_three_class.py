@@ -1,9 +1,9 @@
 """confusion_matrix_example_three_class.py: show and test confusion matrix methods"""
 import numpy as np
 import matplotlib.pyplot as plt
-from utils.preprocess_dataset import import_data, one_hot_encoding
-from utils.results import confusion_matrix, show_matrix, annotate
-from utils.results import accuracy, precision, recall, f1_score
+from useful.preprocess_dataset import import_data, one_hot_encoding
+from useful.results import confusion_matrix, show_matrix, annotate
+from useful.results import accuracy, precision, recall, f1_score
 
 N = int(1e5)
 X_MIN = Y_MIN = -50

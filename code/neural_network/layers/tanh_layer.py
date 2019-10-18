@@ -1,6 +1,6 @@
 """tanh_layer: TanhLayer class"""
 from neural_network.layers import NeuronLayer
-from utils.math_functions import tanh
+from useful.math_functions import tanh
 
 
 class TanhLayer(NeuronLayer):

@@ -1,8 +1,8 @@
 """test_cross_validation.py: unittest KFoldTrainer"""
 from unittest import TestCase, main
 from neural_network import NeuralNetwork
-from utils.results import KFoldTrainer
-from utils.patterns import Circle
+from useful.results import KFoldTrainer
+from useful.patterns import Circle
 
 SIZE = 10000
 EPOCHS = 100

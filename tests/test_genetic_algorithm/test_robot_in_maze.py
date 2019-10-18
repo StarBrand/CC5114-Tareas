@@ -5,8 +5,8 @@ from random import seed
 from math import sqrt
 from genetic_algorithm.individuals import RobotInMaze
 from test_genetic_algorithm import MultiIndividualTest
-from test_utils import tester_maze, tester_robot_wrong, tester_robot_wrong_closer, tester_robot_out
-from utils.simulations import LEFT, RIGHT, UP, Maze
+from test_useful import tester_maze, tester_robot_wrong, tester_robot_wrong_closer, tester_robot_out
+from useful.simulations import LEFT, RIGHT, UP, Maze
 
 EPSILON = 1e-10
 

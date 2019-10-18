@@ -1,8 +1,8 @@
 """show_patterns.py: Show patterns on graphs"""
 import matplotlib.pyplot as plt
 import logging
-from useful import plot_result
-from utils.patterns import Line, DoubleLine, Circle, Square
+from useful1 import plot_result
+from useful.patterns import Line, DoubleLine, Circle, Square
 
 N = int(1e3)
 X_MIN = Y_MIN = -50

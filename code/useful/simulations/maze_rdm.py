@@ -7,7 +7,7 @@ from copy import deepcopy
 from random import randint, choice, choices, sample
 from matplotlib.axes import Axes
 from matplotlib.colors import ListedColormap
-from utils.simulations import Move, UP, DOWN, LEFT, RIGHT
+from useful.simulations import Move, UP, DOWN, LEFT, RIGHT
 
 EPSILON = 1e-10
 COLORMAP_MAZE = ListedColormap(['w', 'y', 'r', 'g', 'k'])

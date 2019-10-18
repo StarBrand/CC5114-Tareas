@@ -2,8 +2,8 @@
 from unittest import TestCase, main
 import numpy as np
 from os import path
-from utils.patterns import Line
-from utils.preprocess_dataset import split_set, import_data
+from useful.patterns import Line
+from useful.preprocess_dataset import split_set, import_data
 
 
 class FunctionTest(TestCase):

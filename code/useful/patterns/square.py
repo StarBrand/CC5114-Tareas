@@ -1,5 +1,5 @@
 """square.py: Square Class"""
-from utils.patterns import Pattern
+from useful.patterns import Pattern
 
 
 class Square(Pattern):

@@ -2,7 +2,7 @@
 import os
 import numpy as np
 from unittest import TestCase, main
-from utils.preprocess_dataset import import_data, oversample, undersample
+from useful.preprocess_dataset import import_data, oversample, undersample
 
 FILE_PATH = os.path.dirname(os.path.abspath(__file__))
 DATASET = os.path.join(FILE_PATH, "../../data/ecoli.data")

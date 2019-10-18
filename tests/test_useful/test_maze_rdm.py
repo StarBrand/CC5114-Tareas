@@ -2,8 +2,8 @@
 
 import numpy as np
 from unittest import TestCase, main
-from utils.simulations import Maze
-from test_utils import tester_maze, tester_robot_out, tester_robot_wrong
+from useful.simulations import Maze
+from test_useful import tester_maze, tester_robot_out, tester_robot_wrong
 
 SIZE = 20
 LONG_NUMBER = 11  # must be odd

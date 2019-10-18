@@ -4,7 +4,7 @@ import logging
 from copy import deepcopy
 from sklearn.model_selection import KFold
 from neural_network import NeuralNetwork
-from utils.results import Trainer
+from useful.results import Trainer
 
 
 class KFoldTrainer(Trainer, KFold):

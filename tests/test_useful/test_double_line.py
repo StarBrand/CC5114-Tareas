@@ -1,6 +1,6 @@
 """test_double_line.py: unittest of DoubleLine"""
 from unittest import TestCase, main
-from utils.patterns import DoubleLine
+from useful.patterns import DoubleLine
 
 MIN_X = MIN_Y = -50
 MAX_X = MAX_Y = 50

@@ -23,7 +23,7 @@ if __name__ == '__main__':
         for size in POPULATION_SIZE:
             logging.info("==> Population size used: {}".format(size))
             environment = GAEngine(WordGuesser(m_rate, WORD_TO_GUESS))
-            result = environment.run_genetic_algorithm(SCORE, size)
+            result = environment.run_to_reach(SCORE, 0.0, size)
             generations.append(result.get_generations()[-1])
         ax.plot(POPULATION_SIZE, generations, label="Mut rate: {}".format(m_rate))
     ax.set_xlabel("\nPopulation", fontsize=20)

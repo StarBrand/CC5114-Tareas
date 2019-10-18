@@ -1,4 +1,4 @@
-"""set_functions.py: utils methods for dataset"""
+"""set_functions.py: useful methods for dataset"""
 import numpy as np
 import pandas as pd
 

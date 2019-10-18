@@ -1,3 +1,3 @@
-"""utils: Package of useful method and class"""
+"""useful: Package of useful1 method and class"""
 
-from utils.architecture import SHORT, LONG, BIG
+from useful.architecture import SHORT, LONG, BIG

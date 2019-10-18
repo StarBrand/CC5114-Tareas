@@ -2,7 +2,7 @@
 
 from random import uniform
 from matplotlib.axes import Axes
-from utils.patterns import Pattern, Line
+from useful.patterns import Pattern, Line
 
 
 class DoubleLine(Pattern):

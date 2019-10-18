@@ -5,10 +5,10 @@ import logging
 from argparse import ArgumentParser
 from random import seed
 from neural_network import NeuralNetwork, NormalizedNetwork
-from utils.math_functions import sigmoid, tanh
-from utils.preprocess_dataset import import_data, one_hot_encoding
-from utils.results import StandardTrainer, KFoldTrainer
-from utils.results import confusion_matrix, accuracy, precision, recall, f1_score, show_matrix
+from useful.math_functions import sigmoid, tanh
+from useful.preprocess_dataset import import_data, one_hot_encoding
+from useful.results import StandardTrainer, KFoldTrainer
+from useful.results import confusion_matrix, accuracy, precision, recall, f1_score, show_matrix
 
 FIG_SIZE = (20 * 2, 20)
 TITLE_SIZE = 40

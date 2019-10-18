@@ -1,7 +1,7 @@
 """circle.py: Circle Pattern class"""
 import numpy as np
 from math import sqrt, pow
-from utils.patterns import Pattern
+from useful.patterns import Pattern
 
 
 class Circle(Pattern):

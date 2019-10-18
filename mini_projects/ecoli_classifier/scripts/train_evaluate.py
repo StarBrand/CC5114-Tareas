@@ -4,9 +4,9 @@ import numpy as np
 import logging
 from random import seed
 from neural_network import NeuralNetwork
-from utils.preprocess_dataset import import_data, one_hot_encoding, oversample
-from utils.results import StandardTrainer
-from utils.results import confusion_matrix, accuracy, precision, recall, f1_score, show_matrix
+from useful.preprocess_dataset import import_data, one_hot_encoding, oversample
+from useful.results import StandardTrainer
+from useful.results import confusion_matrix, accuracy, precision, recall, f1_score, show_matrix
 
 FIG_SIZE = (20 * 2, 20)
 TITLE_SIZE = 40

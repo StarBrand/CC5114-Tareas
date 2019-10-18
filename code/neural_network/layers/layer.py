@@ -2,7 +2,7 @@
 import numpy as np
 import logging
 from abc import ABC
-from utils.math_functions import derivative, proper_name
+from useful.math_functions import derivative, proper_name
 
 
 class NeuronLayer(ABC):

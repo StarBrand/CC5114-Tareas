@@ -2,8 +2,8 @@
 import numpy as np
 from copy import deepcopy
 from neural_network import NeuralNetwork
-from utils.preprocess_dataset import split_set
-from utils.results import Trainer
+from useful.preprocess_dataset import split_set
+from useful.results import Trainer
 
 
 class StandardTrainer(Trainer):

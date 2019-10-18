@@ -2,7 +2,7 @@
 import numpy as np
 import logging
 from neural_network.layers import NeuronLayer
-from utils.math_functions import step
+from useful.math_functions import step
 
 
 class PerceptronLayer(NeuronLayer):

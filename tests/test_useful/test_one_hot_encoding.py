@@ -2,7 +2,7 @@
 from unittest import TestCase, main
 import numpy as np
 from random import randint
-from utils.preprocess_dataset import one_hot_encoding
+from useful.preprocess_dataset import one_hot_encoding
 
 NUMBER_OF_RANDOM_TEST = 5
 ELEMENTS = ["Cat", "Dog", "Elephant", "Turtle", "Dragon",

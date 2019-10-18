@@ -6,7 +6,7 @@ from copy import deepcopy
 from random import choices, uniform, choice
 from matplotlib.axes import Axes
 from genetic_algorithm.individuals import MultiObjectiveIndividual, Individual
-from utils.simulations import Maze, UP, DOWN, LEFT, RIGHT, Move
+from useful.simulations import Maze, UP, DOWN, LEFT, RIGHT, Move
 
 
 def _length(maze: Maze) -> float:

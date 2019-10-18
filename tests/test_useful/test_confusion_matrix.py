@@ -1,9 +1,9 @@
 """test_confusion_matrix.py: unittest of confusion matrix and evaluation functions"""
 from unittest import TestCase, main
 import numpy as np
-from utils.results import confusion_matrix
-from utils.results import accuracy, precision
-from utils.results import recall, f1_score
+from useful.results import confusion_matrix
+from useful.results import accuracy, precision
+from useful.results import recall, f1_score
 
 # One dimension
 CLASS_Y = CLASS_N = 500

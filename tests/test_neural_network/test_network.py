@@ -3,7 +3,7 @@ from unittest import TestCase, main
 import numpy as np
 import logging
 from neural_network import NeuralNetwork
-from utils.math_functions import tanh, sigmoid, derivative
+from useful.math_functions import tanh, sigmoid, derivative
 
 SIZE = 10000
 EPOCHS = 100

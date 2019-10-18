@@ -4,9 +4,9 @@ import numpy as np
 import logging
 from random import seed
 from learning_perceptron import Neuron
-from utils.math_functions import tanh
-from utils.patterns import Line, DoubleLine
-from useful import plot_result, do_prediction
+from useful.math_functions import tanh
+from useful.patterns import Line, DoubleLine
+from useful1 import plot_result, do_prediction
 
 FIG_SIZE = (12 * 3, 12 * 2)
 X_MIN = Y_MIN = -50

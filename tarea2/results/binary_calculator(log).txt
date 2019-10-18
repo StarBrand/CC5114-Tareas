@@ -1,33 +1,35 @@
 C:\Users\juans\Anaconda3\envs\cc5114\python.exe "C:/Users/juans/Google Drive/CC5114/CC5114-Tareas/tarea2/script/show_ga_example.py" -t 2
 INFO:root:Generate engine:
 INFO:root:Run algorithm:
-INFO:root:Generation 1
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 2
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 3
-INFO:root:Closed: [1, 1, 0, 0, 1, 0, 0, 1]
-INFO:root:Generation 4
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 5
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 6
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 7
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 8
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 9
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 10
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 11
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 12
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 13
-INFO:root:Closed: [1, 1, 0, 0, 0, 1, 1, 1]
-INFO:root:Generation 14
-INFO:root:Closed: [1, 1, 0, 0, 1, 0, 0, 0]
+INFO:root:Generation: 1
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 2
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 3
+INFO:root:	Closer one: [1, 1, 0, 0, 1, 0, 0, 1]
+INFO:root:Generation: 4
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 5
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 6
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 7
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 8
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 9
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 10
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 11
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 12
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 13
+INFO:root:	Closer one: [1, 1, 0, 0, 0, 1, 1, 1]
+INFO:root:Generation: 14
+INFO:root:	Closer one: [1, 1, 0, 0, 1, 0, 0, 0]
+INFO:root:Generation: 14
+INFO:root:	Closer one: [1, 1, 0, 0, 1, 0, 0, 0]
 
 Process finished with exit code 0

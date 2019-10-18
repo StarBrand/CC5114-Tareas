@@ -1,7 +1,7 @@
 """test_square.py: unittest of Square"""
 from random import uniform
 from unittest import TestCase, main
-from utils.patterns import Square
+from useful.patterns import Square
 
 FACE = 60
 MIN_X = MIN_Y = -50

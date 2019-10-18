@@ -1,11 +1,12 @@
 """show_learning_perceptron.py: Show Learning Perceptron performance"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 import logging
 from random import seed
 from learning_perceptron import LearningPerceptron
-from utils.patterns import Line
-from useful import plot_result, do_prediction
+from useful.patterns import Line
+from useful1 import plot_result, do_prediction
 
 FIG_SIZE = (12 * 3, 12)
 X_MIN = Y_MIN = -50

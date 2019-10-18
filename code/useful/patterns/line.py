@@ -1,6 +1,6 @@
 """line.py: Line class"""
 from random import uniform
-from utils.patterns import Pattern
+from useful.patterns import Pattern
 
 
 class Line(Pattern):

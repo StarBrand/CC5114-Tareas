@@ -2,7 +2,7 @@
 
 import numpy as np
 from unittest import TestCase, main
-from utils.simulations import DOWN
+from useful.simulations import DOWN
 
 
 class MoveTest(TestCase):

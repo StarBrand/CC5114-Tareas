@@ -1,7 +1,7 @@
 """toy_maze.py: Generate ToyMaze and ToyRobots for testing test"""
 
 import numpy as np
-from utils.simulations import Maze, Move, DOWN, RIGHT, UP
+from useful.simulations import Maze, Move, DOWN, RIGHT, UP
 
 
 def tester_maze() -> Maze:

@@ -3,7 +3,7 @@ from unittest import TestCase, main
 import logging
 import numpy as np
 from learning_perceptron import Neuron
-from utils.math_functions import sigmoid, tanh, step
+from useful.math_functions import sigmoid, tanh, step
 
 ARGUMENT = 4
 EPSILON = 1e-10

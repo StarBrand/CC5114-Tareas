@@ -1,9 +1,9 @@
 """confusion_matrix_example_one_class.py: show and test confusion matrix methods"""
 import numpy as np
 import matplotlib.pyplot as plt
-from utils.patterns import Circle
-from utils.results import confusion_matrix, accuracy, precision, recall, f1_score
-from utils.results import show_matrix, annotate
+from useful.patterns import Circle
+from useful.results import confusion_matrix, accuracy, precision, recall, f1_score
+from useful.results import show_matrix, annotate
 
 N = int(1e5)
 X_MIN = Y_MIN = -50

@@ -2,8 +2,8 @@
 import logging
 from unittest import TestCase, main
 from neural_network import NeuralNetwork
-from utils.results import StandardTrainer, Trainer
-from utils.patterns import Circle
+from useful.results import StandardTrainer, Trainer
+from useful.patterns import Circle
 
 SIZE = 10000
 EPOCHS = 100

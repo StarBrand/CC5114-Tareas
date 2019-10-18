@@ -1,6 +1,6 @@
 """test_line.py: unittest of Line"""
 from unittest import TestCase, main
-from utils.patterns import Line
+from useful.patterns import Line
 
 MIN_X = MIN_Y = -50
 MAX_X = MAX_Y = 50

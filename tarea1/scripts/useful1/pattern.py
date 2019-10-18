@@ -1,7 +1,7 @@
 """pattern.py: Useful functions for patterns"""
 import numpy as np
 from matplotlib.axes import Axes
-from utils.patterns import Pattern
+from useful.patterns import Pattern
 
 FONT_SIZE = 14
 

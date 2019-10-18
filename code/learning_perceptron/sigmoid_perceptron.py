@@ -3,7 +3,7 @@
 import numpy as np
 from perceptron import Perceptron
 from learning_perceptron import LearningPerceptron
-from utils.math_functions import sigmoid
+from useful.math_functions import sigmoid
 
 
 class SigmoidNeuron(LearningPerceptron):

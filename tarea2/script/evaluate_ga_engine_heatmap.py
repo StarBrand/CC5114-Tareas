@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from random import seed
 from genetic_algorithm import GAEngine
 from genetic_algorithm.individuals import WordGuesser
-from utils.results import show_matrix
+from useful.results import show_matrix
 
 
 WORD_TO_GUESS = "algorithm"
@@ -27,7 +27,7 @@ if __name__ == '__main__':
         for m_rate in MUTATION_RATE:
             logging.info("==> Mutation rate used: {}".format(m_rate))
             environment = GAEngine(WordGuesser(m_rate, WORD_TO_GUESS))
-            result = environment.run_genetic_algorithm(SCORE, size)
+            result = environment.run_to_reach(SCORE, 0.0, size)
             generations.append(result.get_generations()[-1])
         matrix.append(generations.copy())
     matrix = np.array(matrix)

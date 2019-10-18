@@ -1,12 +1,13 @@
 """show_network.py: Show Neural Network performance"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 import logging
 from random import seed
 from neural_network import NeuralNetwork
-from utils.math_functions import sigmoid, tanh
-from utils.patterns import DoubleLine
-from useful import plot_result, do_prediction_net
+from useful.math_functions import sigmoid, tanh
+from useful.patterns import DoubleLine
+from useful1 import plot_result, do_prediction_net
 
 FIG_SIZE = (12 * 3, 12)
 X_MIN = Y_MIN = -50

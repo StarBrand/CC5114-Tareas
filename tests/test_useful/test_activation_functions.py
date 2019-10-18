@@ -1,9 +1,10 @@
 """test_activation_functions.py: unittest of activations functions"""
+
 from unittest import TestCase, main
 import numpy as np
 import logging
 from random import uniform
-from utils.math_functions import sigmoid, tanh, step, derivative
+from useful.math_functions import sigmoid, tanh, step, derivative
 
 EPSILON = 1e-10
 

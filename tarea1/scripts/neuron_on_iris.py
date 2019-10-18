@@ -4,9 +4,9 @@ import numpy as np
 import logging
 from random import seed
 from learning_perceptron import Neuron
-from utils.math_functions import sigmoid
-from utils.preprocess_dataset import import_data, split_set
-from utils.results import confusion_matrix, accuracy, recall
+from useful.math_functions import sigmoid
+from useful.preprocess_dataset import import_data, split_set
+from useful.results import confusion_matrix, accuracy, recall
 
 FIG_SIZE = (20, 20)
 TRAIN_SIZE = 0.8

@@ -2,7 +2,7 @@
 from unittest import TestCase, main
 import numpy as np
 from neural_network.layers import LayerFactory
-from utils.math_functions import sigmoid, tanh, step, derivative
+from useful.math_functions import sigmoid, tanh, step, derivative
 
 EPSILON = 1e-10
 

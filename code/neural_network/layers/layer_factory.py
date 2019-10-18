@@ -2,7 +2,7 @@
 
 import logging
 from neural_network.layers import NeuronLayer, SigmoidLayer, TanhLayer, PerceptronLayer
-from utils.math_functions import derivative
+from useful.math_functions import derivative
 
 
 class LayerFactory(object):

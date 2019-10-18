@@ -1,7 +1,7 @@
 """sample_of_dataset.py: show performance of set methods"""
 from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
-from utils.preprocess_dataset import import_data, split_set, one_hot_encoding
+from useful.preprocess_dataset import import_data, split_set, one_hot_encoding
 
 FIG_SIZE = (12, 9)
 FONT_SIZE = 12

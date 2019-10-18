@@ -1,4 +1,5 @@
 """show_ga_example.py: show and evaluate a genetic algorithm"""
+
 import logging
 import math
 import matplotlib.pyplot as plt
@@ -52,8 +53,11 @@ if __name__ == '__main__':
     logging.info("Generate engine:")
     environment = GAEngine(individual)
     logging.info("Run algorithm:")
-    result = environment.run_genetic_algorithm(score, population, log=True, tournament_size=args.tournament_size,
-                                               equilibrium=args.equilibrium)
+    if args.equilibrium is None:
+        result = environment.run_to_reach(score, 0.0, population, log=True, tournament_size=args.tournament_size)
+    else:
+        result = environment.run_to_equilibrium(population, args.equilibrium, log=True,
+                                                tournament_size=args.tournament_size)
     _, ax = plt.subplots(figsize=(12, 12))
     if key == "sentence_guesser":
         ax.plot(result.get_generations(), result.get_scores(), "-", label=label)
