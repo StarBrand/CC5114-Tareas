@@ -20,13 +20,13 @@ Todo ello se implemento en la clase `GAEngine` (de *"Genetic Algorithm Engine"* 
 
 Con ello el algoritmo genético realiza los pasos requeridos en sus diferentes métodos:
 
-1. Inicialización: toma el individuo, que realiza la acción con el resultado esperado. (`__init__`)
-2. Iniciar población: Dado un tamaño genera una población, lista o *array* de individuos de diferentes `fitness`, lo que se traduce en diferentes cromosomas (`chromosome`). (`initialize_population(size)`)
-3. Evaluación: se calcula el *fitness* de cada individuo llamando a su método. Esto lo registra y calcula el máximo alcanzado en la población. (`evaluate_fitness()`)
-4. Selección: selecciona los individuos realizando el algoritmo del torneo. Esto deja un tamaño de la población dos veces mayor. Opcionalmente, se le puede dar un tamaño distinto al por defecto. (`selection`())
-5. Reproducción: Realiza *crossingover* (método `crossover` de los individuos), reduciendo dos individuos a uno. El nuevo individuo generado, además, muta utilizando el método `mutate(self)` de un individuo. (`repoduction()`)
-6. Generar nueva generación: realiza los procesos de selección, reproducción y evaluación, generando una nueva generación posterior a la actual. (`next_generation()`)
-7. Correr algoritmo: el algoritmo se puede correr, deteniéndose en tres diferentes escenarios con tres métodos diferentes:
+1. **Inicialización**: toma el individuo, que realiza la acción con el resultado esperado. (`__init__`)
+2. **Iniciar población**: Dado un tamaño genera una población, lista o *array* de individuos de diferentes `fitness`, lo que se traduce en diferentes cromosomas (`chromosome`). (`initialize_population(size)`)
+3. **Evaluación**: se calcula el *fitness* de cada individuo llamando a su método. Esto lo registra y calcula el máximo alcanzado en la población. (`evaluate_fitness()`)
+4. **Selección**: selecciona los individuos realizando el algoritmo del torneo. Esto deja un tamaño de la población dos veces mayor. Opcionalmente, se le puede dar un tamaño distinto al por defecto. (`selection`())
+5. **Reproducción**: Realiza *crossingover* (método `crossover` de los individuos), reduciendo dos individuos a uno. El nuevo individuo generado, además, muta utilizando el método `mutate(self)` de un individuo. (`repoduction()`)
+6. **Generar nueva generación**: realiza los procesos de selección, reproducción y evaluación, generando una nueva generación posterior a la actual. (`next_generation()`)
+7. **Ejecutar algoritmo**: el algoritmo se puede correr, deteniéndose en tres diferentes escenarios con tres métodos diferentes:
    1. **Al encontrar un puntaje**: pese a que esto no es lo que se busca, porque se desconoce la solución correcta, se utiliza para testear problemas con soluciones conocidas. Particularmente "adivinar" algo (lo que tiene fitness conocido y único si logra adivinar). Para efectos de ser utilizada para casos más generales, recibe un delta aceptable para detener el algoritmo. (`run_to_reach(expected_score, acceptable, population_size)`)
    2. **Al llegar a un equilibrio**: cuanto el fitness no mejora en una cierta cantidad de generaciones (`equilibrium`). (`run_to_equilibrium(population_size, equilibrium)`)
    3. **Una cantidad fija de generaciones**: No realiza más iteraciones que las dadas. (`run_fixed_generation(population_size, max_generation)`). Adicionalmente los otros  dos métodos, se detienen, para no correr un algoritmo eternamente, en un máximo de generaciones, que puede ser fijado por usuario (parámetro opcional `max_generation`).
@@ -75,5 +75,60 @@ Cualquier selección por pareto dará el mismo óptimo que por prioridad y cualq
 
 Como se esperaba los óptimos encontrados fueron ~ 6.0 para prioridad, ~4.0 para pareto y ~10 para el mínimo simple. La diferencia obtenida ante el valor esperado se debe a que la generación de individuos fue la generación al azar de números entre ]0, 10[ con distribución uniforme, el `crossover` y la mutación no influye al ser solo un cromosoma. Lo que no es una complicación, ya que ambas cosas son testeadas en la clase `GAEngine` y en las implementaciones concretas de los individuos.
 
+**Ejecutable**: [`tarea2/script/test_optimize_functions`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/test_optimize_functions.py)
+
 ## Individuos
 
+Para simular y modelar los problemas que serán resueltos por un algoritmo genético, se utiliza la clase `Individual`, las cuales cumplen las siguientes propiedades:
+
+1. **Inicialización** (`__init__(fitness_function, generation_function, chromosome_size, mutation_rate)`): para inicializar un individuo se necesita definir (y por lo tanto pasar como argumento):
+
+   1. Función de fitness: que define el resultado de una combinación de atributos (guardado en los genes) en el problema que se busca modelar.
+
+   2. Función de generación: que define la forma de generar, de manera aleatoria, los valores de cada gen.
+
+   3. Tamaño del cromosoma: cantidad de genes (o características) que tendrá el individuo.
+
+   4. Tasa de mutación: cantidad, en porcentaje, de genes a cambiar de una generación a otra.
+
+      *Nota*: la implementación de esto es generar un número al azar, con distribución unitaria, si el número generado es menor a la tasa de mutación, entonces el gen cambia.
+
+2. **Generar un individuo** (`generate_individual()`): genera un nuevo individuo, es decir, una nueva instancia del individuo en concreto. Lo que significa, mismo comportamiento, pero con diferentes atributos o genes. Esto sirve para generar una población completa en el algoritmo genético.
+
+3. **Fitness** (`fitness(self, **kwargs)`): Calcula el fitness, lo guarda dentro de la instancia y lo retorna. Dado las diferentes formas de calcularlo, la versión abstracta de este método recibe los argumentos variables con llave `**kwargs`
+
+4. **Mutar** (`mutate()`): Cambia el valor de algunos genes considerando la tasa de mutación.
+
+5. **Crossover** (`crossover(partner)`): Combina los cromosomas del individuo que llama el método y el individuo que se recibe como parámetro. El individuo resultante llama al método `mutate`.
+
+6. **`Overridding` de operaciones intrínsecas**: para facilitar operaciones útiles entre individuos, ciertas operaciones son redefinidas en la clase individuos:
+
+   1. **Largo** (`__len__`): el largo de un individuo es la cantidad de genes.
+   2. **Mayor, menor, estricto y no estricto** (`__gt__`, `__lt__`, `__ge__`, `__le__`): las comparaciones numéricas están basadas en el resultado del fitness, lo que implica que si no se ha calculado, se comparará el *placeholder* del individuo (por defecto 0). La implementación no es tan trivial (algunas son definidas usando operaciones de orden, pero otras son negaciones), debido a los posteriores cambios necesarios en la clase abstracta `MultiObjectiveIndividual`.
+   3. **Igualdad** `__eq__`: compara cada elemento que conforma el individuo. Útil para calcular el equilibrio o para realizar test unitarios.
+
+Los individuos son una clase abstracta, por la particularidad de cada modelo, es probable tener que redefinir algunas operaciones más allá de las cuatro nombradas en la inicialización (`__init__`). En principio, todo individuo concreto debería no recibir argumentos en la inicialización o la tasa de mutación.
+
+En pos de realizar test unitarios se define el individuo nulo (`NullIndividual`) siguiendo el patrón de diseño *Objeto Nulo* (*Null Object*).
+
+**Código**: [`code/genetic_algorithm/individuals/individual`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/individual.py) y [`code/genetic_algorithm/individuals/null_individual`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/null_individual.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_individual`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_individual.py) y [`tests/test_genetic_algorithm/test_null_individual`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_null_individual.py)
+
+![individual](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/UML/individuals.png)
+
+### Adivinador de palabras (`WordGuesser`)
+
+Adivinar una palabra no es un problema abierto, pero sirve para mostrar la capacidad de un algoritmo genético. El fitness se define como la cantidad de letras acertadas, lo que significa que el mayor puntaje posible es el largo de la palabra.
+
+Eso hace que para este modelo, ejecutar el algoritmo hasta alcanzar este puntaje máximo conocido tiene sentido. El cromosoma tiene como gen una letra, lo que significa que la cantidad de genes es también el largo de la palabra a adivinar.
+
+**Código**: [`code/genetic_algorithm/individuals/word_guesser`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/word_guesser.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_word_guesser`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_word_guesser.py)
+
+#### Resultados y análisis
+
+Al realizar esta implementación de un individuo concreto, se realizaron además algunos análisis sobre los hiperparámetros necesarios para el algoritmo genético. Esto por dos motivos: 1) el óptimo fitness conocido y 2) lo rápido (pocas iteraciones) necesarias en este problema.
+
+Con una tasa de mutación de 0.3 (30%) 
