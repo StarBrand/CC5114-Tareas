@@ -1,6 +1,6 @@
 # Tarea 2
 
-En este reporte se muestra la ubicación del código y de los test  unitarios, junto con algunos resultados. Para una versión más extendida  de la explicación y más resultados intermedios ver la [Versión Extendida](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/README (Extended).md).
+En este reporte se muestra la ubicación del código y de los test  unitarios, junto con algunos resultados. Para una versión más extendida  de la explicación y más resultados intermedios ver la [Versión Extendida](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/README%20(Extended).md).
 
 ## Algoritmos genéticos
 
@@ -240,9 +240,8 @@ Para altas tasas de mutación, el algoritmo pierde la capacidad de *aprender* de
 
 ### Apreciaciones personales
 
-Las partes más complejas en esta tarea, para mí, fueron testear soluciones (al igual que en la [Tarea 1](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1)), ya que estás se generan en un número de generaciones desconocida o no se generar en absoluto. Particularmente, realizar el laberinto fue una implementación compleja (no se muestra, pero se puede ver en la [versión extendida](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/README (Extended).md)), hasta decidir el algoritmo utilizado.
+Las partes más complejas en esta tarea, para mí, fueron testear soluciones (al igual que en la [Tarea 1](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1)), ya que estás se generan en un número de generaciones desconocida o no se generar en absoluto. Particularmente, realizar el laberinto fue una implementación compleja (no se muestra, pero se puede ver en la [versión extendida](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/README%20(Extended).md)), hasta decidir el algoritmo utilizado.
 
 Pese a que era una de las funciones más visible, no se utilizó para el análisis de algoritmos genéticos el problema del robot en el laberinto, ya que las funciones de fitness fueron más complejas de lo que se pensaba y no fomentaban encontrar la solución (menos aun la óptima). Esto debido a que el robot en el laberinto que se buscaba podía tener más de una solución y había que encontrar la más eficiente.
 
 El laberinto resultante con el algoritmo escogido tiene solo una solución válida, la cual no es necesariamente un camino corto, por lo que el fitness solo permitía entrar al laberinto (ya que este era el camino más corto), debido a que encontrar la salida requería una gran cantidad de pasos. Probablemente, de todos modos implemente la versión simple (la pedida) y encuentre las funciones de fitness para que el algoritmo encuentre la salida al laberinto.
-
