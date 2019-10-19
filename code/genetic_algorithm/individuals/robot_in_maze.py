@@ -9,14 +9,12 @@ from genetic_algorithm.individuals import MultiObjectiveIndividual, Individual
 from useful.simulations import Maze, UP, DOWN, LEFT, RIGHT
 
 
+def _repeat(maze: Maze) -> float:
+    return - maze.repeated_steps()
+
+
 def _length(maze: Maze) -> float:
     return maze.long_of_path()
-
-
-def _length_op(maze: Maze) -> float:
-    return - maze.long_of_path()
-
-# TODO: a function that measure repeat a move. New priority: _length, _repeat, _exit, _length_op
 
 
 def _exit(maze: Maze) -> float:
@@ -36,7 +34,7 @@ class RobotInMaze(MultiObjectiveIndividual):
     def __init__(self, mutation_rate: float, maze: Maze):
         self._maze = deepcopy(maze)
         self._maze_with_robot = deepcopy(maze)
-        super().__init__([_exit, _length, _length_op], _get_move, len(self._maze) ** 2 + 1, mutation_rate)
+        super().__init__([_repeat, _length, _exit], _get_move, len(self._maze) ** 2 + 1, mutation_rate)
         if not maze.is_generated():
             raise InterruptedError("Cannot initialize Robot if Maze is not generated")
         self._run = False
@@ -56,7 +54,8 @@ class RobotInMaze(MultiObjectiveIndividual):
         self._performance()
         for fitness_func in self._fitness_function:
             self.multi_fitness.append(fitness_func(self._maze_with_robot))
-        return super().fitness()
+        self.my_fitness = self.multi_fitness[1]
+        return self.my_fitness
 
     def generate_individual(self) -> Individual:
         """

@@ -8,3 +8,4 @@ from genetic_algorithm.individuals.sentence_guesser import SentenceGuesser
 from genetic_algorithm.individuals.binary_calculator import BinaryCalculator
 from genetic_algorithm.individuals.travel_path import TravelPath
 from genetic_algorithm.individuals.robot_in_maze import RobotInMaze
+from genetic_algorithm.individuals.unbound_knapsack import UnboundKnapsack

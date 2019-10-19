@@ -7,12 +7,12 @@ from genetic_algorithm import GAEOptimized, Optimization
 from genetic_algorithm.individuals import RobotInMaze
 from useful.simulations import Maze
 
-POPULATION_SIZE = 1000
-EQUILIBRIUM = 20
+POPULATION_SIZE = 20
+EQUILIBRIUM = 10
 MUTATION_RATE = 0.05
 MAZE_SIZE = 20
 
-seed(2)
+seed(5)
 fig = plt.figure(figsize=(20, 10))
 
 

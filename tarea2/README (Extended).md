@@ -227,15 +227,36 @@ Para la simulación del laberinto se utilizó el algoritmo de división recursiv
 
 #### Análisis
 
-### Unbond-Knapsack (`UnbondKnapsack`)
+### Unbound-Knapsack (`UnboundKnapsack`)
 
-**Código**: [`code/genetic_algorithm/individuals/unbond_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/unbond_knapsack.py)
+Para el problema de mochila sin restricción (o *Unbound Knapsack problem*), la simulación incluye 15 cromosomas, referidos al máximo número de elementos que puede tener la mochila (ya que la caja menos pesada, pesa 1 kg). Para generar cada uno se escoge alguna de las cajas (clase `Box`) disponibles y una caja vacía para poder simular menos de 15 elementos.
 
-**Tests unitarios**: [`tests/test_genetic_algorithm/test_unbond_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_unbond_knapsack.py)
+Las funciones de fitness son:
+
+1. Que el peso no sea mayor a 15 kg. Representado con un la diferencia entre el peso encontrado y el permitido. Como no es importante que se justo 15 kg o menos, si el peso es menor a 15 se devolverá el valor 0, si es mayor, se devuelve en negativo.
+2. El valor obtenido, al sumar el valor de las cajas.
+
+Ya que la primera es una restricción, se utilizará la optimización por prioridad para asegurar que el primer fitness sea 0 y el motor optimizado (`GAEOptimized`) con elitismo. El criterio para detener el algoritmo es encontrar 10 veces el mismo valor (`run_to_equilibrium(population_size, equilibrium=10)`)
+
+**Código**: [`code/genetic_algorithm/individuals/unbound_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/unbound_knapsack.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_unbound_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_unbound_knapsack.py)
+
+#### Análisis
+
+Para observar cuales son los mejores hiperparámetros para resolver este problema, se realizaron tres *heatmap* ("mapas de calor") indicando la cantidad de iteraciones que se realizan para encontrar el óptimo, el peso de la mochila y el valor contenidos respectivamente.
+
+![heatmap_uk](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/algorithm_heatmap_multi_obj.png)
+
+**Ejecutable**: [`tarea2/script/heatmap_unbound_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/heatmap_unbound_knapsack.py)
 
 #### Resultados
 
-#### Análisis
+Tomando uno de los mejores resultados de los heatmap anteriores, es decir, mayor valor, diferencia del peso en 0 y menor cantidad de iteraciones.
+
+![uk](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/unbound_knapsack.png)
+
+**Ejecutable**: [`tarea2/script/show_unbound_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_unbound_knapsack.py)
 
 ### 0-1-Knapsack (`01Knapsack`)
 

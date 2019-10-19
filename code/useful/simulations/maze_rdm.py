@@ -21,7 +21,9 @@ class Maze:
         self._robot = []
         self._found_it = False
         self._long = 0
+        self._repeat = 0
         self._maze = np.zeros((self.size, self.size))
+        self._path = []
         self.start, self.exit = np.array((0, 0), dtype='int'), np.array((0, 0), dtype='int')
         self._start, self._exit = np.array((0, 0), dtype='int'), np.array((0, 0), dtype='int')
         self.location = deepcopy(self._start)
@@ -103,6 +105,17 @@ class Maze:
             raise AttributeError("No robot in maze to walk in maze")
         return self._long
 
+    def repeated_steps(self) -> int:
+        """
+        Calculate times that robot return on his steps
+
+        :raise: AttributeError: in case there is no robot to walk the maze
+        :return: Step repeated
+        """
+        if not self.has_robot() or not self.is_generated():
+            raise AttributeError("No robot in maze to walk in maze")
+        return self._repeat
+
     def found_exit(self) -> bool:
         """
         Return whether robot found the exit of the maze
@@ -115,6 +128,16 @@ class Maze:
         return self._found_it
 
     def _run_robot(self) -> int:
+        def _step(o: int) -> int:
+            self._maze[transition[0], transition[1]] = 1
+            self.location = move + self.location
+            if any(np.array_equal(self.location, x) for x in self._path):
+                self._repeat += 1
+            else:
+                self._path.append(deepcopy(self.location))
+            self._maze[self.location[0], self.location[1]] = 1
+            o += 1
+            return o
         out = 0
         try:
             move = self._robot[0]
@@ -128,6 +151,7 @@ class Maze:
         self._maze[self._start[0], self._start[1]] += 1
         self._maze[self.start[0], self.start[1]] = 1
         self.location = deepcopy(self.start)
+        self._path.append(deepcopy(self.location))
         for move in self._robot[1: len(self._robot)]:
             transition = self.location + move.step()
             if (self.location == self.exit).all():
@@ -138,15 +162,9 @@ class Maze:
                 elif self._is_a_wall(transition):
                     return out
                 else:
-                    self._maze[transition[0], transition[1]] = 1
-                    self.location = move + self.location
-                    self._maze[self.location[0], self.location[1]] = 1
-                    out += 1
+                    out = _step(out)
             elif not self._is_a_wall(transition):
-                self._maze[transition[0], transition[1]] = 1
-                self.location = move + self.location
-                self._maze[self.location[0], self.location[1]] = 1
-                out += 1
+                out = _step(out)
             else:
                 return out
         return out
@@ -174,6 +192,8 @@ class Maze:
         self._robot = []
         self._found_it = False
         self._long = 0
+        self._repeat = 0
+        self._path = []
         self._maze = np.zeros((self.size, self.size))
         self.start, self.exit = np.array((0, 0), dtype='int'), np.array((0, 0), dtype='int')
         self._start, self._exit = np.array((0, 0), dtype='int'), np.array((0, 0), dtype='int')

@@ -9,7 +9,11 @@ class GAResult(object):
         self.individual = NullIndividual()
         self.found_solution = False
         self._generations = list()
-        self._score = list()
+        self._score = {
+            "max": list(),
+            "mean": list(),
+            "min": list()
+        }
         self._ready = False
 
     def ready_to_export(self, individual: Individual, solution: bool) -> None:
@@ -26,11 +30,13 @@ class GAResult(object):
         self.found_solution = solution
         return
 
-    def register_score(self, score: float, generation: int = 0) -> None:
+    def register_score(self, max_score: float, mean_score: float, min_score: float, generation: int = 0) -> None:
         """
         Register score
 
-        :param score: Score to registered
+        :param max_score: Maximum score on generation
+        :param mean_score: Mean score on generation
+        :param min_score: Minimum score on generation
         :param generation: Generation of score registered, if not given, next generation after last one
         :raise RuntimeError: If this is for get only
         :return: None
@@ -45,7 +51,9 @@ class GAResult(object):
             self._generations.append(last + 1)
         else:
             self._generations.append(generation)
-        self._score.append(score)
+        self._score["max"].append(max_score)
+        self._score["mean"].append(mean_score)
+        self._score["min"].append(min_score)
         return None
 
     def get_generations(self) -> [int]:
@@ -59,7 +67,7 @@ class GAResult(object):
             raise RuntimeError("Not ready to return results")
         return self._generations
 
-    def get_scores(self) -> [float]:
+    def get_max_scores(self) -> [float]:
         """
         Get generations
 
@@ -68,10 +76,32 @@ class GAResult(object):
         """
         if not self._ready:
             raise RuntimeError("Not ready to return results")
-        return self._score
+        return self._score["max"]
+
+    def get_mean_scores(self) -> [float]:
+        """
+        Get mean generation score
+
+        :raise: Runtime Error: if this is not yet ready
+        :return: Generations registered
+        """
+        if not self._ready:
+            raise RuntimeError("Not ready to return results")
+        return self._score["mean"]
+
+    def get_min_scores(self) -> [float]:
+        """
+        Get min generation score
+
+        :raise: Runtime Error: if this is not yet ready
+        :return: Generations registered
+        """
+        if not self._ready:
+            raise RuntimeError("Not ready to return results")
+        return self._score["min"]
 
     def __len__(self):
-        length = len(self.get_scores())
+        length = len(self.get_max_scores())
         if length != len(self.get_generations()):
             raise RuntimeError("Generation and scores mismatch")
         return length

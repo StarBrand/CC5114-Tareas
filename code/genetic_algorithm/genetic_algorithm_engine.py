@@ -55,7 +55,10 @@ class GAEngine(object):
         for index, _ in enumerate(self.population):
             self.fitness.append(self.population[index].fitness())
         if register:
-            self.result.register_score(max(self.fitness), generation=self.generation)
+            winner = self.population.index(max(self.population))
+            loser = self.population.index(min(self.population))
+            mean = sum(self.fitness) / len(self.fitness)
+            self.result.register_score(self.fitness[winner], mean, self.fitness[loser], generation=self.generation)
         return
 
     def solution_found(self, expected: float, acceptable: float = 0.0, log: bool = False) -> bool:
@@ -175,7 +178,6 @@ class GAEngine(object):
         :return: Result of algorithm
         """
         def _register():
-            self.result.register_score(score, self.generation)
             if log:
                 logging.info("Generation: {}".format(self.generation))
                 logging.info("\tCloser one: {}".format(max(self.population).chromosome))
@@ -213,13 +215,11 @@ class GAEngine(object):
         """
         self._initialize(population_size, use_prev)
         internal_generation = 1
-        self.result.register_score(max(self.population), self.generation)
         if log:
             logging.info("Generation: {}".format(self.generation))
             logging.info("\tCloser one: {}".format(max(self.population).chromosome))
         while internal_generation < max_generation:
             self.next_generation(register=True, tournament_size=tournament_size)
-            self.result.register_score(max(self.population), self.generation)
             if log:
                 logging.info("Generation: {}".format(self.generation))
                 logging.info("\tCloser one: {}".format(max(self.population).chromosome))
