@@ -256,6 +256,8 @@ Tomando uno de los mejores resultados de los heatmap anteriores, es decir, mayor
 
 ![uk](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/unbound_knapsack.png)
 
+La discrepancia entre que los mínimos valores sean mayores que los máximos, es que los máximos valores se buscan entre los que cumplen con el peso requerido. Por ello los valores "mínimos", son los valores encontrados que superaron por más la diferencia de peso, y, por lo tanto, tiene sentido que tengas valores tan altos.
+
 **Ejecutable**: [`tarea2/script/show_unbound_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_unbound_knapsack.py)
 
 ### 0-1-Knapsack (`01Knapsack`)
