@@ -15,7 +15,7 @@ POPULATION_SIZE = {
     "word_guesser": 500,
     "sentence_guesser": 2000,
     "binary_calculator": 100,
-    "travel_path": 100
+    "travel_path": 50
 }
 
 

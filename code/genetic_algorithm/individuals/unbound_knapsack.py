@@ -34,7 +34,7 @@ class UnboundKnapsack(MultiObjectiveIndividual):
     def __init__(self, mutation_rate: float):
         super().__init__([_capacity, _value], _boxes, 15, mutation_rate)
         for i in range(15):
-            self.genes.append("box{}".format(i + 1))
+            self.genes.append("item{}".format(i + 1))
         return
 
     def fitness(self) -> float:

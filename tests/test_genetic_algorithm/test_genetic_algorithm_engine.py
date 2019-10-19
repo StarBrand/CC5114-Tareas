@@ -190,7 +190,7 @@ class GAEngineTest(TestCase):
         self.ga_engine.the_first_one = TesterEquilibrium()
         result = self.ga_engine.run_fixed_generation(100, max_generation)
         generations = result.get_generations()[-1]
-        first_score = result.get_scores()[0]
+        first_score = result.get_max_scores()[0]
         found = result.found_solution
         self.assertEqual(max_generation, generations, "Not stop when supposed to")
         self.assertTrue(found, "Not found it")

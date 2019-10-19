@@ -2,8 +2,8 @@
 
 from unittest import main
 from random import seed
-from math import sqrt
 from genetic_algorithm.individuals import UnboundKnapsack
+from useful.simulations import BOX1, BOX2, BOX3, NullBox, BOX5
 from test_genetic_algorithm import MultiIndividualTest
 
 EPSILON = 1e-10
@@ -15,7 +15,7 @@ class UnboundKnapsackTest(MultiIndividualTest):
         """
         Sets up unit test
         """
-        self.chromosome_size = 5
+        self.chromosome_size = 15
         self.individual = UnboundKnapsack(0.3)
         self.stable_one = UnboundKnapsack(0.0)
 
@@ -28,17 +28,18 @@ class UnboundKnapsackTest(MultiIndividualTest):
     def test_crossover(self):
         seed(10)
         first_one = self.individual.generate_individual()
-        first_expected = self.individual.chromosome[0: 0] + first_one.chromosome[0: self.chromosome_size]
+        first_expected = self.individual.chromosome[0: 7] + first_one.chromosome[7: self.chromosome_size]
         """mutate"""
-        first_expected[1] = 11
-        first_expected[3] = 8
+        first_expected[0] = BOX3
+        first_expected[6] = BOX5
+        first_expected[11] = BOX1
         """"""
         second_one = self.stable_one.generate_individual()
-        second_expected = self.stable_one.chromosome[0: 3] + second_one.chromosome[3: self.chromosome_size]
+        second_expected = self.stable_one.chromosome[0: 13] + second_one.chromosome[13: self.chromosome_size]
         self.std_test_crossover(first_expected, second_expected, first_one, second_one)
 
     def test_get_allele(self):
-        self.std_test_get_allele("box3")
+        self.std_test_get_allele("item3")
 
     def test_fitness(self):
         self.expected_individuals()
@@ -66,8 +67,8 @@ class UnboundKnapsackTest(MultiIndividualTest):
         """
         Generate individual with known performance knapsack
         """
-        self.individual.chromosome = [1, 1, 1, 0, 0]
-        self.stable_one.chromosome = [3, 0, 0, 0, 0]
+        self.individual.chromosome = [BOX1, BOX2, BOX3] + [NullBox] * 12
+        self.stable_one.chromosome = [BOX1] * 3 + [NullBox] * 12
         self.individual.fitness()
         self.stable_one.fitness()
 

@@ -2,75 +2,75 @@ C:\Users\juans\Anaconda3\envs\cc5114\python.exe "C:/Users/juans/Google Drive/CC5
 INFO:root:Generate engine:
 INFO:root:Run algorithm:
 INFO:root:Generation: 1
-INFO:root:	Closer one: ['j', 'c', 'd', 'g', 'a', 'e', 'b', 'h', 'f', 'i']
+INFO:root:	Closer one: ['g', 'a', 'j', 'b', 'h', 'e', 'c', 'd', 'i', 'f']
 INFO:root:Generation: 2
-INFO:root:	Closer one: ['j', 'a', 'd', 'g', 'c', 'e', 'b', 'h', 'f', 'i']
+INFO:root:	Closer one: ['j', 'b', 'e', 'g', 'd', 'a', 'i', 'f', 'c', 'h']
 INFO:root:Generation: 3
-INFO:root:	Closer one: ['j', 'a', 'd', 'g', 'c', 'i', 'b', 'h', 'f', 'e']
+INFO:root:	Closer one: ['e', 'i', 'g', 'c', 'b', 'h', 'd', 'f', 'a', 'j']
 INFO:root:Generation: 4
-INFO:root:	Closer one: ['d', 'e', 'h', 'b', 'f', 'g', 'c', 'i', 'a', 'j']
+INFO:root:	Closer one: ['e', 'g', 'b', 'h', 'c', 'i', 'd', 'f', 'a', 'j']
 INFO:root:Generation: 5
-INFO:root:	Closer one: ['j', 'a', 'e', 'f', 'h', 'd', 'b', 'g', 'c', 'i']
+INFO:root:	Closer one: ['j', 'a', 'e', 'h', 'd', 'c', 'i', 'b', 'g', 'f']
 INFO:root:Generation: 6
-INFO:root:	Closer one: ['j', 'a', 'e', 'f', 'h', 'd', 'b', 'g', 'c', 'i']
+INFO:root:	Closer one: ['e', 'd', 'f', 'h', 'g', 'b', 'c', 'i', 'a', 'j']
 INFO:root:Generation: 7
-INFO:root:	Closer one: ['j', 'a', 'd', 'g', 'b', 'f', 'e', 'h', 'c', 'i']
+INFO:root:	Closer one: ['j', 'a', 'e', 'd', 'h', 'c', 'i', 'b', 'g', 'f']
 INFO:root:Generation: 8
-INFO:root:	Closer one: ['j', 'a', 'e', 'f', 'h', 'd', 'c', 'g', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'g', 'd', 'b', 'h', 'e', 'f', 'c', 'i']
 INFO:root:Generation: 9
-INFO:root:	Closer one: ['j', 'a', 'f', 'g', 'e', 'd', 'h', 'c', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'g', 'd', 'b', 'h', 'e', 'f', 'c', 'i']
 INFO:root:Generation: 10
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'g', 'd', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'g', 'b', 'h', 'd', 'e', 'f', 'c', 'i']
 INFO:root:Generation: 11
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'b', 'g', 'e', 'f', 'c', 'i']
 INFO:root:Generation: 12
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 13
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 14
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 15
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 16
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 17
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 18
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 19
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 20
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 21
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 22
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'd', 'g', 'c', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 23
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 24
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 25
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 26
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 27
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 28
-INFO:root:	Closer one: ['j', 'a', 'f', 'e', 'd', 'g', 'c', 'h', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 29
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'd', 'g', 'e', 'f', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 30
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'd', 'g', 'e', 'f', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 31
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'd', 'g', 'e', 'f', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 32
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'e', 'd', 'f', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 33
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'e', 'd', 'f', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 34
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'e', 'd', 'f', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 35
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'e', 'd', 'f', 'b', 'i']
+INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 36
 INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 37
@@ -84,32 +84,6 @@ INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 41
 INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 INFO:root:Generation: 42
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 43
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 44
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 45
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 46
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 47
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 48
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 49
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 50
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 51
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 52
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 53
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 54
-INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
-INFO:root:Generation: 55
 INFO:root:	Closer one: ['j', 'a', 'h', 'c', 'g', 'd', 'e', 'f', 'b', 'i']
 
 Process finished with exit code 0

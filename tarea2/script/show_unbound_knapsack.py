@@ -6,7 +6,7 @@ from random import seed
 from genetic_algorithm import GAEOptimized, Optimization
 from genetic_algorithm.individuals import UnboundKnapsack
 
-POPULATION_SIZE = 400
+POPULATION_SIZE = 350
 EQUILIBRIUM = 10
 MUTATION_RATE = 0.01
 
