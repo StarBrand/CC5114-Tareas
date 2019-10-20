@@ -65,7 +65,6 @@ Tests unitarios: [`tests/test_learning_perceptron/test_sigmoid_neuron`](https://
 ### Temas
 
 1. Redes neuronales en acción
-
 2. Tarea 1
 
 ### [Tarea 1](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea1)
@@ -129,13 +128,42 @@ Ejecutable: [`tarea2/script/show_ga_example`](https://github.com/StarBrand/CC511
 
 ### Temas
 
+1. Multi-objetivo
+2. Optimizaciones: Pareto, prioridad
+3. Elitismo
+4. Ejemplos organismos zoomórficos
+
 ### Ejercicios
+
+Código: [`code/genetic_algorithm/individuals/robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_algorithm/individuals/robot_in_maze.py), [`code/useful/simulations/maze_rdm`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/simulations/maze_rdm.py), [`code/useful/simulations/simple_maze`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/simulations/simple_maze.py) y [`code/useful/simulations/moves`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/simulations/moves.py)
+
+Tests unitarios: [`tests/test_genetic_algorithm/test_robot_in_maze`](tests/test_genetic_algorithm/test_robot_in_maze.py), [`tests/test_useful/test_maze_rdm`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_maze_rdm.py) y [`tests/test_useful/test_simple_maze`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_simple_maze.py)
+
+Ejecutable: [`tarea2/script/show_robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/script/show_robot_in_maze.py)
+
+### [Tarea 2](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2)
 
 Código:
 
-Tests unitarios: 
+* Código utilizado: [`code/genetic_algorithm`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_algorithm) y [`code/useful/simulations`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/simulations)
+
+* Scripts ejecutables: [`tarea2/scripts`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea2/scripts)
+
+* Markdown: [`tarea2/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/README%20(Extended).md)
+
+* Tests unitarios: [`tests/test_genetic_algorithm`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_algorithm) y [`tests/test_useful`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful)
 
 ## Clase 11:
 
 ### Temas
+
+1. 
+
+### Ejercicios
+
+Código: [`code/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
+
+Tests unitarios: [`tests/`](tests/)
+
+Ejecutable: [`tarea3/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/scripts)
 

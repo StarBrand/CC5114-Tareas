@@ -31,6 +31,7 @@ class UnboundKnapsackTest(MultiIndividualTest):
         first_expected = self.individual.chromosome[0: 7] + first_one.chromosome[7: self.chromosome_size]
         """mutate"""
         first_expected[0] = BOX3
+        first_expected[3] = NullBox
         first_expected[6] = BOX5
         first_expected[11] = BOX1
         """"""

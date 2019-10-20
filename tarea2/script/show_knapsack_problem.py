@@ -5,15 +5,19 @@ from argparse import ArgumentParser
 import matplotlib.pyplot as plt
 from random import seed
 from genetic_algorithm import GAEOptimized, Optimization
-from genetic_algorithm.individuals import UnboundKnapsack
+from genetic_algorithm.individuals import UnboundKnapsack, Knapsack01
 
-POPULATION_SIZE = 350
 EQUILIBRIUM = 10
 MUTATION_RATE = 0.01
 
 PROBLEMS = {
     "unbound": UnboundKnapsack(MUTATION_RATE),
-    "0-1": UnboundKnapsack(MUTATION_RATE)
+    "0-1": Knapsack01(MUTATION_RATE)
+}
+
+POPULATION_SIZE = {
+    "unbound": 350,
+    "0-1": 5
 }
 
 seed(5)
@@ -30,11 +34,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
     try:
         knapsack = PROBLEMS[args.what_knapsack]
+        population_size = POPULATION_SIZE[args.what_knapsack]
     except KeyError:
-        raise KeyError("{} knapsack problem is not an option, available: unbound and 0-1")
+        raise KeyError("{} knapsack problem is not an option, available: unbound and 0-1".format(args.what_knapsack))
 
     environment = GAEOptimized(knapsack, Optimization.PRIORITY)
-    result = environment.run_to_equilibrium(POPULATION_SIZE, EQUILIBRIUM, log=True)
+    result = environment.run_to_equilibrium(population_size, EQUILIBRIUM, log=True)
 
     _, ax = plt.subplots(figsize=(12, 12))
 
