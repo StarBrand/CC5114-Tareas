@@ -272,9 +272,9 @@ Misma lógica que `UnboundKnapsack`, salvo que los cromosomas, está vez, son 0 
 
 #### Resultados
 
-![01k](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/01_knapsack.png)
+![01k](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/0-1_knapsack.png)
 
-#### Ejecutable**: [`tarea2/script/show_knapsack_problem`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_knapsack_problem.py)	**Argumentos**: `-w 01`
+#### **Ejecutable**: [`tarea2/script/show_knapsack_problem`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_knapsack_problem.py)	**Argumentos**: `-w 01`
 
 ## Análisis
 
