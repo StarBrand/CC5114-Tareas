@@ -195,6 +195,40 @@ Hay problemas que necesitan más de una función de fitness para ser modelados. 
 
 **Tests unitarios**: [`tests/test_genetic_algorithm/test_multi_individual`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_multi_individual.py)
 
+### Robot en laberinto (`RobotInMaze`)
+
+Un individuo con multi-objetivos es el robot en el laberinto. Las dos funciones son distancia a la salida y largo del camino (en ese orden de prioridad). Como ambas funciones se requieren minimizar, se utilizaran los inversos aditivos. Para el cálculo es necesario tener la simulación al laberinto (siguiente subsección).
+
+**Código**: [`code/genetic_algorithm/individuals/robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/robot_in_maze.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_robot_in_maze.py)
+
+#### Laberinto (`Maze`)
+
+Para la simulación del laberinto se utilizó el algoritmo de división recursiva (*recursive division method*), el cual toma una cámara (pieza vacía) que se divide dos veces dejando tres espacios para mantener las cámaras conexas. Esto se realiza recursivamente hasta tener un laberinto con caminos de ancho uno. Este laberinto calcula si un camino encuentra el final del laberinto o donde llega, tomando un set de movimientos (clase `Move`) los cuales serán los genes del cromosoma de `RobotInMaze`.
+
+Encontrar las funciones de fitness, que permitían encontrar y dirigir los cromosomas para resolver el problema de encontrar la salida a este laberinto, se hizo un tema complicado. Debido a ello, y para utilizar las funciones sugeridas en clase se desarrollo un laberinto simple (siguiente subsección)
+
+**Código**: [`code/useful/simulations/maze_rdm`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/simulations/maze_rdm.py) y [`code/useful/simulations/moves`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/simulations/moves.py)
+
+**Tests unitarios**: [`tests/test_useful/test_maze_rdm`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_useful/test_maze_rdm.py)
+
+#### Laberinto simple, con obstáculos (`SimpleMaze`)
+
+**Código**: [`code/useful/simulations/simple_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/simulations/simple_maze.py)
+
+**Tests unitarios**: [`tests/test_useful/test_simple_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_useful/test_simple_maze.py)
+
+#### Resultados
+
+Sobre este laberinto simple se ejecutó el algoritmo con elitismo. Dado que el principal objetivo es encontrar la salida se utiliza la optimización por prioridad, y dado que, en el algoritmo del laberinto, encontrar la salida no es lo mismo que salir, la salida tiene una distancia de 0.0, pero salir tiene una distancia de 10.0 (bastaba con cualquier número mayor a 0.0) de forma que salir sea lo más valorado por el algoritmo.
+
+El gráfico realizado muestra el cambio en el fitness por cada generación y además, muestra los laberintos encontrados al principio, del primero en salir y la solución encontrada por el algoritmo.
+
+![show_maze](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/robot_in_maze.png)
+
+**Ejecutable**: [`tarea2/script/show_robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_robot_in_maze.py)
+
 ### Unbound-Knapsack (`UnboundKnapsack`)
 
 Para el problema de mochila sin restricción (o *Unbound Knapsack problem*), la simulación incluye 15 cromosomas, referidos al máximo número de elementos que puede tener la mochila (ya que la caja menos pesada, pesa 1 kg). Para generar cada uno se escoge alguna de las cajas (clase `Box`) disponibles y una caja vacía para poder simular menos de 15 elementos.
@@ -226,7 +260,21 @@ Tomando uno de los mejores resultados de los heatmap anteriores, es decir, mayor
 
 La discrepancia entre que los mínimos valores sean mayores que los máximos, es que los máximos valores se buscan entre los que cumplen con el peso requerido. Por ello los valores "mínimos", son los valores encontrados que superaron por más la diferencia de peso, y, por lo tanto, tiene sentido que tengas valores tan altos.
 
-**Ejecutable**: [`tarea2/script/show_unbound_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_unbound_knapsack.py)
+**Ejecutable**: [`tarea2/script/show_knapsack_problem`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_knapsack_problem.py)	**Argumentos**: `-w unbound`
+
+### 0-1-Knapsack (`Knapsack01`)
+
+Misma lógica que `UnboundKnapsack`, salvo que los cromosomas, está vez, son 0 o 1 indicando si el item se guarda o no. Debido a que la implementación es tan similar, esta clase `Knapsack01` hereda de `UnboundKnapsack`.
+
+**Código**: [`code/genetic_algorithm/individuals/_01_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/_01_knapsack.py)
+
+**Tests unitarios**: [`tests/test_genetic_algorithm/test_01_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_01_knapsack.py)
+
+#### Resultados
+
+![01k](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/01_knapsack.png)
+
+#### Ejecutable**: [`tarea2/script/show_knapsack_problem`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_knapsack_problem.py)	**Argumentos**: `-w 01`
 
 ## Análisis
 
@@ -244,6 +292,6 @@ Para altas tasas de mutación, el algoritmo pierde la capacidad de *aprender* de
 
 Las partes más complejas en esta tarea, para mí, fueron testear soluciones (al igual que en la [Tarea 1](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea1)), ya que estás se generan en un número de generaciones desconocida o no se generar en absoluto. Particularmente, realizar el laberinto fue una implementación compleja (no se muestra, pero se puede ver en la [versión extendida](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/README%20(Extended).md)), hasta decidir el algoritmo utilizado.
 
-Pese a que era una de las funciones más visible, no se utilizó para el análisis de algoritmos genéticos el problema del robot en el laberinto, ya que las funciones de fitness fueron más complejas de lo que se pensaba y no fomentaban encontrar la solución (menos aun la óptima). Esto debido a que el robot en el laberinto que se buscaba podía tener más de una solución y había que encontrar la más eficiente.
+Pese a que era una de las funciones más visible, no se utilizó para el análisis de algoritmos genéticos el problema del robot en el laberinto, ya que las funciones de fitness fueron más complejas de lo que se pensaba y no fomentaban encontrar la solución (menos aun la óptima). Esto debido a que el robot en el laberinto que se buscaba podía tener más de una solución y había que encontrar la más eficiente (sí se muestra, pero no contiene análisis).
 
 El laberinto resultante con el algoritmo escogido tiene solo una solución válida, la cual no es necesariamente un camino corto, por lo que el fitness solo permitía entrar al laberinto (ya que este era el camino más corto), debido a que encontrar la salida requería una gran cantidad de pasos. Probablemente, de todos modos implemente la versión simple (la pedida) y encuentre las funciones de fitness para que el algoritmo encuentre la salida al laberinto.

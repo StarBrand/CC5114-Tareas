@@ -8,6 +8,12 @@ from test_genetic_algorithm.test_sentence_guesser import SentenceGuesserTest
 from test_genetic_algorithm.test_binary_calculator import BinaryCalculatorTest
 from test_genetic_algorithm.test_travel_path import TravelPathTest
 from test_genetic_algorithm.test_robot_in_maze import RobotInMazeTest
+from test_genetic_algorithm.test_unbound_knapsack import UnboundKnapsackTest
+from test_genetic_algorithm.test_01_knapsack import Knapsack01Test
 from test_genetic_algorithm.test_ga_result import GAResultTest
 from test_genetic_algorithm.test_genetic_algorithm_engine import GAEngineTest
 from test_genetic_algorithm.test_engine_optimized import EngineOptimizedTest
+import unittest
+
+if __name__ == '__main__':
+    unittest.main()

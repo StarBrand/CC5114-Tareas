@@ -9,3 +9,4 @@ from genetic_algorithm.individuals.binary_calculator import BinaryCalculator
 from genetic_algorithm.individuals.travel_path import TravelPath
 from genetic_algorithm.individuals.robot_in_maze import RobotInMaze
 from genetic_algorithm.individuals.unbound_knapsack import UnboundKnapsack
+from genetic_algorithm.individuals._01_knapsack import Knapsack01

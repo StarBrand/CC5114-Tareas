@@ -73,6 +73,7 @@ class Individual(ABC):
             raise TypeError("Cannot do crossover, due to different genes")
         child = self.generate_individual()
         chiasma = randint(0, len(self))
+        print(chiasma)
         first_half = self.chromosome[0:chiasma]
         second_half = partner.chromosome[chiasma:len(partner)]
         child.chromosome = first_half + second_half

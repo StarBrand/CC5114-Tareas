@@ -1,25 +1,25 @@
-C:\Users\juans\Anaconda3\envs\cc5114\python.exe "C:/Users/juans/Google Drive/CC5114/CC5114-Tareas/tarea2/script/show_unbound_knapsack.py"
+C:\Users\juans\Anaconda3\envs\cc5114\python.exe "C:/Users/juans/Google Drive/CC5114/CC5114-Tareas/tarea2/script/show_knapsack_problem.py" -w unbound
 INFO:root:Generation: 1
 INFO:root:	Closer one: [Box3, Box5, None, None, Box3, Box3, Box3, None, Box3, None, Box4, Box3, Box2, None, Box4]
 INFO:root:Generation: 2
-INFO:root:	Closer one: [Box3, Box5, None, None, Box3, Box3, Box3, None, Box3, None, Box4, Box3, Box2, None, Box2]
+INFO:root:	Closer one: [Box3, Box3, Box5, None, Box3, Box3, Box3, None, Box3, None, Box4, Box3, Box2, None, Box4]
 INFO:root:Generation: 3
-INFO:root:	Closer one: [Box5, Box3, Box4, Box3, Box5, Box3, Box3, None, None, None, None, Box4, None, Box4, None]
+INFO:root:	Closer one: [Box3, Box3, Box5, None, Box3, Box3, Box3, None, Box3, None, Box3, Box3, None, Box2, Box4]
 INFO:root:Generation: 4
-INFO:root:	Closer one: [Box4, None, None, Box5, None, Box4, Box3, None, Box3, Box5, None, None, Box3, Box4, Box3]
+INFO:root:	Closer one: [Box3, Box3, Box5, None, Box3, Box3, Box3, None, Box3, None, Box3, Box3, None, Box2, Box4]
 INFO:root:Generation: 5
-INFO:root:	Closer one: [Box3, Box5, None, None, Box3, Box3, None, None, Box3, Box5, None, None, Box3, Box3, Box4]
+INFO:root:	Closer one: [None, Box3, None, None, Box3, Box3, Box5, None, None, None, Box5, Box2, Box4, None, Box3]
 INFO:root:Generation: 6
-INFO:root:	Closer one: [Box3, None, None, Box5, None, Box4, Box3, None, Box3, Box5, None, None, Box3, Box4, Box3]
+INFO:root:	Closer one: [None, Box3, Box5, None, Box3, Box3, Box3, None, Box3, None, Box2, Box5, None, None, None]
 INFO:root:Generation: 7
-INFO:root:	Closer one: [None, None, Box5, None, Box4, Box5, None, None, Box3, Box5, None, None, Box3, None, None]
+INFO:root:	Closer one: [Box3, Box5, None, None, Box3, Box3, Box3, None, Box3, None, Box5, None, Box3, Box3, None]
 INFO:root:Generation: 8
-INFO:root:	Closer one: [None, None, Box5, None, Box4, Box5, None, None, Box3, Box5, None, None, Box3, None, None]
+INFO:root:	Closer one: [Box3, Box3, Box5, None, None, None, None, Box5, None, None, Box3, Box5, None, None, None]
 INFO:root:Generation: 9
-INFO:root:	Closer one: [None, None, Box5, None, Box4, Box5, None, None, Box3, Box5, None, None, Box3, None, None]
+INFO:root:	Closer one: [Box4, None, None, Box5, None, None, None, Box5, None, None, Box3, Box5, None, None, Box3]
 INFO:root:Generation: 10
-INFO:root:	Closer one: [None, None, None, Box5, None, Box4, Box3, None, Box5, Box5, None, None, Box3, None, None]
-INFO:root:Maximum value in knapsack: 35
+INFO:root:	Closer one: [Box3, None, None, Box5, None, None, None, Box5, None, None, Box3, Box5, None, None, Box3]
+INFO:root:Maximum value in knapsack: 36
 INFO:root:Weight of maximum knapsack: 0.0
 
 Process finished with exit code 0

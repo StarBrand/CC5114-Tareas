@@ -21,6 +21,34 @@ np.random.seed(2)
 seed(2)
 
 
+def report_results(confusion: np.ndarray) -> None:
+    """
+    Report results of a training process
+
+    :param confusion: Confusion matrix with result of training
+    :return: None (print results measures)
+    """
+    measures = {
+        "accuracy": accuracy(confusion),
+        "precision": precision(confusion),
+        "recall": recall(confusion),
+        "f1_score": f1_score(confusion)
+    }
+
+    print("| Clases\t| *Accuracy* | *Precision* | *Recall* | *f1-score* |")
+    print("| --------------- | ---------- | ----------- | -------- | ---------- |")
+    accuracy_measure = round(measures["accuracy"], 4)
+    for index, a_class in enumerate(classes):
+        print("| **{name}** | {accuracy} | {precision} | {recall} | {f1_score} |".format(
+            name=a_class, accuracy=accuracy_measure,
+            precision=round(measures["precision"][index], 4),
+            recall=round(measures["recall"][index], 4),
+            f1_score=round(measures["f1_score"][index], 4))
+        )
+        accuracy_measure = ""
+    print("\n")
+
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
 
@@ -88,9 +116,9 @@ if __name__ == '__main__':
 
     first = True
 
-    for index in reversed(args.categorical):
-        temp1, temp2 = one_hot_encoding(dataset[index])
-        dataset = np.concatenate((np.delete(dataset, index, 0), temp1.copy().T))
+    for i in reversed(args.categorical):
+        temp1, temp2 = one_hot_encoding(dataset[i])
+        dataset = np.concatenate((np.delete(dataset, i, 0), temp1.copy().T))
         encodings.append(temp2.copy())
         del temp1
         del temp2
@@ -170,26 +198,8 @@ if __name__ == '__main__':
     show_matrix(ax3, c_m, (classes, ["Predicted\n{}".format(a_class) for a_class in classes]),
                 "Confusion Matrix of Test Set\n", FONT_SIZE, TITLE_SIZE)
 
-    measures = {
-        "accuracy": accuracy(c_m),
-        "precision": precision(c_m),
-        "recall": recall(c_m),
-        "f1_score": f1_score(c_m)
-    }
-
     print("{}\n".format(args))
-    print("| Clases\t| *Accuracy* | *Precision* | *Recall* | *f1-score* |")
-    print("| --------------- | ---------- | ----------- | -------- | ---------- |")
-    accuracy_measure = round(measures["accuracy"], 4)
-    for index, a_class in enumerate(classes):
-        print("| **{name}** | {accuracy} | {precision} | {recall} | {f1_score} |".format(
-            name=a_class, accuracy=accuracy_measure,
-            precision=round(measures["precision"][index], 4),
-            recall=round(measures["recall"][index], 4),
-            f1_score=round(measures["f1_score"][index], 4))
-        )
-        accuracy_measure = ""
-    print("\n")
+    report_results(c_m)
 
     plt.savefig("../tarea1/results/other_dataset/{}_{}_on_{}{}{}{}.png".format(args.architecture,
                                                                                filename, args.dataset, more_info,

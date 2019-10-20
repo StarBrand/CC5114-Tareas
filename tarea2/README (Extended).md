@@ -209,7 +209,7 @@ Hay problemas que necesitan más de una función de fitness para ser modelados. 
 
 ### Robot en laberinto (`RobotInMaze`)
 
-Un individuo con multi-objetivos es el robot en el laberinto. Las dos funciones son distancia a la salida y largo del camino (en ese orden de prioridad). Como ambas funciones se requieren minimizar, se utilizaran los inversos aditivos. Para el cálculo es necesario tener la simulación al laberinto (siguiente subsección). 
+Un individuo con multi-objetivos es el robot en el laberinto. Las dos funciones son distancia a la salida y largo del camino (en ese orden de prioridad). Como ambas funciones se requieren minimizar, se utilizaran los inversos aditivos. Para el cálculo es necesario tener la simulación al laberinto (siguiente subsección).
 
 **Código**: [`code/genetic_algorithm/individuals/robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/robot_in_maze.py)
 
@@ -219,13 +219,27 @@ Un individuo con multi-objetivos es el robot en el laberinto. Las dos funciones 
 
 Para la simulación del laberinto se utilizó el algoritmo de división recursiva (*recursive division method*), el cual toma una cámara (pieza vacía) que se divide dos veces dejando tres espacios para mantener las cámaras conexas. Esto se realiza recursivamente hasta tener un laberinto con caminos de ancho uno. Este laberinto calcula si un camino encuentra el final del laberinto o donde llega, tomando un set de movimientos (clase `Move`) los cuales serán los genes del cromosoma de `RobotInMaze`.
 
+Encontrar las funciones de fitness, que permitían encontrar y dirigir los cromosomas para resolver el problema de encontrar la salida a este laberinto, se hizo un tema complicado. Debido a ello, y para utilizar las funciones sugeridas en clase se desarrollo un laberinto simple (siguiente subsección)
+
 **Código**: [`code/useful/simulations/maze_rdm`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/simulations/maze_rdm.py) y [`code/useful/simulations/moves`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/simulations/moves.py)
 
 **Tests unitarios**: [`tests/test_useful/test_maze_rdm`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_useful/test_maze_rdm.py)
 
+#### Laberinto simple, con obstáculos (`SimpleMaze`)
+
+**Código**: [`code/useful/simulations/simple_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/useful/simulations/simple_maze.py)
+
+**Tests unitarios**: [`tests/test_useful/test_simple_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_useful/test_simple_maze.py)
+
 #### Resultados
 
-#### Análisis
+Sobre este laberinto simple se ejecutó el algoritmo con elitismo. Dado que el principal objetivo es encontrar la salida se utiliza la optimización por prioridad, y dado que, en el algoritmo del laberinto, encontrar la salida no es lo mismo que salir, la salida tiene una distancia de 0.0, pero salir tiene una distancia de 10.0 (bastaba con cualquier número mayor a 0.0) de forma que salir sea lo más valorado por el algoritmo.
+
+El gráfico realizado muestra el cambio en el fitness por cada generación y además, muestra los laberintos encontrados al principio, del primero en salir y la solución encontrada por el algoritmo.
+
+![show_maze](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/robot_in_maze.png)
+
+**Ejecutable**: [`tarea2/script/show_robot_in_maze`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_robot_in_maze.py)
 
 ### Unbound-Knapsack (`UnboundKnapsack`)
 
@@ -258,15 +272,19 @@ Tomando uno de los mejores resultados de los heatmap anteriores, es decir, mayor
 
 La discrepancia entre que los mínimos valores sean mayores que los máximos, es que los máximos valores se buscan entre los que cumplen con el peso requerido. Por ello los valores "mínimos", son los valores encontrados que superaron por más la diferencia de peso, y, por lo tanto, tiene sentido que tengas valores tan altos.
 
-**Ejecutable**: [`tarea2/script/show_unbound_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_unbound_knapsack.py)
+**Ejecutable**: [`tarea2/script/show_knapsack_problem`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_knapsack_problem.py)	**Argumentos**: `-w unbound`
 
-### 0-1-Knapsack (`01Knapsack`)
+### 0-1-Knapsack (`Knapsack01`)
 
-**Código**: [`code/genetic_algorithm/individuals/01_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/01_knapsack.py)
+Misma lógica que `UnboundKnapsack`, salvo que los cromosomas, está vez, son 0 o 1 indicando si el item se guarda o no. Debido a que la implementación es tan similar, esta clase `Knapsack01` hereda de `UnboundKnapsack`.
+
+**Código**: [`code/genetic_algorithm/individuals/_01_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_algorithm/individuals/_01_knapsack.py)
 
 **Tests unitarios**: [`tests/test_genetic_algorithm/test_01_knapsack`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_algorithm/test_01_knapsack.py)
 
 #### Resultados
 
-#### Análisis
+![01k](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/results/01_knapsack.png)
+
+#### Ejecutable**: [`tarea2/script/show_knapsack_problem`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea2/script/show_knapsack_problem.py)	**Argumentos**: `-w 01`
 

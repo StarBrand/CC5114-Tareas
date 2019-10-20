@@ -70,6 +70,15 @@ class RobotInMazeTest(MultiIndividualTest):
         self.std_test_greater_than(robot_out, self.stable_one, 1)
         self.std_test_greater_than(robot_out, self.individual, 1)
 
+    def test_exit_found(self):
+        self.expected_individuals()
+        self.assertFalse(self.individual.found_exit(), "Found maze")
+        self.assertFalse(self.stable_one.found_exit(), "Found maze")
+        robot_out = self.individual.generate_individual()
+        robot_out.chromosome = tester_robot_out()
+        robot_out.fitness()
+        self.assertTrue(robot_out.found_exit(), "Not found maze")
+
     def expected_individuals(self):
         """
         Generate individual with known performance on Maze

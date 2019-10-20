@@ -1,4 +1,5 @@
 """train_evaluate.py: Train and evaluate dataset"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 import logging
@@ -7,6 +8,7 @@ from neural_network import NeuralNetwork
 from useful.preprocess_dataset import import_data, one_hot_encoding, oversample
 from useful.results import StandardTrainer
 from useful.results import confusion_matrix, accuracy, precision, recall, f1_score, show_matrix
+from use_network import report_results
 
 FIG_SIZE = (20 * 2, 20)
 TITLE_SIZE = 40
@@ -112,18 +114,7 @@ def train_evaluate(architecture: dict, dataset_name: str) -> NeuralNetwork:
     }
 
     print("Summary on {}:\n".format(dataset))
-    print("| Clases\t| *Accuracy* | *Precision* | *Recall* | *f1-score* |")
-    print("| --------------- | ---------- | ----------- | -------- | ---------- |")
-    accuracy_measure = round(measures["accuracy"], 4)
-    for index, a_class in enumerate(classes):
-        print("| **{name}** | {accuracy} | {precision} | {recall} | {f1_score} |".format(
-            name=a_class, accuracy=accuracy_measure,
-            precision=round(measures["precision"][index], 4),
-            recall=round(measures["recall"][index], 4),
-            f1_score=round(measures["f1_score"][index], 4))
-        )
-        accuracy_measure = ""
-    print("\n")
+    report_results(c_m)
 
     plt.savefig("../results/Network_on_{}{}.png".format(dataset_name, more_info))
 

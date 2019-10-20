@@ -43,20 +43,27 @@ class UnboundKnapsackTest(MultiIndividualTest):
 
     def test_fitness(self):
         self.expected_individuals()
-        capacity1 = 0.0
-        capacity2 = - 21
-        value1 = 8
-        value2 = 12
-        self.assertGreaterEqual(EPSILON, abs(self.individual.multi_fitness[0] - capacity1),
+        capacities = 0.0, - 21
+        values = 8, 12
+        self.std_test_fitness(capacities, values)
+
+    def std_test_fitness(self, capacities: (float, float), values: (float, float)):
+        """
+        Test fitness (for this and 0-1-knapsack
+
+        :param capacities: Capacities (individual, stable_one) tuple
+        :param values: Values (individual, stable_one) tuple
+        """
+        self.assertGreaterEqual(EPSILON, abs(self.individual.multi_fitness[0] - capacities[0]),
                                 "Wrong capacity calculated individual")
-        self.assertGreaterEqual(EPSILON, abs(self.individual.multi_fitness[1] - value1),
+        self.assertGreaterEqual(EPSILON, abs(self.individual.multi_fitness[1] - values[0]),
                                 "Wrong value calculated individual")
-        self.assertGreaterEqual(EPSILON, abs(self.stable_one.multi_fitness[0] - capacity2),
+        self.assertGreaterEqual(EPSILON, abs(self.stable_one.multi_fitness[0] - capacities[1]),
                                 "Wrong capacity calculated stable one")
-        self.assertGreaterEqual(EPSILON, abs(self.stable_one.multi_fitness[1] - value2),
+        self.assertGreaterEqual(EPSILON, abs(self.stable_one.multi_fitness[1] - values[0]),
                                 "Wrong value calculated stable one")
-        self.assertGreaterEqual(EPSILON, abs(self.individual.my_fitness - capacity1), "Wrong fitness individual")
-        self.assertGreaterEqual(EPSILON, abs(self.stable_one.my_fitness - capacity2), "Wrong fitness stable one")
+        self.assertGreaterEqual(EPSILON, abs(self.individual.my_fitness - capacities[0]), "Wrong fitness individual")
+        self.assertGreaterEqual(EPSILON, abs(self.stable_one.my_fitness - capacities[1]), "Wrong fitness stable one")
 
     def test_comparing(self):
         self.expected_individuals()

@@ -3,23 +3,22 @@
 import logging
 from math import sqrt
 from copy import deepcopy
-from random import uniform, choice
+from random import choice
 from matplotlib.axes import Axes
 from genetic_algorithm.individuals import MultiObjectiveIndividual, Individual
 from useful.simulations import Maze, UP, DOWN, LEFT, RIGHT
 
 
-def _repeat(maze: Maze) -> float:
-    return - maze.repeated_steps()
+def _exit(maze: Maze) -> float:
+    dist = (maze.location - maze.exit) // 2
+    if maze.found_exit():
+        return 10.0  # Could be one
+    else:
+        return - sqrt(dist[0] ** 2 + dist[1] ** 2)
 
 
 def _length(maze: Maze) -> float:
-    return maze.long_of_path()
-
-
-def _exit(maze: Maze) -> float:
-    dist = (maze.location - maze.exit) // 2
-    return - sqrt(dist[0] ** 2 + dist[1] ** 2)
+    return - maze.long_of_path()
 
 
 def _get_move():
@@ -34,7 +33,7 @@ class RobotInMaze(MultiObjectiveIndividual):
     def __init__(self, mutation_rate: float, maze: Maze):
         self._maze = deepcopy(maze)
         self._maze_with_robot = deepcopy(maze)
-        super().__init__([_repeat, _length, _exit], _get_move, len(self._maze) ** 2 + 1, mutation_rate)
+        super().__init__([_exit, _length], _get_move, len(self._maze) ** 2 + 1, mutation_rate)
         if not maze.is_generated():
             raise InterruptedError("Cannot initialize Robot if Maze is not generated")
         self._run = False
@@ -65,16 +64,13 @@ class RobotInMaze(MultiObjectiveIndividual):
         """
         return RobotInMaze(self.mutation_rate, self._maze)
 
-    def mutate(self) -> None:
+    def found_exit(self) -> bool:
         """
-        Change one step
+        Return if exit was found in maze
 
-        :return: None, it changed chromosome
+        :return: Whether exit was found
         """
-        for index, _ in enumerate(self.chromosome):
-            if uniform(0, 1) <= self.mutation_rate:
-                self.chromosome[index] = choice([UP, DOWN, LEFT, RIGHT])
-        return None
+        return self._maze_with_robot.found_exit()
 
     def _performance(self) -> None:
         self._run = True

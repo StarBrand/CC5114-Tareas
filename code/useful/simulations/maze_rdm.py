@@ -36,6 +36,10 @@ class Maze:
         """
         self._maze = self._generate_border(self._maze)
         self._maze[1:-1, 1:-1] = self._recursion(self._maze[1:-1, 1:-1])
+        self._generate_doors()
+        return
+
+    def _generate_doors(self) -> None:
         self.start, self.exit = self._get_start_and_exit(len(self))
         if self.start[0] <= 1:
             self._start = self.start - (1, 0)
@@ -148,7 +152,7 @@ class Maze:
             self.location = deepcopy(self.start)
             return out
         out += 1
-        self._maze[self._start[0], self._start[1]] += 1
+        self._maze[self._start[0], self._start[1]] = 3
         self._maze[self.start[0], self.start[1]] = 1
         self.location = deepcopy(self.start)
         self._path.append(deepcopy(self.location))
@@ -156,7 +160,7 @@ class Maze:
             transition = self.location + move.step()
             if (self.location == self.exit).all():
                 if (self._exit == transition).all():
-                    self._maze[self._exit[0], self._exit[1]] += 1
+                    self._maze[self._exit[0], self._exit[1]] = 3
                     self._found_it = True
                     return out + 1
                 elif self._is_a_wall(transition):
