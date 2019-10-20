@@ -60,7 +60,7 @@ class UnboundKnapsackTest(MultiIndividualTest):
                                 "Wrong value calculated individual")
         self.assertGreaterEqual(EPSILON, abs(self.stable_one.multi_fitness[0] - capacities[1]),
                                 "Wrong capacity calculated stable one")
-        self.assertGreaterEqual(EPSILON, abs(self.stable_one.multi_fitness[1] - values[0]),
+        self.assertGreaterEqual(EPSILON, abs(self.stable_one.multi_fitness[1] - values[1]),
                                 "Wrong value calculated stable one")
         self.assertGreaterEqual(EPSILON, abs(self.individual.my_fitness - capacities[0]), "Wrong fitness individual")
         self.assertGreaterEqual(EPSILON, abs(self.stable_one.my_fitness - capacities[1]), "Wrong fitness stable one")

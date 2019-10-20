@@ -13,7 +13,3 @@ from test_genetic_algorithm.test_01_knapsack import Knapsack01Test
 from test_genetic_algorithm.test_ga_result import GAResultTest
 from test_genetic_algorithm.test_genetic_algorithm_engine import GAEngineTest
 from test_genetic_algorithm.test_engine_optimized import EngineOptimizedTest
-import unittest
-
-if __name__ == '__main__':
-    unittest.main()

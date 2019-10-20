@@ -15,18 +15,18 @@ class Knapsack01Test(UnboundKnapsackTest):
         Sets up unit test
         """
         self.chromosome_size = 5
-        self.individual = Knapsack01(0.2)
+        self.individual = Knapsack01(0.3)
         self.stable_one = Knapsack01(0.0)
 
     def test_crossover(self):
         seed(10)
         first_one = self.individual.generate_individual()
-        first_expected = self.individual.chromosome[0: 7] + first_one.chromosome[7: self.chromosome_size]
+        first_expected = self.individual.chromosome[0: 0] + first_one.chromosome[0: self.chromosome_size]
         """mutate"""
-
+        first_expected[3] = 1
         """"""
         second_one = self.stable_one.generate_individual()
-        second_expected = self.stable_one.chromosome[0: 13] + second_one.chromosome[13: self.chromosome_size]
+        second_expected = self.stable_one.chromosome[0: 3] + second_one.chromosome[3: self.chromosome_size]
         self.std_test_crossover(first_expected, second_expected, first_one, second_one)
 
     def test_get_allele(self):
@@ -34,7 +34,7 @@ class Knapsack01Test(UnboundKnapsackTest):
 
     def test_fitness(self):
         self.expected_individuals()
-        capacities = -20, 0.0
+        capacities = -5, 0.0
         values = 19, 0.0
         self.std_test_fitness(capacities, values)
 
