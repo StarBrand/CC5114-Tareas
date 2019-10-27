@@ -1,7 +1,6 @@
 """asbt.py: BinaryAST class, or Abstract Syntax BiTree"""
 
 from random import choice, uniform
-from genetic_algorithm.individuals import MultiObjectiveIndividual
 from genetic_programming.ast import AST
 from genetic_programming.ast.nodes import BinaryNode, Node
 from genetic_programming.ast.nodes import AddNode, SubNode, MultNode, MaxNode, TerminalNode
@@ -66,4 +65,4 @@ class BinaryAST(AST):
         :return: Fitness, difference
                  between expected number and result (or evaluate)
         """
-        return super(MultiObjectiveIndividual, self).fitness(node=self.root, expected=self.number_expected)
+        return super(AST, self).fitness(node=self.root, expected=self.number_expected)

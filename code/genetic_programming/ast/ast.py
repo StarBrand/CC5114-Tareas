@@ -4,11 +4,11 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from copy import deepcopy
 from random import choice
-from genetic_algorithm.individuals import MultiObjectiveIndividual, Individual
+from genetic_algorithm.individuals import Individual
 from genetic_programming.ast.nodes import Node
 
 
-class AST(MultiObjectiveIndividual, ABC):
+class AST(Individual, ABC):
     """
     AST class, represents an Abstract Syntax Tree
     """
