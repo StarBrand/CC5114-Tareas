@@ -157,13 +157,42 @@ Código:
 
 ### Temas
 
+1. Mejoras no triviales a los algoritmos genéticos
+2. Cubrir árboles con ello: Programación Genética (*Genetic Programming*)
+
+### Ejercicios
+
+La mayoría de estos códigos son una *reinterpretación* o están basados en los códigos provistos por JP Silva. La idea era facilitar los test unitarios y mantener la funcionalidad.
+
+Código: [`code/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
+
+Tests unitarios: [`tests/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/)
+
+## Clase 12:
+
+### Temas
+
+1. Conceptos avanzados de *Genetic Programming*
+2. Herramientas teóricas para habilitar la generación de programas complejos
+
+### Ejercicios
+
+Código: [`code/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
+
+Tests unitarios: [`tests/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/)
+
+Ejecutable: [`tarea3/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/scripts)
+
+## Clase 13:
+
+### Temas
+
 1. 
 
 ### Ejercicios
 
 Código: [`code/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
 
-Tests unitarios: [`tests/`](tests/)
+Tests unitarios: [`tests/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/)
 
 Ejecutable: [`tarea3/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/scripts)
-

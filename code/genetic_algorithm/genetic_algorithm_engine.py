@@ -180,7 +180,7 @@ class GAEngine(object):
         def _register():
             if log:
                 logging.info("Generation: {}".format(self.generation))
-                logging.info("\tCloser one: {}".format(max(self.population).chromosome))
+                logging.info("\tCloser one: {}".format(max(self.population)))
         self._initialize(population_size, use_prev)
         internal_generation = 1
         times_in_a_row = 1

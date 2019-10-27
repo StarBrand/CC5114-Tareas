@@ -1,4 +1,5 @@
 """test_individual.py: unittest of Individual abstract class"""
+
 from unittest import TestCase, main
 from genetic_algorithm.individuals import Individual, NullIndividual
 

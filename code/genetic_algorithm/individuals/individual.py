@@ -103,3 +103,6 @@ class Individual(ABC):
                     and self.mutation_rate == other.mutation_rate)
         else:
             return False
+
+    def __repr__(self) -> str:
+        return str(self.chromosome)

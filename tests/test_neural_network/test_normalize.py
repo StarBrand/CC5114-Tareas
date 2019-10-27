@@ -1,7 +1,8 @@
 """test_normalize.py: unittest of NormalizedNetwork"""
+
 import numpy as np
 from unittest import TestCase, main
-from random import randint
+from random import randint, seed
 from neural_network import NormalizedNetwork, NeuralNetwork
 
 N_H = 1.0
@@ -18,6 +19,7 @@ class NormalizeTest(TestCase):
         """
         Sets up unittest
         """
+        seed(5)
         self.x_input = np.random.uniform(D_L, D_H, (50, 1000))
         self.network = NormalizedNetwork(50, [], 2, ["sigmoid"], 0.1)
         self.network_no_norm = NeuralNetwork(50, [], 2, ["sigmoid"], 0.1)
