@@ -164,9 +164,9 @@ Código:
 
 La mayoría de estos códigos son una *reinterpretación* o están basados en los códigos provistos por JP Silva. La idea era facilitar los test unitarios y mantener la funcionalidad.
 
-Código: [`code/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
+Código: [`code/genetic_programming/ast`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast)
 
-Tests unitarios: [`tests/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/)
+Tests unitarios: [`tests/test_genetic_programming`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming)
 
 ## Clase 12:
 
@@ -177,11 +177,11 @@ Tests unitarios: [`tests/`](https://github.com/StarBrand/CC5114-Tareas/tree/mast
 
 ### Ejercicios
 
-Código: [`code/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
+Código: [`code/useful/math_functions/super_neutral`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/math_functions/super_neutral.py),  [`code/genetic_programming/ast/nodes/yes_no_node`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast/nodes/yes_no_node.py), [`code/genetic_programming/ast/chiffres_yn_variant.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast/chiffres_yn_variant.py) y [`code`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
 
-Tests unitarios: [`tests/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/)
+Tests unitarios: [`tests/test_useful/test_super_neutral`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_super_neutral.py),  [`tests/test_genetic_programming/test_yes_no_node.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming/test_yes_no_node.py), [`tests/test_genetic_programming/test_chiffres_yes_no_variant`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming/test_chiffres_yes_no_variant.py) y [`tests`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/)
 
-Ejecutable: [`tarea3/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/scripts)
+Ejecutable: [`tarea3/script/show_DesChiffresEtDesLettres`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/script/show_DesChiffresEtDesLettres.py)	Argumentos: `-w unbound` [*Unbound*], `-w yes-or-no` [*0/1*]
 
 ## Clase 13:
 

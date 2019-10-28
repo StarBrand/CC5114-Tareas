@@ -8,3 +8,4 @@ from genetic_programming.ast.nodes.add_node import AddNode
 from genetic_programming.ast.nodes.sub_node import SubNode
 from genetic_programming.ast.nodes.mult_node import MultNode
 from genetic_programming.ast.nodes.max_node import MaxNode
+from genetic_programming.ast.nodes.yes_no_node import YesNoNode

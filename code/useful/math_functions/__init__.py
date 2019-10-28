@@ -2,3 +2,4 @@
 
 from useful.math_functions.activation_functions import sigmoid, tanh, step
 from useful.math_functions.activation_functions import derivative, proper_name
+from useful.math_functions.super_neutral import SuperNeutral

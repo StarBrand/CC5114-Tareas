@@ -2,6 +2,7 @@
 
 from genetic_programming.ast.ast import AST
 from genetic_programming.ast.asbt import BinaryAST
+from genetic_programming.ast.chiffres_yn_variant import ChiffresYesNoVariant
 
 """
 the code of this package is strongly inspired

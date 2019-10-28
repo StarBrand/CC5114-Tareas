@@ -38,7 +38,7 @@ class BinaryAST(AST):
         if self.values_allowed is None:
             values = list(range(-100, 100))
 
-        def _generate_tree(d: int, p: float):
+        def _generate_tree(d: int, p: float) -> Node:
             if d == 0 or uniform(0, 1) < p:
                 return TerminalNode(choice(values))
             else:
