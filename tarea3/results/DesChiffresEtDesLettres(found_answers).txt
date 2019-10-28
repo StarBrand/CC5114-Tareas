@@ -1,0 +1,79 @@
+C:\Users\juans\Anaconda3\envs\cc5114\python.exe "C:/Users/juans/Google Drive/CC5114/CC5114-Tareas/tarea3/script/result_DesChiffresEtDesLettres.py"
+Unbound answer:
+	As tree:
+(max)
+  |-(max)
+    |-(max)
+      |-(-)
+        |-(25)
+        |-(7)
+      |-(*)
+        |-(4)
+        |-(100)
+    |-(-)
+      |-(+)
+        |-(8)
+        |-(4)
+      |-(*)
+        |-(4)
+        |-(100)
+  |-(+)
+    |-(max)
+      |-(max)
+        |-(4)
+        |-(8)
+      |-(*)
+        |-(4)
+        |-(100)
+    |-(-)
+      |-(*)
+        |-(8)
+        |-(7)
+      |-(-)
+        |-(4)
+        |-(7)
+	As equation:
+max(max(max((25 - 7), (4 * 100)), ((8 + 4) - (4 * 100))), (max(max(4, 8), (4 * 100)) + ((8 * 7) - (4 - 7)))) = 459
+	 Simplifying:
+		As tree:
+(+)
+  |-(*)
+    |-(4)
+    |-(100)
+  |-(-)
+    |-(*)
+      |-(8)
+      |-(7)
+    |-(-)
+      |-(4)
+      |-(7)
+		As equation:
+((4 * 100) + ((8 * 7) - (4 - 7))) = 459
+Yes-or-No answer:
+	As tree:
+(*)
+  |-(+)
+    |-(-)
+      |-(super_neutral)
+      |-(7)
+    |-(+)
+      |-(8)
+      |-(100)
+  |-(+)
+    |-(4)
+    |-(super_neutral)
+	As equation:
+(((super_neutral - 7) + (8 + 100)) * (4 + super_neutral)) = 460.0
+	 Simplifying:
+		As tree:
+(*)
+  |-(+)
+    |-(7)
+    |-(+)
+      |-(8)
+      |-(100)
+  |-(4)
+		As equation:
+((7 + (8 + 100)) * 4) = 460
+
+Process finished with exit code 0
