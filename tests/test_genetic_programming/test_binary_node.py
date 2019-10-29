@@ -15,7 +15,7 @@ class BinaryNodeTest(NodeTest):
         Sets up unittest
         """
         seed(2)
-        values = [uniform(0, 100) for _ in range(20)]
+        values = [uniform(0, 100) for _ in range(10)]
         self.first_node = AddNode(
             SubNode(
                 TerminalNode(values[0]),

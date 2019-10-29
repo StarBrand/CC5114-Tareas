@@ -12,6 +12,7 @@ class BinaryNode(Node):
         super().__init__(function, 2)
         self.arguments.append(deepcopy(left))
         self.arguments.append(deepcopy(right))
+        self.type = float
 
     def evaluate(self) -> float:
         """

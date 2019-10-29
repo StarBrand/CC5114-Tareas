@@ -14,6 +14,7 @@ class Node(ABC):
         self.number_of_arguments = number_of_arguments
         self.arguments = list()
         self._is_node = True
+        self.type = None
 
     @abstractmethod
     def evaluate(self) -> object:
@@ -53,3 +54,9 @@ class Node(ABC):
             if arg1 != arg2:
                 return False
         return True
+
+    def __repr__(self) -> str:
+        children = ""
+        for child in self.arguments:
+            children += "\n|-{}".format(str(child))
+        return "({})" + children.replace("\n", "\n  ")

@@ -13,3 +13,4 @@ class YesNoNode(TerminalNode):
             super().__init__(value)
         else:
             super().__init__(SuperNeutral())
+        self.type = float

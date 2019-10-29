@@ -9,6 +9,10 @@ class TerminalNode(Node):
     def __init__(self, value: object):
         super().__init__(NullNode().function, 0)
         self.value = value
+        if isinstance(value, bool):
+            self.type = bool
+        elif isinstance(value, float):
+            self.type = float
 
     def evaluate(self) -> object:
         """
