@@ -177,11 +177,23 @@ Tests unitarios: [`tests/test_genetic_programming`](https://github.com/StarBrand
 
 ### Ejercicios
 
-Código: [`code/useful/math_functions/super_neutral`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/math_functions/super_neutral.py),  [`code/genetic_programming/ast/nodes/yes_no_node`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast/nodes/yes_no_node.py), [`code/genetic_programming/ast/chiffres_yn_variant.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast/chiffres_yn_variant.py) y [`code`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
+Código: [`code/useful/math_functions/super_neutral`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/math_functions/super_neutral.py),  [`code/genetic_programming/ast/nodes/yes_no_node`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast/nodes/yes_no_node.py), [`code/genetic_programming/ast/chiffres_yn_variant`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast/chiffres_yn_variant.py), [`code/genetic_programming/ast/nodes/if_then_else_node`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast/nodes/if_then_else_node.py) y [`code/genetic_programming/ast/nodes/boolean_node`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming/ast/nodes/boolean_node.py)
 
-Tests unitarios: [`tests/test_useful/test_super_neutral`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_super_neutral.py),  [`tests/test_genetic_programming/test_yes_no_node.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming/test_yes_no_node.py), [`tests/test_genetic_programming/test_chiffres_yes_no_variant`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming/test_chiffres_yes_no_variant.py) y [`tests`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/)
+Tests unitarios: [`tests/test_useful/test_super_neutral`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful/test_super_neutral.py),  [`tests/test_genetic_programming/test_yes_no_node.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming/test_yes_no_node.py), [`tests/test_genetic_programming/test_chiffres_yes_no_variant`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming/test_chiffres_yes_no_variant.py), [`tests/test_genetic_programming/test_if_then_else_node.py`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming/test_if_then_else_node.py) y [`tests/test_genetic_programming/test_boolean_node`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming/test_boolean_node.py)
 
 Ejecutable: [`tarea3/script/show_DesChiffresEtDesLettres`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/script/show_DesChiffresEtDesLettres.py)	Argumentos: `-w unbound` [*Unbound*], `-w yes-or-no` [*0/1*]
+
+### [Tarea 3](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3)
+
+Código:
+
+* Código utilizado: [`code/genetic_programming`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/genetic_programming) y [`code/useful/math_functions`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/useful/math_functions)
+
+* Scripts ejecutables: [`tarea3/scripts`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/scripts)
+
+* Markdown: [`tarea3/README.md`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/README%20(Extended).md)
+
+* Tests unitarios: [`tests/test_genetic_programming`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_genetic_programming) y [`tests/test_useful`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/test_useful)
 
 ## Clase 13:
 
@@ -195,4 +207,5 @@ Código: [`code/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/code/)
 
 Tests unitarios: [`tests/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tests/)
 
-Ejecutable: [`tarea3/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/scripts)
+Ejecutable: [`tarea4/`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea4/scripts)
+
