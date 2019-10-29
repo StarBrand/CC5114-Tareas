@@ -7,6 +7,10 @@ from random import choice
 from genetic_algorithm.individuals import Individual
 from genetic_programming.ast.nodes import Node
 
+# TODO: A generalization of a tree generator
+# TODO: Implement variables
+# TODO: Division Node
+
 
 class AST(Individual, ABC):
     """
