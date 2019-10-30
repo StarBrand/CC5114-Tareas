@@ -58,24 +58,25 @@ def simplify(node: BinaryNode) -> BinaryNode:
 
 
 """ Unbound version """
-unbound_answer = MaxNode(
+unbound_answer = AddNode(
     MaxNode(
         MaxNode(
-            SubNode(TerminalNode(25), TerminalNode(7)),
-            MultNode(TerminalNode(4), TerminalNode(100))
+            MaxNode(TerminalNode(8), TerminalNode(100)),
+            MaxNode(TerminalNode(2), TerminalNode(7))
         ),
-        SubNode(
-            AddNode(TerminalNode(8), TerminalNode(4)),
-            MultNode(TerminalNode(4), TerminalNode(100))
+        AddNode(
+            MaxNode(TerminalNode(8), TerminalNode(100)),
+            AddNode(TerminalNode(7), TerminalNode(2))
         )
-    ), AddNode(
-        MaxNode(
-            MaxNode(TerminalNode(4), TerminalNode(8)),
-            MultNode(TerminalNode(4), TerminalNode(100))
+    ),
+    MaxNode(
+        MultNode(
+            MaxNode(TerminalNode(7), TerminalNode(2)),
+            MultNode(TerminalNode(25), TerminalNode(2))
         ),
         SubNode(
-            MultNode(TerminalNode(8), TerminalNode(7)),
-            SubNode(TerminalNode(4), TerminalNode(7))
+            MaxNode(TerminalNode(2), TerminalNode(4)),
+            AddNode(TerminalNode(4), TerminalNode(7))
         )
     )
 )

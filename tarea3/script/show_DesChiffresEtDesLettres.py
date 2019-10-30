@@ -23,7 +23,7 @@ PROBLEMS = {
 }
 
 POPULATION_SIZE = {
-    "unbound": 100,
+    "unbound": 50,
     "yes-or-no": 20
 }
 
