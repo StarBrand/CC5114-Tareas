@@ -29,3 +29,10 @@ class TerminalNode(Node):
 
     def __repr__(self) -> str:
         return "({})".format(str(self.value))
+
+    @classmethod
+    def get_arguments(cls) -> int:
+        """
+        :return: 1 argument
+        """
+        return 1

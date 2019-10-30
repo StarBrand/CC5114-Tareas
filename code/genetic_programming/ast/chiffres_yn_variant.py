@@ -15,8 +15,9 @@ class ChiffresYesNoVariant(BinaryAST):
     """
     def __init__(self, number_expected: float, values: [float], mutation_rate: float):
         self.values_allowed = values
+        self.internal_nodes = POSSIBLE_NODES
         node = self.generate_tree(0, 0)
-        super(BinaryAST, self).__init__(0, mutation_rate, node, depth=self.depth)
+        super(BinaryAST, self).__init__(POSSIBLE_NODES, values, 0, mutation_rate, node, depth=self.depth)
         self._fitness_function = _diff
         self.number_expected = number_expected
 
@@ -29,6 +30,7 @@ class ChiffresYesNoVariant(BinaryAST):
         :return: A Node
         """
         values = deepcopy(self.values_allowed)
+        internal_nodes = deepcopy(self.internal_nodes)
         self.depth = ceil(log2(len(values)))
 
         def _generate_tree(d: int) -> Node:
@@ -37,7 +39,7 @@ class ChiffresYesNoVariant(BinaryAST):
                 return YesNoNode(values.pop(0), choice([True, False]))
 
             def _internal(_l: Node, _r: Node) -> Node:
-                this = choice(POSSIBLE_NODES)
+                this = choice(internal_nodes)
                 return this(_l, _r)
 
             r = len(values)

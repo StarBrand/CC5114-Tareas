@@ -18,6 +18,13 @@ class TesterNode(Node):
         """
         return self.function()
 
+    @classmethod
+    def get_arguments(cls) -> int:
+        """
+        :return: 0 argument
+        """
+        return 0
+
 
 class NullNodeTest(NodeTest):
 

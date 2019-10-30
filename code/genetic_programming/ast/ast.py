@@ -3,11 +3,10 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from random import choice
+from random import choice, uniform
 from genetic_algorithm.individuals import Individual
-from genetic_programming.ast.nodes import Node
+from genetic_programming.ast.nodes import Node, TerminalNode
 
-# TODO: A generalization of a tree generator
 # TODO: Implement variables
 # TODO: Division Node
 
@@ -16,9 +15,15 @@ class AST(Individual, ABC):
     """
     AST class, represents an Abstract Syntax Tree
     """
-    def __init__(self, prob_terminal: float, mutation_rate: float, root: Node, depth: int = 0):
+    def __init__(self, internal_nodes: [Node], values: list, prob_terminal: float, mutation_rate: float,
+                 root: Node = None, depth: int = 0):
         super().__init__(None, None, 0, mutation_rate)
-        self.root = deepcopy(root)
+        self.internal_nodes = internal_nodes
+        self.allowed_values = values
+        if root is not None:
+            self.root = deepcopy(root)
+        else:
+            self.root = self.generate_tree(depth, prob_terminal)
         if depth != 0:
             self.depth = depth
         else:
@@ -68,7 +73,6 @@ class AST(Individual, ABC):
         """
         pass
 
-    @abstractmethod
     def generate_tree(self, depth: int, prob_terminal: float) -> Node:
         """
         Generate a new Tree (node)
@@ -78,7 +82,20 @@ class AST(Individual, ABC):
                             than depth, a terminal node
         :return: Node
         """
-        pass
+        values = deepcopy(self.allowed_values)
+        internal_nodes = deepcopy(self.internal_nodes)
+
+        def _generate_tree(d: int, p: float) -> Node:
+            if d == 0 or uniform(0, 1) < p:
+                return TerminalNode(choice(values))
+            else:
+                this = choice(internal_nodes)
+                children = list()
+                for _ in range(this.get_arguments()):
+                    children.append(_generate_tree(d - 1, p))
+                return this(*children)
+
+        return _generate_tree(depth, prob_terminal)
 
     def crossover(self, partner: AST) -> AST:
         """

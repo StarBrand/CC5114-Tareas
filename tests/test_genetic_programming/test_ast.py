@@ -16,7 +16,7 @@ class TesterAST(AST):
     """
     def __init__(self, mutation_rate: float):
         root = self.generate_tree(0, 0)
-        super().__init__(0, mutation_rate, root)
+        super().__init__([], [], 0, mutation_rate, root)
 
     def fitness(self) -> float:
         """

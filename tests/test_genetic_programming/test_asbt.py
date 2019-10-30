@@ -32,23 +32,24 @@ class BinaryASTTest(ASTTest):
     def test_crossover(self):
         seed(10)
         first_one = self.individual.generate_individual()
-        first_expected = self.individual.replace_on_position((0, 0, 1, 0, 1, 1, 1, 0, 0),
-                                                             first_one.get_node((0, 1, 0, 0, 1, 0, 1, 0, 1)))
+        first_expected = self.individual.replace_on_position((0, 0, 1, 0, 0, 1, 1, 0, 0, 0),
+                                                             first_one.get_node((0, 0, 0, 0, 1, 1, 0, 0, 1, 0)))
         """mutate"""
-        graft = AddNode(
-            AddNode(
-                MultNode(TerminalNode(-11), TerminalNode(28)),
-                SubNode(TerminalNode(-59), TerminalNode(9))
-            ), SubNode(
-                MultNode(TerminalNode(-98), TerminalNode(-48)),
-                AddNode(TerminalNode(15), TerminalNode(-39))
-            ))
-        reference = first_expected.arguments[0].arguments[1].arguments[0].arguments[0].arguments[1].arguments[1]
+        graft = SubNode(
+            SubNode(
+                SubNode(TerminalNode(89), TerminalNode(53)),
+                AddNode(TerminalNode(-32), TerminalNode(-65))
+            ), MaxNode(
+                MultNode(TerminalNode(-2), TerminalNode(65)),
+                MultNode(TerminalNode(-50), TerminalNode(-2))
+            )
+        )
+        reference = first_expected.arguments[1].arguments[0].arguments[0].arguments[1].arguments[0].arguments[1]
         reference.replace_node(graft, 0)
         """"""
         second_one = self.stable_one.generate_individual()
-        second_expected = self.stable_one.replace_on_position((0, 0, 1, 0, 1, 0, 1, 0, 0, 0),
-                                                              second_one.get_node((0, 1, 1, 1, 1, 1, 0, 1, 1, 1)))
+        second_expected = self.stable_one.replace_on_position((0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0),
+                                                              second_one.get_node((0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1)))
         self.std_test_crossover(first_expected, second_expected, first_one, second_one)
 
     def test_replace_on_position(self):

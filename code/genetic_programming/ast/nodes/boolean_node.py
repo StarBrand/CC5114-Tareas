@@ -20,3 +20,12 @@ class BooleanNode(Node, ABC):
         for child in self.arguments:
             children += "\n|-{}".format(str(child))
         return "({})" + children.replace("\n", "\n  ")
+
+    @classmethod
+    def get_arguments(cls) -> int:
+        """
+        To be override for exceptions
+
+        :return: 2 arguments
+        """
+        return 2

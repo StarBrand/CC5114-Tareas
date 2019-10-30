@@ -14,3 +14,10 @@ class YesNoNode(TerminalNode):
         else:
             super().__init__(SuperNeutral())
         self.type = float
+
+    @classmethod
+    def get_arguments(cls) -> int:
+        """
+        :return: 2 argument
+        """
+        return 2

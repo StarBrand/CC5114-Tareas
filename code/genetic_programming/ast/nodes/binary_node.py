@@ -27,3 +27,10 @@ class BinaryNode(Node):
         first_child = "\n|-{}".format(str(self.arguments[0]))
         second_child = "\n|-{}".format(str(self.arguments[1]))
         return "({})" + (first_child + second_child).replace("\n", "\n  ")
+
+    @classmethod
+    def get_arguments(cls) -> int:
+        """
+        :return: 2 arguments
+        """
+        return 2

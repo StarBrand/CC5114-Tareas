@@ -60,3 +60,11 @@ class Node(ABC):
         for child in self.arguments:
             children += "\n|-{}".format(str(child))
         return "({})" + children.replace("\n", "\n  ")
+
+    @classmethod
+    @abstractmethod
+    def get_arguments(cls) -> int:
+        """
+        Get number of arguments that has to have
+        """
+        pass

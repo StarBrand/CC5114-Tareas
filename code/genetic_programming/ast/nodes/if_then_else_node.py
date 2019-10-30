@@ -54,3 +54,10 @@ class IfThenElseNode(Node):
 
     def __repr__(self) -> str:
         return super().__repr__().format("if")
+
+    @classmethod
+    def get_arguments(cls) -> int:
+        """
+        :return: 2 arguments
+        """
+        return 3

@@ -26,3 +26,10 @@ class NotNode(BooleanNode):
 
     def __repr__(self) -> str:
         return super().__repr__().format("not")
+
+    @classmethod
+    def get_arguments(cls) -> int:
+        """
+        :return: 2 arguments
+        """
+        return 1
