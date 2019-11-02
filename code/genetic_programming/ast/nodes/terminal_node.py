@@ -14,11 +14,14 @@ class TerminalNode(Node):
         elif isinstance(value, float):
             self.type = float
 
-    def evaluate(self) -> object:
+    def evaluate(self, **kwargs) -> object:
         """
         Evaluate this terminal nodes
-        :return:
+
+        :return: value
         """
+        if "values" in kwargs.keys():
+            return [self.value] * len(kwargs["values"][1])
         return self.value
 
     def __eq__(self, other: Node) -> bool:

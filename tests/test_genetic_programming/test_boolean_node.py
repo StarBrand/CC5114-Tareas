@@ -53,7 +53,7 @@ class BooleanNodeTest(NodeTest):
         expected1 = (values[0] > values[1] and
                      values[8] != values[9]) or (values[4] > values[5] and
                                                  values[6] < values[7])
-        self.std_test_evaluate_float((expected1, self.expected[1]))
+        self.std_test_evaluate_bool((expected1, self.expected[1]))
 
     def test_exceptions(self):
         self.assertRaises(ValueError, NotNode, TerminalNode(9))

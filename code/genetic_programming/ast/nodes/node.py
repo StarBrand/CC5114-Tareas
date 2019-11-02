@@ -3,6 +3,7 @@
 from __future__ import annotations
 from copy import deepcopy
 from abc import ABC, abstractmethod
+from itertools import product
 
 
 class Node(ABC):
@@ -17,7 +18,7 @@ class Node(ABC):
         self.type = None
 
     @abstractmethod
-    def evaluate(self) -> object:
+    def evaluate(self, **kwargs) -> object:
         """
         Evaluate recursive all nodes child of this one
 
@@ -68,3 +69,34 @@ class Node(ABC):
         Get number of arguments that has to have
         """
         pass
+
+    @staticmethod
+    def __prepare_values(values: {list}) -> ([str], [tuple]):
+        """
+        Prepares values for be used for variable terminal
+
+        :param values: Values as dictionary of list, for facilitate use
+        :return: Values process: list of str (variables provided)
+                list of tuples (values of variables combined in order of variables)
+        """
+        ready_values = product(*values.values())
+        return list(values.keys()), list(ready_values)
+
+    @staticmethod
+    def _receive_values(**kwargs) -> (bool, [str], [tuple]):
+        """
+        Receive values, process if not process yet
+
+        :param kwargs:
+        :return:
+        """
+        try:
+            if kwargs["ready"]:
+                variables, values = kwargs["values"]
+                return True, variables, values
+        except KeyError:
+            try:
+                variables, values = Node.__prepare_values(kwargs["values"])
+                return True, variables, values
+            except KeyError:
+                raise ValueError("Not values expected to test")

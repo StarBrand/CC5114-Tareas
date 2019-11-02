@@ -1,27 +1,26 @@
 """greater_node.py: GreaterNode class"""
 
-from genetic_programming.ast.nodes import BooleanNode, Node
+from genetic_programming.ast.nodes import BooleanNode, Node, BinaryNode
 
 
-def _greater(left: float, right: float) -> bool:
+def _greater(left: float, right: float) -> bool or [bool]:
     return left > right
 
 
-class GreaterNode(BooleanNode):
+class GreaterNode(BooleanNode, BinaryNode):
     """
     GreaterNode, implements '>' function
     """
     def __init__(self, left: Node, right: Node):
-        super().__init__(_greater, 2, [left, right])
+        BooleanNode.__init__(self, _greater, 2, [left, right])
 
-    def evaluate(self) -> bool:
+    def evaluate(self, **kwargs) -> bool or [bool]:
         """
-        Evaluate ">"
+        Evaluate node '>'
 
-        :return: Whether left is greater
+        :return: Bool indicating whether left has greater value than right
         """
-        return self.function(self.arguments[0].evaluate(),
-                             self.arguments[1].evaluate())
+        return super().evaluate(**kwargs)
 
     def __repr__(self) -> str:
         return super().__repr__().format(">")

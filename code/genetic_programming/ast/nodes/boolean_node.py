@@ -10,7 +10,7 @@ class BooleanNode(Node, ABC):
     BinaryNode class, a Node with two arguments
     """
     def __init__(self, function: callable, arguments: int, nodes: [Node]):
-        super().__init__(function, arguments)
+        Node.__init__(self, function, arguments)
         for node in nodes:
             self.arguments.append(deepcopy(node))
         self.type = bool

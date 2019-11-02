@@ -10,3 +10,4 @@ from test_genetic_programming.test_asbt import BinaryASTTest
 from test_genetic_programming.test_chiffres_yes_no_variant import ChiffresVariantTest
 from test_genetic_programming.test_boolean_node import BooleanNodeTest
 from test_genetic_programming.test_if_then_else_node import IfThenElseTest
+from test_genetic_programming.test_variable import BooleanVariableNodeTest, BinaryVariableNodeTest
