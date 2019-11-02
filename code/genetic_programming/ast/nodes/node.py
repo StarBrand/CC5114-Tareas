@@ -11,6 +11,8 @@ class Node(ABC):
     Node class, an element of a tree
     """
     def __init__(self, function: callable, number_of_arguments: int):
+        if not hasattr(function, "__call__"):
+            TypeError("Function {} given is not a function".format(function))
         self.function = function
         self.number_of_arguments = number_of_arguments
         self.arguments = list()
@@ -18,7 +20,7 @@ class Node(ABC):
         self.type = None
 
     @abstractmethod
-    def evaluate(self, **kwargs) -> object:
+    def evaluate(self, **kwargs) -> object or [object]:
         """
         Evaluate recursive all nodes child of this one
 

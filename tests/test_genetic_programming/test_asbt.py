@@ -2,8 +2,8 @@
 from copy import deepcopy
 from random import seed
 from unittest import main
-from genetic_programming.ast import BinaryAST
-from genetic_programming.ast.nodes import AddNode, SubNode, MultNode, MaxNode, TerminalNode, NullNode, Node
+from genetic_programming import BinaryAST
+from genetic_programming.ast.nodes import AddNode, SubNode, MultNode, MaxNode, TerminalNode
 from test_genetic_programming import ASTTest
 from test_genetic_programming.binary_nodes_expected import individual, stable_one
 from test_genetic_programming.binary_nodes_expected import expected_individual, expected_stable_one
@@ -32,24 +32,25 @@ class BinaryASTTest(ASTTest):
     def test_crossover(self):
         seed(10)
         first_one = self.individual.generate_individual()
-        first_expected = self.individual.replace_on_position((0, 0, 1, 0, 0, 1, 1, 0, 0, 0),
-                                                             first_one.get_node((0, 0, 0, 0, 1, 1, 0, 0, 1, 0)))
+        first_expected = self.individual.replace_on_position((0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0),
+                                                             first_one.get_node((0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0)))
         """mutate"""
-        graft = SubNode(
-            SubNode(
-                SubNode(TerminalNode(89), TerminalNode(53)),
-                AddNode(TerminalNode(-32), TerminalNode(-65))
-            ), MaxNode(
-                MultNode(TerminalNode(-2), TerminalNode(65)),
-                MultNode(TerminalNode(-50), TerminalNode(-2))
+        graft = MultNode(
+            MultNode(
+                MultNode(TerminalNode(-79), TerminalNode(-13)),
+                AddNode(TerminalNode(-72), TerminalNode(-72))
+            ),
+            AddNode(
+                MultNode(TerminalNode(36), TerminalNode(-16)),
+                MaxNode(TerminalNode(24), TerminalNode(-26))
             )
         )
-        reference = first_expected.arguments[1].arguments[0].arguments[0].arguments[1].arguments[0].arguments[1]
-        reference.replace_node(graft, 0)
+        reference = first_expected.arguments[0].arguments[1].arguments[0].arguments[0].arguments[1].arguments[1]
+        reference.replace_node(graft, 1)
         """"""
         second_one = self.stable_one.generate_individual()
-        second_expected = self.stable_one.replace_on_position((0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0),
-                                                              second_one.get_node((0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1)))
+        second_expected = self.stable_one.replace_on_position((0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0),
+                                                              second_one.get_node((0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1)))
         self.std_test_crossover(first_expected, second_expected, first_one, second_one)
 
     def test_replace_on_position(self):

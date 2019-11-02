@@ -4,8 +4,9 @@ from __future__ import annotations
 from copy import deepcopy
 from math import ceil, log2
 from random import choice
-from genetic_programming.ast import BinaryAST, AST
-from genetic_programming.ast.asbt import POSSIBLE_NODES, _diff
+from genetic_programming import BinaryAST
+from genetic_programming.ast import AST
+from genetic_programming.asbt import POSSIBLE_NODES, _diff
 from genetic_programming.ast.nodes import Node, YesNoNode
 
 

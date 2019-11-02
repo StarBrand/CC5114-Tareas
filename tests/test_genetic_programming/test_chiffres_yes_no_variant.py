@@ -2,7 +2,7 @@
 
 from unittest import main
 from random import seed
-from genetic_programming.ast import ChiffresYesNoVariant
+from genetic_programming import ChiffresYesNoVariant
 from genetic_programming.ast.nodes import AddNode, TerminalNode, YesNoNode
 from test_genetic_programming import ASTTest
 

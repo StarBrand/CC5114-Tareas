@@ -5,9 +5,8 @@ from abc import ABC, abstractmethod
 from copy import deepcopy
 from random import choice, uniform
 from genetic_algorithm.individuals import Individual
-from genetic_programming.ast.nodes import Node, TerminalNode
+from genetic_programming.ast.nodes import Node, TerminalNode, TerminalVariable
 
-# TODO: Implement variables
 # TODO: Division Node
 
 
@@ -16,10 +15,11 @@ class AST(Individual, ABC):
     AST class, represents an Abstract Syntax Tree
     """
     def __init__(self, internal_nodes: [Node], values: list, prob_terminal: float, mutation_rate: float,
-                 root: Node = None, depth: int = 0):
+                 root: Node = None, depth: int = 0, variable_type: type = None):
         super().__init__(None, None, 0, mutation_rate)
+        self.variable_type = variable_type
         self.internal_nodes = internal_nodes
-        self.allowed_values = values
+        self.allowed_values = values + ["x"]
         if root is not None:
             self.root = deepcopy(root)
         else:
@@ -65,7 +65,7 @@ class AST(Individual, ABC):
         return _a_map(self.root, tuple(), 0)
 
     @abstractmethod
-    def fitness(self) -> float:
+    def fitness(self, **kwargs) -> float:
         """
         Fitness
 
@@ -84,10 +84,15 @@ class AST(Individual, ABC):
         """
         values = deepcopy(self.allowed_values)
         internal_nodes = deepcopy(self.internal_nodes)
+        variable_type = self.variable_type
 
         def _generate_tree(d: int, p: float) -> Node:
             if d == 0 or uniform(0, 1) < p:
-                return TerminalNode(choice(values))
+                value = choice(values)
+                if isinstance(value, str):
+                    return TerminalVariable(value, variable_type)
+                else:
+                    return TerminalNode(value)
             else:
                 this = choice(internal_nodes)
                 children = list()

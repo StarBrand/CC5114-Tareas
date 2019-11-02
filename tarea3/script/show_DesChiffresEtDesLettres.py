@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 import matplotlib.pyplot as plt
 from random import seed
 from genetic_algorithm import GAEngine
-from genetic_programming.ast import BinaryAST, ChiffresYesNoVariant
+from genetic_programming import BinaryAST, ChiffresYesNoVariant
 
 DEPTH = 4
 PROB_TERMINAL = 0.03

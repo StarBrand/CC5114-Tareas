@@ -44,6 +44,23 @@ class NullNodeTest(NodeTest):
     def test_replace_node(self):
         self.std_test_replace_node(0)
 
+    def test_function_exception(self):
+
+        class FunctionTester(Node):
+            """
+            To test exception
+            """
+            def evaluate(self, **kwargs) -> object:
+                """None"""
+                pass
+
+            @classmethod
+            def get_arguments(cls) -> int:
+                """None"""
+                pass
+
+        self.assertRaises(TypeError, FunctionTester.__init__, "anything", 0)
+
 
 if __name__ == '__main__':
     main()
