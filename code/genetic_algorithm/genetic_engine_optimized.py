@@ -44,7 +44,7 @@ class GAEOptimized(GAEngine):
         self._optimize_population()
         return
 
-    def next_generation(self, register: bool = False, tournament_size: int = TOURNAMENT_SIZE) -> None:
+    def next_generation(self, register: bool = False, tournament_size: int = TOURNAMENT_SIZE, **kwargs) -> None:
         """
         Generate next generation, adding optimization
 
@@ -55,7 +55,7 @@ class GAEOptimized(GAEngine):
         self.selection(tournament_size=tournament_size)
         self.reproduction()
         self._optimize_population()
-        self.evaluate_fitness(register=register)
+        self.evaluate_fitness(register=register, **kwargs)
         return
 
     def _optimize_population(self) -> None:

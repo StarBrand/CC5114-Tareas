@@ -40,7 +40,7 @@ class GAEngine(object):
         self.generation = 1
         return
 
-    def evaluate_fitness(self, register: bool = False) -> None:
+    def evaluate_fitness(self, register: bool = False, **kwargs) -> None:
         """
         Evaluate fitness of every Individual on population
 
@@ -53,7 +53,7 @@ class GAEngine(object):
             raise RuntimeError("Cannot calculate fitness if there is no population")
         self.fitness.clear()
         for index, _ in enumerate(self.population):
-            self.fitness.append(self.population[index].fitness())
+            self.fitness.append(self.population[index].fitness(**kwargs))
         if register:
             winner = self.population.index(max(self.population))
             loser = self.population.index(min(self.population))
@@ -126,7 +126,7 @@ class GAEngine(object):
         self.selected = False
         return None
 
-    def next_generation(self, register: bool = False, tournament_size: int = TOURNAMENT_SIZE) -> None:
+    def next_generation(self, register: bool = False, tournament_size: int = TOURNAMENT_SIZE, **kwargs) -> None:
         """
         Generate a new generation doing the three needed steps
 
@@ -136,12 +136,12 @@ class GAEngine(object):
         """
         self.selection(tournament_size=tournament_size)
         self.reproduction()
-        self.evaluate_fitness(register=register)
+        self.evaluate_fitness(register=register, **kwargs)
         return
 
     def run_to_reach(self, expected_score: float, acceptable: float, population_size: int,
                      max_generation: int = MAX_GENERATIONS, tournament_size: int = TOURNAMENT_SIZE,
-                     use_prev: bool = False,  log: bool = False) -> GAResult:
+                     use_prev: bool = False,  log: bool = False, **kwargs) -> GAResult:
         """
         Run algorithm until reach expected score with an acceptable (given) margin
 
@@ -155,17 +155,17 @@ class GAEngine(object):
         :raises RuntimeError: If prev_generation is given true without a population generated
         :return: Result of algorithm
         """
-        self._initialize(population_size, use_prev)
+        self._initialize(population_size, use_prev, **kwargs)
         internal_generation = 1
         while internal_generation < max_generation and not self.solution_found(expected_score, acceptable, log=log):
-            self.next_generation(register=True, tournament_size=tournament_size)
+            self.next_generation(register=True, tournament_size=tournament_size, **kwargs)
             internal_generation += 1
         self.result.ready_to_export(max(self.population), self.solution_found(expected_score, acceptable, log=log))
         return self.result
 
     def run_to_equilibrium(self, population_size: int, equilibrium: int, max_generation: int = MAX_GENERATIONS,
                            tournament_size: int = TOURNAMENT_SIZE, use_prev: bool = False,
-                           log: bool = False) -> GAResult:
+                           log: bool = False, **kwargs) -> GAResult:
         """
         Run algorithm until score does not change on 'equilibrium' times
 
@@ -188,7 +188,7 @@ class GAEngine(object):
         prev_score = score
         while internal_generation < max_generation and times_in_a_row < equilibrium:
             _register()
-            self.next_generation(register=True, tournament_size=tournament_size)
+            self.next_generation(register=True, tournament_size=tournament_size, **kwargs)
             score = max(self.population).my_fitness
             if prev_score == score:
                 times_in_a_row += 1
@@ -201,7 +201,7 @@ class GAEngine(object):
         return self.result
 
     def run_fixed_generation(self, population_size: int, max_generation: int, tournament_size: int = TOURNAMENT_SIZE,
-                             use_prev: bool = False, log: bool = False) -> GAResult:
+                             use_prev: bool = False, log: bool = False, **kwargs) -> GAResult:
         """
         Run algorithm until reach expected score with an acceptable (given) margin
 
@@ -219,7 +219,7 @@ class GAEngine(object):
             logging.info("Generation: {}".format(self.generation))
             logging.info("\tCloser one: {}".format(max(self.population).chromosome))
         while internal_generation < max_generation:
-            self.next_generation(register=True, tournament_size=tournament_size)
+            self.next_generation(register=True, tournament_size=tournament_size, **kwargs)
             if log:
                 logging.info("Generation: {}".format(self.generation))
                 logging.info("\tCloser one: {}".format(max(self.population).chromosome))
@@ -227,7 +227,7 @@ class GAEngine(object):
         self.result.ready_to_export(max(self.population), True)
         return self.result
 
-    def _initialize(self, population_size: int, use_prev: bool) -> None:
+    def _initialize(self, population_size: int, use_prev: bool, **kwargs) -> None:
         """
         Initialize run algorithm
 
@@ -238,7 +238,7 @@ class GAEngine(object):
         """
         if not use_prev:
             self.initialize_population(population_size)
-            self.evaluate_fitness(register=True)
+            self.evaluate_fitness(register=True, **kwargs)
         elif len(self.population) == 0:
             raise RuntimeError("Not population to use")
 

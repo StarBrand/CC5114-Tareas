@@ -57,12 +57,16 @@ class EquationGuesserTest(ASTTest):
         for index, value in enumerate(VALUES_FOR_FITNESS):
             expected_individual.append(abs(TO_GUESS(value) - self.individual_fitness[index]))
             expected_stable_one.append(abs(TO_GUESS(value) - self.stable_one_fitness[index]))
-        expected_individual = sum(expected_individual) / len(expected_individual)
-        expected_stable_one = sum(expected_stable_one) / len(expected_stable_one)
+        expected_individual = - sum(expected_individual) / len(expected_individual)
+        expected_stable_one = - sum(expected_stable_one) / len(expected_stable_one)
         self.assertGreaterEqual(EPSILON, abs(expected_individual - self.individual.my_fitness),
                                 "Wrong fitness individual")
         self.assertGreaterEqual(EPSILON, abs(expected_stable_one - self.stable_one.my_fitness),
                                 "Wrong fitness stable_one")
+        self.assertRaises(KeyError, self.stable_one.fitness)
+        self.assertRaises(KeyError, self.individual.fitness)
+        self.assertRaises(ZeroDivisionError, self.stable_one.fitness, values=[])
+        self.assertRaises(ZeroDivisionError, self.individual.fitness, values=[])
 
     def expected_individuals(self):
         """

@@ -12,3 +12,4 @@ from test_genetic_programming.test_boolean_node import BooleanNodeTest
 from test_genetic_programming.test_if_then_else_node import IfThenElseTest
 from test_genetic_programming.test_variable import BooleanVariableNodeTest, BinaryVariableNodeTest
 from test_genetic_programming.test_equation_guesser import EquationGuesserTest
+from test_genetic_programming.test_div_node import DivNodeTest

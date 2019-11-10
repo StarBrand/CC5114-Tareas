@@ -18,3 +18,4 @@ from genetic_programming.ast.nodes.and_node import AndNode
 from genetic_programming.ast.nodes.or_node import OrNode
 from genetic_programming.ast.nodes.if_then_else_node import IfThenElseNode
 from genetic_programming.ast.nodes.terminal_variable import TerminalVariable
+from genetic_programming.ast.nodes.div_node import DivNode

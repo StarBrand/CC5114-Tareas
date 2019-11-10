@@ -47,7 +47,10 @@ class BinaryNodeTest(NodeTest):
 
     def test_replace_node(self):
         self.std_test_replace_node(0)
-        expected1 = self.expected[0] - (self.values[0] - self.values[1]) + self.expected[1]
+        if self.expected[1] is None:
+            expected1 = None
+        else:
+            expected1 = self.expected[0] - (self.values[0] - self.values[1]) + self.expected[1]
         self.std_test_evaluate_float((expected1, self.expected[1]))
 
     def test_replace_advanced(self):
