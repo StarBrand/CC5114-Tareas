@@ -1,10 +1,10 @@
 """equation_guesser.py: EquationGuesser class"""
-
+from copy import deepcopy
 from math import log, e
 from unittest import main
 from random import seed
 from genetic_programming import EquationGuesser
-from genetic_programming.ast.nodes import AddNode, SubNode, MultNode
+from genetic_programming.ast.nodes import AddNode, SubNode, MultNode, DivNode
 from genetic_programming.ast.nodes import TerminalNode, TerminalVariable
 from test_genetic_programming import ASTTest
 
@@ -91,6 +91,25 @@ class EquationGuesserTest(ASTTest):
             expected_stable_one.append(e * x)
         self.individual_fitness = expected_individual
         self.stable_one_fitness = expected_stable_one
+
+    def test_div_zero_behaviour(self):
+        from genetic_programming.equation_guesser import _mean_diff
+
+        def _hyperbola(x: float) -> float:
+            return 1 / x
+
+        evaluate_at = list(range(-10, 10 + 1))
+
+        equation_guesser = EquationGuesser(_hyperbola, [AddNode], float, 0, 0, 0, True)
+        equation_guesser.root = MultNode(
+            AddNode(TerminalNode(3), TerminalVariable("x", float)),
+            TerminalVariable("x", float)
+        )
+        self.assertGreaterEqual(0, equation_guesser.fitness(values=evaluate_at), "Random Equation")
+        equation_guesser.root = DivNode(TerminalNode(1), TerminalVariable("x", float))
+        self.assertGreaterEqual(EPSILON, abs(0 - equation_guesser.fitness(values=evaluate_at)), "Same equation")
+        equation_guesser.root = DivNode(TerminalVariable("x", float), TerminalNode(0))
+        self.assertEqual(-float("Inf"), equation_guesser.fitness(values=evaluate_at), "Wrong equation")
 
 
 if __name__ == '__main__':

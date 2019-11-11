@@ -1,7 +1,8 @@
 """equation_guesser.py: EquationGuesser class"""
 
+from math import isnan
 from genetic_programming.ast import AST
-from genetic_programming.ast.nodes import AddNode, SubNode, MultNode, BinaryNode
+from genetic_programming.ast.nodes import AddNode, SubNode, MultNode, BinaryNode, DivNode
 
 OPERATIONS = [AddNode, SubNode, MultNode]
 
@@ -10,10 +11,20 @@ def _mean_diff(node: BinaryNode, equation: callable, values: list) -> float:
     actual = node.evaluate(values={"x": values})
     diff = list()
     for value, found in zip(values, actual):
-        diff.append(abs(equation(value) - found))
-    try:
+        try:
+            expected = equation(value)
+            if isnan(found):
+                diff.append(float("Inf"))
+            else:
+                diff.append(abs(expected - found))
+        except ZeroDivisionError:
+            if isnan(found):
+                diff.append(0)
+            else:
+                diff.append(abs(found))
+    if len(diff) is not 0:
         return - sum(diff) / len(diff)
-    except ZeroDivisionError:
+    else:
         raise ZeroDivisionError("Values must be given, a 0 length array was given")
 
 
@@ -22,9 +33,12 @@ class EquationGuesser(AST):
     Equation Guesser class, to guess a given equation
     """
     def __init__(self, equation_to_guess: callable, values: [float] or None, variable_type: type, prob_terminal: float,
-                 depth: int, mutation_rate: float):
+                 depth: int, mutation_rate: float, division: bool = False):
         self.equation = equation_to_guess
-        super().__init__(OPERATIONS, values, prob_terminal, mutation_rate, None, depth, variable_type=variable_type)
+        operations = OPERATIONS
+        if division:
+            operations += [DivNode]
+        super().__init__(operations, values, prob_terminal, mutation_rate, None, depth, variable_type=variable_type)
         self._fitness_function = _mean_diff
 
     def fitness(self, **kwargs) -> float:

@@ -26,7 +26,10 @@ class BinaryNode(Node):
             left = self.arguments[0].evaluate(ready=ready, values=(variables, values))
             right = self.arguments[1].evaluate(ready=ready, values=(variables, values))
             for l, r in zip(left, right):
-                answer.append(self.function(l, r))
+                try:
+                    answer.append(self.function(l, r))
+                except ZeroDivisionError:
+                    answer.append(float('NaN'))
             return answer
         except ValueError:
             return self.function(self.arguments[0].evaluate(),

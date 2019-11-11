@@ -168,6 +168,19 @@ class BinaryVariableNodeTest(BinaryNodeTest):
             expected1.append(an_expected + self.variables["x"][index // 5] - self.expected[1][index])
         self.std_test_evaluate_float((expected1, self.expected[1]))
 
+    def test_terminal_node(self):
+        a = 0.0
+        node = TerminalNode(a)
+        actual = node.evaluate(values={"x": [1, 2, 3], "y": [4, 5]})
+        self.assertEqual(6, len(actual), "Length of terminal node with values")
+        self.assertEqual([a]*6, actual, "Terminal node miscalculated")
+        actual = node.evaluate(values={"x": [1, 2, 3]})
+        self.assertEqual(3, len(actual), "Length of terminal node with values")
+        self.assertEqual([a] * 3, actual, "Terminal node miscalculated")
+        actual = node.evaluate(values={})
+        self.assertEqual(0, len(actual), "Length of terminal node with values")
+        self.assertEqual([a] * 0, actual, "Terminal node miscalculated")
+
 
 if __name__ == '__main__':
     main()
