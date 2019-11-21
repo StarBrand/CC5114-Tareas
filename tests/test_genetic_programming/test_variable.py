@@ -1,4 +1,5 @@
 """test_variable: Unit testing with variable allowed"""
+
 from copy import deepcopy
 from random import seed, uniform
 from unittest import main

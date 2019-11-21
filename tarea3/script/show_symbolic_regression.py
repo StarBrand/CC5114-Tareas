@@ -9,7 +9,7 @@ from genetic_programming import EquationGuesser
 
 DEPTH = 2
 PROB_TERMINAL = 0.03
-VALUES = list(range(-10, 10 + 1)) + ["x"]
+VALUES = list(range(-10, 10 + 1))
 MUTATION_RATE = 0.05
 POPULATION_SIZE = 50
 ACCEPTABLE = 0.1
@@ -59,8 +59,7 @@ if __name__ == '__main__':
     ax.plot(result.get_generations(), result.get_mean_scores(), "-*", label="Mean score")
     ax.plot(result.get_generations(), result.get_min_scores(), "-*", label="Minimum score")
 
-    if not args.divide:
-        ax.set_yscale("symlog")
+    ax.set_yscale("symlog")
     ax.legend(fontsize=20)
 
     logging.info("Maximum value: {}".format(result.get_max_scores()[-1]))

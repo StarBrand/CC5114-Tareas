@@ -2,7 +2,7 @@
 
 from math import isnan
 from genetic_programming.ast import AST
-from genetic_programming.ast.nodes import AddNode, SubNode, MultNode, BinaryNode, DivNode
+from genetic_programming.ast.nodes import AddNode, SubNode, MultNode, BinaryNode, DivNode, Node
 
 OPERATIONS = [AddNode, SubNode, MultNode]
 
@@ -60,4 +60,16 @@ class EquationGuesser(AST):
 
         :return: EquationGuesser with different node but same parameters
         """
-        return EquationGuesser(self.equation, self.allowed_values, self.variable_type, self.prob_terminal, self.depth, self.mutation_rate)
+        return EquationGuesser(self.equation, self.allowed_values, self.variable_type, self.prob_terminal, self.depth,
+                               self.mutation_rate)
+
+    def generate_tree(self, depth: int, prob_terminal: float) -> Node:
+        """
+        Generates tree adding variable "x" to allowed values
+
+        :param depth: Depth of tree
+        :param prob_terminal: Probability of been a terminal
+        :return: A operation tree
+        """
+        self.allowed_values = self.allowed_values + ["x"]
+        return super().generate_tree(depth, prob_terminal)

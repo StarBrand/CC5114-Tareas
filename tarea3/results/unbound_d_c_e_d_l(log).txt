@@ -1,6 +1,7 @@
 C:\Users\juans\Anaconda3\envs\cc5114\python.exe "C:/Users/juans/Google Drive/CC5114/CC5114-Tareas/tarea3/script/show_DesChiffresEtDesLettres.py" -w unbound
 INFO:root:Generation: 1
-INFO:root:	Closer one: (-)
+INFO:root:	Closer one:
+(-)
   |-(-)
     |-(*)
       |-(*)
@@ -32,7 +33,8 @@ INFO:root:	Closer one: (-)
         |-(25)
         |-(25)
 INFO:root:Generation: 2
-INFO:root:	Closer one: (-)
+INFO:root:	Closer one:
+(-)
   |-(max)
     |-(*)
       |-(+)
@@ -64,7 +66,8 @@ INFO:root:	Closer one: (-)
         |-(7)
         |-(7)
 INFO:root:Generation: 3
-INFO:root:	Closer one: (-)
+INFO:root:	Closer one:
+(-)
   |-(max)
     |-(*)
       |-(+)
@@ -96,7 +99,8 @@ INFO:root:	Closer one: (-)
         |-(7)
         |-(7)
 INFO:root:Generation: 4
-INFO:root:	Closer one: (-)
+INFO:root:	Closer one:
+(-)
   |-(max)
     |-(*)
       |-(+)
@@ -128,7 +132,8 @@ INFO:root:	Closer one: (-)
         |-(7)
         |-(7)
 INFO:root:Generation: 5
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(max)
@@ -160,7 +165,8 @@ INFO:root:	Closer one: (+)
         |-(7)
         |-(4)
 INFO:root:Generation: 6
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(-)
@@ -192,7 +198,8 @@ INFO:root:	Closer one: (+)
         |-(7)
         |-(4)
 INFO:root:Generation: 7
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(-)
@@ -224,7 +231,8 @@ INFO:root:	Closer one: (+)
         |-(7)
         |-(4)
 INFO:root:Generation: 8
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(-)
@@ -256,7 +264,8 @@ INFO:root:	Closer one: (+)
         |-(7)
         |-(4)
 INFO:root:Generation: 9
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(-)
@@ -288,7 +297,8 @@ INFO:root:	Closer one: (+)
         |-(7)
         |-(7)
 INFO:root:Generation: 10
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(-)
@@ -320,7 +330,8 @@ INFO:root:	Closer one: (+)
         |-(7)
         |-(7)
 INFO:root:Generation: 11
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(*)
       |-(max)
@@ -352,7 +363,8 @@ INFO:root:	Closer one: (+)
         |-(2)
         |-(7)
 INFO:root:Generation: 12
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(max)
@@ -384,7 +396,8 @@ INFO:root:	Closer one: (+)
         |-(25)
         |-(8)
 INFO:root:Generation: 13
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(*)
       |-(max)
@@ -414,7 +427,8 @@ INFO:root:	Closer one: (+)
         |-(4)
         |-(7)
 INFO:root:Generation: 14
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(-)
@@ -444,7 +458,8 @@ INFO:root:	Closer one: (+)
         |-(25)
       |-(100)
 INFO:root:Generation: 15
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(*)
@@ -476,7 +491,8 @@ INFO:root:	Closer one: (+)
         |-(25)
         |-(25)
 INFO:root:Generation: 16
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(+)
       |-(max)
@@ -506,7 +522,8 @@ INFO:root:	Closer one: (+)
         |-(25)
         |-(8)
 INFO:root:Generation: 17
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(+)
@@ -538,7 +555,8 @@ INFO:root:	Closer one: (+)
         |-(8)
         |-(100)
 INFO:root:Generation: 18
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(+)
@@ -570,7 +588,8 @@ INFO:root:	Closer one: (+)
         |-(7)
         |-(100)
 INFO:root:Generation: 19
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(*)
@@ -602,7 +621,8 @@ INFO:root:	Closer one: (+)
         |-(25)
         |-(2)
 INFO:root:Generation: 20
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(*)
@@ -634,7 +654,8 @@ INFO:root:	Closer one: (+)
         |-(25)
         |-(2)
 INFO:root:Generation: 21
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(*)
       |-(7)
@@ -664,7 +685,8 @@ INFO:root:	Closer one: (+)
         |-(7)
         |-(100)
 INFO:root:Generation: 22
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(*)
@@ -696,7 +718,8 @@ INFO:root:	Closer one: (+)
         |-(25)
         |-(100)
 INFO:root:Generation: 23
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(*)
@@ -728,7 +751,8 @@ INFO:root:	Closer one: (+)
         |-(25)
         |-(7)
 INFO:root:Generation: 24
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(max)
@@ -760,7 +784,8 @@ INFO:root:	Closer one: (+)
         |-(4)
         |-(25)
 INFO:root:Generation: 25
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(+)
@@ -792,7 +817,8 @@ INFO:root:	Closer one: (+)
         |-(4)
         |-(25)
 INFO:root:Generation: 26
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(max)
@@ -824,7 +850,8 @@ INFO:root:	Closer one: (+)
         |-(4)
         |-(7)
 INFO:root:Generation: 26
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(+)
   |-(max)
     |-(max)
       |-(max)

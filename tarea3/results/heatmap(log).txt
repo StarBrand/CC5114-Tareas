@@ -1,0 +1,127 @@
+C:\Users\juans\Anaconda3\envs\cc5114\python.exe "C:/Users/juans/Google Drive/CC5114/CC5114-Tareas/tarea3/script/heatmaps.py"
+INFO:root:Problem Equation Guesser
+INFO:root:Population size used: 5
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 10
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 50
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 100
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 150
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Problem Equation Guesser Division
+INFO:root:Population size used: 5
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 10
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 50
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 100
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 150
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Problem Number
+INFO:root:Population size used: 5
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 10
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 50
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 100
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 150
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Problem Number 0/1
+INFO:root:Population size used: 5
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 10
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 50
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 100
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+INFO:root:Population size used: 150
+INFO:root:==> Mutation rate used: 0.0
+INFO:root:==> Mutation rate used: 0.05
+INFO:root:==> Mutation rate used: 0.4
+INFO:root:==> Mutation rate used: 0.75
+INFO:root:==> Mutation rate used: 1.0
+
+Process finished with exit code 0

@@ -7,8 +7,6 @@ from random import choice, uniform
 from genetic_algorithm.individuals import Individual
 from genetic_programming.ast.nodes import Node, TerminalNode, TerminalVariable
 
-# TODO: Division Node
-
 
 class AST(Individual, ABC):
     """
@@ -19,7 +17,7 @@ class AST(Individual, ABC):
         super().__init__(None, None, 0, mutation_rate)
         self.variable_type = variable_type
         self.internal_nodes = internal_nodes
-        self.allowed_values = values + ["x"]
+        self.allowed_values = values
         if root is not None:
             self.root = deepcopy(root)
         else:

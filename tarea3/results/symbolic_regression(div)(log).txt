@@ -1,84 +1,211 @@
 C:\Users\juans\Anaconda3\envs\cc5114\python.exe "C:/Users/juans/Google Drive/CC5114/CC5114-Tareas/tarea3/script/show_symbolic_regression.py" -d
 INFO:root:Generation: 1
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(*)
   |-(*)
-    |-(x)
-    |-(x)
+    |-(-5)
+    |-(5)
   |-(-)
     |-(-9)
-    |-(-10)
+    |-(-2)
 INFO:root:Generation: 2
-INFO:root:	Closer one: (+)
-  |-(*)
-    |-(x)
-    |-(x)
+INFO:root:	Closer one:
+(*)
   |-(/)
-    |-(3)
-    |-(-5)
-INFO:root:Generation: 3
-INFO:root:	Closer one: (+)
-  |-(*)
     |-(x)
-    |-(x)
-  |-(-)
-    |-(x)
-    |-(0)
-INFO:root:Generation: 4
-INFO:root:	Closer one: (+)
-  |-(*)
-    |-(x)
-    |-(x)
+    |-(10)
   |-(+)
-    |-(-5)
+    |-(-7)
+    |-(x)
+INFO:root:Generation: 3
+INFO:root:	Closer one:
+(*)
+  |-(+)
+    |-(x)
+    |-(-2)
+  |-(+)
+    |-(-7)
+    |-(x)
+INFO:root:Generation: 4
+INFO:root:	Closer one:
+(*)
+  |-(+)
+    |-(x)
+    |-(-2)
+  |-(+)
+    |-(0)
     |-(x)
 INFO:root:Generation: 5
-INFO:root:	Closer one: (+)
+INFO:root:	Closer one:
+(*)
+  |-(+)
+    |-(2)
+    |-(x)
+  |-(+)
+    |-(0)
+    |-(x)
+INFO:root:Generation: 6
+INFO:root:	Closer one:
+(+)
+  |-(+)
+    |-(3)
+    |-(9)
+  |-(*)
+    |-(x)
+    |-(x)
+INFO:root:Generation: 7
+INFO:root:	Closer one:
+(+)
+  |-(+)
+    |-(1)
+    |-(-2)
+  |-(*)
+    |-(x)
+    |-(x)
+INFO:root:Generation: 8
+INFO:root:	Closer one:
+(+)
+  |-(+)
+    |-(x)
+    |-(-4)
+  |-(*)
+    |-(x)
+    |-(x)
+INFO:root:Generation: 9
+INFO:root:	Closer one:
+(+)
+  |-(+)
+    |-(x)
+    |-(-5)
+  |-(*)
+    |-(x)
+    |-(x)
+INFO:root:Generation: 10
+INFO:root:	Closer one:
+(+)
+  |-(*)
+    |-(x)
+    |-(x)
+  |-(-)
+    |-(x)
+    |-(-1)
+INFO:root:Generation: 11
+INFO:root:	Closer one:
+(+)
   |-(*)
     |-(x)
     |-(x)
   |-(+)
-    |-(-9)
+    |-(-2)
     |-(x)
-INFO:root:Generation: 6
-INFO:root:	Closer one: (+)
-  |-(*)
-    |-(x)
-    |-(x)
-  |-(/)
-    |-(x)
-    |-(9)
-INFO:root:Generation: 7
-INFO:root:	Closer one: (+)
+INFO:root:Generation: 12
+INFO:root:	Closer one:
+(+)
   |-(*)
     |-(x)
     |-(x)
   |-(-)
     |-(x)
     |-(8)
-INFO:root:Generation: 8
-INFO:root:	Closer one: (+)
+INFO:root:Generation: 13
+INFO:root:	Closer one:
+(+)
+  |-(+)
+    |-(4)
+    |-(x)
+  |-(*)
+    |-(x)
+    |-(x)
+INFO:root:Generation: 14
+INFO:root:	Closer one:
+(+)
+  |-(*)
+    |-(x)
+    |-(x)
+  |-(+)
+    |-(-8)
+    |-(x)
+INFO:root:Generation: 15
+INFO:root:	Closer one:
+(+)
+  |-(+)
+    |-(-4)
+    |-(x)
+  |-(*)
+    |-(x)
+    |-(x)
+INFO:root:Generation: 16
+INFO:root:	Closer one:
+(+)
+  |-(-)
+    |-(x)
+    |-(10)
+  |-(*)
+    |-(x)
+    |-(x)
+INFO:root:Generation: 17
+INFO:root:	Closer one:
+(+)
+  |-(*)
+    |-(x)
+    |-(x)
+  |-(+)
+    |-(x)
+    |-(-3)
+INFO:root:Generation: 18
+INFO:root:	Closer one:
+(+)
   |-(*)
     |-(x)
     |-(x)
   |-(-)
     |-(x)
+    |-(5)
+INFO:root:Generation: 19
+INFO:root:	Closer one:
+(+)
+  |-(*)
+    |-(x)
+    |-(x)
+  |-(-)
+    |-(x)
+    |-(7)
+INFO:root:Generation: 20
+INFO:root:	Closer one:
+(+)
+  |-(*)
+    |-(x)
+    |-(x)
+  |-(+)
     |-(3)
-INFO:root:Generation: 9
-INFO:root:	Closer one: (+)
+    |-(x)
+INFO:root:Generation: 21
+INFO:root:	Closer one:
+(+)
   |-(*)
     |-(x)
     |-(x)
   |-(+)
     |-(x)
-    |-(-6)
-INFO:root:Generation: 9
-INFO:root:	Closer one: (+)
+    |-(-8)
+INFO:root:Generation: 22
+INFO:root:	Closer one:
+(+)
   |-(*)
     |-(x)
     |-(x)
-  |-(+)
+  |-(-)
     |-(x)
-    |-(-6)
+    |-(6)
+INFO:root:Generation: 22
+INFO:root:	Closer one:
+(+)
+  |-(*)
+    |-(x)
+    |-(x)
+  |-(-)
+    |-(x)
+    |-(6)
 INFO:root:Maximum value: 0.0
 
 Process finished with exit code 0

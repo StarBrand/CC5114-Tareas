@@ -76,7 +76,7 @@ class GAEngine(object):
         close = max(self.population)
         if log:
             logging.info("Generation: {}".format(self.generation))
-            logging.info("\tCloser one: {}".format(close))
+            logging.info("\tCloser one:\n{}".format(close))
         score = close.my_fitness
         return expected - score <= acceptable
 
