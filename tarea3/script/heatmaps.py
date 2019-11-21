@@ -56,7 +56,7 @@ if __name__ == '__main__':
     }
 
     problems["number_01"] = {
-        "ast": ChiffresYesNoVariant(20, ALLOWED_VALUES, 0.0),
+        "ast": ChiffresYesNoVariant(20, [-10, -5, 5, 10], 0.0),
         "acceptable": 0.0,
         "name": "Number 0/1",
         "file": "n_guesser_01",
