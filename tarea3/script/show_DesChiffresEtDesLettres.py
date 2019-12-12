@@ -7,14 +7,14 @@ from random import seed
 from genetic_algorithm import GAEngine
 from genetic_programming import BinaryAST, ChiffresYesNoVariant
 
-DEPTH = 4
+DEPTH = 5
 PROB_TERMINAL = 0.03
 VALUES = [25, 7, 8, 100, 4, 2]
-EXPECTED = 459
+EXPECTED = 65346
 
 MUTATION_RATE = {
-    "unbound": 0.05,
-    "yes-or-no": 0.1
+    "unbound": 0.3,
+    "yes-or-no": 0.3
 }
 
 PROBLEMS = {
@@ -23,7 +23,7 @@ PROBLEMS = {
 }
 
 POPULATION_SIZE = {
-    "unbound": 50,
+    "unbound": 100,
     "yes-or-no": 20
 }
 

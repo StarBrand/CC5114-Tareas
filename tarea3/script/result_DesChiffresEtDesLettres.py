@@ -59,35 +59,64 @@ def simplify(node: BinaryNode) -> BinaryNode:
 
 """ Unbound version """
 unbound_answer = AddNode(
-    MaxNode(
+    MultNode(
         MaxNode(
-            MaxNode(TerminalNode(8), TerminalNode(100)),
-            MaxNode(TerminalNode(2), TerminalNode(7))
-        ),
-        AddNode(
-            MaxNode(TerminalNode(8), TerminalNode(100)),
-            AddNode(TerminalNode(7), TerminalNode(2))
-        )
-    ),
-    MaxNode(
-        MultNode(
-            MaxNode(TerminalNode(7), TerminalNode(2)),
-            MultNode(TerminalNode(25), TerminalNode(2))
+            SubNode(
+                AddNode(TerminalNode(100), TerminalNode(7)),
+                MultNode(TerminalNode(100), TerminalNode(25))
+            ),
+            AddNode(
+                AddNode(TerminalNode(2), TerminalNode(8)),
+                AddNode(TerminalNode(100), TerminalNode(100))
+            )
         ),
         SubNode(
-            MaxNode(TerminalNode(2), TerminalNode(4)),
-            AddNode(TerminalNode(4), TerminalNode(7))
+            AddNode(
+                AddNode(TerminalNode(100), TerminalNode(25)),
+                SubNode(TerminalNode(7), TerminalNode(8))
+            ),
+            MultNode(
+                SubNode(TerminalNode(2), TerminalNode(4)),
+                SubNode(TerminalNode(100), TerminalNode(7))
+            )
+        )
+    ),
+    AddNode(
+        MaxNode(
+            AddNode(
+                MaxNode(TerminalNode(7), TerminalNode(7)),
+                MaxNode(TerminalNode(8), TerminalNode(7))
+            ),
+            SubNode(
+                AddNode(
+                    TerminalNode(25), TerminalNode(25)
+                ),
+                MultNode(
+                    TerminalNode(7), TerminalNode(2)
+                )
+            )
+        ),
+        MaxNode(
+            SubNode(
+                AddNode(TerminalNode(25), TerminalNode(7)),
+                MultNode(TerminalNode(100), TerminalNode(25))
+            ),
+            AddNode(
+                AddNode(TerminalNode(2), TerminalNode(8)),
+                AddNode(TerminalNode(100), TerminalNode(100))
+            )
         )
     )
 )
 
 y_n_answer = MultNode(
-    AddNode(
-        SubNode(YesNoNode(25, False), TerminalNode(7)),
-        AddNode(TerminalNode(8), TerminalNode(100))
+    MultNode(
+        MultNode(TerminalNode(25), TerminalNode(7)),
+        MaxNode(YesNoNode(8, False), TerminalNode(100))
     ),
-    AddNode(TerminalNode(4), YesNoNode(2, False))
+    MaxNode(TerminalNode(4), TerminalNode(2))
 )
+
 
 if __name__ == '__main__':
     def _print(answer: BinaryNode) -> None:
