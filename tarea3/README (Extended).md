@@ -8,9 +8,9 @@ En este reporte se explicará el procesos de implementación, testeo y resultado
 
 ### Nodos y Árboles
 
-Para la implementación de árboles de operaciones se realizó la implementación de un nodo (`Node`) como clase abstracta (`Abstract Base Class`), la cual contiene argumentos, los cuales también serán nodos. La cual permite evaluar, reemplazar algún argumento e inicializar.
+Para la implementación de árboles de operaciones se realizó la implementación de un nodo (`Node`) como clase abstracta (`Abstract Base Class`), la cual contiene argumentos, que serán nodos. Esta permite evaluar, reemplazar algún argumento e inicializar.
 
-Con esta implementación, reemplazar un nodo hijo o argumento se puede solo desde el nodo padre, no se puede cambiar un argumento de un argumento o ningún otro nivel de modo recursivo.
+Con esta implementación, reemplazar un nodo hijo o argumento se puede solo desde el nodo padre, no se puede cambiar un argumento de un argumento o ningún otro nivel de forma recursiva.
 
 Originalmente solo se debe entregar una función y el número de argumentos. Los argumentos en específico se entregaran al inicializar las clases hijas. Posteriormente se cambiarán muchos de estos parámetros para compatibilizar con nodos introducidos posteriormente.
 
@@ -62,7 +62,7 @@ Estas fueron las clases implementadas hijas de `AST` que fueron utilizadas para 
 
 ### Encontrar un número
 
-Tomando la clase `AST` (sección anterior) se implementa la clase `BinaryAST` que solo especifica las operaciones (o clases hijas de `BinaryNode`) que `AST` puede utilizar para generar árboles. Los resultados observados al intentar adivinar 459 utilizando los valores: 25, 7, 8, 100, 4, 2; con las operaciones `+`, `-`, `*` y `max` se muestran en los siguientes gráfico.
+Tomando la clase `AST` (sección anterior) se implementa la clase `BinaryAST` que solo especifica las operaciones (o clases hijas de `BinaryNode`) que `AST` puede utilizar para generar árboles. Los resultados observados al intentar adivinar 65346 utilizando los valores: 25, 7, 8, 100, 4, 2; con las operaciones `+`, `-`, `*` y `max` se muestran en los siguientes gráfico.
 
 ![unbound_number_max](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/unbound_d_c_e_d_l(max).png)
 
@@ -74,7 +74,7 @@ Como `y` es negativo, `-y` es positivo y se le puede aplicar `log`.
 
 ![unbound_number](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/unbound_d_c_e_d_l.png)
 
-Además de esta versión, se implementó una versión `01`, es decir, una versión sí/no, para utilizar o no, a lo más una vez, los números en la lista. Utilizando esta versión, implementada en la clase `ChiffresYesNoVariant`, se encontró un número cercano (460). Esta nueva clase tiene un método completamente distinto para generar un árbol, ya que no utiliza la versión de `AST`.
+Además de esta versión, se implementó una versión `01`, es decir, una versión sí/no, para utilizar o no, a lo más una vez, los números en la lista. Utilizando esta versión, implementada en la clase `ChiffresYesNoVariant`, se encontró un número cercano (70000). Esta nueva clase tiene un método completamente distinto para generar un árbol, ya que no utiliza la versión de `AST`.
 
 Para señalar aquellos que no se ocupan se utiliza una subclase de `float`, implementada: `super neutral`. La cual al ser aplicada en `max`, `+`, `-` y `*` siempre devuelve el otro número (`float`). Por la manera en la que fue implementada, es decir, reescribiendo operaciones básicas en *Python* de la clase `float`, falla al usarla en la operación `min`.
 
@@ -131,18 +131,6 @@ Para obtener los *heatmap* ya descritos, de cantidad de iteraciones variando tam
 ![sr_heatmap](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/heatmap_eq_guesser.png)
 
 ![sr_heatmap_div](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/heatmap_eq_guesser_div.png)
-
-Destacar que si bien se espera que el algoritmo encuentre:
-
-````scheme
-(- (+ (* x x) (* 2 x)) 15)
-````
-
-En ambos casos encontró:
-
-````scheme
-(+ (+ x 5) (- x 3))
-````
 
 Es decir, la versión factorizada.
 
