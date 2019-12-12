@@ -1,6 +1,6 @@
 # Tarea 3
 
-En este reporte se muestra la ubicación del código y de los test unitarios, junto con algunos resultados. Para una versión más extendida  de la explicación y más resultados intermedios ver la [Versión Extendida](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/README (Extended).md).
+En este reporte se muestra la ubicación del código y de los test unitarios, junto con algunos resultados. Para una versión más extendida  de la explicación y más resultados intermedios ver la [Versión Extendida](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/README%20%28Extended%29.md).
 
 ## Programación genética
 
