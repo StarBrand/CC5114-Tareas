@@ -1,3 +1,5 @@
+
+
 # Tarea 3
 
 En este reporte se explicará el procesos de implementación, testeo y resultado de la implementación de algoritms genéticos siguiendo el orden lógico por el que se fueron desarrollando. Al final de cada sección se da la ubicación del código fuente en el repositorio y los *scripts* de los test unitarios.
@@ -97,4 +99,58 @@ Utilizando ambas clases y los valores para terminales: -10, -5, 0, 5, 10. Se int
 [`tarea3/script/heatmaps`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/script/heatmaps.py)
 
 ### Encontrar una ecuación
+
+Tomando la clase madre `AST`, se implementa un nuevo `Individual` que genera un árbol sintáctico aleatorio. Para inicializarse, esta clase requiere 1) la ecuación a adivinar como un método (`__call__`) de *Python*, 2) los valores para calcular *fitness*, 3) el tipo de variable (disponibles `float` si es un número y `bool` si es verdadero o falso), 4) si se quiere utilizar la operación dividir y 5), como en todo `AST`, la probabilidad que un nodo sea terminal, la profundidad y la tasa de mutación.
+
+El punto 2) es la principal diferencia con adivinar un número. Por lo que, para adivinar una ecuación se requiere saber en que intervalo se requiere que la ecuación encontrada se comporte como la original, o lo más cercano posible. Por ello, el `AST` recibe la lista de valores para evaluar la diferencia. Cada valor de la lista tendrá una diferencia en valor absoluto y estás se sumaran para obtener el *fitness*.
+
+En caso que se utilice el node división, alguno de los valores entregados podría generar: `ZeroDivisionError`. Cuando esto ocurre, como la respuesta es el `float ` *NaN*, la respuesta dependerá también de la función buscada:
+
+1. Si el resultado esperado es `NaN`, la diferencia para ese valor particular será 0.
+2. Si el resultado esperado es `NaN` y se obtuvo un número, la diferencia será el valor absoluto del número obtenido.
+3. Si el resultado esperado no es `NaN`, pero se obtuvo `NaN`, la diferencia sera `Inf`, lo que implica que el *fitness*, al ser suma de las diferencias, será `-Inf` y como no existe número menor, será un árbol descartado en la etapa de selección.
+
+Los motivos de 1) son triviales. En 3), la explicación es que, ya que el árbol obtiene un *NaN* cuando no debe, no es útil. La elección de la diferencia en 2) es arbitraria, pero mantiene el árbol para selección, ya que si no hay un *fitness* mejor, este podría ser utilizado.
+
+Los resultados encontrados se muestran en los siguientes gráficos.
+
+![eq_guesser](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/symbolic_regression.png)
+
+![eq_guesser_div](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/symbolic_regression%28div%29.png)
+
+Esto para encontrar la función
+
+![s_r_equation](https://latex.codecogs.com/svg.latex?\Large&space;f%28x%29%3Dx%5E%7B2%7D%2Bx-6)
+
+Utilizando todos las operaciones, los valores para terminales [-10, 10] y los valores para *fitness* [-100, 100].  Notar que el gráfico cuando se utilizo el nodo `Div` solo se ve el valor máximo, ya que el mínimo y el promedio contienen el valor *-Inf* que no se muestra.
+
+Para obtener los *heatmap* ya descritos, de cantidad de iteraciones variando tamaña de la población y tasa de mutación, se utilizó la función
+
+![s_r_equation_2](https://latex.codecogs.com/svg.latex?\Large&space;f%28x%29%3Dx%5E%7B2%7D%2B2x-15)
+
+![sr_heatmap](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/heatmap_eq_guesser.png)
+
+![sr_heatmap_div](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/heatmap_eq_guesser_div.png)
+
+Destacar que si bien se espera que el algoritmo encuentre:
+
+````scheme
+(- (+ (* x x) (* 2 x)) 15)
+````
+
+En ambos casos encontró:
+
+````scheme
+(+ (+ x 5) (- x 3))
+````
+
+Es decir, la versión factorizada.
+
+**Código**: [`code/genetic_programming/equation_guesser`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_programming/equation_guesser.py)
+
+**Tests unitarios**: [`tests/test_genetic_programming/test_equation_guesser`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_programming/test_equation_guesser.py)
+
+**Ejecutables**: [`tarea3/script/show_symbolic_regression`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/script/show_symbolic_regression.py)	Argumentos: ` ` [*Sin división*], `-d` [*Con división*]
+
+[`tarea3/script/heatmaps`](https://github.com/StarBrand/CC5114-Tareas/tree/master/tarea3/script/heatmaps.py)
 
