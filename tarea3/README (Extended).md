@@ -132,8 +132,6 @@ Para obtener los *heatmap* ya descritos, de cantidad de iteraciones variando tam
 
 ![sr_heatmap_div](https://github.com/StarBrand/CC5114-Tareas/blob/master/tarea3/results/heatmap_eq_guesser_div.png)
 
-Es decir, la versión factorizada.
-
 **Código**: [`code/genetic_programming/equation_guesser`](https://github.com/StarBrand/CC5114-Tareas/blob/master/code/genetic_programming/equation_guesser.py)
 
 **Tests unitarios**: [`tests/test_genetic_programming/test_equation_guesser`](https://github.com/StarBrand/CC5114-Tareas/blob/master/tests/test_genetic_programming/test_equation_guesser.py)
